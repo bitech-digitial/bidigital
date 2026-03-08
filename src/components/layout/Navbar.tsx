@@ -81,8 +81,8 @@ export default function Navbar() {
             </span>
           </a>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop nav links — lg+ only */}
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -95,49 +95,58 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Burger button */}
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            aria-expanded={menuOpen}
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: 10,
-              background: "transparent",
-              border: "1px solid #e2e8f0",
-              cursor: "pointer",
-              padding: 8,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 5,
-              transition: "all 0.2s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#f1f5f9")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-          >
-            {[bar1Style, bar2Style, bar3Style].map((style, i) => (
-              <span
-                key={i}
-                style={{
-                  display: "block",
-                  width: 20,
-                  height: 2,
-                  borderRadius: 2,
-                  background: "#0f172a",
-                  transformOrigin: "center",
-                  transition: "all 0.3s ease",
-                  ...style,
-                }}
-              />
-            ))}
-          </button>
+          {/* Desktop CTA — lg+ only */}
+          <div className="hidden lg:flex items-center">
+            <CalButton className="text-sm px-5 py-2.5">
+              Démarrer mon projet
+            </CalButton>
+          </div>
+
+          {/* Burger button — mobile only (< lg) */}
+          <div className="flex lg:hidden">
+            <button
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-expanded={menuOpen}
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 10,
+                background: "transparent",
+                border: "1px solid #e2e8f0",
+                cursor: "pointer",
+                padding: 8,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: 5,
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "#f1f5f9")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+            >
+              {[bar1Style, bar2Style, bar3Style].map((style, i) => (
+                <span
+                  key={i}
+                  style={{
+                    display: "block",
+                    width: 20,
+                    height: 2,
+                    borderRadius: 2,
+                    background: "#0f172a",
+                    transformOrigin: "center",
+                    transition: "all 0.3s ease",
+                    ...style,
+                  }}
+                />
+              ))}
+            </button>
+          </div>
         </nav>
       </motion.header>
 
-      {/* Full-screen menu overlay */}
+      {/* Full-screen menu overlay — mobile only */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div

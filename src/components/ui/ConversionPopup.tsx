@@ -23,21 +23,31 @@ function PopupCard({
   const isMid = type === "mid";
 
   return (
-    <>
-      {/* Backdrop */}
-      <div
-        onClick={onClose}
-        style={{
-          position: "fixed",
-          inset: 0,
-          background: "rgba(15,23,42,0.35)",
-          backdropFilter: "blur(4px)",
-          WebkitBackdropFilter: "blur(4px)",
-          zIndex: 49,
-        }}
-      />
-
-      {/* Card */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "16px",
+        boxSizing: "border-box",
+        background: "rgba(15,23,42,0.40)",
+        backdropFilter: "blur(4px)",
+        WebkitBackdropFilter: "blur(4px)",
+        zIndex: 9999,
+      }}
+    >
       <motion.div
         initial={{ scale: 0.92, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -45,17 +55,16 @@ function PopupCard({
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
         onClick={(e) => e.stopPropagation()}
         style={{
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          zIndex: 50,
-          width: "calc(100% - 32px)",
-          maxWidth: 440,
+          position: "relative",
+          width: "100%",
+          maxWidth: "420px",
+          margin: "0 auto",
           background: "#ffffff",
           border: "1px solid #e2e8f0",
-          borderRadius: 24,
-          boxShadow: "0 25px 80px rgba(0,0,0,0.12), 0 8px 32px rgba(37,99,235,0.06)",
+          borderRadius: "20px",
+          padding: "32px 28px 28px",
+          boxSizing: "border-box",
+          boxShadow: "0 24px 80px rgba(0,0,0,0.18)",
           overflow: "hidden",
         }}
       >
@@ -79,34 +88,49 @@ function PopupCard({
             position: "absolute",
             top: 12,
             right: 12,
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: 8,
+            background: "#f8fafc",
+            border: "1px solid #e2e8f0",
+            borderRadius: 8,
+            width: 32,
+            height: 32,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            borderRadius: 8,
-            color: "#94a3b8",
+            cursor: "pointer",
             zIndex: 10,
+            color: "#94a3b8",
           }}
           aria-label="Fermer"
         >
-          <X size={18} />
+          <X size={16} />
         </button>
 
         {/* Content */}
-        <div style={{ position: "relative", zIndex: 1, padding: "32px 32px 28px" }}>
+        <div style={{ position: "relative", zIndex: 1 }}>
           <p
-            className="text-xs font-semibold uppercase tracking-widest text-blue-500 mb-2"
-            style={{ fontFamily: "var(--font-body)" }}
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: "#3b82f6",
+              marginBottom: 8,
+              fontFamily: "var(--font-body)",
+            }}
           >
             {isMid ? "Votre projet nous intéresse" : "Avant de partir..."}
           </p>
 
           <h3
-            className="font-bold text-xl text-[#0f172a] mb-2 leading-snug"
-            style={{ fontFamily: "var(--font-heading)" }}
+            style={{
+              fontSize: "clamp(18px, 4vw, 22px)",
+              fontWeight: 700,
+              fontFamily: "var(--font-heading)",
+              color: "#0f172a",
+              marginBottom: 8,
+              paddingRight: 32,
+              lineHeight: 1.3,
+            }}
           >
             {isMid
               ? "Parlons de votre projet."
@@ -114,16 +138,24 @@ function PopupCard({
           </h3>
 
           <p
-            className="text-sm text-[#64748b] leading-relaxed mb-5 font-light"
-            style={{ fontFamily: "var(--font-body)" }}
+            style={{
+              fontSize: 14,
+              color: "#64748b",
+              marginBottom: 20,
+              lineHeight: 1.5,
+              fontFamily: "var(--font-body)",
+            }}
           >
             {isMid
               ? "Un échange de 15 minutes suffit pour définir ensemble la meilleure solution pour votre activité."
               : "Des dizaines de professionnels nous font déjà confiance. Rejoignez-les."}
           </p>
 
-          <div className="flex flex-col gap-3">
-            <CalButton className="w-full justify-center py-3.5" onClick={onCtaClick}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%" }}>
+            <CalButton
+              className="w-full justify-center py-3.5 text-sm rounded-xl"
+              onClick={onCtaClick}
+            >
               Prendre rendez-vous
             </CalButton>
             <a
@@ -131,8 +163,22 @@ function PopupCard({
               target="_blank"
               rel="noopener noreferrer"
               onClick={onCtaClick}
-              className="flex items-center justify-center gap-2 w-full px-4 py-3 text-white text-sm font-medium rounded-xl hover:opacity-90 transition-opacity"
-              style={{ backgroundColor: "#25d366", fontFamily: "var(--font-body)" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+                width: "100%",
+                padding: "14px 20px",
+                fontSize: 14,
+                borderRadius: 12,
+                boxSizing: "border-box",
+                background: "#25d366",
+                color: "#ffffff",
+                textDecoration: "none",
+                fontFamily: "var(--font-body)",
+                fontWeight: 500,
+              }}
             >
               <WhatsAppIcon size={18} />
               Nous écrire sur WhatsApp
@@ -140,8 +186,13 @@ function PopupCard({
           </div>
 
           <p
-            className="text-xs text-[#94a3b8] text-center mt-3"
-            style={{ fontFamily: "var(--font-body)" }}
+            style={{
+              textAlign: "center",
+              fontSize: 11,
+              color: "#94a3b8",
+              marginTop: 14,
+              fontFamily: "var(--font-body)",
+            }}
           >
             {isMid
               ? "Sans engagement · Réponse garantie sous 2h"
@@ -149,7 +200,7 @@ function PopupCard({
           </p>
         </div>
       </motion.div>
-    </>
+    </motion.div>
   );
 }
 
@@ -227,28 +278,10 @@ export default function ConversionPopup() {
   return (
     <AnimatePresence>
       {showPopup1 && (
-        <motion.div
-          key="popup1"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          style={{ position: "fixed", inset: 0, zIndex: 49 }}
-        >
-          <PopupCard type="mid" onClose={handleClose1} onCtaClick={handleCtaClick} />
-        </motion.div>
+        <PopupCard key="popup1" type="mid" onClose={handleClose1} onCtaClick={handleCtaClick} />
       )}
       {showPopup2 && (
-        <motion.div
-          key="popup2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          style={{ position: "fixed", inset: 0, zIndex: 49 }}
-        >
-          <PopupCard type="end" onClose={handleClose2} onCtaClick={handleCtaClick} />
-        </motion.div>
+        <PopupCard key="popup2" type="end" onClose={handleClose2} onCtaClick={handleCtaClick} />
       )}
     </AnimatePresence>
   );

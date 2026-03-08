@@ -30,7 +30,7 @@ const RESET_DELAY = 1500;
 
 type StyleSnapshot = Pick<LineData, "color" | "weight" | "large">;
 
-export default function BrowserTyping() {
+export default function BrowserTyping({ mobileMode = false }: { mobileMode?: boolean }) {
   const [completedLines, setCompletedLines] = useState<LineData[]>([]);
   const [currentText, setCurrentText] = useState("");
   const [currentStyle, setCurrentStyle] = useState<StyleSnapshot>({
@@ -40,6 +40,8 @@ export default function BrowserTyping() {
   });
 
   useEffect(() => {
+    if (mobileMode) return;
+
     let lineIdx = 0;
     let charIdx = 0;
     let completed: LineData[] = [];
@@ -96,7 +98,50 @@ export default function BrowserTyping() {
 
     step();
     return () => clearTimeout(timer);
-  }, []);
+  }, [mobileMode]);
+
+  if (mobileMode) {
+    return (
+      <div style={{ padding: "24px 20px" }}>
+        <p
+          style={{
+            margin: 0,
+            fontSize: 15,
+            fontWeight: 700,
+            color: "#0f172a",
+            fontFamily: "var(--font-heading)",
+            marginBottom: 8,
+            lineHeight: 1.3,
+          }}
+        >
+          De la conception à la mise en ligne
+        </p>
+        <p
+          style={{
+            margin: 0,
+            fontSize: 13,
+            color: "#475569",
+            lineHeight: 1.6,
+            marginBottom: 8,
+            fontFamily: "var(--font-body)",
+          }}
+        >
+          nous créons des sites qui convertissent vos visiteurs en clients.
+        </p>
+        <p
+          style={{
+            margin: 0,
+            fontSize: 12,
+            color: "#2563eb",
+            fontWeight: 600,
+            fontFamily: "var(--font-body)",
+          }}
+        >
+          Sur devis personnalisé.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-2">

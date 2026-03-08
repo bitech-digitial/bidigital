@@ -97,12 +97,12 @@ export default function Hero() {
               </span>
             </motion.h1>
 
-            {/* Subtitle */}
+            {/* Subtitle — hidden on mobile */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-base sm:text-lg text-[#475569] max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-light"
+              className="hidden lg:block text-base sm:text-lg text-[#475569] max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-light"
               style={{ fontFamily: "var(--font-body)" }}
             >
               De la conception à la mise en ligne, nous créons des sites qui
@@ -111,6 +111,57 @@ export default function Hero() {
                 Sur devis personnalisé.
               </span>
             </motion.p>
+
+            {/* Mobile browser window — mobile only */}
+            <motion.div
+              className="block lg:hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              style={{
+                width: "100%",
+                maxWidth: "100%",
+                margin: "20px 0",
+                borderRadius: 14,
+                boxShadow: "0 12px 40px rgba(37,99,235,0.10)",
+                overflow: "hidden",
+                border: "1px solid #e2e8f0",
+                background: "linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%)",
+              }}
+            >
+              {/* Chrome bar */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "0 16px",
+                  height: 44,
+                  background: "#ffffff",
+                  borderBottom: "1px solid #f1f5f9",
+                }}
+              >
+                <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840" }} />
+                </div>
+                <div
+                  style={{
+                    background: "#f1f5f9",
+                    borderRadius: 20,
+                    padding: "5px 14px",
+                    fontSize: 11,
+                    color: "#64748b",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  monsite.bidigital.fr
+                </div>
+              </div>
+              {/* Static content */}
+              <BrowserTyping mobileMode={true} />
+            </motion.div>
 
             {/* CTAs */}
             <motion.div
