@@ -6,6 +6,7 @@ import { WHATSAPP_LINK } from "@/lib/constants";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import BrowserTyping from "@/components/ui/BrowserTyping";
 import CalButton from "@/components/ui/CalButton";
+import TechScroll from "@/components/ui/TechScroll";
 
 export default function Hero() {
   return (
@@ -233,6 +234,33 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
+        {/* ── Tech scroll — full width below grid ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+        >
+          <div style={{
+            textAlign: "center",
+            fontSize: 11,
+            fontWeight: 600,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: "#94a3b8",
+            marginBottom: 14,
+            marginTop: 32,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 10,
+          }}>
+            <div style={{ height: 1, width: 40, background: "#e2e8f0" }} />
+            Technologies maîtrisées
+            <div style={{ height: 1, width: 40, background: "#e2e8f0" }} />
+          </div>
+          <TechScroll />
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
