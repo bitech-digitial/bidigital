@@ -27,28 +27,48 @@ export default function MentionsLegales() {
             <br />
             Agence web — Création de sites professionnels
             <br />
+            Adresse : Chaville, 92370 Hauts-de-Seine, France
+            <br />
+            Téléphone :{" "}
+            <a href="tel:+33695597767" className="text-[#2563eb] underline">
+              +33 6 95 59 77 67
+            </a>
+            <br />
             E-mail :{" "}
             <a href="mailto:contact@bidigital.fr" className="text-[#2563eb] underline">
               contact@bidigital.fr
             </a>
             <br />
             Site web : https://bidigital.fr
+            <br />
+            Date de création : 2025
           </p>
         </Section>
 
-        <Section title="2. Hébergement">
+        <Section title="2. Directeur de la publication">
+          <p>
+            Le directeur de la publication du site bidigital.fr est le
+            responsable de l&apos;entreprise BiDigital, joignable à l&apos;adresse{" "}
+            <a href="mailto:contact@bidigital.fr" className="text-[#2563eb] underline">
+              contact@bidigital.fr
+            </a>
+            .
+          </p>
+        </Section>
+
+        <Section title="3. Hébergement">
           <p>
             Le site BiDigital est hébergé par :
             <br />
             <strong>Vercel Inc.</strong>
             <br />
-            340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis
+            340 Pine Street, Suite 900, San Francisco, CA 94104, États-Unis
             <br />
             Site web : https://vercel.com
           </p>
         </Section>
 
-        <Section title="3. Propriété intellectuelle">
+        <Section title="4. Propriété intellectuelle">
           <p>
             L&apos;ensemble du contenu du site BiDigital (textes, images, logos,
             graphismes, code source) est protégé par le droit d&apos;auteur et
@@ -61,7 +81,7 @@ export default function MentionsLegales() {
           </p>
         </Section>
 
-        <Section title="4. Responsabilité">
+        <Section title="5. Responsabilité">
           <p>
             BiDigital s&apos;efforce d&apos;assurer l&apos;exactitude et la mise à jour des
             informations publiées sur ce site. Toutefois, BiDigital ne peut
@@ -74,7 +94,7 @@ export default function MentionsLegales() {
           </p>
         </Section>
 
-        <Section title="5. Données personnelles">
+        <Section title="6. Données personnelles">
           <p>
             La gestion des données personnelles collectées via ce site est
             détaillée dans notre{" "}
@@ -85,7 +105,7 @@ export default function MentionsLegales() {
           </p>
         </Section>
 
-        <Section title="6. Droit applicable">
+        <Section title="7. Droit applicable">
           <p>
             Les présentes mentions légales sont soumises au droit français. En
             cas de litige, les tribunaux français seront seuls compétents.

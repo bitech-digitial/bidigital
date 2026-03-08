@@ -23,31 +23,45 @@ export const metadata: Metadata = {
     template: "%s | BiDigital",
   },
   description:
-    "BiDigital, agence web France, Belgique, Suisse, Luxembourg. Sites vitrines livrés en 72h. Design UX/UI, SEO, copywriting, hébergement et identité visuelle inclus. Devis gratuit.",
+    "BiDigital, agence web à Chaville (Île-de-France). Création de sites web professionnels livrés en 72h. Design UX/UI, SEO, copywriting, hébergement et identité visuelle inclus. Devis gratuit. France, Belgique, Suisse, Luxembourg.",
   keywords: [
+    "BiDigital",
     "agence web",
-    "création site web",
+    "agence web Chaville",
+    "agence web Île-de-France",
+    "agence web Hauts-de-Seine",
+    "création site web Chaville",
+    "création site web Île-de-France",
+    "création site web 92",
+    "création site web Paris",
     "site vitrine 72h",
     "site web professionnel",
-    "agence digitale France",
+    "agence digitale Chaville",
+    "agence digitale Île-de-France",
     "création site web Belgique",
     "agence web Suisse",
     "site web Luxembourg",
-    "SEO",
-    "UX UI design",
-    "application mobile",
-    "SaaS",
-    "e-commerce",
-    "site vitrine artisan",
-    "site web restaurant",
-    "site web coach",
+    "SEO Île-de-France",
+    "UX UI design Paris",
+    "application mobile Île-de-France",
+    "agence web pas cher Île-de-France",
+    "site web artisan Île-de-France",
+    "site web restaurant Paris",
     "devis gratuit site web",
-    "BiDigital",
   ],
   authors: [{ name: "BiDigital", url: "https://bidigital.fr" }],
   creator: "BiDigital",
   publisher: "BiDigital",
   category: "technology",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", sizes: "32x32", type: "image/svg+xml" },
+      { url: "/favicon.svg", sizes: "16x16", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/favicon.svg", sizes: "180x180", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg",
+  },
   robots: {
     index: true,
     follow: true,
@@ -80,7 +94,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "BiDigital — Sites Web Professionnels en 72h",
-    description: "Agence web France, Belgique, Suisse, Luxembourg. Devis gratuit.",
+    description: "Agence web Chaville, Île-de-France, France, Belgique, Suisse, Luxembourg. Devis gratuit.",
     images: ["/og-image.jpg"],
   },
   alternates: {
@@ -102,16 +116,40 @@ const schemaOrg = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "BiDigital",
+  alternateName: "BiDigital Agence Web",
   description:
-    "Agence web spécialisée dans la création de sites professionnels livrés en 72h. Design UX/UI, SEO, copywriting, hébergement inclus.",
+    "Agence web à Chaville, Île-de-France. Création de sites web professionnels livrés en 72h. Design UX/UI, SEO, copywriting, hébergement inclus.",
   url: "https://bidigital.fr",
-  logo: "https://bidigital.fr/logo.png",
+  logo: "https://bidigital.fr/favicon.svg",
+  image: "https://bidigital.fr/og-image.jpg",
+  telephone: "+33695597767",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Chaville",
+    addressRegion: "Île-de-France",
+    postalCode: "92370",
+    addressCountry: "FR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "48.8167",
+    longitude: "2.1833",
+  },
   areaServed: [
+    { "@type": "City", name: "Chaville" },
+    { "@type": "State", name: "Île-de-France" },
     { "@type": "Country", name: "France" },
     { "@type": "Country", name: "Belgique" },
     { "@type": "Country", name: "Suisse" },
     { "@type": "Country", name: "Luxembourg" },
   ],
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "19:00",
+  },
+  priceRange: "Sur devis",
   serviceType: [
     "Création de site web",
     "Site vitrine",
@@ -121,7 +159,6 @@ const schemaOrg = {
     "E-commerce",
     "Identité visuelle",
   ],
-  priceRange: "Sur devis",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Services BiDigital",
@@ -131,7 +168,7 @@ const schemaOrg = {
         itemOffered: {
           "@type": "Service",
           name: "Site Vitrine",
-          description: "Site web professionnel livré en 72h",
+          description: "Site web professionnel livré en 72h, Chaville, Île-de-France",
         },
       },
       {
@@ -146,10 +183,12 @@ const schemaOrg = {
   },
   contactPoint: {
     "@type": "ContactPoint",
+    telephone: "+33695597767",
     contactType: "customer service",
     availableLanguage: "French",
+    contactOption: "TollFree",
   },
-  sameAs: [],
+  sameAs: ["https://wa.me/33695597767"],
 };
 
 export default function RootLayout({
@@ -163,7 +202,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://cal.com" />
+        <link rel="dns-prefetch" href="https://app.cal.com" />
       </head>
       <body className="antialiased">
         {children}

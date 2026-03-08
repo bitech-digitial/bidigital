@@ -49,21 +49,35 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+            value:
+              "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()",
+          },
+          {
+            key: "Cross-Origin-Embedder-Policy",
+            value: "unsafe-none",
+          },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin-allow-popups",
+          },
+          {
+            key: "Cross-Origin-Resource-Policy",
+            value: "cross-origin",
           },
           {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cal.com https://app.cal.com https://www.googletagmanager.com",
-              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://app.cal.com",
-              "font-src 'self' https://fonts.gstatic.com https://app.cal.com",
-              "img-src 'self' data: blob: https://images.unsplash.com https://app.cal.com https://cal.com",
-              "connect-src 'self' https://api.anthropic.com https://cal.com https://app.cal.com",
-              "frame-src 'self' https://cal.com https://app.cal.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://app.cal.com https://www.googletagmanager.com https://www.google-analytics.com",
+              "style-src 'self' 'unsafe-inline'",
+              "font-src 'self' data:",
+              "img-src 'self' data: blob: https://images.unsplash.com https://app.cal.com https://www.google-analytics.com",
+              "connect-src 'self' https://app.cal.com https://api.anthropic.com https://www.google-analytics.com",
+              "frame-src 'self' https://app.cal.com",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
+              "frame-ancestors 'none'",
               "upgrade-insecure-requests",
             ].join("; "),
           },

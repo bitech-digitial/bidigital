@@ -40,7 +40,22 @@ export default function PolitiqueConfidentialite() {
           </p>
         </Section>
 
-        <Section title="2. Finalité du traitement">
+        <Section title="2. Base légale du traitement">
+          <p>Le traitement de vos données repose sur les bases légales suivantes (RGPD, art. 6) :</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Consentement</strong> (art. 6.1.a) — pour les cookies analytiques et les communications marketing
+            </li>
+            <li>
+              <strong>Exécution d&apos;un contrat</strong> (art. 6.1.b) — pour le traitement de vos demandes de devis et la gestion de votre projet
+            </li>
+            <li>
+              <strong>Intérêt légitime</strong> (art. 6.1.f) — pour la sécurité du site et la prévention des abus
+            </li>
+          </ul>
+        </Section>
+
+        <Section title="3. Finalité du traitement">
           <p>Vos données sont utilisées exclusivement pour :</p>
           <ul className="list-disc pl-5 space-y-1">
             <li>Répondre à vos demandes de contact et de devis</li>
@@ -53,7 +68,24 @@ export default function PolitiqueConfidentialite() {
           </p>
         </Section>
 
-        <Section title="3. Durée de conservation">
+        <Section title="4. Transferts hors Union Européenne">
+          <p>
+            Certains de nos sous-traitants techniques peuvent être établis hors de l&apos;Union Européenne :
+          </p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Vercel Inc.</strong> (États-Unis) — hébergement du site. Vercel est soumis au cadre EU-US Data Privacy Framework.
+            </li>
+            <li>
+              <strong>Resend Inc.</strong> (États-Unis) — envoi des e-mails de contact. Les données transitent via des serveurs sécurisés avec des garanties contractuelles appropriées (clauses contractuelles types UE).
+            </li>
+          </ul>
+          <p>
+            Ces transferts sont encadrés par des garanties appropriées conformément au chapitre V du RGPD.
+          </p>
+        </Section>
+
+        <Section title="5. Durée de conservation">
           <p>
             Vos données personnelles sont conservées pendant 3 ans à compter du
             dernier contact. Les données de navigation anonymisées sont
@@ -61,7 +93,7 @@ export default function PolitiqueConfidentialite() {
           </p>
         </Section>
 
-        <Section title="4. Vos droits (RGPD)">
+        <Section title="6. Vos droits (RGPD)">
           <p>
             Conformément au Règlement Général sur la Protection des Données
             (RGPD — article 13), vous disposez des droits suivants :
@@ -91,17 +123,43 @@ export default function PolitiqueConfidentialite() {
           </p>
         </Section>
 
-        <Section title="5. Cookies">
+        <Section title="7. Cookies">
           <p>
-            Nous utilisons des cookies pour améliorer votre expérience de
-            navigation. Vous pouvez accepter ou refuser les cookies via la
-            bannière affichée lors de votre première visite. Les cookies
-            strictement nécessaires au fonctionnement du site ne nécessitent pas
-            votre consentement.
+            Nous utilisons deux types de cookies :
+          </p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Cookies fonctionnels</strong> — strictement nécessaires au bon fonctionnement du site (mémorisation de vos préférences). Ces cookies ne nécessitent pas votre consentement.
+            </li>
+            <li>
+              <strong>Cookies analytiques</strong> — permettent de mesurer l&apos;audience et d&apos;améliorer nos services (ex. Google Analytics). Ils nécessitent votre consentement préalable.
+            </li>
+          </ul>
+          <p>
+            Vous pouvez accepter ou refuser les cookies analytiques via la
+            bannière affichée lors de votre première visite.
           </p>
         </Section>
 
-        <Section title="6. Contact">
+        <Section title="8. Délégué à la Protection des Données (DPO)">
+          <p>
+            BiDigital n&apos;est pas soumis à l&apos;obligation légale de désigner un DPO.
+            Pour toute question relative à la protection de vos données, vous
+            pouvez contacter notre responsable de traitement :
+          </p>
+          <p>
+            <strong>BiDigital — Responsable de traitement</strong>
+            <br />
+            Adresse : Chaville, 92370 Hauts-de-Seine, France
+            <br />
+            E-mail :{" "}
+            <a href="mailto:contact@bidigital.fr" className="text-[#2563eb] underline">
+              contact@bidigital.fr
+            </a>
+          </p>
+        </Section>
+
+        <Section title="9. Contact et réclamation">
           <p>
             Pour toute question relative à cette politique ou à vos données
             personnelles :
@@ -117,7 +175,9 @@ export default function PolitiqueConfidentialite() {
           <p>
             Vous pouvez également introduire une réclamation auprès de la CNIL
             (Commission Nationale de l&apos;Informatique et des Libertés) :{" "}
-            <span className="text-[#64748b]">www.cnil.fr</span>
+            <a href="https://www.cnil.fr" className="text-[#2563eb] underline" target="_blank" rel="noopener noreferrer">
+              www.cnil.fr
+            </a>
           </p>
         </Section>
       </div>
