@@ -1,6 +1,7 @@
 "use client";
 
-import { useCal } from "@/hooks/useCal";
+import { getCalApi } from "@calcom/embed-react";
+import { useEffect, useCallback } from "react";
 import { Calendar } from "lucide-react";
 import { ReactNode } from "react";
 
@@ -17,7 +18,28 @@ export default function CalButton({
   variant = "primary",
   onClick,
 }: CalButtonProps) {
-  useCal();
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "15min" });
+      cal("ui", {
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#2563eb" },
+          dark: { "cal-brand": "#2563eb" },
+        },
+        hideEventTypeDetails: true,
+        layout: "month_view",
+      });
+    })();
+  }, []);
+
+  const handleClick = useCallback(async () => {
+    onClick?.();
+    const cal = await getCalApi({ namespace: "15min" });
+    cal("modal", {
+      calLink: "bidigital/15min",
+      config: { layout: "month_view" },
+    });
+  }, [onClick]);
 
   const baseStyles =
     "inline-flex items-center justify-center gap-2 font-medium rounded-xl transition-all duration-200 cursor-pointer border-none";
@@ -31,11 +53,8 @@ export default function CalButton({
 
   return (
     <button
-      data-cal-namespace="15min"
-      data-cal-link="bidigital/15min"
-      data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
       className={`${baseStyles} ${variantStyles[variant]} ${className}`}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <Calendar size={18} />
       {children}
