@@ -2,9 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Calendar } from "lucide-react";
-import { CAL_LINK, WHATSAPP_LINK } from "@/lib/constants";
+import { X } from "lucide-react";
+import { WHATSAPP_LINK } from "@/lib/constants";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
+import CalButton from "@/components/ui/CalButton";
 
 type PopupType = "mid" | "end" | null;
 
@@ -75,17 +76,9 @@ function PopupContent({
         </p>
 
         <div className="flex flex-col gap-3">
-          <a
-            href={CAL_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={onCtaClick}
-            className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#2563eb] text-white text-sm font-medium rounded-xl hover:bg-[#1d4ed8] transition-colors"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            <Calendar className="w-4 h-4" />
+          <CalButton className="w-full justify-center py-3.5" onClick={onCtaClick}>
             Prendre rendez-vous
-          </a>
+          </CalButton>
           <a
             href={WHATSAPP_LINK}
             target="_blank"

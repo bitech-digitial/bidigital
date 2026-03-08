@@ -1,2 +1,5 @@
-export const CAL_LINK = "https://cal.com/REMPLACER_PAR_VOTRE_LIEN_CAL";
-export const WHATSAPP_LINK = "https://wa.me/REMPLACER_PAR_VOTRE_NUMERO";
+export const CAL_LINK = "bidigital/15min";
+export const CAL_NAMESPACE = "15min";
+export const CAL_FULL_URL = `https://cal.com/${CAL_LINK}`;
+export const WHATSAPP_NUMBER = "33695597767";
+export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;

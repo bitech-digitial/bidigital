@@ -1,0 +1,44 @@
+"use client";
+
+import { useCal } from "@/hooks/useCal";
+import { Calendar } from "lucide-react";
+import { ReactNode } from "react";
+
+interface CalButtonProps {
+  children?: ReactNode;
+  className?: string;
+  variant?: "primary" | "ghost";
+  onClick?: () => void;
+}
+
+export default function CalButton({
+  children = "Prendre rendez-vous",
+  className = "",
+  variant = "primary",
+  onClick,
+}: CalButtonProps) {
+  useCal();
+
+  const baseStyles =
+    "inline-flex items-center justify-center gap-2 font-medium rounded-xl transition-all duration-200 cursor-pointer border-none";
+
+  const variantStyles = {
+    primary:
+      "bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 shadow-sm hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-200",
+    ghost:
+      "bg-transparent border border-slate-200 hover:border-blue-200 hover:bg-blue-50 text-slate-600 hover:text-slate-800 px-6 py-3.5",
+  };
+
+  return (
+    <button
+      data-cal-namespace="15min"
+      data-cal-link="bidigital/15min"
+      data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+      className={`${baseStyles} ${variantStyles[variant]} ${className}`}
+      onClick={onClick}
+    >
+      <Calendar size={18} />
+      {children}
+    </button>
+  );
+}

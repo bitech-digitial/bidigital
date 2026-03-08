@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
-import { CAL_LINK } from "@/lib/constants";
+import CalButton from "@/components/ui/CalButton";
 
 const navLinks = [
   { label: "Exemples", href: "#exemples" },
@@ -69,18 +68,9 @@ export default function Navbar() {
         </div>
 
         {/* CTA */}
-        <motion.a
-          href={CAL_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="flex items-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25 px-3 py-1.5 text-xs md:px-4 md:py-2 md:text-sm"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          Prendre rendez-vous
-          <ChevronRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
-        </motion.a>
+        <CalButton variant="primary" className="text-sm px-4 py-2 rounded-lg">
+          Démarrer mon projet →
+        </CalButton>
       </nav>
     </motion.header>
   );

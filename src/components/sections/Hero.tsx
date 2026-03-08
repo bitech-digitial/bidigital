@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronRight, ArrowDown } from "lucide-react";
-import { CAL_LINK, WHATSAPP_LINK } from "@/lib/constants";
+import { ArrowDown } from "lucide-react";
+import { WHATSAPP_LINK } from "@/lib/constants";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import BrowserTyping from "@/components/ui/BrowserTyping";
+import CalButton from "@/components/ui/CalButton";
 
 export default function Hero() {
   return (
@@ -118,18 +119,9 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
             >
-              <motion.a
-                href={CAL_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-4 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/30 text-base"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
+              <CalButton className="w-full sm:w-auto text-base px-7 py-4">
                 Prendre rendez-vous
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
+              </CalButton>
               <motion.a
                 href={WHATSAPP_LINK}
                 target="_blank"
@@ -232,7 +224,6 @@ export default function Hero() {
                 style={{ height: 280 }}
               >
                 <BrowserTyping />
-
               </div>
             </div>
           </div>

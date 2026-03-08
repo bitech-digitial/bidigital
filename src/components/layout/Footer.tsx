@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { WHATSAPP_LINK, CAL_LINK } from "@/lib/constants";
+import { WHATSAPP_LINK, CAL_FULL_URL } from "@/lib/constants";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
@@ -12,7 +12,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Processus", href: "#processus" },
   { label: "FAQ", href: "#faq" },
-  { label: "Prendre rendez-vous", href: CAL_LINK, external: true },
+  { label: "Prendre rendez-vous", href: CAL_FULL_URL, external: true },
 ];
 
 export default function Footer() {

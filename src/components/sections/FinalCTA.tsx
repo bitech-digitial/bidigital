@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar } from "lucide-react";
-import { CAL_LINK, WHATSAPP_LINK } from "@/lib/constants";
+import { WHATSAPP_LINK } from "@/lib/constants";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
+import CalButton from "@/components/ui/CalButton";
 
 export default function FinalCTA() {
   return (
@@ -67,18 +67,9 @@ export default function FinalCTA() {
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 w-full">
-            <motion.a
-              href={CAL_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="flex items-center justify-center gap-3 w-full md:w-auto px-8 py-4 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/30 text-base"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              <Calendar className="w-5 h-5" />
+            <CalButton className="w-full md:w-auto text-base px-8 py-4">
               Prendre rendez-vous
-            </motion.a>
+            </CalButton>
 
             <motion.a
               href={WHATSAPP_LINK}

@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Calendar } from "lucide-react";
-import { CAL_LINK, WHATSAPP_LINK } from "@/lib/constants";
+import { Check } from "lucide-react";
+import { WHATSAPP_LINK } from "@/lib/constants";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
+import CalButton from "@/components/ui/CalButton";
 
 const bullets = [
   "Design UX/UI professionnel sur-mesure",
@@ -118,18 +119,9 @@ export default function Offer() {
 
               {/* CTAs */}
               <div className="flex flex-col gap-3">
-                <motion.a
-                  href={CAL_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/30 text-sm"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  <Calendar className="w-4 h-4" />
+                <CalButton className="w-full text-sm">
                   Prendre rendez-vous
-                </motion.a>
+                </CalButton>
                 <motion.a
                   href={WHATSAPP_LINK}
                   target="_blank"
