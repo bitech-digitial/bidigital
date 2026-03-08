@@ -59,7 +59,7 @@ export default function Hero() {
       />
 
       {/* ── Main grid ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center pt-20 pb-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center pt-20 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center py-8">
 
           {/* ── LEFT — text ── */}
@@ -70,8 +70,8 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb] text-sm font-medium mb-6"
-              style={{ fontFamily: "var(--font-body)" }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb] text-[12px] lg:text-[13px] font-medium mb-6"
+              style={{ fontFamily: "var(--font-body)", letterSpacing: "0.05em" }}
             >
               <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#16a34a" }} />
               Agence web — France · Belgique · Suisse · Luxembourg
@@ -82,8 +82,13 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-5 text-[#0f172a]"
-              style={{ fontFamily: "var(--font-heading)" }}
+              className="text-[clamp(32px,8vw,42px)] lg:text-[clamp(48px,5vw,64px)] font-extrabold mb-5 text-[#0f172a]"
+              style={{
+                fontFamily: "var(--font-heading)",
+                lineHeight: 1.15,
+                letterSpacing: "-0.02em",
+                fontWeight: 800,
+              }}
             >
               Votre site web,
               <br />
@@ -97,13 +102,13 @@ export default function Hero() {
               </span>
             </motion.h1>
 
-            {/* Subtitle — hidden on mobile */}
+            {/* Subtitle — visible on all screens */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="hidden lg:block text-base sm:text-lg text-[#475569] max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-light"
-              style={{ fontFamily: "var(--font-body)" }}
+              className="text-[clamp(15px,4vw,17px)] lg:text-[clamp(17px,2vw,20px)] text-[#475569] max-w-xl mx-auto lg:mx-0 mb-8 font-light"
+              style={{ fontFamily: "var(--font-body)", lineHeight: 1.65 }}
             >
               De la conception à la mise en ligne, nous créons des sites qui
               convertissent vos visiteurs en clients.{" "}
@@ -112,65 +117,14 @@ export default function Hero() {
               </span>
             </motion.p>
 
-            {/* Mobile browser window — mobile only */}
-            <motion.div
-              className="block lg:hidden"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              style={{
-                width: "100%",
-                maxWidth: "100%",
-                margin: "20px 0",
-                borderRadius: 14,
-                boxShadow: "0 12px 40px rgba(37,99,235,0.10)",
-                overflow: "hidden",
-                border: "1px solid #e2e8f0",
-                background: "linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%)",
-              }}
-            >
-              {/* Chrome bar */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "0 16px",
-                  height: 44,
-                  background: "#ffffff",
-                  borderBottom: "1px solid #f1f5f9",
-                }}
-              >
-                <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
-                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57" }} />
-                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e" }} />
-                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840" }} />
-                </div>
-                <div
-                  style={{
-                    background: "#f1f5f9",
-                    borderRadius: 20,
-                    padding: "5px 14px",
-                    fontSize: 11,
-                    color: "#64748b",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                  monsite.bidigital.fr
-                </div>
-              </div>
-              {/* Static content */}
-              <BrowserTyping mobileMode={true} />
-            </motion.div>
-
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3"
             >
-              <CalButton className="w-full sm:w-auto text-base px-7 py-4">
+              <CalButton className="w-full sm:w-auto text-[15px] py-4 px-6 rounded-[14px]">
                 Prendre rendez-vous
               </CalButton>
               <motion.a
@@ -179,7 +133,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:opacity-90 text-base"
+                className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-4 text-white font-semibold rounded-[14px] transition-all duration-200 hover:opacity-90 text-[15px]"
                 style={{
                   backgroundColor: "#25d366",
                   fontFamily: "var(--font-body)",
@@ -191,7 +145,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── RIGHT — browser mockup dynamique ── */}
+          {/* ── RIGHT — browser mockup — desktop only ── */}
           <div className="hidden lg:flex items-center justify-center relative">
             {/* Radial glow */}
             <div
