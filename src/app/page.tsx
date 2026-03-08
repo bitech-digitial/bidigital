@@ -1,31 +1,39 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
-import Examples from "@/components/sections/Examples";
-import ValueAnchor from "@/components/sections/ValueAnchor";
-import ForWho from "@/components/sections/ForWho";
-import Process from "@/components/sections/Process";
-import Offer from "@/components/sections/Offer";
-import FAQ from "@/components/sections/FAQ";
-import FinalCTA from "@/components/sections/FinalCTA";
-import StickyBar from "@/components/ui/StickyBar";
+import ConversionPopup from "@/components/ui/ConversionPopup";
+import CookieBanner from "@/components/ui/CookieBanner";
+
+const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
+const Examples = dynamic(() => import("@/components/sections/Examples"), { ssr: true });
+const Services = dynamic(() => import("@/components/sections/Services"), { ssr: true });
+const Values = dynamic(() => import("@/components/sections/Values"), { ssr: true });
+const ForWho = dynamic(() => import("@/components/sections/ForWho"), { ssr: true });
+const Process = dynamic(() => import("@/components/sections/Process"), { ssr: true });
+const Offer = dynamic(() => import("@/components/sections/Offer"), { ssr: true });
+const FAQ = dynamic(() => import("@/components/sections/FAQ"), { ssr: true });
+const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"), { ssr: true });
+const TrustBar = dynamic(() => import("@/components/ui/TrustBar"), { ssr: true });
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main style={{ overflowX: "hidden" }}>
         <Hero />
         <Examples />
-        <ValueAnchor />
+        <Services />
+        <Values />
         <ForWho />
         <Process />
         <Offer />
         <FAQ />
+        <TrustBar />
         <FinalCTA />
       </main>
       <Footer />
-      <StickyBar />
+      <ConversionPopup />
+      <CookieBanner />
     </>
   );
 }
