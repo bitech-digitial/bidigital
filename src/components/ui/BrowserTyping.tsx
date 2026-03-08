@@ -13,12 +13,13 @@ type LineData = {
 const LINES: LineData[] = [
   { text: "Création de votre site en cours...", color: "#2563eb", weight: 400 },
   { text: "Design premium sur-mesure ✓", color: "#16a34a", weight: 500 },
-  { text: "Visible sur Google dès le 1er jour ✓", color: "#16a34a", weight: 500 },
-  { text: "Zéro jargon. Zéro prise de tête. ✓", color: "#16a34a", weight: 500 },
-  { text: "Vos clients vous trouvent. ✓", color: "#16a34a", weight: 500 },
-  { text: "Hébergement & domaine inclus ✓", color: "#16a34a", weight: 500 },
-  { text: "Satisfait ou remboursé ✓", color: "#16a34a", weight: 500 },
-  { text: "Votre site est en ligne.", color: "#0f172a", weight: 700, large: true, delay: 2000 },
+  { text: "Visible sur Google dès le lancement ✓", color: "#16a34a", weight: 500 },
+  { text: "Zéro jargon. On s'occupe de tout. ✓", color: "#16a34a", weight: 500 },
+  { text: "Un site qui attire de vrais clients ✓", color: "#16a34a", weight: 500 },
+  { text: "Hébergement rapide & domaine inclus ✓", color: "#16a34a", weight: 500 },
+  { text: "Satisfait ou remboursé. Zéro risque. ✓", color: "#16a34a", weight: 500 },
+  { text: "Votre site en ligne rapidement ✓", color: "#16a34a", weight: 500 },
+  { text: "Votre site est prêt.", color: "#0f172a", weight: 700, large: true, delay: 2000 },
   { text: "", color: "transparent", weight: 400 },
 ];
 

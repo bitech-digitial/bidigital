@@ -80,12 +80,6 @@ function BrowserCard({ card }: { card: ScrollCard }) {
           >
             {card.sector}
           </p>
-          <p
-            className="text-xs"
-            style={{ color: "rgba(255,255,255,0.70)", fontFamily: "var(--font-body)" }}
-          >
-            {card.label}
-          </p>
         </div>
       </div>
     </div>
