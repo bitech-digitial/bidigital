@@ -1,114 +1,159 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ChevronRight, Info } from "lucide-react";
+import { Check, Calendar } from "lucide-react";
+import { CAL_LINK, WHATSAPP_LINK } from "@/lib/constants";
+import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 
-const included = [
-  "Design sur-mesure",
-  "Jusqu'à 5 pages",
-  "100% responsive (mobile + desktop)",
-  "SEO de base optimisé",
-  "Formulaire de contact",
-  "Hébergement inclus 1 an",
-  "Livraison 72h garantie",
-  "1 mois de retouches inclus",
+const bullets = [
+  "Design UX/UI professionnel sur-mesure",
+  "SEO & copywriting optimisés inclus",
+  "Hébergement + nom de domaine inclus",
+  "Modifications pendant 1 an sous 48h",
 ];
 
 export default function Offer() {
   return (
-    <section id="offre" className="py-24 px-4 bg-[#f8fafc]">
+    <section id="offre" className="py-20 px-4 bg-[#f8fafc]">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <span
             className="inline-block px-4 py-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb] text-sm font-medium mb-4"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            Tarif
+            Notre offre
           </span>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0f172a] mb-4"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Une offre. Un prix.
+            Tout inclus,
             <br />
-            Aucune surprise.
+            aucune surprise.
           </h2>
-          <p className="text-[#475569] text-lg max-w-xl mx-auto" style={{ fontFamily: "var(--font-body)" }}>
-            Pas de devis. Pas de négociation. Pas de <em>ça dépend</em>.
+          <p
+            className="text-[#475569] text-lg max-w-xl mx-auto"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            Sur devis personnalisé — tarif compétitif et transparent, établi
+            selon vos besoins.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative max-w-lg mx-4 md:mx-auto"
+          className="relative max-w-lg mx-auto"
         >
-          <div className="relative bg-white border-2 border-[#bfdbfe] rounded-3xl p-6 md:p-10 shadow-xl shadow-blue-100">
-            {/* Badge livraison */}
-            <div className="flex justify-center mb-6">
-              <span
-                className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#2563eb] text-white text-sm font-semibold"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Livraison en 72h garantie
-              </span>
-            </div>
+          <div
+            className="relative bg-white border border-[#e2e8f0] rounded-3xl overflow-hidden"
+            style={{
+              boxShadow:
+                "0 25px 80px rgba(0,0,0,0.08), 0 8px 32px rgba(37,99,235,0.06)",
+            }}
+          >
+            {/* Gradient top bar */}
+            <div
+              className="h-1.5 w-full"
+              style={{
+                background: "linear-gradient(90deg, #2563eb, #60a5fa)",
+              }}
+            />
 
-            {/* Price */}
-            <div className="text-center mb-8">
-              <div className="flex items-start justify-center gap-1 mb-2">
-                <span className="text-[#475569] text-lg mt-3">€</span>
+            <div className="p-8 md:p-10">
+              {/* Badge */}
+              <div className="flex justify-center mb-6">
                 <span
-                  className="text-5xl md:text-7xl font-extrabold text-[#0f172a] leading-none"
+                  className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#eff6ff] border border-[#bfdbfe] text-sm font-semibold"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  597
+                  <span className="text-shimmer">
+                    Sites vitrines livrés en 72h
+                  </span>
                 </span>
               </div>
-              <p className="text-[#475569] text-sm" style={{ fontFamily: "var(--font-body)" }}>TTC · Paiement unique</p>
-            </div>
 
-            {/* Divider */}
-            <div className="border-t border-[#e2e8f0] mb-8" />
+              {/* Heading */}
+              <div className="text-center mb-8">
+                <p
+                  className="text-2xl md:text-3xl font-bold text-[#0f172a] mb-1"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  Votre projet, votre devis.
+                </p>
+                <p
+                  className="text-[#475569] text-sm"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Un tarif adapté à vos besoins, établi avec transparence.
+                </p>
+              </div>
 
-            {/* Included */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              {included.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#f0fdf4] border border-[#16a34a]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3 h-3 text-[#16a34a]" />
+              <div className="border-t border-[#e2e8f0] mb-8" />
+
+              {/* Bullets */}
+              <div className="flex flex-col gap-4 mb-8">
+                {bullets.map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full bg-[#f0fdf4] border border-[#16a34a]/30 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-[#16a34a]" />
+                    </div>
+                    <span
+                      className="text-[#0f172a] text-sm"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      {item}
+                    </span>
                   </div>
-                  <span className="text-[#0f172a] text-sm" style={{ fontFamily: "var(--font-body)" }}>{item}</span>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            {/* Domain note */}
-            <div className="flex items-start gap-3 p-4 rounded-xl bg-[#f8fafc] border border-[#e2e8f0] mb-8">
-              <Info className="w-4 h-4 text-[#94a3b8] flex-shrink-0 mt-0.5" />
-              <p className="text-[#94a3b8] text-xs leading-relaxed font-light" style={{ fontFamily: "var(--font-body)" }}>
-                Nom de domaine (~15€/an) à ta charge. On t'explique comment
-                faire, c'est très simple.
+              {/* CTAs */}
+              <div className="flex flex-col gap-3">
+                <motion.a
+                  href={CAL_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/30 text-sm"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  <Calendar className="w-4 h-4" />
+                  Prendre rendez-vous
+                </motion.a>
+                <motion.a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center justify-center gap-2 w-full px-6 py-3.5 text-white font-semibold rounded-xl transition-all duration-200 hover:opacity-90 text-sm"
+                  style={{
+                    backgroundColor: "#25d366",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  <WhatsAppIcon size={16} />
+                  Nous écrire sur WhatsApp
+                </motion.a>
+              </div>
+
+              <p
+                className="text-xs text-[#94a3b8] text-center mt-4"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Sans engagement · Devis gratuit sous 24h
               </p>
             </div>
-
-            {/* CTA */}
-            <a
-              href="#contact"
-              className="group w-full flex items-center justify-center gap-3 px-8 py-4 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-0.5"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              Démarrer mon projet
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
           </div>
         </motion.div>
       </div>

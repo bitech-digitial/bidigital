@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, MessageCircle } from "lucide-react";
+import { Calendar } from "lucide-react";
+import { CAL_LINK, WHATSAPP_LINK } from "@/lib/constants";
+import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 
 export default function FinalCTA() {
   return (
@@ -44,29 +46,29 @@ export default function FinalCTA() {
             className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0f172a] mb-6 leading-tight"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Ton site professionnel
-            <br />
-            est à{" "}
+            Votre projet mérite{" "}
             <span
               className="text-transparent bg-clip-text"
               style={{
                 backgroundImage: "linear-gradient(135deg, #2563eb, #60a5fa)",
               }}
             >
-              72h d'ici.
+              le meilleur.
             </span>
+            <br />
+            Parlons-en.
           </h2>
           <p
             className="text-[#475569] text-lg mb-10 max-w-xl mx-auto leading-relaxed font-light"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            Sans attendre. Sans te prendre la tête. Dis-nous qui tu es — on
-            s'occupe du reste.
+            Chaque projet est unique. Nous prenons le temps de comprendre vos
+            besoins pour vous proposer la solution la plus adaptée.
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 w-full">
             <motion.a
-              href="https://cal.com"
+              href={CAL_LINK}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03, y: -2 }}
@@ -75,11 +77,11 @@ export default function FinalCTA() {
               style={{ fontFamily: "var(--font-heading)" }}
             >
               <Calendar className="w-5 h-5" />
-              Réserver un appel gratuit
+              Prendre rendez-vous
             </motion.a>
 
             <motion.a
-              href="https://wa.me/33600000000"
+              href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03, y: -2 }}
@@ -90,13 +92,16 @@ export default function FinalCTA() {
                 fontFamily: "var(--font-heading)",
               }}
             >
-              <MessageCircle className="w-5 h-5" />
-              WhatsApp
+              <WhatsAppIcon size={20} />
+              Nous écrire sur WhatsApp
             </motion.a>
           </div>
 
-          <p className="text-[#94a3b8] text-sm" style={{ fontFamily: "var(--font-body)" }}>
-            Sans engagement · Réponse sous 2h · 100% gratuit
+          <p
+            className="text-[#94a3b8] text-sm"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            Sans engagement · Réponse sous 2h · Échange confidentiel
           </p>
         </motion.div>
       </div>

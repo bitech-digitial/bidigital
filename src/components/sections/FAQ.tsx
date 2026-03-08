@@ -6,32 +6,24 @@ import { Plus } from "lucide-react";
 
 const faqs = [
   {
-    q: "Est-ce que 597€ c'est vraiment tout compris ?",
-    a: "Oui, design, développement, hébergement et un mois de retouches inclus. Seul coût additionnel : nom de domaine ~15€/an, que tu achètes toi-même. On t'explique comment faire.",
+    q: "Comment se déroule un projet avec BiDigital ?",
+    a: "Tout commence par un échange de 15 minutes pour comprendre vos besoins. Nous établissons ensuite un devis personnalisé et transparent. Une fois validé, nous démarrons la conception. Vous êtes informé à chaque étape, et votre site est livré selon le délai convenu — 72h pour un site vitrine.",
   },
   {
-    q: "Je ne connais rien au web. Est-ce que c'est compliqué ?",
-    a: "Non. Tu réponds à un formulaire simple (10 minutes max), on gère tout le reste. Tu n'as rien à installer, rien à apprendre. Tu valides, on livre.",
+    q: "Qu'est-ce qui est inclus dans chaque projet ?",
+    a: "Chaque projet inclut le design UX/UI sur-mesure, le développement complet, l'optimisation SEO, le copywriting, l'hébergement, le nom de domaine, la création de logo, un flyer, une carte de visite, et un an de modifications effectuées sous 48h. Aucun frais caché.",
   },
   {
-    q: "Et si je n'ai pas de textes ni de photos ?",
-    a: "On intègre des images libres de droits adaptées à ton secteur. Pour les textes, contacte-nous avant de démarrer — on voit ensemble ce qu'on peut faire.",
+    q: "Comment fonctionne le devis ?",
+    a: "Chaque projet est unique. Après notre premier échange, nous vous proposons un devis clair, détaillé et compétitif, adapté à vos besoins réels. Pas de forfait générique — une proposition pensée pour vous.",
   },
   {
-    q: "Que se passe-t-il si le résultat ne me convient pas ?",
-    a: "On retravaille jusqu'à satisfaction complète. 1 mois de retouches est inclus dans le prix. Si vraiment ça ne convient pas, on rembourse. Satisfait ou remboursé, c'est notre engagement.",
+    q: "Que se passe-t-il après la livraison ?",
+    a: "Nous restons présents. Toute modification est traitée sous 48h pendant un an, inclus dans votre projet. Vous bénéficiez d'un interlocuteur dédié, disponible et réactif. Nous construisons une relation sur le long terme.",
   },
   {
-    q: "Quelle différence avec Wix ou un constructeur de site ?",
-    a: "Site sur-mesure, conçu pour convertir, optimisé SEO, sans passer des heures à apprendre un outil. Et ça se voit : ton site ressemblera à un site pro, pas à un template générique.",
-  },
-  {
-    q: "Vous travaillez partout en France et en pays francophones ?",
-    a: "Oui, 100% à distance. On travaille avec des clients en France, Belgique, Suisse et Canada. Tu n'as pas besoin d'être dans la même ville que nous.",
-  },
-  {
-    q: "Et après la livraison, vous disparaissez ?",
-    a: "Non. 1 mois de retouches inclus après livraison. Si tu as besoin d'un suivi mensuel (mises à jour, nouvelles pages, maintenance), on propose un accompagnement adapté.",
+    q: "Pourquoi choisir BiDigital plutôt qu'une autre agence ?",
+    a: "Parce que nous combinons la réactivité d'une startup, l'exigence d'une agence premium et la bienveillance d'un partenaire engagé. Votre réussite est notre priorité — pas seulement la livraison.",
   },
 ];
 
@@ -39,14 +31,14 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24 px-4 bg-[#ffffff]">
+    <section id="faq" className="py-16 px-4 bg-[#ffffff]">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <span
             className="inline-block px-4 py-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb] text-sm font-medium mb-4"
@@ -60,7 +52,7 @@ export default function FAQ() {
           >
             Les questions
             <br />
-            qu'on nous pose souvent.
+            qu&apos;on nous pose souvent.
           </h2>
         </motion.div>
 
@@ -76,7 +68,7 @@ export default function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between gap-4 px-4 md:px-6 py-4 md:py-6 text-left hover:bg-[#f8fafc] transition-colors"
+                className="w-full flex items-center justify-between gap-4 px-4 md:px-6 py-4 md:py-5 text-left hover:bg-[#f8fafc] transition-colors"
                 aria-expanded={openIndex === i}
               >
                 <span
@@ -89,9 +81,7 @@ export default function FAQ() {
                   animate={{ rotate: openIndex === i ? 45 : 0 }}
                   transition={{ duration: 0.2 }}
                   className={`flex-shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-colors ${
-                    openIndex === i
-                      ? "border-[#2563eb] bg-[#eff6ff]"
-                      : "border-[#e2e8f0]"
+                    openIndex === i ? "border-[#2563eb] bg-[#eff6ff]" : "border-[#e2e8f0]"
                   }`}
                 >
                   <Plus
@@ -112,7 +102,7 @@ export default function FAQ() {
                     transition={{ duration: 0.25, ease: "easeInOut" }}
                   >
                     <div
-                      className="px-6 pb-6 text-[#475569] text-sm leading-relaxed border-t border-[#e2e8f0] pt-4 bg-[#f8fafc] font-light"
+                      className="px-6 pb-5 text-[#475569] text-sm leading-relaxed border-t border-[#e2e8f0] pt-4 bg-[#f8fafc] font-light"
                       style={{ fontFamily: "var(--font-body)" }}
                     >
                       {faq.a}

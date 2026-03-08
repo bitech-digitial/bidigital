@@ -5,7 +5,11 @@
       "Bash(taskkill:*)",
       "Bash(cmd:*)",
       "Bash(git config:*)",
-      "Bash(gh:*)"
+      "Bash(gh:*)",
+      "Bash(dir C:\\\\Users\\\\Bilel\\\\Desktop\\\\bidigital\\\\src\\\\app:*)",
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(git:*)"
     ]
   }
 }

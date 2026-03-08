@@ -90,7 +90,7 @@ export default function ValueAnchor() {
             pour attendre 6 semaines ?
           </h2>
           <p className="text-[#475569] text-lg max-w-xl mx-auto" style={{ fontFamily: "var(--font-body)" }}>
-            La qualité d'une agence, la rapidité d'un SaaS, le prix d'un
+            La qualité d&apos;une agence, la rapidité d&apos;un SaaS, le prix d&apos;un
             freelance junior.
           </p>
         </motion.div>
