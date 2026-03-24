@@ -31,26 +31,27 @@ export default function StickyBar() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-[#e2e8f0] shadow-2xl py-3 px-4"
+          className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-xl py-3 px-4"
+          style={{ background: "rgba(5,8,20,0.92)", borderTop: "1px solid rgba(255,255,255,0.07)" }}
         >
           <div className="max-w-[1100px] mx-auto flex items-center justify-between gap-4">
             {/* Desktop left */}
             <div className="hidden md:flex items-center gap-2">
-              <Clock className="w-4 h-4 text-[#2563eb] flex-shrink-0" />
+              <Clock className="w-4 h-4 flex-shrink-0" style={{ color: "#818cf8" }} />
               <span
-                className="font-semibold text-slate-800 text-sm"
-                style={{ fontFamily: 'var(--font-heading)' }}
+                className="font-semibold text-sm"
+                style={{ fontFamily: 'var(--font-heading)', color: "#e0e0ff" }}
               >
-                Ton site pro livré en 72h — dès 597€ tout compris
+                Site vitrine conforme RGPD · SEO inclus · Maintenance 19,99€/mois
               </span>
             </div>
 
             {/* Mobile text */}
             <span
-              className="md:hidden text-sm font-semibold text-slate-800"
-              style={{ fontFamily: 'var(--font-heading)' }}
+              className="md:hidden text-sm font-semibold"
+              style={{ fontFamily: 'var(--font-heading)', color: "#e0e0ff" }}
             >
-              Site pro en 72h — 597€
+              Site conforme RGPD · Maintenance 19,99€/mois
             </span>
 
             {/* Desktop buttons */}

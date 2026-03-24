@@ -12,8 +12,7 @@ type Step = {
   title: string;
   description: string;
   time: string;
-  bg: string;
-  dark: boolean;
+  featured: boolean;
 };
 
 const steps: Step[] = [
@@ -23,11 +22,9 @@ const steps: Step[] = [
     Icon: FileText,
     label: "Étape 01",
     title: "Vous nous parlez de votre projet",
-    description:
-      "Un échange simple. Vos besoins, votre univers, vos objectifs.",
+    description: "Un échange simple. Vos besoins, votre univers, vos objectifs.",
     time: "~15 minutes",
-    bg: "#ffffff",
-    dark: false,
+    featured: false,
   },
   {
     id: 2,
@@ -35,11 +32,9 @@ const steps: Step[] = [
     Icon: Code2,
     label: "Étape 02",
     title: "Nous concevons votre site",
-    description:
-      "Design, développement, SEO, copywriting. Vous ne touchez à rien.",
+    description: "Design, développement, SEO, copywriting. Vous ne touchez à rien.",
     time: "Notre travail",
-    bg: "#f8fafc",
-    dark: false,
+    featured: false,
   },
   {
     id: 3,
@@ -47,11 +42,9 @@ const steps: Step[] = [
     Icon: Eye,
     label: "Étape 03",
     title: "Vous validez",
-    description:
-      "Nous soumettons le résultat. Vous donnez votre avis. Nous ajustons.",
+    description: "Nous soumettons le résultat. Vous donnez votre avis. Nous ajustons.",
     time: "Votre validation",
-    bg: "#eff6ff",
-    dark: false,
+    featured: false,
   },
   {
     id: 4,
@@ -59,82 +52,72 @@ const steps: Step[] = [
     Icon: Rocket,
     label: "Étape 04",
     title: "Votre site est en ligne",
-    description: "Publié, indexé, visible sur Google. En moins de 72h.",
-    time: "En moins de 72h",
-    bg: "#2563eb",
-    dark: true,
+    description: "Publié, indexé, visible sur Google. Rapidement mis en ligne.",
+    time: "Rapidement mis en ligne",
+    featured: true,
   },
 ];
 
 function StepCard({ step }: { step: Step }) {
-  const numColor = step.dark
-    ? "rgba(255,255,255,0.12)"
-    : "rgba(37,99,235,0.07)";
-  const iconBg = step.dark ? "rgba(255,255,255,0.15)" : "#eff6ff";
-  const iconColor = step.dark ? "#ffffff" : "#2563eb";
-  const labelColor = step.dark ? "rgba(255,255,255,0.65)" : "#2563eb";
-  const titleColor = step.dark ? "#ffffff" : "#0f172a";
-  const descColor = step.dark ? "rgba(255,255,255,0.75)" : "#64748b";
-  const badgeBg = step.dark ? "rgba(255,255,255,0.15)" : "#eff6ff";
-  const badgeColor = step.dark ? "#ffffff" : "#2563eb";
+  const numColor = step.featured
+    ? "rgba(139,92,246,0.2)"
+    : "rgba(99,102,241,0.1)";
+  const iconBg = step.featured ? "rgba(139,92,246,0.15)" : "rgba(99,102,241,0.1)";
+  const iconColor = step.featured ? "#c084fc" : "#818cf8";
+  const labelColor = step.featured ? "#c084fc" : "#818cf8";
+  const titleColor = "#f0f0ff";
+  const descColor = step.featured ? "rgba(240,240,255,0.7)" : "#71717a";
+  const badgeBg = step.featured ? "rgba(139,92,246,0.15)" : "rgba(99,102,241,0.1)";
+  const badgeColor = step.featured ? "#c084fc" : "#818cf8";
 
   return (
     <div className="flex flex-col">
-      {/* Number */}
       <span
         style={{
           fontFamily: "var(--font-heading)",
-          fontSize: "72px",
+          fontSize: "64px",
           fontWeight: 900,
           lineHeight: 1,
           color: numColor,
-          marginBottom: "20px",
+          marginBottom: "16px",
           userSelect: "none",
+          letterSpacing: "-0.04em",
         }}
       >
         {step.num}
       </span>
 
-      {/* Icon */}
       <div
-        className="w-11 h-11 rounded-xl flex items-center justify-center"
-        style={{ background: iconBg }}
+        className="w-10 h-10 rounded-xl flex items-center justify-center"
+        style={{ background: iconBg, border: `1px solid ${step.featured ? "rgba(139,92,246,0.3)" : "rgba(99,102,241,0.2)"}` }}
       >
-        <step.Icon style={{ width: 22, height: 22, color: iconColor }} />
+        <step.Icon style={{ width: 20, height: 20, color: iconColor }} />
       </div>
 
-      {/* Label */}
       <p
-        className="text-xs font-semibold uppercase tracking-widest mt-4"
+        className="text-xs font-semibold uppercase tracking-widest mt-4 mb-1"
         style={{ fontFamily: "var(--font-body)", color: labelColor }}
       >
         {step.label}
       </p>
 
-      {/* Title */}
       <h3
-        className="font-bold text-lg mt-1 leading-snug"
+        className="font-bold text-lg leading-snug mb-2"
         style={{ fontFamily: "var(--font-heading)", color: titleColor }}
       >
         {step.title}
       </h3>
 
-      {/* Description */}
       <p
-        className="text-sm leading-relaxed mt-2 font-light"
+        className="text-sm leading-relaxed"
         style={{ fontFamily: "var(--font-body)", color: descColor }}
       >
         {step.description}
       </p>
 
-      {/* Badge */}
       <span
         className="inline-block self-start rounded-full px-3 py-1 text-xs font-semibold mt-4"
-        style={{
-          background: badgeBg,
-          color: badgeColor,
-          fontFamily: "var(--font-body)",
-        }}
+        style={{ background: badgeBg, color: badgeColor, fontFamily: "var(--font-body)" }}
       >
         {step.time}
       </span>
@@ -144,7 +127,11 @@ function StepCard({ step }: { step: Step }) {
 
 export default function Process() {
   return (
-    <section id="processus" className="py-20 px-4 bg-white">
+    <section
+      id="processus"
+      className="py-20 px-4"
+      style={{ background: "#06071a" }}
+    >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -152,55 +139,39 @@ export default function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <span
-            className="inline-block text-xs font-semibold uppercase tracking-widest rounded-full px-4 py-1.5 border border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb] mb-4"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="inline-block text-xs font-semibold uppercase tracking-widest rounded-full px-4 py-1.5 mb-4"
+            style={{
+              background: "rgba(99,102,241,0.1)",
+              border: "1px solid rgba(99,102,241,0.25)",
+              color: "#818cf8",
+              fontFamily: "var(--font-body)",
+            }}
           >
             Processus
           </span>
           <h2
-            className="font-extrabold text-3xl lg:text-4xl text-slate-800"
-            style={{ fontFamily: "var(--font-heading)" }}
+            className="font-extrabold text-3xl lg:text-4xl mb-2"
+            style={{
+              fontFamily: "var(--font-heading)",
+              color: "#f0f0ff",
+              letterSpacing: "-0.02em",
+            }}
           >
             De votre idée à la mise en ligne.
           </h2>
           <p
-            className="font-light text-slate-500 text-base lg:text-lg mt-2"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="text-base lg:text-lg"
+            style={{ fontFamily: "var(--font-body)", color: "#71717a" }}
           >
             Un processus simple, transparent, pensé pour vous.
           </p>
         </motion.div>
 
         {/* Desktop — grid 4 cols */}
-        <div className="hidden lg:grid grid-cols-4 gap-6">
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              whileHover={{
-                y: -4,
-                boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
-                transition: { duration: 0.25 },
-              }}
-              className="rounded-[20px] border border-[#e2e8f0] p-8"
-              style={{
-                background: step.bg,
-                boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
-              }}
-            >
-              <StepCard step={step} />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Mobile — flex col */}
-        <div className="flex flex-col gap-4 lg:hidden">
+        <div className="hidden lg:grid grid-cols-4 gap-5">
           {steps.map((step, i) => (
             <motion.div
               key={step.id}
@@ -208,10 +179,45 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-[20px] border border-[#e2e8f0] p-6"
+              whileHover={{
+                y: -4,
+                transition: { duration: 0.25 },
+              }}
+              className="rounded-2xl p-7"
               style={{
-                background: step.bg,
-                boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
+                background: step.featured
+                  ? "rgba(139,92,246,0.08)"
+                  : "rgba(255,255,255,0.02)",
+                border: step.featured
+                  ? "1px solid rgba(139,92,246,0.25)"
+                  : "1px solid rgba(255,255,255,0.07)",
+                boxShadow: step.featured
+                  ? "0 0 40px rgba(139,92,246,0.1)"
+                  : "none",
+              }}
+            >
+              <StepCard step={step} />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Mobile */}
+        <div className="flex flex-col gap-4 lg:hidden">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="rounded-2xl p-6"
+              style={{
+                background: step.featured
+                  ? "rgba(139,92,246,0.08)"
+                  : "rgba(255,255,255,0.02)",
+                border: step.featured
+                  ? "1px solid rgba(139,92,246,0.25)"
+                  : "1px solid rgba(255,255,255,0.07)",
               }}
             >
               <StepCard step={step} />

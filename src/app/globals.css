@@ -1,18 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --surface: #f8fafc;
-  --surface-2: #f1f5f9;
-  --border: #e2e8f0;
-  --border-hover: #bfdbfe;
-  --accent: #2563eb;
-  --accent-light: #3b82f6;
-  --accent-subtle: #eff6ff;
-  --success: #16a34a;
-  --foreground: #0f172a;
-  --foreground-2: #475569;
-  --muted: #94a3b8;
+  /* ── Dark premium palette ── */
+  --background: #050814;
+  --surface: #0d0e20;
+  --surface-2: #111235;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(99, 102, 241, 0.5);
+  --accent: #6366f1;
+  --accent-light: #818cf8;
+  --accent-2: #8b5cf6;
+  --accent-subtle: rgba(99, 102, 241, 0.12);
+  --accent-glow: rgba(99, 102, 241, 0.25);
+  --success: #4ade80;
+  --foreground: #f0f0ff;
+  --foreground-2: #a1a1aa;
+  --muted: #52525b;
+  --danger: #ef4444;
+  --danger-subtle: rgba(239, 68, 68, 0.12);
 }
 
 @theme inline {
@@ -51,35 +56,111 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #0d0e20;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2563eb;
+  background: #6366f1;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: #818cf8;
 }
 
 /* Selection */
 ::selection {
-  background: #2563eb;
+  background: #6366f1;
   color: #ffffff;
 }
 
-/* ─── Shimmer text animation ─── */
+/* ─── Gradient text shimmer ─── */
 @keyframes shimmer {
   0% { background-position: 0% center; }
   100% { background-position: 200% center; }
 }
 
 .text-shimmer {
-  background: linear-gradient(135deg, #2563eb 0%, #60a5fa 50%, #2563eb 100%);
+  background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #818cf8 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: shimmer 4s linear infinite;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Hero animated mesh blobs ─── */
+@keyframes meshMove {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -15px) scale(1.04); }
+  66% { transform: translate(-15px, 20px) scale(0.97); }
+}
+
+@keyframes meshMoveAlt {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-25px, 20px) scale(1.05); }
+  66% { transform: translate(20px, -20px) scale(0.96); }
+}
+
+.mesh-blob {
+  animation: meshMove 12s ease-in-out infinite;
+}
+
+.mesh-blob-alt {
+  animation: meshMoveAlt 14s ease-in-out infinite;
+}
+
+/* ─── Phone float animation ─── */
+@keyframes float {
+  0%, 100% { transform: rotate(3deg) translateY(0px); }
+  50% { transform: rotate(3deg) translateY(-8px); }
+}
+
+.float-phone {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ─── Glow pulse (browser shadow breathing) ─── */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.65; }
+}
+
+.glow-pulse-shadow {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* ─── URL bar shimmer ─── */
+@keyframes urlShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+.url-bar-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.url-bar-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 100%
+  );
+  animation: urlShimmer 2.5s ease-in-out infinite;
+  animation-delay: var(--shimmer-delay, 0s);
 }
 
 /* ─── Infinite horizontal scroll ─── */
@@ -93,14 +174,12 @@ body {
   100% { transform: translateX(0); }
 }
 
-/* Legacy */
 .scroll-track {
   animation: scrollLeft 22s linear infinite;
 }
 
-/* Single-row InfiniteScroll (Examples) */
 .scroll-single {
-  animation: scrollLeft 35s linear infinite;
+  animation: scrollLeft 40s linear infinite;
 }
 
 @media (hover: hover) {
@@ -148,26 +227,27 @@ body {
   animation: blobFloatAlt 8s ease-in-out infinite;
 }
 
-/* ─── Card float animation (hero floating stats) ─── */
+/* ─── Card float ─── */
 @keyframes cardFloat {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes cardFloatDelay {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-10px); }
 }
 
 .card-float {
   animation: cardFloat 4s ease-in-out infinite;
 }
 
-.card-float-delay {
-  animation: cardFloatDelay 4s ease-in-out infinite 1s;
+/* ─── Pulsing status dot ─── */
+@keyframes statusPulse {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4); }
+  50% { transform: scale(1.2); opacity: 0.8; box-shadow: 0 0 0 4px rgba(74, 222, 128, 0); }
 }
 
-/* ─── Typewriter cursor (BrowserTyping) ─── */
+.status-dot {
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* ─── Typewriter cursor ─── */
 @keyframes cursorBlink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -178,14 +258,49 @@ body {
   animation: cursorBlink 0.6s steps(1) infinite;
 }
 
-/* ─── Responsive typography — mobile base ─── */
-@media (max-width: 768px) {
-  h1 { font-size: clamp(28px, 7vw, 40px); line-height: 1.2; }
-  h2 { font-size: clamp(22px, 6vw, 32px); line-height: 1.25; }
-  h3 { font-size: clamp(17px, 4.5vw, 22px); line-height: 1.3; }
-  p  { font-size: clamp(14px, 3.5vw, 16px); line-height: 1.65; }
+/* ─── Section glow divider ─── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.4) 50%,
+    transparent 100%
+  );
 }
 
+/* ─── Glassmorphism helpers ─── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-accent {
+  background: rgba(99, 102, 241, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* ─── Gradient border button glow ─── */
+@keyframes btnGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3), 0 0 40px rgba(99, 102, 241, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.5), 0 0 60px rgba(99, 102, 241, 0.2); }
+}
+
+.btn-glow {
+  animation: btnGlow 3s ease-in-out infinite;
+}
+
+/* ─── Responsive typography ─── */
+@media (max-width: 768px) {
+  h1 { font-size: clamp(30px, 8vw, 44px); line-height: 1.15; }
+  h2 { font-size: clamp(24px, 6vw, 34px); line-height: 1.2; }
+  h3 { font-size: clamp(18px, 4.5vw, 22px); line-height: 1.3; }
+  p  { font-size: clamp(14px, 3.5vw, 16px); line-height: 1.65; }
+}
 
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
@@ -199,7 +314,7 @@ body {
   }
 }
 
-/* ─── Grain overlay ─── */
+/* ─── Subtle grain overlay ─── */
 body::before {
   content: "";
   position: fixed;
@@ -209,5 +324,5 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 200px 200px;
-  opacity: 0.015;
+  opacity: 0.025;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Shield } from "lucide-react";
 import { WHATSAPP_LINK } from "@/lib/constants";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import BrowserTyping from "@/components/ui/BrowserTyping";
@@ -10,52 +10,53 @@ import TechScroll from "@/components/ui/TechScroll";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white">
-      {/* ── Blobs ── */}
+    <section className="relative overflow-hidden" style={{ background: "#050814", minHeight: "100svh" }}>
+
+      {/* ── Animated mesh blobs ── */}
       <div
-        className="absolute z-0 blob-float pointer-events-none"
+        className="absolute pointer-events-none mesh-blob"
         style={{
-          width: "560px",
-          height: "560px",
-          top: "-160px",
-          left: "-160px",
-          background: "rgba(37,99,235,0.09)",
+          width: 700,
+          height: 700,
+          top: "-200px",
+          left: "-150px",
+          background: "radial-gradient(ellipse, rgba(99,102,241,0.18) 0%, transparent 70%)",
           borderRadius: "50%",
-          filter: "blur(90px)",
+          filter: "blur(60px)",
         }}
       />
       <div
-        className="absolute z-0 blob-float-alt pointer-events-none"
+        className="absolute pointer-events-none mesh-blob-alt"
         style={{
-          width: "480px",
-          height: "480px",
-          top: "-60px",
-          right: "-80px",
-          background: "rgba(96,165,250,0.10)",
+          width: 600,
+          height: 600,
+          top: "-100px",
+          right: "-120px",
+          background: "radial-gradient(ellipse, rgba(139,92,246,0.15) 0%, transparent 70%)",
           borderRadius: "50%",
-          filter: "blur(80px)",
+          filter: "blur(60px)",
         }}
       />
       <div
-        className="absolute z-0 blob-float pointer-events-none"
+        className="absolute pointer-events-none blob-float"
         style={{
-          width: "400px",
-          height: "400px",
+          width: 400,
+          height: 400,
           bottom: "0px",
           left: "50%",
           transform: "translateX(-50%)",
-          background: "rgba(219,234,254,0.12)",
+          background: "radial-gradient(ellipse, rgba(99,102,241,0.10) 0%, transparent 70%)",
           borderRadius: "50%",
-          filter: "blur(70px)",
+          filter: "blur(60px)",
         }}
       />
 
-      {/* Dot pattern */}
+      {/* Dot grid pattern */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(#e2e8f0 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
+          backgroundImage: "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
         }}
       />
 
@@ -66,57 +67,95 @@ export default function Hero() {
           {/* ── LEFT — text ── */}
           <div className="text-center lg:text-left">
 
-            {/* Eyebrow */}
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb] text-[12px] lg:text-[13px] font-medium mb-6"
-              style={{ fontFamily: "var(--font-body)", letterSpacing: "0.05em" }}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border mb-6"
+              style={{
+                background: "rgba(99,102,241,0.1)",
+                borderColor: "rgba(99,102,241,0.3)",
+                fontFamily: "var(--font-body)",
+                fontSize: 12,
+                fontWeight: 500,
+                color: "#a5b4fc",
+                letterSpacing: "0.05em",
+              }}
             >
-              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#16a34a" }} />
+              <span
+                className="w-2 h-2 rounded-full bg-[#4ade80] status-dot flex-shrink-0"
+              />
               Agence web — France · Belgique · Suisse · Luxembourg
             </motion.div>
 
-            {/* Headline */}
+            {/* H1 */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-[clamp(32px,8vw,42px)] lg:text-[clamp(48px,5vw,64px)] font-extrabold mb-5 text-[#0f172a]"
               style={{
                 fontFamily: "var(--font-heading)",
-                lineHeight: 1.15,
-                letterSpacing: "-0.02em",
-                fontWeight: 800,
+                fontSize: "clamp(38px, 7vw, 76px)",
+                fontWeight: 900,
+                lineHeight: 1.08,
+                letterSpacing: "-0.03em",
+                color: "#f0f0ff",
+                marginBottom: "1.25rem",
               }}
             >
-              Votre site web,
+              Votre site web.
               <br />
               <span
                 className="text-transparent bg-clip-text"
                 style={{
-                  backgroundImage: "linear-gradient(135deg, #2563eb, #60a5fa)",
+                  backgroundImage: "linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%)",
                 }}
               >
-                livré en 72h.
+                Conforme, visible,
+                <br />
+                performant.
               </span>
             </motion.h1>
 
-            {/* Subtitle — visible on all screens */}
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-[clamp(15px,4vw,17px)] lg:text-[clamp(17px,2vw,20px)] text-[#475569] max-w-xl mx-auto lg:mx-0 mb-8 font-light"
-              style={{ fontFamily: "var(--font-body)", lineHeight: 1.65 }}
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "clamp(15px, 2vw, 18px)",
+                color: "#a1a1aa",
+                lineHeight: 1.7,
+                maxWidth: "520px",
+                marginBottom: "2rem",
+              }}
+              className="mx-auto lg:mx-0"
             >
-              De la conception à la mise en ligne, nous créons des sites qui
-              convertissent vos visiteurs en clients.{" "}
-              <span className="text-[#0f172a] font-medium">
-                Sur devis personnalisé.
+              De la conception à la mise en ligne, nous créons des sites qui convertissent vos visiteurs en clients —{" "}
+              <span style={{ color: "#e0e0ff", fontWeight: 500 }}>
+                100% conformes RGPD, SEO inclus.
               </span>
             </motion.p>
+
+            {/* Conformité badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg mb-6"
+              style={{
+                background: "rgba(74,222,128,0.08)",
+                border: "1px solid rgba(74,222,128,0.2)",
+                fontSize: 12,
+                color: "#4ade80",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              <Shield size={12} />
+              RGPD · Mentions légales · Cookies — inclus dès le jour 1
+            </motion.div>
 
             {/* CTAs */}
             <motion.div
@@ -125,22 +164,26 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3"
             >
-              <CalButton className="w-full sm:w-auto text-[15px] py-4 px-6 rounded-[14px]">
-                Prendre rendez-vous
-              </CalButton>
+              <div className="btn-glow rounded-[14px] w-full sm:w-auto">
+                <CalButton className="w-full sm:w-auto text-[15px] py-4 px-6 rounded-[14px]">
+                  Démarrer mon projet
+                </CalButton>
+              </div>
               <motion.a
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-4 text-white font-semibold rounded-[14px] transition-all duration-200 hover:opacity-90 text-[15px]"
+                className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-4 font-semibold rounded-[14px] transition-all duration-200 text-[15px]"
                 style={{
-                  backgroundColor: "#25d366",
+                  background: "rgba(37,211,102,0.12)",
+                  border: "1px solid rgba(37,211,102,0.3)",
+                  color: "#4ade80",
                   fontFamily: "var(--font-body)",
                 }}
               >
-                <WhatsAppIcon size={20} />
+                <WhatsAppIcon size={18} />
                 Nous écrire
               </motion.a>
             </motion.div>
@@ -148,12 +191,11 @@ export default function Hero() {
 
           {/* ── RIGHT — browser mockup — desktop only ── */}
           <div className="hidden lg:flex items-center justify-center relative">
-            {/* Radial glow */}
+            {/* Radial glow behind browser */}
             <div
-              className="absolute inset-0 -z-10"
+              className="absolute inset-0 -z-10 glow-pulse-shadow"
               style={{
-                background:
-                  "radial-gradient(ellipse at center, rgba(37,99,235,0.07), transparent 70%)",
+                background: "radial-gradient(ellipse at center, rgba(99,102,241,0.2), transparent 70%)",
               }}
             />
 
@@ -161,13 +203,12 @@ export default function Hero() {
             <div
               className="relative overflow-hidden card-float"
               style={{
-                width: 420,
+                width: 430,
                 borderRadius: 20,
-                border: "1px solid #e2e8f0",
-                background:
-                  "linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                background: "linear-gradient(135deg, #0d0e20 0%, #111235 100%)",
                 boxShadow:
-                  "0 20px 60px rgba(37,99,235,0.10), 0 4px 20px rgba(0,0,0,0.06)",
+                  "0 30px 80px rgba(99,102,241,0.2), 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)",
               }}
             >
               {/* Chrome bar */}
@@ -175,89 +216,74 @@ export default function Hero() {
                 className="flex items-center gap-3 px-4"
                 style={{
                   height: 44,
-                  background: "#ffffff",
-                  borderBottom: "1px solid #f1f5f9",
+                  background: "rgba(255,255,255,0.03)",
+                  borderBottom: "1px solid rgba(255,255,255,0.06)",
                 }}
               >
                 {/* 3 dots */}
                 <div className="flex items-center gap-1.5 flex-shrink-0">
-                  <div
-                    style={{
-                      width: 11,
-                      height: 11,
-                      borderRadius: "50%",
-                      background: "#ff5f57",
-                    }}
-                  />
-                  <div
-                    style={{
-                      width: 11,
-                      height: 11,
-                      borderRadius: "50%",
-                      background: "#febc2e",
-                    }}
-                  />
-                  <div
-                    style={{
-                      width: 11,
-                      height: 11,
-                      borderRadius: "50%",
-                      background: "#28c840",
-                    }}
-                  />
+                  <div style={{ width: 11, height: 11, borderRadius: "50%", background: "#ff5f57" }} />
+                  <div style={{ width: 11, height: 11, borderRadius: "50%", background: "#febc2e" }} />
+                  <div style={{ width: 11, height: 11, borderRadius: "50%", background: "#28c840" }} />
                 </div>
 
                 {/* URL bar */}
                 <div
+                  className="url-bar-shimmer"
                   style={{
-                    background: "#f1f5f9",
+                    background: "rgba(255,255,255,0.06)",
                     borderRadius: 20,
-                    padding: "6px 16px",
+                    padding: "5px 14px",
                     width: 220,
-                    fontSize: 12,
-                    color: "#64748b",
+                    fontSize: 11,
+                    color: "#6366f1",
                     fontFamily: "var(--font-body)",
                     textAlign: "center",
+                    border: "1px solid rgba(99,102,241,0.2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 6,
                   }}
                 >
+                  <span style={{ color: "#4ade80", fontSize: 9 }}>🔒</span>
                   monsite.bidigital.fr
                 </div>
               </div>
 
               {/* Content area */}
-              <div
-                className="relative overflow-hidden p-6"
-                style={{ height: 280 }}
-              >
+              <div className="relative overflow-hidden p-6" style={{ height: 280 }}>
                 <BrowserTyping />
               </div>
             </div>
           </div>
         </div>
 
-        {/* ── Tech scroll — full width below grid ── */}
+        {/* ── Tech scroll ── */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
-          <div style={{
-            textAlign: "center",
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "#94a3b8",
-            marginBottom: 14,
-            marginTop: 32,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 10,
-          }}>
-            <div style={{ height: 1, width: 40, background: "#e2e8f0" }} />
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: 10,
+              fontWeight: 600,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "#52525b",
+              marginBottom: 14,
+              marginTop: 32,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 10,
+            }}
+          >
+            <div className="section-divider" style={{ width: 40, height: 1 }} />
             Technologies maîtrisées
-            <div style={{ height: 1, width: 40, background: "#e2e8f0" }} />
+            <div className="section-divider" style={{ width: 40, height: 1 }} />
           </div>
           <TechScroll />
         </motion.div>
@@ -274,7 +300,7 @@ export default function Hero() {
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ArrowDown className="w-5 h-5 text-[#94a3b8]" />
+          <ArrowDown className="w-5 h-5" style={{ color: "#52525b" }} />
         </motion.div>
       </motion.div>
     </section>

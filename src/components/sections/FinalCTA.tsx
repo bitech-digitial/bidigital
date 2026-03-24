@@ -9,29 +9,45 @@ export default function FinalCTA() {
   return (
     <section
       id="contact"
-      className="relative py-32 px-4 overflow-hidden bg-[#f8fafc]"
+      className="relative py-32 px-4 overflow-hidden"
+      style={{ background: "#050814" }}
     >
-      {/* Dot pattern background */}
+      {/* Animated mesh blobs */}
       <div
-        className="absolute inset-0 z-0"
+        className="absolute pointer-events-none mesh-blob"
         style={{
-          backgroundImage: "radial-gradient(#e2e8f0 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        }}
-      />
-
-      {/* Blob centré */}
-      <div
-        className="absolute z-0"
-        style={{
-          width: "500px",
-          height: "500px",
+          width: 600,
+          height: 400,
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          background: "rgba(37,99,235,0.06)",
+          background:
+            "radial-gradient(ellipse, rgba(99,102,241,0.15) 0%, transparent 70%)",
+          filter: "blur(60px)",
           borderRadius: "50%",
-          filter: "blur(80px)",
+        }}
+      />
+      <div
+        className="absolute pointer-events-none mesh-blob-alt"
+        style={{
+          width: 300,
+          height: 300,
+          bottom: "10%",
+          right: "10%",
+          background:
+            "radial-gradient(ellipse, rgba(139,92,246,0.1) 0%, transparent 70%)",
+          filter: "blur(50px)",
+          borderRadius: "50%",
+        }}
+      />
+
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
         }}
       />
 
@@ -42,15 +58,31 @@ export default function FinalCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
+          <span
+            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
+            style={{
+              background: "rgba(99,102,241,0.1)",
+              border: "1px solid rgba(99,102,241,0.25)",
+              color: "#818cf8",
+              fontFamily: "var(--font-body)",
+            }}
+          >
+            Prêt à vous lancer ?
+          </span>
+
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0f172a] mb-6 leading-tight"
-            style={{ fontFamily: "var(--font-heading)" }}
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight"
+            style={{
+              fontFamily: "var(--font-heading)",
+              color: "#f0f0ff",
+              letterSpacing: "-0.03em",
+            }}
           >
             Votre projet mérite{" "}
             <span
               className="text-transparent bg-clip-text"
               style={{
-                backgroundImage: "linear-gradient(135deg, #2563eb, #60a5fa)",
+                backgroundImage: "linear-gradient(135deg, #818cf8, #c084fc)",
               }}
             >
               le meilleur.
@@ -59,27 +91,34 @@ export default function FinalCTA() {
             Parlons-en.
           </h2>
           <p
-            className="text-[#475569] text-lg mb-10 max-w-xl mx-auto leading-relaxed font-light"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="text-lg mb-10 max-w-xl mx-auto leading-relaxed"
+            style={{
+              fontFamily: "var(--font-body)",
+              color: "#71717a",
+            }}
           >
             Chaque projet est unique. Nous prenons le temps de comprendre vos
             besoins pour vous proposer la solution la plus adaptée.
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 w-full">
-            <CalButton className="w-full md:w-auto text-base px-8 py-4">
-              Prendre rendez-vous
-            </CalButton>
+            <div className="btn-glow rounded-xl w-full md:w-auto">
+              <CalButton className="w-full md:w-auto text-base px-8 py-4">
+                Prendre rendez-vous
+              </CalButton>
+            </div>
 
             <motion.a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.03, y: -2 }}
+              whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center justify-center gap-3 w-full md:w-auto px-8 py-4 text-white font-bold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-green-500/20 text-base"
+              className="flex items-center justify-center gap-3 w-full md:w-auto px-8 py-4 font-bold rounded-xl transition-all duration-200 text-base"
               style={{
-                backgroundColor: "#25d366",
+                background: "rgba(74,222,128,0.1)",
+                border: "1px solid rgba(74,222,128,0.25)",
+                color: "#4ade80",
                 fontFamily: "var(--font-heading)",
               }}
             >
@@ -89,8 +128,8 @@ export default function FinalCTA() {
           </div>
 
           <p
-            className="text-[#94a3b8] text-sm"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="text-sm"
+            style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
           >
             Sans engagement · Réponse sous 2h · Échange confidentiel
           </p>

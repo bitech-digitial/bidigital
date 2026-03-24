@@ -5,19 +5,22 @@ import { ShieldCheck, Star, HeartHandshake } from "lucide-react";
 const items = [
   {
     Icon: ShieldCheck,
-    iconColor: "#16a34a",
+    iconColor: "#4ade80",
+    bg: "rgba(74,222,128,0.1)",
     title: "Satisfait ou remboursé",
     sub: "Zéro risque pour vous",
   },
   {
     Icon: Star,
-    iconColor: "#f59e0b",
+    iconColor: "#fb923c",
+    bg: "rgba(251,146,60,0.1)",
     title: "100% de clients satisfaits",
     sub: "Ils nous recommandent",
   },
   {
     Icon: HeartHandshake,
-    iconColor: "#2563eb",
+    iconColor: "#818cf8",
+    bg: "rgba(99,102,241,0.1)",
     title: "Accompagnement inclus",
     sub: "Avant, pendant et après",
   },
@@ -26,34 +29,39 @@ const items = [
 export default function TrustBar() {
   return (
     <div
-      style={{
-        background: "linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%)",
-        borderTop: "1px solid #e2e8f0",
-        borderBottom: "1px solid #e2e8f0",
-      }}
       className="py-5 px-6"
+      style={{
+        background: "rgba(255,255,255,0.015)",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+      }}
     >
       <div className="flex items-center justify-center gap-8 flex-wrap">
-        {items.map(({ Icon, iconColor, title, sub }, i) => (
+        {items.map(({ Icon, iconColor, bg, title, sub }, i) => (
           <div key={title} className="flex items-center gap-8 flex-wrap justify-center">
             {i > 0 && (
               <div
                 className="hidden sm:block flex-shrink-0"
-                style={{ width: 1, height: 32, background: "#e2e8f0" }}
+                style={{ width: 1, height: 32, background: "rgba(255,255,255,0.06)" }}
               />
             )}
             <div className="flex items-center gap-3">
-              <Icon style={{ width: 20, height: 20, color: iconColor, flexShrink: 0 }} />
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                style={{ background: bg }}
+              >
+                <Icon style={{ width: 16, height: 16, color: iconColor }} />
+              </div>
               <div className="flex flex-col text-center sm:text-left">
                 <span
-                  className="font-semibold text-sm text-slate-800"
-                  style={{ fontFamily: "var(--font-heading)" }}
+                  className="font-semibold text-sm"
+                  style={{ fontFamily: "var(--font-heading)", color: "#e0e0ff" }}
                 >
                   {title}
                 </span>
                 <span
-                  className="text-xs text-slate-500"
-                  style={{ fontFamily: "var(--font-body)" }}
+                  className="text-xs"
+                  style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
                 >
                   {sub}
                 </span>

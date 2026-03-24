@@ -6,24 +6,32 @@ import { Plus } from "lucide-react";
 
 const faqs = [
   {
+    q: "Mon site est-il vraiment conforme RGPD ?",
+    a: "Oui. Chaque site BiDigital est livré avec mentions légales, politique de confidentialité, gestion des cookies conforme CNIL et CGU si nécessaire. Vous êtes protégé dès le jour 1.",
+  },
+  {
+    q: "Que comprend l'abonnement à 19,99 €/mois ?",
+    a: "L'hébergement, le nom de domaine (ou le vôtre), les mises à jour légales et de sécurité, la surveillance SEO, le copywriting optimisé, et toutes vos modifications sous 48h. Sans engagement, résiliable à tout moment.",
+  },
+  {
+    q: "Puis-je garder mon nom de domaine existant ?",
+    a: "Absolument. Nous pouvons utiliser votre domaine actuel ou vous en fournir un nouveau inclus dans l'abonnement.",
+  },
+  {
     q: "Comment se déroule un projet avec BiDigital ?",
-    a: "Tout commence par un échange de 15 minutes pour comprendre vos besoins. Nous établissons ensuite un devis personnalisé et transparent. Une fois validé, nous démarrons la conception. Vous êtes informé à chaque étape, et votre site est livré selon le délai convenu — 72h pour un site vitrine.",
+    a: "Tout commence par un échange de 15 minutes pour comprendre vos besoins. Nous établissons ensuite un devis personnalisé et transparent. Une fois validé, nous démarrons la conception. Vous êtes informé à chaque étape.",
   },
   {
     q: "Qu'est-ce qui est inclus dans chaque projet ?",
-    a: "Chaque projet inclut le design UX/UI sur-mesure, le développement complet, l'optimisation SEO, le copywriting, l'hébergement, le nom de domaine, la création de logo, un flyer, une carte de visite, et un an de modifications effectuées sous 48h. Aucun frais caché.",
+    a: "Chaque projet inclut le design UX/UI sur-mesure, le développement complet, l'optimisation SEO, le copywriting, l'hébergement, le nom de domaine, la création de logo, un flyer, une carte de visite, et la mise en conformité légale complète. Aucun frais caché.",
   },
   {
     q: "Comment fonctionne le devis ?",
     a: "Chaque projet est unique. Après notre premier échange, nous vous proposons un devis clair, détaillé et compétitif, adapté à vos besoins réels. Pas de forfait générique — une proposition pensée pour vous.",
   },
   {
-    q: "Que se passe-t-il après la livraison ?",
-    a: "Nous restons présents. Toute modification est traitée sous 48h pendant un an, inclus dans votre projet. Vous bénéficiez d'un interlocuteur dédié, disponible et réactif. Nous construisons une relation sur le long terme.",
-  },
-  {
     q: "Pourquoi choisir BiDigital plutôt qu'une autre agence ?",
-    a: "Parce que nous combinons la réactivité d'une startup, l'exigence d'une agence premium et la bienveillance d'un partenaire engagé. Votre réussite est notre priorité — pas seulement la livraison.",
+    a: "Parce que nous combinons la réactivité d'une startup, l'exigence d'une agence premium et la bienveillance d'un partenaire engagé. Chaque site est conforme, optimisé et maintenu. Votre réussite est notre priorité.",
   },
 ];
 
@@ -31,7 +39,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-16 px-4 bg-[#ffffff]">
+    <section id="faq" className="py-20 px-4" style={{ background: "#050814" }}>
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -41,53 +49,89 @@ export default function FAQ() {
           className="text-center mb-12"
         >
           <span
-            className="inline-block px-4 py-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb] text-sm font-medium mb-4"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
+            style={{
+              background: "rgba(99,102,241,0.1)",
+              border: "1px solid rgba(99,102,241,0.25)",
+              color: "#818cf8",
+              fontFamily: "var(--font-body)",
+            }}
           >
             FAQ
           </span>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0f172a] mb-4"
-            style={{ fontFamily: "var(--font-heading)" }}
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
+            style={{
+              fontFamily: "var(--font-heading)",
+              color: "#f0f0ff",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.1,
+            }}
           >
             Les questions
             <br />
-            qu&apos;on nous pose souvent.
+            <span
+              className="text-transparent bg-clip-text"
+              style={{
+                backgroundImage: "linear-gradient(135deg, #818cf8, #c084fc)",
+              }}
+            >
+              qu&apos;on nous pose souvent.
+            </span>
           </h2>
         </motion.div>
 
-        <div className="space-y-3">
+        <div className="space-y-2">
           {faqs.map((faq, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="bg-white border border-[#e2e8f0] rounded-2xl overflow-hidden"
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              className="rounded-2xl overflow-hidden"
+              style={{
+                background: openIndex === i
+                  ? "rgba(99,102,241,0.06)"
+                  : "rgba(255,255,255,0.02)",
+                border: openIndex === i
+                  ? "1px solid rgba(99,102,241,0.2)"
+                  : "1px solid rgba(255,255,255,0.07)",
+                transition: "background 0.2s, border-color 0.2s",
+              }}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between gap-4 px-4 md:px-6 py-4 md:py-5 text-left hover:bg-[#f8fafc] transition-colors"
+                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left transition-colors"
                 aria-expanded={openIndex === i}
               >
                 <span
-                  className="text-[#0f172a] font-semibold text-sm md:text-base leading-snug"
-                  style={{ fontFamily: "var(--font-heading)" }}
+                  className="font-semibold text-sm md:text-base leading-snug"
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    color: openIndex === i ? "#a5b4fc" : "#e0e0ff",
+                  }}
                 >
                   {faq.q}
                 </span>
                 <motion.div
                   animate={{ rotate: openIndex === i ? 45 : 0 }}
                   transition={{ duration: 0.2 }}
-                  className={`flex-shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-colors ${
-                    openIndex === i ? "border-[#2563eb] bg-[#eff6ff]" : "border-[#e2e8f0]"
-                  }`}
+                  className="flex-shrink-0 w-7 h-7 rounded-full border flex items-center justify-center"
+                  style={{
+                    borderColor: openIndex === i
+                      ? "rgba(99,102,241,0.4)"
+                      : "rgba(255,255,255,0.1)",
+                    background: openIndex === i
+                      ? "rgba(99,102,241,0.12)"
+                      : "transparent",
+                  }}
                 >
                   <Plus
-                    className={`w-4 h-4 transition-colors ${
-                      openIndex === i ? "text-[#2563eb]" : "text-[#64748b]"
-                    }`}
+                    className="w-4 h-4"
+                    style={{
+                      color: openIndex === i ? "#818cf8" : "#52525b",
+                    }}
                   />
                 </motion.div>
               </button>
@@ -102,8 +146,12 @@ export default function FAQ() {
                     transition={{ duration: 0.25, ease: "easeInOut" }}
                   >
                     <div
-                      className="px-6 pb-5 text-[#475569] text-sm leading-relaxed border-t border-[#e2e8f0] pt-4 bg-[#f8fafc] font-light"
-                      style={{ fontFamily: "var(--font-body)" }}
+                      className="px-5 pb-5 text-sm leading-relaxed border-t pt-4"
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        color: "#a1a1aa",
+                        borderColor: "rgba(99,102,241,0.12)",
+                      }}
                     >
                       {faq.a}
                     </div>

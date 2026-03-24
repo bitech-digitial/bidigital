@@ -11,15 +11,14 @@ type LineData = {
 };
 
 const LINES: LineData[] = [
-  { text: "Création de votre site en cours...", color: "#2563eb", weight: 400 },
-  { text: "Design premium sur-mesure ✓", color: "#16a34a", weight: 500 },
-  { text: "Visible sur Google dès le lancement ✓", color: "#16a34a", weight: 500 },
-  { text: "Zéro jargon. On s'occupe de tout. ✓", color: "#16a34a", weight: 500 },
-  { text: "Un site qui attire de vrais clients ✓", color: "#16a34a", weight: 500 },
-  { text: "Hébergement rapide & domaine inclus ✓", color: "#16a34a", weight: 500 },
-  { text: "Satisfait ou remboursé. Zéro risque. ✓", color: "#16a34a", weight: 500 },
-  { text: "Votre site en ligne rapidement ✓", color: "#16a34a", weight: 500 },
-  { text: "Votre site est prêt.", color: "#0f172a", weight: 700, large: true, delay: 2000 },
+  { text: "Création de votre site en cours...", color: "#6366f1", weight: 400 },
+  { text: "Design premium sur-mesure ✓", color: "#4ade80", weight: 500 },
+  { text: "SEO optimisé — 1ère page Google ✓", color: "#4ade80", weight: 500 },
+  { text: "RGPD & mentions légales inclus ✓", color: "#4ade80", weight: 500 },
+  { text: "Hébergement & domaine inclus ✓", color: "#4ade80", weight: 500 },
+  { text: "Copywriting optimisé inclus ✓", color: "#4ade80", weight: 500 },
+  { text: "Satisfait ou remboursé. Zéro risque. ✓", color: "#4ade80", weight: 500 },
+  { text: "Votre site est prêt.", color: "#f0f0ff", weight: 700, large: true, delay: 2000 },
   { text: "", color: "transparent", weight: 400 },
 ];
 
@@ -52,7 +51,6 @@ export default function BrowserTyping({ mobileMode = false }: { mobileMode?: boo
 
       const line = LINES[lineIdx];
 
-      // Empty line = pause then reset
       if (line.text === "") {
         setCurrentText("");
         timer = setTimeout(() => {
@@ -102,15 +100,15 @@ export default function BrowserTyping({ mobileMode = false }: { mobileMode?: boo
 
   if (mobileMode) {
     return (
-      <div style={{ padding: "24px 20px" }}>
+      <div style={{ padding: "20px 16px" }}>
         <p
           style={{
             margin: 0,
-            fontSize: 15,
+            fontSize: 14,
             fontWeight: 700,
-            color: "#0f172a",
+            color: "#f0f0ff",
             fontFamily: "var(--font-heading)",
-            marginBottom: 8,
+            marginBottom: 6,
             lineHeight: 1.3,
           }}
         >
@@ -119,25 +117,25 @@ export default function BrowserTyping({ mobileMode = false }: { mobileMode?: boo
         <p
           style={{
             margin: 0,
-            fontSize: 13,
-            color: "#475569",
+            fontSize: 12,
+            color: "#71717a",
             lineHeight: 1.6,
-            marginBottom: 8,
+            marginBottom: 6,
             fontFamily: "var(--font-body)",
           }}
         >
-          nous créons des sites qui convertissent vos visiteurs en clients.
+          nous créons des sites qui convertissent.
         </p>
         <p
           style={{
             margin: 0,
-            fontSize: 12,
-            color: "#2563eb",
+            fontSize: 11,
+            color: "#6366f1",
             fontWeight: 600,
             fontFamily: "var(--font-body)",
           }}
         >
-          Sur devis personnalisé.
+          100% conforme RGPD ✓
         </p>
       </div>
     );
@@ -153,7 +151,7 @@ export default function BrowserTyping({ mobileMode = false }: { mobileMode?: boo
             color: line.color,
             fontFamily: line.large ? "var(--font-heading)" : "var(--font-body)",
             fontWeight: line.weight,
-            fontSize: line.large ? "15px" : "13px",
+            fontSize: line.large ? "15px" : "12px",
             lineHeight: 1.5,
           }}
         >
@@ -167,7 +165,7 @@ export default function BrowserTyping({ mobileMode = false }: { mobileMode?: boo
             color: currentStyle.color,
             fontFamily: currentStyle.large ? "var(--font-heading)" : "var(--font-body)",
             fontWeight: currentStyle.weight,
-            fontSize: currentStyle.large ? "15px" : "13px",
+            fontSize: currentStyle.large ? "15px" : "12px",
             lineHeight: 1.5,
           }}
         >

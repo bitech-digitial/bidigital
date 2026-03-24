@@ -1,3 +1,5 @@
+"use client";
+
 import { Mail } from "lucide-react";
 import { WHATSAPP_LINK, CAL_FULL_URL } from "@/lib/constants";
 
@@ -17,14 +19,24 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#e2e8f0] bg-white">
+    <footer
+      style={{
+        background: "#020309",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+      }}
+    >
       <div className="max-w-[1100px] mx-auto px-6 py-10">
 
-        {/* Line 1 — Logo + tagline + contacts */}
+        {/* Line 1 */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-[#2563eb] flex items-center justify-center">
+            <div
+              className="w-7 h-7 rounded-lg flex items-center justify-center"
+              style={{
+                background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+              }}
+            >
               <span
                 className="text-white text-xs font-bold"
                 style={{ fontFamily: "var(--font-heading)" }}
@@ -36,17 +48,17 @@ export default function Footer() {
               className="font-extrabold text-base tracking-tight text-transparent bg-clip-text"
               style={{
                 fontFamily: "var(--font-heading)",
-                backgroundImage: "linear-gradient(135deg, #0f172a, #2563eb)",
+                backgroundImage: "linear-gradient(135deg, #f0f0ff, #818cf8)",
               }}
             >
               BiDigital
             </span>
           </div>
 
-          {/* Tagline — hidden mobile */}
+          {/* Tagline */}
           <p
-            className="hidden sm:block text-sm text-[#94a3b8]"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="hidden sm:block text-sm"
+            style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
           >
             Votre partenaire digital de confiance
           </p>
@@ -55,22 +67,26 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <a
               href="mailto:contact@bidigital.fr"
-              className="flex items-center gap-1.5 text-[#64748b] hover:text-[#0f172a] text-sm transition-colors"
-              style={{ fontFamily: "var(--font-body)" }}
+              className="flex items-center gap-1.5 text-sm transition-colors"
+              style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#a1a1aa")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#52525b")}
               aria-label="Email"
             >
-              <Mail className="w-4 h-4 text-[#2563eb]" />
+              <Mail className="w-4 h-4" style={{ color: "#6366f1" }} />
               <span className="hidden sm:inline">contact@bidigital.fr</span>
             </a>
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[#64748b] hover:text-[#0f172a] text-sm transition-colors"
-              style={{ fontFamily: "var(--font-body)" }}
+              className="flex items-center gap-1.5 text-sm transition-colors"
+              style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#4ade80")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#52525b")}
               aria-label="WhatsApp"
             >
-              <span style={{ color: "#25d366" }}>
+              <span style={{ color: "#4ade80" }}>
                 <WhatsAppIcon />
               </span>
               <span className="hidden sm:inline">WhatsApp</span>
@@ -78,19 +94,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Line 2 — Nav links */}
+        {/* Nav links */}
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-4">
           {navLinks.map((link, i) => (
             <span key={link.label} className="flex items-center gap-4">
               {i > 0 && (
-                <span className="text-[#e2e8f0] hidden sm:inline">·</span>
+                <span
+                  className="hidden sm:inline"
+                  style={{ color: "rgba(255,255,255,0.08)" }}
+                >
+                  ·
+                </span>
               )}
               <a
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                className="text-sm text-[#64748b] hover:text-[#0f172a] transition-colors"
-                style={{ fontFamily: "var(--font-body)" }}
+                className="text-sm transition-colors"
+                style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#a1a1aa")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#52525b")}
               >
                 {link.label}
               </a>
@@ -98,19 +121,22 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Zones */}
+        {/* Zone */}
         <p
-          className="text-center text-xs text-[#94a3b8] mb-6"
-          style={{ fontFamily: "var(--font-body)" }}
+          className="text-center text-xs mb-6"
+          style={{ fontFamily: "var(--font-body)", color: "#3f3f46" }}
         >
           France · Belgique · Suisse · Luxembourg
         </p>
 
-        {/* Line 3 — Legal */}
-        <div className="border-t border-[#e2e8f0] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        {/* Legal */}
+        <div
+          className="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+          style={{ borderColor: "rgba(255,255,255,0.05)" }}
+        >
           <p
-            className="text-xs text-[#94a3b8]"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="text-xs"
+            style={{ fontFamily: "var(--font-body)", color: "#3f3f46" }}
           >
             © 2026 BiDigital. Tous droits réservés.
           </p>
@@ -118,17 +144,19 @@ export default function Footer() {
             {["Mentions légales", "Politique de confidentialité", "RGPD"].map(
               (item, i) => (
                 <span key={item} className="flex items-center gap-4">
-                  {i > 0 && <span className="text-[#e2e8f0]">·</span>}
+                  {i > 0 && (
+                    <span style={{ color: "rgba(255,255,255,0.06)" }}>·</span>
+                  )}
                   <a
                     href={
                       item === "Mentions légales"
                         ? "/mentions-legales"
-                        : item === "Politique de confidentialité"
-                        ? "/politique-de-confidentialite"
                         : "/politique-de-confidentialite"
                     }
-                    className="text-xs text-[#94a3b8] hover:text-[#64748b] transition-colors"
-                    style={{ fontFamily: "var(--font-body)" }}
+                    className="text-xs transition-colors"
+                    style={{ fontFamily: "var(--font-body)", color: "#3f3f46" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#71717a")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#3f3f46")}
                   >
                     {item}
                   </a>

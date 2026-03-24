@@ -142,23 +142,24 @@ const DOUBLED = [...TECHS, ...TECHS];
 function TechPill({ name, svg }: Tech) {
   return (
     <span
-      className="inline-flex items-center gap-2 border border-[#e2e8f0] rounded-full bg-white hover:border-[#bfdbfe] hover:shadow-[0_2px_12px_rgba(37,99,235,0.08)] transition-all duration-200"
+      className="inline-flex items-center gap-2 rounded-full transition-all duration-200"
       style={{
-        padding: "8px 16px",
-        boxShadow: "0 1px 4px rgba(0,0,0,0.05)",
+        padding: "7px 14px",
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.08)",
         whiteSpace: "nowrap",
-        marginRight: 12,
+        marginRight: 10,
         flexShrink: 0,
       }}
     >
-      <span style={{ width: 20, height: 20, flexShrink: 0, display: "flex", alignItems: "center" }}>
+      <span style={{ width: 18, height: 18, flexShrink: 0, display: "flex", alignItems: "center" }}>
         {svg}
       </span>
       <span
         style={{
-          fontSize: 13,
+          fontSize: 12,
           fontWeight: 500,
-          color: "#334155",
+          color: "#71717a",
           fontFamily: "var(--font-body)",
         }}
       >

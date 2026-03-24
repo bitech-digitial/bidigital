@@ -7,6 +7,7 @@ import CookieBanner from "@/components/ui/CookieBanner";
 const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
 const Examples = dynamic(() => import("@/components/sections/Examples"), { ssr: true });
 const Services = dynamic(() => import("@/components/sections/Services"), { ssr: true });
+const LegalCompliance = dynamic(() => import("@/components/sections/LegalCompliance"), { ssr: true });
 const Values = dynamic(() => import("@/components/sections/Values"), { ssr: true });
 const ForWho = dynamic(() => import("@/components/sections/ForWho"), { ssr: true });
 const Process = dynamic(() => import("@/components/sections/Process"), { ssr: true });
@@ -23,6 +24,7 @@ export default function Home() {
         <Hero />
         <Examples />
         <Services />
+        <LegalCompliance />
         <Values />
         <ForWho />
         <Process />
