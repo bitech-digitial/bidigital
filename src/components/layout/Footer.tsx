@@ -16,6 +16,7 @@ const BiDigitalLogo = () => (
     viewBox="0 0 100 100"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    aria-label="BiDigital"
     style={{ borderRadius: 8, flexShrink: 0 }}
   >
     <rect width="100" height="100" rx="22" fill="#0f0f1a" />
@@ -64,10 +65,7 @@ export default function Footer() {
       }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-
-        {/* Line 1 — Logo + tagline + contacts */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
-          {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group">
             <BiDigitalLogo />
             <span
@@ -84,7 +82,6 @@ export default function Footer() {
             </span>
           </a>
 
-          {/* Tagline */}
           <p
             className="hidden sm:block text-sm"
             style={{ fontFamily: "var(--font-body)", color: "#475569" }}
@@ -92,7 +89,6 @@ export default function Footer() {
             Votre site, conforme et visible.
           </p>
 
-          {/* Contacts */}
           <div className="flex items-center gap-4">
             <a
               href="mailto:contact@bidigital.fr"
@@ -123,15 +119,11 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Nav links */}
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-6">
           {navLinks.map((link, i) => (
             <span key={link.label} className="flex items-center gap-4">
               {i > 0 && (
-                <span
-                  className="hidden sm:inline"
-                  style={{ color: "rgba(255,255,255,0.06)" }}
-                >
+                <span className="hidden sm:inline" style={{ color: "rgba(255,255,255,0.06)" }}>
                   ·
                 </span>
               )}
@@ -150,15 +142,11 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Legal bottom bar */}
         <div
           className="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
           style={{ borderColor: "rgba(255,255,255,0.05)" }}
         >
-          <p
-            className="text-xs"
-            style={{ fontFamily: "var(--font-body)", color: "#334155" }}
-          >
+          <p className="text-xs" style={{ fontFamily: "var(--font-body)", color: "#334155" }}>
             © 2026 BiDigital — Votre site, conforme et visible.
           </p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
@@ -168,9 +156,7 @@ export default function Footer() {
               { label: "RGPD", href: "/politique-de-confidentialite" },
             ].map((item, i) => (
               <span key={item.label} className="flex items-center gap-4">
-                {i > 0 && (
-                  <span style={{ color: "rgba(255,255,255,0.06)" }}>·</span>
-                )}
+                {i > 0 && <span style={{ color: "rgba(255,255,255,0.06)" }}>·</span>}
                 <a
                   href={item.href}
                   className="text-xs transition-colors"

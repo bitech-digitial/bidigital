@@ -1,11 +1,29 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { WHATSAPP_LINK } from "@/lib/constants";
 import CalButton from "@/components/ui/CalButton";
 
 export default function Hero() {
+  const blob1Ref = useRef<HTMLDivElement>(null);
+  const blob2Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile) return;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (blob1Ref.current) blob1Ref.current.style.transform = `translateY(${y * 0.18}px)`;
+      if (blob2Ref.current) blob2Ref.current.style.transform = `translateY(${y * 0.12}px)`;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section
       className="relative overflow-hidden"
@@ -13,6 +31,7 @@ export default function Hero() {
     >
       {/* ── Animated mesh blobs ── */}
       <div
+        ref={blob1Ref}
         className="absolute pointer-events-none mesh-blob"
         style={{
           width: 700,
@@ -25,6 +44,7 @@ export default function Hero() {
         }}
       />
       <div
+        ref={blob2Ref}
         className="absolute pointer-events-none mesh-blob-alt"
         style={{
           width: 600,
@@ -63,28 +83,6 @@ export default function Hero() {
       {/* ── Main content ── */}
       <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center pt-24 pb-16">
         <div className="text-center">
-
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border mb-8"
-            style={{
-              background: "rgba(99,102,241,0.1)",
-              borderColor: "rgba(99,102,241,0.3)",
-              fontFamily: "var(--font-body)",
-              fontSize: 12,
-              fontWeight: 600,
-              color: "#a5b4fc",
-              letterSpacing: "0.08em",
-            }}
-          >
-            <span
-              className="w-2 h-2 rounded-full bg-[#4ade80] status-dot flex-shrink-0"
-            />
-            ✦ Agence web · Design premium · Résultats garantis
-          </motion.div>
 
           {/* H1 */}
           <motion.h1

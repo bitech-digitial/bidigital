@@ -52,7 +52,7 @@ const steps: Step[] = [
     title: "Votre site est en ligne",
     description:
       "Publié, indexé, visible sur Google. Mis en ligne rapidement après le premier échange.",
-    time: "🚀 En ligne",
+    time: "En ligne",
     featured: true,
   },
 ];

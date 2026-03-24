@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Instrument_Sans } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const heading = Plus_Jakarta_Sans({
@@ -17,36 +16,54 @@ const body = Instrument_Sans({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#08090f",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bidigital.fr"),
   title: {
-    default: "BiDigital — Agence Web | Site Conforme, SEO & Maintenance 19,99€/mois",
-    template: "%s | BiDigital",
+    default: "BiDigital — Agence Web | Site Vitrine Conforme RGPD, SEO & Maintenance",
+    template: "%s | BiDigital — Agence Web",
   },
   description:
-    "BiDigital crée votre site vitrine 100% conforme RGPD, optimisé SEO, avec maintenance incluse à 19,99€/mois sans engagement. Conforme, visible, inoubliable.",
+    "BiDigital, agence web création de site vitrine professionnel. 100% conforme RGPD, SEO optimisé pour apparaître en 1ère page Google. Maintenance, hébergement et nom de domaine inclus. 19,99€/mois sans engagement.",
   keywords: [
+    "BiDigital",
+    "bidigital",
     "agence web",
-    "création site internet",
-    "site vitrine",
-    "RGPD conformité",
-    "maintenance site web",
-    "SEO",
-    "site internet professionnel",
     "agence web France",
+    "création site internet",
+    "site vitrine professionnel",
+    "agence création site web",
+    "site internet professionnel",
+    "conformité RGPD site web",
+    "mise en conformité site internet",
+    "maintenance site internet",
+    "SEO référencement naturel",
+    "création site web artisan",
+    "site web TPE PME",
+    "amende RGPD site web",
+    "site web conforme CNIL",
+    "agence web pas cher",
+    "site vitrine pas cher",
+    "refonte site web",
+    "site web sur mesure",
     "agence web Chaville",
     "agence web Île-de-France",
     "création site web Chaville",
-    "création site web Île-de-France",
-    "agence digitale Chaville",
     "SEO Île-de-France",
-    "conformité légale site web",
-    "mentions légales site web",
     "bandeau cookies CNIL",
+    "mentions légales site web",
   ],
-  authors: [{ name: "BiDigital", url: "https://bidigital.fr" }],
+  authors: [{ name: "BiDigital", url: "https://www.bidigital.fr" }],
   creator: "BiDigital",
   publisher: "BiDigital",
   category: "technology",
+  classification: "Agence web, Création de site internet",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -70,140 +87,171 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://bidigital.fr",
-    siteName: "BiDigital",
-    title: "BiDigital — Agence Web | Site Conforme, SEO & Maintenance 19,99€/mois",
+    url: "https://www.bidigital.fr",
+    siteName: "BiDigital — Agence Web",
+    title: "BiDigital — Agence Web | Site Conforme, SEO & Maintenance",
     description:
-      "Site vitrine professionnel 100% conforme RGPD, SEO optimisé, maintenance à 19,99€/mois. Devis personnalisé gratuit.",
+      "Création de site vitrine professionnel, 100% conforme RGPD, SEO inclus, maintenance 19,99€/mois sans engagement.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/images/og/og-image.png",
         width: 1200,
         height: 630,
-        alt: "BiDigital — Agence Web Professionnelle",
-        type: "image/jpeg",
+        alt: "BiDigital — Agence web création de site vitrine professionnel",
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BiDigital — Site Conforme, SEO & Maintenance Incluse",
+    title: "BiDigital — Agence Web | Site Conforme & SEO",
     description:
-      "Agence web française. Votre site conforme, visible et inoubliable. Devis gratuit.",
-    images: ["/og-image.jpg"],
+      "Site vitrine professionnel, 100% conforme RGPD, SEO inclus, maintenance 19,99€/mois.",
+    images: ["/images/og/og-image.png"],
+    creator: "@bidigital",
   },
   alternates: {
-    canonical: "https://bidigital.fr",
-    languages: {
-      "fr-FR": "https://bidigital.fr",
-    },
+    canonical: "https://www.bidigital.fr",
+    languages: { "fr-FR": "https://www.bidigital.fr" },
   },
-  metadataBase: new URL("https://bidigital.fr"),
   verification: {
-    google: "REMPLACER_PAR_GOOGLE_SEARCH_CONSOLE_ID",
+    google: "",
   },
 };
 
-const schemaOrg = {
+const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "BiDigital",
-  alternateName: "BiDigital Agence Web",
-  description:
-    "Agence web — création de sites vitrines conformes RGPD, SEO inclus, maintenance à partir de 19,99€/mois",
-  url: "https://www.bidigital.fr",
-  logo: "https://bidigital.fr/favicon.svg",
-  image: "https://bidigital.fr/og-image.jpg",
-  telephone: "+33759748383",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Chaville",
-    addressRegion: "Île-de-France",
-    postalCode: "92370",
-    addressCountry: "FR",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: "48.8167",
-    longitude: "2.1833",
-  },
-  areaServed: "FR",
-  priceRange: "€€",
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    opens: "09:00",
-    closes: "19:00",
-  },
-  serviceType: [
-    "Création de site web",
-    "Site vitrine",
-    "SEO",
-    "Conformité RGPD",
-    "Maintenance web",
-    "Identité visuelle",
-  ],
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Services BiDigital",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Site Vitrine Conforme",
-          description: "Site web professionnel, 100% conforme RGPD, SEO optimisé",
-        },
-      },
-      {
-        "@type": "Offer",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          price: "19.99",
-          priceCurrency: "EUR",
-          billingIncrement: 1,
-          unitText: "MONTH",
-        },
-        itemOffered: {
-          "@type": "Service",
-          name: "Maintenance & Évolution Continue",
-          description:
-            "Hébergement, domaine, mises à jour légales, SEO continu, modifications rapides",
-        },
-      },
-    ],
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+33759748383",
-    contactType: "customer service",
-    availableLanguage: "French",
-    contactOption: "TollFree",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5",
-    reviewCount: "23",
-    bestRating: "5",
-    worstRating: "1",
-  },
-  review: [
+  "@graph": [
     {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Marie L." },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody:
-        "Un site professionnel conforme RGPD et déjà positionné sur Google. Mes prises de RDV ont augmenté de 40%.",
+      "@type": "Organization",
+      "@id": "https://www.bidigital.fr/#organization",
+      name: "BiDigital",
+      alternateName: ["bidigital", "Bi Digital", "BiDigital agence web"],
+      url: "https://www.bidigital.fr",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.bidigital.fr/favicon.svg",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+33-7-59-74-83-83",
+        contactType: "customer service",
+        availableLanguage: "French",
+      },
+      sameAs: ["https://wa.me/33759748383"],
     },
     {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Thomas C." },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody:
-        "Avant, j'avais aucune présence en ligne. Maintenant j'apparais en première page sur Google. Les appels ont triplé.",
+      "@type": "WebSite",
+      "@id": "https://www.bidigital.fr/#website",
+      url: "https://www.bidigital.fr",
+      name: "BiDigital — Agence Web",
+      description:
+        "Agence web création de site vitrine, conformité RGPD, SEO, maintenance.",
+      publisher: { "@id": "https://www.bidigital.fr/#organization" },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.bidigital.fr/#service",
+      name: "BiDigital",
+      description:
+        "Agence web spécialisée en création de site vitrine professionnel, conformité RGPD, SEO et maintenance mensuelle.",
+      url: "https://www.bidigital.fr",
+      telephone: "+33759748383",
+      email: "contact@bidigital.fr",
+      priceRange: "€€",
+      currenciesAccepted: "EUR",
+      areaServed: { "@type": "Country", name: "France" },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Chaville",
+        addressRegion: "Île-de-France",
+        postalCode: "92370",
+        addressCountry: "FR",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: "48.8167",
+        longitude: "2.1833",
+      },
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "19:00",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Services BiDigital",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            name: "Création site vitrine professionnel",
+            description:
+              "Site vitrine sur-mesure, 100% conforme RGPD, SEO optimisé, copywriting inclus",
+          },
+          {
+            "@type": "Offer",
+            name: "Maintenance & Évolution",
+            price: "19.99",
+            priceCurrency: "EUR",
+            description:
+              "Maintenance mensuelle, SEO continu, mises à jour légales, sans engagement",
+          },
+        ],
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5",
+        reviewCount: "10",
+        bestRating: "5",
+      },
+      review: [
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Marie L." },
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          reviewBody:
+            "Un site professionnel conforme RGPD et déjà positionné sur Google. Mes prises de RDV ont augmenté de 40%.",
+        },
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Thomas C." },
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          reviewBody:
+            "Avant, j'avais aucune présence en ligne. Maintenant j'apparais en première page sur Google. Les appels ont triplé.",
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Mon site est-il vraiment conforme RGPD ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Oui. Chaque site BiDigital est livré avec mentions légales, politique de confidentialité, gestion des cookies conforme CNIL et CGU si nécessaire.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Que comprend l'abonnement à 19,99€/mois ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "L'hébergement, le nom de domaine, les mises à jour légales et de sécurité, la surveillance SEO et toutes vos modifications. Sans engagement.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Puis-je garder mon nom de domaine existant ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Absolument. Nous pouvons utiliser votre domaine actuel ou vous en fournir un nouveau inclus dans l'abonnement.",
+          },
+        },
+      ],
     },
   ],
-  sameAs: ["https://wa.me/33759748383"],
 };
 
 export default function RootLayout({
@@ -214,17 +262,13 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${heading.variable} ${body.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://app.cal.com" />
       </head>
       <body className="antialiased">
         {children}
-        <Script
-          id="schema-org"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </body>
     </html>

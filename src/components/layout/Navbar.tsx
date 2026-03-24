@@ -14,13 +14,14 @@ const navLinks = [
   { label: "FAQ", href: "#faq" },
 ];
 
-const BiDigitalLogo = ({ size = 36 }: { size?: number }) => (
+const BiDigitalLogo = () => (
   <svg
-    width={size}
-    height={size}
+    width="36"
+    height="36"
     viewBox="0 0 100 100"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    aria-label="BiDigital"
     style={{ borderRadius: 10, flexShrink: 0 }}
   >
     <rect width="100" height="100" rx="22" fill="#0d0e20" />
@@ -65,8 +66,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 30);
-    window.addEventListener("scroll", handler);
+    const handler = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
@@ -94,13 +95,15 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || menuOpen ? "backdrop-blur-xl" : "bg-transparent"
+          scrolled || menuOpen
+            ? "backdrop-blur-xl shadow-2xl"
+            : "bg-transparent"
         }`}
         style={
           scrolled || menuOpen
             ? {
-                background: "rgba(8,9,15,0.88)",
-                borderBottom: "1px solid rgba(255,255,255,0.06)",
+                background: "rgba(8,9,15,0.95)",
+                borderBottom: "1px solid rgba(255,255,255,0.05)",
               }
             : {}
         }
@@ -108,7 +111,7 @@ export default function Navbar() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group" aria-label="BiDigital — Accueil">
-            <BiDigitalLogo size={34} />
+            <BiDigitalLogo />
             <span
               className="font-extrabold text-lg tracking-tight"
               style={{
@@ -146,7 +149,7 @@ export default function Navbar() {
             </CalButton>
           </div>
 
-          {/* Burger — mobile only */}
+          {/* Burger */}
           <div className="flex lg:hidden">
             <button
               onClick={() => setMenuOpen((v) => !v)}
@@ -211,10 +214,8 @@ export default function Navbar() {
               display: "flex",
               flexDirection: "column",
               paddingTop: 80,
-              borderBottom: "1px solid rgba(255,255,255,0.06)",
             }}
           >
-            {/* Nav links */}
             <div style={{ display: "flex", flexDirection: "column", gap: 4, padding: "32px 24px 0" }}>
               {navLinks.map((link) => (
                 <a
@@ -253,7 +254,6 @@ export default function Navbar() {
 
             <div className="section-divider" style={{ margin: "16px 24px" }} />
 
-            {/* CTAs */}
             <div style={{ marginTop: "auto", padding: "0 24px 40px" }}>
               <CalButton className="w-full justify-center py-4 text-base rounded-2xl">
                 Prendre rendez-vous — gratuit
@@ -282,14 +282,7 @@ export default function Navbar() {
                 <WhatsAppIcon size={18} />
                 Nous écrire sur WhatsApp
               </a>
-              <p
-                style={{
-                  fontSize: 11,
-                  color: "#334155",
-                  textAlign: "center",
-                  marginTop: 16,
-                }}
-              >
+              <p style={{ fontSize: 11, color: "#334155", textAlign: "center", marginTop: 16 }}>
                 ✓ Satisfait ou remboursé · Réponse sous 2h
               </p>
             </div>

@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Fichiers source de travail (images non optimisées)
+exemple-site-web-*.webp
+exemple-site-web-*.png
+Bidigital-logo-*.webp
+"Bidigital logo fond *.png"
+Bidigital-logo*.webp
+*.pem

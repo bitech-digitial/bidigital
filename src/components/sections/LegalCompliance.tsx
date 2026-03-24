@@ -82,7 +82,7 @@ export default function LegalCompliance() {
               lineHeight: 1.1,
             }}
           >
-            Votre site est-il en règle ?{" "}
+            Votre site est-il en règle ?<br />
             <span
               className="text-transparent bg-clip-text"
               style={{

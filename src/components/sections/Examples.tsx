@@ -1,70 +1,49 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 const realisations = [
   {
-    image: "/images/realisation-immobilier.webp",
+    image: "/images/realisations/site-2.webp",
     sector: "Immobilier · Diagnostic",
     url: "canopee-diagnostics.fr",
   },
   {
-    image: "/images/realisation-artisan.webp",
+    image: "/images/realisations/site-3.webp",
     sector: "Artisan · Bâtiment",
     url: "atvs-pro.fr",
   },
   {
-    image: "/images/realisation-commerce.webp",
-    sector: "Commerce · Retail",
-    url: "boutique-commerce.fr",
-  },
-  {
-    image: "/images/realisation-bienetre.webp",
+    image: "/images/realisations/site-4.webp",
     sector: "Bien-être · Coaching",
     url: "lebigsoleil.fr",
   },
   {
-    image: "/images/realisation-deco.webp",
+    image: "/images/realisations/site-5.webp",
     sector: "Décoration · Design",
     url: "reno-fashion.fr",
   },
   {
-    image: "/images/realisation-clim.webp",
+    image: "/images/realisations/site-6.webp",
     sector: "Artisan · Climatisation",
     url: "sparta-clim.fr",
+  },
+  {
+    image: "/images/realisations/site-1.webp",
+    sector: "Agence · Marketing Digital",
+    url: "bidigital.fr",
   },
 ];
 
 function BrowserCard({
   realisation,
-  index,
 }: {
   realisation: (typeof realisations)[0];
   index: number;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.style.transitionDelay = `${index * 0.1}s`;
-          el.classList.add("visible");
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [index]);
-
   return (
-    <div ref={cardRef} className="reveal-card">
+    <div className="reveal-card">
       {/* Glassmorphism card */}
       <div
         className="rounded-2xl overflow-hidden transition-all duration-300 group"
@@ -287,35 +266,22 @@ export default function Examples() {
           ))}
         </div>
 
-        {/* Tablet grid 2×3 */}
-        <div className="hidden md:grid lg:hidden grid-cols-2 gap-5">
-          {realisations.map((r, i) => (
-            <BrowserCard key={r.sector} realisation={r} index={i} />
-          ))}
-        </div>
-
-        {/* Mobile scroll horizontal */}
-        <div
-          className="flex md:hidden gap-4 pb-4"
-          style={{
-            overflowX: "scroll",
-            scrollSnapType: "x mandatory",
-            WebkitOverflowScrolling: "touch",
-            scrollbarWidth: "none",
-          }}
-        >
-          {realisations.map((r, i) => (
-            <div
-              key={r.sector}
-              style={{
-                minWidth: "85vw",
-                scrollSnapAlign: "start",
-                flexShrink: 0,
-              }}
-            >
-              <BrowserCard realisation={r} index={i} />
+        {/* Mobile/Tablet — carrousel CSS infini */}
+        <div className="block lg:hidden">
+          <div className="cards-container">
+            <div className="cards-track">
+              {realisations.map((r, i) => (
+                <div key={i} style={{ margin: "0 12px", width: "78vw", maxWidth: 320, flexShrink: 0 }}>
+                  <BrowserCard realisation={r} index={i} />
+                </div>
+              ))}
+              {realisations.map((r, i) => (
+                <div key={`copy-${i}`} aria-hidden style={{ margin: "0 12px", width: "78vw", maxWidth: 320, flexShrink: 0 }}>
+                  <BrowserCard realisation={r} index={i} />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
