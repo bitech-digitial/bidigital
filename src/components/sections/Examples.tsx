@@ -43,7 +43,7 @@ function BrowserCard({
   index: number;
 }) {
   return (
-    <div className="reveal-card">
+    <div>
       {/* Glassmorphism card */}
       <div
         className="rounded-2xl overflow-hidden transition-all duration-300 group"
