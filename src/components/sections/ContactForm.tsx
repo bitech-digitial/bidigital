@@ -54,9 +54,21 @@ export default function ContactForm() {
     fontSize: 14,
     padding: "12px 14px",
     width: "100%",
-    outline: "none",
-    transition: "border-color 0.2s",
+    outline: "2px solid transparent",
+    outlineOffset: "2px",
+    transition: "border-color 0.2s, box-shadow 0.2s",
   } as const;
+
+  const focusStyle = {
+    onFocus: (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+      e.currentTarget.style.borderColor = "rgba(99,102,241,0.6)";
+      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.12)";
+    },
+    onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+      e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+      e.currentTarget.style.boxShadow = "none";
+    },
+  };
 
   const labelStyle = {
     display: "block",
@@ -189,6 +201,7 @@ export default function ContactForm() {
                       value={form.name}
                       onChange={handleChange}
                       style={inputStyle}
+                      {...focusStyle}
                     />
                   </div>
                   <div>
@@ -201,6 +214,7 @@ export default function ContactForm() {
                       value={form.email}
                       onChange={handleChange}
                       style={inputStyle}
+                      {...focusStyle}
                     />
                   </div>
                 </div>
@@ -213,7 +227,8 @@ export default function ContactForm() {
                     required
                     value={form.sector}
                     onChange={handleChange}
-                    style={{ ...inputStyle, cursor: "pointer" }}
+                    style={{ ...inputStyle, cursor: "pointer", colorScheme: "dark" }}
+                    {...focusStyle}
                   >
                     <option value="" disabled style={{ background: "#0d0f23" }}>
                       Choisir…
@@ -237,6 +252,7 @@ export default function ContactForm() {
                     value={form.message}
                     onChange={handleChange}
                     style={{ ...inputStyle, resize: "none" }}
+                    {...focusStyle}
                   />
                 </div>
 

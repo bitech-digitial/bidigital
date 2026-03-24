@@ -204,7 +204,7 @@ export default function BeforeAfter() {
             className="relative overflow-hidden select-none"
             style={{
               borderRadius: 20,
-              height: 420,
+              height: "clamp(300px, 52vw, 460px)",
               border: "1px solid rgba(255,255,255,0.07)",
               boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
               cursor: "col-resize",

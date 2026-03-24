@@ -97,7 +97,6 @@ export default function FAQ() {
                 border: openIndex === i
                   ? "1px solid rgba(99,102,241,0.2)"
                   : "1px solid rgba(255,255,255,0.07)",
-                transition: "background 0.2s, border-color 0.2s",
               }}
             >
               <button

@@ -4,126 +4,159 @@ import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 
 const rows = [
-  {
-    label: "Prix",
-    agency: "3 000€ — 15 000€",
-    freelance: "800€ — 2 000€",
-    bidigital: "597€ TTC",
-  },
-  {
-    label: "Délai",
-    agency: "4 à 12 semaines",
-    freelance: "2 à 6 semaines",
-    bidigital: "72h garanties",
-  },
-  {
-    label: "Prix fixe garanti",
-    agency: false,
-    freelance: false,
-    bidigital: true,
-  },
-  {
-    label: "Hébergement inclus",
-    agency: false,
-    freelance: false,
-    bidigital: true,
-  },
-  {
-    label: "SEO inclus",
-    agency: true,
-    freelance: false,
-    bidigital: true,
-  },
-  {
-    label: "Suivi post-livraison",
-    agency: true,
-    freelance: false,
-    bidigital: true,
-  },
+  { label: "Prix", agency: "3 000€ — 15 000€", freelance: "800€ — 2 000€", bidigital: "à partir de 690€" },
+  { label: "Délai", agency: "4 à 12 semaines", freelance: "2 à 6 semaines", bidigital: "48h garanties" },
+  { label: "Prix fixe garanti", agency: false, freelance: false, bidigital: true },
+  { label: "Hébergement inclus", agency: false, freelance: false, bidigital: true },
+  { label: "SEO inclus", agency: true, freelance: false, bidigital: true },
+  { label: "Suivi post-livraison", agency: true, freelance: false, bidigital: true },
 ];
 
 function Cell({ value }: { value: boolean | string }) {
   if (typeof value === "boolean") {
     return value ? (
-      <Check className="w-5 h-5 text-[#16a34a] mx-auto" />
+      <Check className="w-4 h-4 mx-auto" style={{ color: "#4ade80" }} />
     ) : (
-      <X className="w-5 h-5 text-[#94a3b8] mx-auto" />
+      <X className="w-4 h-4 mx-auto" style={{ color: "#3f3f46" }} />
     );
   }
-  return <span className="text-[#0f172a] text-sm" style={{ fontFamily: "var(--font-body)" }}>{value}</span>;
+  return (
+    <span
+      className="text-sm font-medium"
+      style={{ fontFamily: "var(--font-body)", color: "#a1a1aa" }}
+    >
+      {value}
+    </span>
+  );
 }
 
-function CellMobile({ value }: { value: boolean | string }) {
+function CellMobile({ value, highlight }: { value: boolean | string; highlight?: boolean }) {
   if (typeof value === "boolean") {
     return value ? (
-      <Check className="w-4 h-4 text-[#16a34a]" />
+      <Check className="w-4 h-4" style={{ color: "#4ade80" }} />
     ) : (
-      <X className="w-4 h-4 text-[#94a3b8]" />
+      <X className="w-4 h-4" style={{ color: "#3f3f46" }} />
     );
   }
-  return <span className="text-xs font-medium text-[#0f172a]" style={{ fontFamily: "var(--font-body)" }}>{value}</span>;
+  return (
+    <span
+      className="text-xs font-semibold"
+      style={{
+        fontFamily: "var(--font-body)",
+        color: highlight ? "#a5b4fc" : "#a1a1aa",
+      }}
+    >
+      {value}
+    </span>
+  );
 }
 
 export default function ValueAnchor() {
   return (
-    <section className="py-24 px-4 bg-[#ffffff]">
+    <section
+      id="comparaison"
+      className="py-20 sm:py-24 px-4"
+      style={{ background: "#050814" }}
+    >
       <div className="max-w-5xl mx-auto">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 sm:mb-14"
         >
           <span
-            className="inline-block px-4 py-2 rounded-full border border-[#bfdbfe] bg-[#eff6ff] text-[#2563eb] text-sm font-medium mb-4"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
+            style={{
+              background: "rgba(99,102,241,0.1)",
+              border: "1px solid rgba(99,102,241,0.25)",
+              color: "#818cf8",
+              fontFamily: "var(--font-body)",
+            }}
           >
             Comparaison
           </span>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0f172a] mb-4"
-            style={{ fontFamily: "var(--font-heading)" }}
+            className="text-3xl lg:text-4xl font-extrabold mb-4"
+            style={{
+              fontFamily: "var(--font-heading)",
+              color: "#f0f0ff",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.1,
+            }}
           >
             Pourquoi payer 3 000€
             <br />
-            pour attendre 6 semaines ?
+            <span
+              className="text-transparent bg-clip-text"
+              style={{ backgroundImage: "linear-gradient(135deg, #818cf8, #c084fc)" }}
+            >
+              pour attendre 6 semaines ?
+            </span>
           </h2>
-          <p className="text-[#475569] text-lg max-w-xl mx-auto" style={{ fontFamily: "var(--font-body)" }}>
-            La qualité d&apos;une agence, la rapidité d&apos;un SaaS, le prix d&apos;un
-            freelance junior.
+          <p
+            className="text-base max-w-xl mx-auto"
+            style={{ fontFamily: "var(--font-body)", color: "#71717a" }}
+          >
+            La qualité d&apos;une agence, la rapidité d&apos;un SaaS, le prix d&apos;un freelance junior.
           </p>
         </motion.div>
 
         {/* Desktop table */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="hidden md:block overflow-x-auto"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="hidden md:block overflow-hidden rounded-2xl"
+          style={{
+            border: "1px solid rgba(255,255,255,0.07)",
+            background: "rgba(255,255,255,0.02)",
+          }}
         >
-          <table className="w-full border-collapse bg-white border border-[#e2e8f0] rounded-2xl overflow-hidden">
+          <table className="w-full border-collapse">
             <thead>
-              <tr className="bg-[#f8fafc]">
-                <th className="text-left py-4 px-6 text-[#475569] text-sm font-medium w-1/4" style={{ fontFamily: "var(--font-body)" }}>
+              <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                <th
+                  className="text-left py-4 px-6 text-xs font-semibold uppercase tracking-widest w-1/4"
+                  style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                >
                   Critère
                 </th>
-                <th className="py-4 px-6 text-center text-[#475569] text-sm font-medium" style={{ fontFamily: "var(--font-body)" }}>
+                <th
+                  className="py-4 px-6 text-center text-xs font-semibold uppercase tracking-widest"
+                  style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                >
                   Agence classique
                 </th>
-                <th className="py-4 px-6 text-center text-[#475569] text-sm font-medium" style={{ fontFamily: "var(--font-body)" }}>
+                <th
+                  className="py-4 px-6 text-center text-xs font-semibold uppercase tracking-widest"
+                  style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                >
                   Freelance
                 </th>
-                <th className="py-4 px-6 text-center relative bg-[#dbeafe]">
-                  <div className="inline-flex flex-col items-center">
+                <th
+                  className="py-4 px-6 text-center"
+                  style={{ background: "rgba(99,102,241,0.08)" }}
+                >
+                  <div className="inline-flex flex-col items-center gap-1">
                     <span
-                      className="text-[#1d4ed8] font-bold text-sm"
-                      style={{ fontFamily: "var(--font-heading)" }}
+                      className="font-extrabold text-sm"
+                      style={{ fontFamily: "var(--font-heading)", color: "#a5b4fc" }}
                     >
                       BiDigital
                     </span>
-                    <span className="text-[10px] text-[#2563eb] mt-1 bg-[#eff6ff] px-2 py-0.5 rounded-full" style={{ fontFamily: "var(--font-body)" }}>
+                    <span
+                      className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+                      style={{
+                        background: "rgba(99,102,241,0.15)",
+                        border: "1px solid rgba(99,102,241,0.3)",
+                        color: "#818cf8",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
                       Recommandé
                     </span>
                   </div>
@@ -134,11 +167,15 @@ export default function ValueAnchor() {
               {rows.map((row, i) => (
                 <tr
                   key={row.label}
-                  className={`border-t border-[#e2e8f0] hover:bg-[#f8fafc] transition-colors ${
-                    i % 2 === 0 ? "" : "bg-[#f8fafc]/50"
-                  }`}
+                  style={{
+                    borderTop: "1px solid rgba(255,255,255,0.05)",
+                    background: i % 2 === 1 ? "rgba(255,255,255,0.01)" : "transparent",
+                  }}
                 >
-                  <td className="py-4 px-6 text-[#0f172a] text-sm font-medium" style={{ fontFamily: "var(--font-body)" }}>
+                  <td
+                    className="py-4 px-6 text-sm font-medium"
+                    style={{ fontFamily: "var(--font-body)", color: "#71717a" }}
+                  >
                     {row.label}
                   </td>
                   <td className="py-4 px-6 text-center">
@@ -147,7 +184,14 @@ export default function ValueAnchor() {
                   <td className="py-4 px-6 text-center">
                     <Cell value={row.freelance} />
                   </td>
-                  <td className="py-4 px-6 text-center bg-[#eff6ff] border-x border-[#bfdbfe]">
+                  <td
+                    className="py-4 px-6 text-center"
+                    style={{
+                      background: "rgba(99,102,241,0.06)",
+                      borderLeft: "1px solid rgba(99,102,241,0.15)",
+                      borderRight: "1px solid rgba(99,102,241,0.15)",
+                    }}
+                  >
                     <Cell value={row.bidigital} />
                   </td>
                 </tr>
@@ -158,27 +202,37 @@ export default function ValueAnchor() {
 
         {/* Mobile cards */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="block md:hidden"
         >
           <div className="grid grid-cols-3 gap-2">
-            {/* Agence classique */}
-            <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-3">
-              <h3
-                className="text-xs font-bold text-center pb-2 border-b border-[#e2e8f0]"
-                style={{ fontFamily: "var(--font-heading)" }}
+            {/* Agence */}
+            <div
+              className="rounded-xl p-3"
+              style={{
+                background: "rgba(255,255,255,0.02)",
+                border: "1px solid rgba(255,255,255,0.07)",
+              }}
+            >
+              <p
+                className="text-xs font-bold text-center pb-2 mb-2"
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  color: "#52525b",
+                  borderBottom: "1px solid rgba(255,255,255,0.07)",
+                }}
               >
                 Agence
-              </h3>
-              <div className="pt-2 space-y-3">
+              </p>
+              <div className="space-y-3">
                 {rows.map((row) => (
                   <div key={row.label}>
-                    <div className="text-[10px] text-slate-400 uppercase tracking-wide mb-0.5">
+                    <p className="text-[9px] uppercase tracking-wide mb-0.5" style={{ color: "#3f3f46", fontFamily: "var(--font-body)" }}>
                       {row.label}
-                    </div>
+                    </p>
                     <CellMobile value={row.agency} />
                   </div>
                 ))}
@@ -186,19 +240,29 @@ export default function ValueAnchor() {
             </div>
 
             {/* Freelance */}
-            <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-3">
-              <h3
-                className="text-xs font-bold text-center pb-2 border-b border-[#e2e8f0]"
-                style={{ fontFamily: "var(--font-heading)" }}
+            <div
+              className="rounded-xl p-3"
+              style={{
+                background: "rgba(255,255,255,0.02)",
+                border: "1px solid rgba(255,255,255,0.07)",
+              }}
+            >
+              <p
+                className="text-xs font-bold text-center pb-2 mb-2"
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  color: "#52525b",
+                  borderBottom: "1px solid rgba(255,255,255,0.07)",
+                }}
               >
                 Freelance
-              </h3>
-              <div className="pt-2 space-y-3">
+              </p>
+              <div className="space-y-3">
                 {rows.map((row) => (
                   <div key={row.label}>
-                    <div className="text-[10px] text-slate-400 uppercase tracking-wide mb-0.5">
+                    <p className="text-[9px] uppercase tracking-wide mb-0.5" style={{ color: "#3f3f46", fontFamily: "var(--font-body)" }}>
                       {row.label}
-                    </div>
+                    </p>
                     <CellMobile value={row.freelance} />
                   </div>
                 ))}
@@ -206,23 +270,36 @@ export default function ValueAnchor() {
             </div>
 
             {/* BiDigital */}
-            <div className="bg-[#eff6ff] border border-[#bfdbfe] rounded-xl p-3 relative">
-              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 bg-[#2563eb] text-white text-[9px] font-bold rounded-full">
-                Meilleur choix
+            <div
+              className="rounded-xl p-3 relative"
+              style={{
+                background: "rgba(99,102,241,0.08)",
+                border: "1px solid rgba(99,102,241,0.3)",
+              }}
+            >
+              <div
+                className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 rounded-full text-[9px] font-bold"
+                style={{ background: "#6366f1", color: "#fff", fontFamily: "var(--font-body)" }}
+              >
+                ✓ Meilleur
               </div>
-              <h3
-                className="text-xs font-bold text-center text-[#1d4ed8] pb-2 border-b border-[#bfdbfe]"
-                style={{ fontFamily: "var(--font-heading)" }}
+              <p
+                className="text-xs font-bold text-center pb-2 mb-2"
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  color: "#a5b4fc",
+                  borderBottom: "1px solid rgba(99,102,241,0.2)",
+                }}
               >
                 BiDigital
-              </h3>
-              <div className="pt-2 space-y-3">
+              </p>
+              <div className="space-y-3">
                 {rows.map((row) => (
                   <div key={row.label}>
-                    <div className="text-[10px] text-slate-400 uppercase tracking-wide mb-0.5">
+                    <p className="text-[9px] uppercase tracking-wide mb-0.5" style={{ color: "#52525b", fontFamily: "var(--font-body)" }}>
                       {row.label}
-                    </div>
-                    <CellMobile value={row.bidigital} />
+                    </p>
+                    <CellMobile value={row.bidigital} highlight />
                   </div>
                 ))}
               </div>
@@ -233,14 +310,14 @@ export default function ValueAnchor() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center text-[#475569] mt-8 text-sm"
-          style={{ fontFamily: "var(--font-body)" }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center text-sm mt-8"
+          style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
         >
           Même niveau de qualité.{" "}
-          <span className="text-[#0f172a] font-medium">Fraction du prix.</span>{" "}
-          <span className="text-[#0f172a] font-medium">Fraction du temps.</span>
+          <span style={{ color: "#a1a1aa", fontWeight: 500 }}>Fraction du prix.</span>{" "}
+          <span style={{ color: "#a1a1aa", fontWeight: 500 }}>Fraction du temps.</span>
         </motion.p>
       </div>
     </section>

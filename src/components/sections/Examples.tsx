@@ -51,16 +51,13 @@ const examples: ScrollCard[] = [
 export default function Examples() {
   return (
     <section id="exemples" className="py-20 overflow-hidden" style={{ background: "#06071a" }}>
-      {/* Section divider */}
-      <div className="section-divider mb-16" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 sm:mb-14"
         >
           <span
             className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"

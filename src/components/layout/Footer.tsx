@@ -25,7 +25,7 @@ export default function Footer() {
         borderTop: "1px solid rgba(255,255,255,0.06)",
       }}
     >
-      <div className="max-w-[1100px] mx-auto px-6 py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
 
         {/* Line 1 */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">

@@ -77,7 +77,7 @@ export default function StatsCounter() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="text-center"
+              className="text-center relative"
             >
               {/* Number */}
               <p

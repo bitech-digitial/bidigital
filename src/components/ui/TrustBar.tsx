@@ -36,7 +36,7 @@ export default function TrustBar() {
         borderBottom: "1px solid rgba(255,255,255,0.06)",
       }}
     >
-      <div className="flex items-center justify-center gap-8 flex-wrap">
+      <div className="max-w-6xl mx-auto flex items-center justify-center gap-6 sm:gap-8 flex-wrap">
         {items.map(({ Icon, iconColor, bg, title, sub }, i) => (
           <div key={title} className="flex items-center gap-8 flex-wrap justify-center">
             {i > 0 && (

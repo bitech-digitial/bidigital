@@ -81,9 +81,6 @@ export default function Services() {
   return (
     <section id="services" className="py-20 px-4" style={{ background: "#050814" }}>
       <div className="max-w-7xl mx-auto">
-        {/* Section divider top */}
-        <div className="section-divider mb-16" />
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

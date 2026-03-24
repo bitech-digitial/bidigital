@@ -12,7 +12,8 @@
       "Bash(git:*)",
       "Bash(find src:*)",
       "Bash(find . -type f -name *.tsx)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(vercel:*)"
     ]
   }
 }
