@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Agence Web Île-de-France | BiDigital — Création Site Web",
   description:
-    "BiDigital, agence web en Île-de-France. Création de sites web professionnels livrés en 72h. SEO, UX/UI, hébergement inclus. Devis gratuit pour Paris et toute l'IDF.",
+    "BiDigital, agence web en Île-de-France. Création de sites web professionnels livrés rapidement. SEO, UX/UI, hébergement inclus. Devis gratuit pour Paris et toute l'IDF.",
   alternates: {
     canonical: "https://bidigital.fr/agence-web-ile-de-france",
   },
@@ -40,7 +40,7 @@ export default function AgenceWebIleDeFrance() {
         </p>
         <p>
           Notre agence digitale conçoit des sites vitrines, boutiques
-          e-commerce et applications mobiles <strong>livrés en 72h</strong>.
+          e-commerce et applications mobiles <strong>livrés rapidement</strong>.
           Chaque projet inclut un <strong>design UX/UI</strong> sur-mesure,
           une optimisation <strong>SEO local</strong> pour apparaître sur
           Google, le copywriting, l&apos;hébergement haute performance et

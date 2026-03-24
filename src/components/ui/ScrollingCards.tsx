@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 const cards = [
-  { icon: Globe, label: "Site Vitrine", sub: "Livraison 72h" },
+  { icon: Globe, label: "Site Vitrine", sub: "Livraison rapide" },
   { icon: ShoppingBag, label: "E-commerce", sub: "Sur devis" },
   { icon: Smartphone, label: "App Mobile", sub: "Sur devis" },
   { icon: LayoutDashboard, label: "Plateforme SaaS", sub: "Sur devis" },

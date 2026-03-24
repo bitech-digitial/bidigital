@@ -44,41 +44,41 @@ function PopupCard({
         justifyContent: "center",
         padding: "16px",
         boxSizing: "border-box",
-        background: "rgba(15,23,42,0.40)",
-        backdropFilter: "blur(4px)",
-        WebkitBackdropFilter: "blur(4px)",
+        background: "rgba(0,0,0,0.7)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
         zIndex: 9999,
       }}
     >
       <motion.div
-        initial={{ scale: 0.92, opacity: 0 }}
+        initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.95, opacity: 0 }}
-        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+        exit={{ scale: 0.96, opacity: 0 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
         style={{
           position: "relative",
           width: "100%",
           maxWidth: "420px",
           margin: "0 auto",
-          background: "#ffffff",
-          border: "1px solid #e2e8f0",
+          background: "#0f1018",
+          border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: "20px",
           padding: "32px 28px 28px",
           boxSizing: "border-box",
-          boxShadow: "0 24px 80px rgba(0,0,0,0.18)",
+          boxShadow: "0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.1)",
           overflow: "hidden",
         }}
       >
-        {/* Decorative radial */}
+        {/* Decorative glow */}
         <div
           style={{
             position: "absolute",
             top: 0,
             left: 0,
-            width: 192,
-            height: 192,
-            background: "radial-gradient(circle at top left, rgba(37,99,235,0.06), transparent 70%)",
+            width: 220,
+            height: 220,
+            background: "radial-gradient(circle at top left, rgba(99,102,241,0.12), transparent 70%)",
             pointerEvents: "none",
           }}
         />
@@ -90,8 +90,8 @@ function PopupCard({
             position: "absolute",
             top: 12,
             right: 12,
-            background: "#f8fafc",
-            border: "1px solid #e2e8f0",
+            background: "rgba(255,255,255,0.05)",
+            border: "1px solid rgba(255,255,255,0.08)",
             borderRadius: 8,
             width: 32,
             height: 32,
@@ -101,7 +101,10 @@ function PopupCard({
             cursor: "pointer",
             zIndex: 10,
             color: "#94a3b8",
+            transition: "color 0.2s",
           }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
           aria-label="Fermer"
         >
           <X size={16} />
@@ -115,7 +118,7 @@ function PopupCard({
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.1em",
-              color: isExit ? "#7c3aed" : "#3b82f6",
+              color: isExit ? "#c084fc" : "#818cf8",
               marginBottom: 8,
               fontFamily: "var(--font-body)",
             }}
@@ -128,17 +131,21 @@ function PopupCard({
               fontSize: "clamp(18px, 4vw, 22px)",
               fontWeight: 700,
               fontFamily: "var(--font-heading)",
-              color: "#0f172a",
+              color: "#f8fafc",
               marginBottom: 8,
               paddingRight: 32,
               lineHeight: 1.3,
+              background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
             }}
           >
             {isMid
               ? "Parlons de votre projet."
               : isExit
               ? "Obtenez votre audit de site offert."
-              : "Votre site vitrine en 72h vous attend."}
+              : "Votre site vitrine vous attend."}
           </h3>
 
           <p
@@ -153,7 +160,7 @@ function PopupCard({
             {isMid
               ? "Un échange de 15 minutes suffit pour définir ensemble la meilleure solution pour votre activité."
               : isExit
-              ? "Avant de partir — on analyse votre site actuel gratuitement et on vous envoie nos recommandations sous 48h."
+              ? "Avant de partir — on analyse votre site actuel gratuitement et on vous envoie nos recommandations."
               : "Des dizaines de professionnels nous font déjà confiance. Rejoignez-les."}
           </p>
 
@@ -179,11 +186,19 @@ function PopupCard({
                 fontSize: 14,
                 borderRadius: 12,
                 boxSizing: "border-box",
-                background: "#25d366",
-                color: "#ffffff",
+                background: "rgba(37,211,102,0.1)",
+                border: "1px solid rgba(37,211,102,0.25)",
+                color: "#4ade80",
                 textDecoration: "none",
                 fontFamily: "var(--font-body)",
                 fontWeight: 500,
+                transition: "background 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(37,211,102,0.18)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(37,211,102,0.1)";
               }}
             >
               <WhatsAppIcon size={18} />
@@ -195,7 +210,7 @@ function PopupCard({
             style={{
               textAlign: "center",
               fontSize: 11,
-              color: "#94a3b8",
+              color: "#334155",
               marginTop: 14,
               fontFamily: "var(--font-body)",
             }}
@@ -203,7 +218,7 @@ function PopupCard({
             {isMid
               ? "Sans engagement · Réponse garantie sous 2h"
               : isExit
-              ? "Audit 100% gratuit · Livré sous 48h · Aucun engagement"
+              ? "Audit 100% gratuit · Aucun engagement"
               : "Sans engagement · Devis gratuit sous 24h"}
           </p>
         </div>
@@ -236,7 +251,6 @@ export default function ConversionPopup() {
     popup2EligibleAt.current = null;
   }, [closeAll]);
 
-  // Scroll-based popups (mid + end)
   useEffect(() => {
     if (sessionStorage.getItem(KEY_1) === "true") {
       popup2EligibleAt.current = 0;
@@ -270,7 +284,6 @@ export default function ConversionPopup() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Exit intent — cursor leaves viewport toward top
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
       if (
@@ -286,7 +299,6 @@ export default function ConversionPopup() {
     return () => document.removeEventListener("mouseleave", handleMouseLeave);
   }, []);
 
-  // Keyboard escape
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key !== "Escape") return;

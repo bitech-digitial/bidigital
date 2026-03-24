@@ -14,6 +14,52 @@ const navLinks = [
   { label: "FAQ", href: "#faq" },
 ];
 
+const BiDigitalLogo = ({ size = 36 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ borderRadius: 10, flexShrink: 0 }}
+  >
+    <rect width="100" height="100" rx="22" fill="#0d0e20" />
+    <circle cx="22" cy="22" r="2.5" fill="#6366f1" opacity="0.25" />
+    <circle cx="50" cy="22" r="2.5" fill="#6366f1" opacity="0.25" />
+    <circle cx="78" cy="22" r="2.5" fill="#6366f1" opacity="0.25" />
+    <circle cx="22" cy="50" r="2.5" fill="#6366f1" opacity="0.25" />
+    <circle cx="78" cy="50" r="2.5" fill="#6366f1" opacity="0.25" />
+    <circle cx="22" cy="78" r="2.5" fill="#6366f1" opacity="0.25" />
+    <circle cx="50" cy="78" r="2.5" fill="#6366f1" opacity="0.25" />
+    <circle cx="78" cy="78" r="2.5" fill="#6366f1" opacity="0.25" />
+    <rect x="28" y="26" width="6" height="48" rx="3" fill="url(#nl1)" />
+    <path
+      d="M34 26 L52 26 Q64 26 64 38 Q64 50 52 50 L34 50"
+      stroke="url(#nl1)"
+      strokeWidth="6"
+      strokeLinecap="round"
+      fill="none"
+    />
+    <path
+      d="M34 50 L54 50 Q68 50 68 62 Q68 74 54 74 L34 74"
+      stroke="url(#nl2)"
+      strokeWidth="6"
+      strokeLinecap="round"
+      fill="none"
+    />
+    <defs>
+      <linearGradient id="nl1" x1="28" y1="26" x2="68" y2="50" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#818cf8" />
+        <stop offset="100%" stopColor="#6366f1" />
+      </linearGradient>
+      <linearGradient id="nl2" x1="28" y1="50" x2="68" y2="74" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#6366f1" />
+        <stop offset="100%" stopColor="#8b5cf6" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,41 +94,29 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || menuOpen
-            ? "backdrop-blur-xl"
-            : "bg-transparent"
+          scrolled || menuOpen ? "backdrop-blur-xl" : "bg-transparent"
         }`}
         style={
           scrolled || menuOpen
             ? {
-                background: "rgba(5,8,20,0.85)",
-                borderBottom: "1px solid rgba(255,255,255,0.07)",
+                background: "rgba(8,9,15,0.88)",
+                borderBottom: "1px solid rgba(255,255,255,0.06)",
               }
             : {}
         }
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{
-                background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-                boxShadow: "0 2px 10px rgba(99,102,241,0.4)",
-              }}
-            >
-              <span
-                className="text-white text-sm font-bold"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                B
-              </span>
-            </div>
+          <a href="#" className="flex items-center gap-2.5 group" aria-label="BiDigital — Accueil">
+            <BiDigitalLogo size={34} />
             <span
-              className="font-extrabold text-lg tracking-tight text-transparent bg-clip-text"
+              className="font-extrabold text-lg tracking-tight"
               style={{
                 fontFamily: "var(--font-heading)",
-                backgroundImage: "linear-gradient(135deg, #f0f0ff, #818cf8)",
+                background: "linear-gradient(135deg, #f8fafc, #818cf8)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}
             >
               BiDigital
@@ -96,12 +130,9 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 className="text-sm transition-colors duration-200"
-                style={{
-                  fontFamily: "var(--font-body)",
-                  color: "#71717a",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#e0e0ff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#71717a")}
+                style={{ fontFamily: "var(--font-body)", color: "#64748b" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#64748b")}
               >
                 {link.label}
               </a>
@@ -111,7 +142,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center">
             <CalButton className="text-sm px-5 py-2.5">
-              Démarrer mon projet
+              Prendre rendez-vous
             </CalButton>
           </div>
 
@@ -151,7 +182,7 @@ export default function Navbar() {
                     width: 20,
                     height: 2,
                     borderRadius: 2,
-                    background: "#a1a1aa",
+                    background: "#94a3b8",
                     transformOrigin: "center",
                     transition: "all 0.3s ease",
                     ...style,
@@ -163,7 +194,7 @@ export default function Navbar() {
         </nav>
       </motion.header>
 
-      {/* Full-screen menu overlay */}
+      {/* Full-screen mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -175,7 +206,7 @@ export default function Navbar() {
             style={{
               position: "fixed",
               inset: 0,
-              background: "#050814",
+              background: "#08090f",
               zIndex: 40,
               display: "flex",
               flexDirection: "column",
@@ -198,7 +229,7 @@ export default function Navbar() {
                     borderRadius: 14,
                     fontSize: 16,
                     fontWeight: 600,
-                    color: "#e0e0ff",
+                    color: "#f8fafc",
                     textDecoration: "none",
                     background: "transparent",
                     border: "1px solid transparent",
@@ -215,12 +246,11 @@ export default function Navbar() {
                   }}
                 >
                   {link.label}
-                  <ArrowRight size={15} color="#52525b" />
+                  <ArrowRight size={15} color="#475569" />
                 </a>
               ))}
             </div>
 
-            {/* Separator */}
             <div className="section-divider" style={{ margin: "16px 24px" }} />
 
             {/* CTAs */}
@@ -255,7 +285,7 @@ export default function Navbar() {
               <p
                 style={{
                   fontSize: 11,
-                  color: "#52525b",
+                  color: "#334155",
                   textAlign: "center",
                   marginTop: 16,
                 }}

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Agence Web Chaville | BiDigital — Sites Web en 72h",
+  title: "Agence Web Chaville | BiDigital — Sites Web rapidement",
   description:
-    "BiDigital, votre agence web à Chaville (92). Création de sites professionnels en 72h. Design UX/UI, SEO, hébergement inclus. Devis gratuit.",
+    "BiDigital, votre agence web à Chaville (92). Création de sites professionnels rapidement. Design UX/UI, SEO, hébergement inclus. Devis gratuit.",
   alternates: {
     canonical: "https://bidigital.fr/page-chaville",
   },
@@ -24,7 +24,7 @@ export default function PageChaville() {
         className="text-xl font-semibold text-[#2563eb] mb-6"
         style={{ fontFamily: "var(--font-heading)" }}
       >
-        Votre site web professionnel en 72h
+        Votre site web professionnel rapidement
       </h2>
 
       <div
@@ -41,7 +41,7 @@ export default function PageChaville() {
         <p>
           Spécialisée dans la <strong>création de sites web professionnels</strong>,
           notre agence digitale conçoit des sites vitrines, boutiques
-          e-commerce et applications mobiles <strong>livrés en 72h</strong>.
+          e-commerce et applications mobiles <strong>livrés rapidement</strong>.
           Chaque projet inclut le design UX/UI, le SEO local, le copywriting,
           l&apos;hébergement et l&apos;identité visuelle — sans frais cachés.
         </p>

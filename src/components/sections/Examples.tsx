@@ -1,112 +1,323 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import InfiniteScroll, { type ScrollCard } from "@/components/ui/InfiniteScroll";
+import Image from "next/image";
 
-const examples: ScrollCard[] = [
+const realisations = [
   {
-    sector: "Artisan & Bâtiment",
-    label: "Site vitrine",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",
-    alt: "Site web artisan bâtiment",
-    url: "menuiserie-dupont.fr",
+    image: "/images/realisation-immobilier.webp",
+    sector: "Immobilier · Diagnostic",
+    url: "canopee-diagnostics.fr",
   },
   {
-    sector: "Restaurant",
-    label: "Site vitrine",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80",
-    alt: "Site web restaurant",
-    url: "lebristo-paris.fr",
+    image: "/images/realisation-artisan.webp",
+    sector: "Artisan · Bâtiment",
+    url: "atvs-pro.fr",
   },
   {
-    sector: "Photographe",
-    label: "Portfolio",
-    image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80",
-    alt: "Site web photographe",
-    url: "martin-photo.fr",
+    image: "/images/realisation-commerce.webp",
+    sector: "Commerce · Retail",
+    url: "boutique-commerce.fr",
   },
   {
-    sector: "Thérapeute",
-    label: "Site vitrine",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80",
-    alt: "Site web thérapeute",
-    url: "cabinet-bien-etre.fr",
+    image: "/images/realisation-bienetre.webp",
+    sector: "Bien-être · Coaching",
+    url: "lebigsoleil.fr",
   },
   {
-    sector: "Immobilier",
-    label: "Site vitrine",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80",
-    alt: "Site web agent immobilier",
-    url: "agence-immo92.fr",
+    image: "/images/realisation-deco.webp",
+    sector: "Décoration · Design",
+    url: "reno-fashion.fr",
   },
   {
-    sector: "Événementiel",
-    label: "Site vitrine",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",
-    alt: "Site web événementiel",
-    url: "events-prestige.fr",
+    image: "/images/realisation-clim.webp",
+    sector: "Artisan · Climatisation",
+    url: "sparta-clim.fr",
   },
 ];
 
+function BrowserCard({
+  realisation,
+  index,
+}: {
+  realisation: (typeof realisations)[0];
+  index: number;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.transitionDelay = `${index * 0.1}s`;
+          el.classList.add("visible");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [index]);
+
+  return (
+    <div ref={cardRef} className="reveal-card">
+      {/* Glassmorphism card */}
+      <div
+        className="rounded-2xl overflow-hidden transition-all duration-300 group"
+        style={{
+          background: "rgba(255,255,255,0.03)",
+          border: "1px solid rgba(255,255,255,0.06)",
+          boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
+        }}
+        onMouseEnter={(e) => {
+          const el = e.currentTarget;
+          el.style.transform = "translateY(-6px)";
+          el.style.borderColor = "rgba(99,102,241,0.3)";
+          el.style.boxShadow = "0 8px 40px rgba(99,102,241,0.15)";
+        }}
+        onMouseLeave={(e) => {
+          const el = e.currentTarget;
+          el.style.transform = "translateY(0)";
+          el.style.borderColor = "rgba(255,255,255,0.06)";
+          el.style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
+        }}
+      >
+        {/* Browser mockup */}
+        <div
+          style={{
+            borderRadius: "12px 12px 0 0",
+            overflow: "hidden",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05)",
+          }}
+        >
+          {/* Browser bar */}
+          <div
+            style={{
+              background: "#141420",
+              height: 36,
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "0 12px",
+              borderBottom: "1px solid rgba(255,255,255,0.06)",
+            }}
+          >
+            {/* Traffic light dots */}
+            <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+              <span
+                style={{
+                  width: 12,
+                  height: 12,
+                  borderRadius: "50%",
+                  background: "#ff5f57",
+                  display: "block",
+                }}
+              />
+              <span
+                style={{
+                  width: 12,
+                  height: 12,
+                  borderRadius: "50%",
+                  background: "#febc2e",
+                  display: "block",
+                }}
+              />
+              <span
+                style={{
+                  width: 12,
+                  height: 12,
+                  borderRadius: "50%",
+                  background: "#28c840",
+                  display: "block",
+                }}
+              />
+            </div>
+
+            {/* URL bar */}
+            <div
+              className="url-bar-shimmer"
+              style={{
+                background: "#0a0a14",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: 99,
+                padding: "3px 12px",
+                fontSize: 11,
+                color: "#94a3b8",
+                fontFamily: "var(--font-body)",
+                flex: 1,
+                maxWidth: "55%",
+                margin: "0 auto",
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+                display: "flex",
+                alignItems: "center",
+                gap: 5,
+              }}
+            >
+              <span style={{ fontSize: 10 }}>🔒</span>
+              {realisation.url}
+            </div>
+          </div>
+
+          {/* Browser screen */}
+          <div
+            style={{
+              position: "relative",
+              aspectRatio: "16/9",
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src={realisation.image}
+              alt={`Réalisation BiDigital — ${realisation.sector}`}
+              fill
+              sizes="(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 33vw"
+              style={{
+                objectFit: "cover",
+                transition: "transform 0.4s ease",
+              }}
+              className="group-hover:scale-[1.03]"
+            />
+          </div>
+        </div>
+
+        {/* Sector label */}
+        <div
+          style={{
+            padding: "12px 16px",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              padding: "4px 10px",
+              borderRadius: 99,
+              background: "rgba(99,102,241,0.12)",
+              border: "1px solid rgba(99,102,241,0.2)",
+              color: "#818cf8",
+              fontSize: 11,
+              fontWeight: 600,
+              fontFamily: "var(--font-body)",
+              letterSpacing: "0.04em",
+            }}
+          >
+            {realisation.sector}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Examples() {
   return (
-    <section id="exemples" className="py-20 overflow-hidden" style={{ background: "#06071a" }}>
+    <section
+      id="exemples"
+      className="py-24 overflow-hidden"
+      style={{ background: "#06070e" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12 sm:mb-14"
+          className="text-center mb-14"
         >
           <span
-            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
+            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-5"
             style={{
-              background: "rgba(99,102,241,0.1)",
-              border: "1px solid rgba(99,102,241,0.25)",
+              background: "rgba(99,102,241,0.12)",
+              border: "1px solid rgba(99,102,241,0.3)",
               color: "#818cf8",
               fontFamily: "var(--font-body)",
             }}
           >
-            Réalisations
+            RÉALISATIONS
           </span>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
+            className="font-extrabold text-gradient mb-4"
             style={{
               fontFamily: "var(--font-heading)",
-              color: "#f0f0ff",
-              letterSpacing: "-0.02em",
+              fontSize: "clamp(2rem, 4vw, 3.5rem)",
+              letterSpacing: "-0.03em",
               lineHeight: 1.1,
             }}
           >
-            Des sites qui convertissent,
-            <br />
+            Des sites qui convertissent,{" "}
             <span
-              className="text-transparent bg-clip-text"
               style={{
-                backgroundImage: "linear-gradient(135deg, #818cf8, #c084fc)",
+                background: "linear-gradient(135deg, #818cf8, #c084fc)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}
             >
               pour chaque secteur.
             </span>
           </h2>
           <p
-            className="text-lg max-w-xl mx-auto"
-            style={{ fontFamily: "var(--font-body)", color: "#a1a1aa" }}
+            style={{
+              fontFamily: "var(--font-body)",
+              color: "#94a3b8",
+              fontSize: "1.1rem",
+              maxWidth: 600,
+              margin: "0 auto",
+              lineHeight: 1.7,
+            }}
           >
             Chaque métier a ses codes. Nous les connaissons. Nous les appliquons.
           </p>
         </motion.div>
-      </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        <InfiniteScroll items={examples} />
-      </motion.div>
+        {/* Desktop grid 3×2 */}
+        <div className="hidden lg:grid grid-cols-3 gap-6">
+          {realisations.map((r, i) => (
+            <BrowserCard key={r.sector} realisation={r} index={i} />
+          ))}
+        </div>
+
+        {/* Tablet grid 2×3 */}
+        <div className="hidden md:grid lg:hidden grid-cols-2 gap-5">
+          {realisations.map((r, i) => (
+            <BrowserCard key={r.sector} realisation={r} index={i} />
+          ))}
+        </div>
+
+        {/* Mobile scroll horizontal */}
+        <div
+          className="flex md:hidden gap-4 pb-4"
+          style={{
+            overflowX: "scroll",
+            scrollSnapType: "x mandatory",
+            WebkitOverflowScrolling: "touch",
+            scrollbarWidth: "none",
+          }}
+        >
+          {realisations.map((r, i) => (
+            <div
+              key={r.sector}
+              style={{
+                minWidth: "85vw",
+                scrollSnapAlign: "start",
+                flexShrink: 0,
+              }}
+            >
+              <BrowserCard realisation={r} index={i} />
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

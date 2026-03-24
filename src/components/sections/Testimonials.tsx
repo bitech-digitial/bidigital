@@ -12,7 +12,7 @@ const testimonials = [
     color: "#818cf8",
     rating: 5,
     quote:
-      "En 72h, j'avais un site professionnel, conforme RGPD, et déjà positionné sur Google. Mes prises de RDV ont augmenté de 40% en deux mois. Je recommande sans hésiter.",
+      "Mon site est professionnel, conforme RGPD, et déjà positionné sur Google. Mes prises de RDV ont augmenté de 40% en deux mois. Je recommande sans hésiter.",
   },
   {
     initials: "TC",

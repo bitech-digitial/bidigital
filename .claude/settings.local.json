@@ -14,7 +14,14 @@
       "Bash(find . -type f -name *.tsx)",
       "Bash(npx tsc:*)",
       "Bash(vercel:*)",
-      "Bash(npx kill-port:*)"
+      "Bash(npx kill-port:*)",
+      "Bash(mkdir -p public/images)",
+      "Bash(cp \"Agence-Canopee-Diagnostics-Immobiliers-_-Diagnostic-Immobilier-en-Ile-de-France-4-qzgjv1x2gth9xtqcl9xuv5qib6ey90bo1agr3g7xns.webp\" public/images/realisation-immobilier.webp)",
+      "Bash(cp \"atvs-1.webp\" public/images/realisation-artisan.webp)",
+      "Bash(cp \"Capture-decran-2024-02-28-a-20.57.24.webp\" public/images/realisation-commerce.webp)",
+      "Bash(cp \"Danser.-Guerir.-Sepanouir.-Le-Big-Soleil-lebigsoleil.fr_.webp\" public/images/realisation-bienetre.webp)",
+      "Bash(grep -r \"72h\\\\|Belgique\\\\|Luxembourg\\\\|Suisse\\\\|Technologies maîtrisées\\\\|RGPD · Mentions légales · Cookies — inclus dès le jour 1\\\\|France · Belgique\" --include=*.tsx --include=*.ts -l)",
+      "Bash(cd:*)"
     ]
   }
 }

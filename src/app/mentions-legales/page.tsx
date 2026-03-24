@@ -30,7 +30,7 @@ export default function MentionsLegales() {
             Adresse : Chaville, 92370 Hauts-de-Seine, France
             <br />
             Téléphone :{" "}
-            <a href="tel:+33695597767" className="text-[#2563eb] underline">
+            <a href="tel:+33759748383" className="text-[#2563eb] underline">
               +33 6 95 59 77 67
             </a>
             <br />

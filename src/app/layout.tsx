@@ -19,11 +19,11 @@ const body = Instrument_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "BiDigital — Agence Web | Site Vitrine, Conformité RGPD & SEO Inclus",
+    default: "BiDigital — Agence Web | Site Conforme, SEO & Maintenance 19,99€/mois",
     template: "%s | BiDigital",
   },
   description:
-    "Agence web BiDigital : site vitrine professionnel, 100% conforme RGPD, SEO optimisé, maintenance incluse à 19,99€/mois sans engagement. France, Belgique, Suisse, Luxembourg.",
+    "BiDigital crée votre site vitrine 100% conforme RGPD, optimisé SEO, avec maintenance incluse à 19,99€/mois sans engagement. Conforme, visible, inoubliable.",
   keywords: [
     "agence web",
     "création site internet",
@@ -38,9 +38,6 @@ export const metadata: Metadata = {
     "création site web Chaville",
     "création site web Île-de-France",
     "agence digitale Chaville",
-    "création site web Belgique",
-    "agence web Suisse",
-    "site web Luxembourg",
     "SEO Île-de-France",
     "conformité légale site web",
     "mentions légales site web",
@@ -75,7 +72,7 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://bidigital.fr",
     siteName: "BiDigital",
-    title: "BiDigital — Agence Web | Site Vitrine, Conformité RGPD & SEO Inclus",
+    title: "BiDigital — Agence Web | Site Conforme, SEO & Maintenance 19,99€/mois",
     description:
       "Site vitrine professionnel 100% conforme RGPD, SEO optimisé, maintenance à 19,99€/mois. Devis personnalisé gratuit.",
     images: [
@@ -90,18 +87,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BiDigital — Site Vitrine, Conformité RGPD & SEO Inclus",
+    title: "BiDigital — Site Conforme, SEO & Maintenance Incluse",
     description:
-      "Agence web France, Belgique, Suisse, Luxembourg. Devis gratuit.",
+      "Agence web française. Votre site conforme, visible et inoubliable. Devis gratuit.",
     images: ["/og-image.jpg"],
   },
   alternates: {
     canonical: "https://bidigital.fr",
     languages: {
       "fr-FR": "https://bidigital.fr",
-      "fr-BE": "https://bidigital.fr",
-      "fr-CH": "https://bidigital.fr",
-      "fr-LU": "https://bidigital.fr",
     },
   },
   metadataBase: new URL("https://bidigital.fr"),
@@ -120,7 +114,7 @@ const schemaOrg = {
   url: "https://www.bidigital.fr",
   logo: "https://bidigital.fr/favicon.svg",
   image: "https://bidigital.fr/og-image.jpg",
-  telephone: "+33695597767",
+  telephone: "+33759748383",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Chaville",
@@ -133,7 +127,7 @@ const schemaOrg = {
     latitude: "48.8167",
     longitude: "2.1833",
   },
-  areaServed: ["France", "Belgique", "Suisse", "Luxembourg"],
+  areaServed: "FR",
   priceRange: "€€",
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
@@ -174,21 +168,21 @@ const schemaOrg = {
           "@type": "Service",
           name: "Maintenance & Évolution Continue",
           description:
-            "Hébergement, domaine, mises à jour légales, SEO continu, modifications sous 48h",
+            "Hébergement, domaine, mises à jour légales, SEO continu, modifications rapides",
         },
       },
     ],
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+33695597767",
+    telephone: "+33759748383",
     contactType: "customer service",
     availableLanguage: "French",
     contactOption: "TollFree",
   },
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.9",
+    ratingValue: "5",
     reviewCount: "23",
     bestRating: "5",
     worstRating: "1",
@@ -199,7 +193,7 @@ const schemaOrg = {
       author: { "@type": "Person", name: "Marie L." },
       reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
       reviewBody:
-        "En 72h, j'avais un site professionnel conforme RGPD et déjà positionné sur Google. Mes prises de RDV ont augmenté de 40%.",
+        "Un site professionnel conforme RGPD et déjà positionné sur Google. Mes prises de RDV ont augmenté de 40%.",
     },
     {
       "@type": "Review",
@@ -209,7 +203,7 @@ const schemaOrg = {
         "Avant, j'avais aucune présence en ligne. Maintenant j'apparais en première page sur Google. Les appels ont triplé.",
     },
   ],
-  sameAs: ["https://wa.me/33695597767"],
+  sameAs: ["https://wa.me/33759748383"],
 };
 
 export default function RootLayout({
@@ -222,7 +216,6 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://app.cal.com" />
       </head>
       <body className="antialiased">
