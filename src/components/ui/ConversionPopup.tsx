@@ -9,6 +9,7 @@ import CalButton from "@/components/ui/CalButton";
 
 const KEY_1 = "bidigital_popup_1_closed";
 const KEY_2 = "bidigital_popup_2_closed";
+const KEY_EXIT = "bidigital_popup_exit_closed";
 const DELAY_MS = 30_000;
 
 function PopupCard({
@@ -16,11 +17,12 @@ function PopupCard({
   onClose,
   onCtaClick,
 }: {
-  type: "mid" | "end";
+  type: "mid" | "end" | "exit";
   onClose: () => void;
   onCtaClick: () => void;
 }) {
   const isMid = type === "mid";
+  const isExit = type === "exit";
 
   return (
     <motion.div
@@ -113,12 +115,12 @@ function PopupCard({
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.1em",
-              color: "#3b82f6",
+              color: isExit ? "#7c3aed" : "#3b82f6",
               marginBottom: 8,
               fontFamily: "var(--font-body)",
             }}
           >
-            {isMid ? "Votre projet nous intéresse" : "Avant de partir..."}
+            {isMid ? "Votre projet nous intéresse" : isExit ? "Offre exclusive" : "Avant de partir..."}
           </p>
 
           <h3
@@ -134,6 +136,8 @@ function PopupCard({
           >
             {isMid
               ? "Parlons de votre projet."
+              : isExit
+              ? "Obtenez votre audit de site offert."
               : "Votre site vitrine en 72h vous attend."}
           </h3>
 
@@ -148,6 +152,8 @@ function PopupCard({
           >
             {isMid
               ? "Un échange de 15 minutes suffit pour définir ensemble la meilleure solution pour votre activité."
+              : isExit
+              ? "Avant de partir — on analyse votre site actuel gratuitement et on vous envoie nos recommandations sous 48h."
               : "Des dizaines de professionnels nous font déjà confiance. Rejoignez-les."}
           </p>
 
@@ -196,6 +202,8 @@ function PopupCard({
           >
             {isMid
               ? "Sans engagement · Réponse garantie sous 2h"
+              : isExit
+              ? "Audit 100% gratuit · Livré sous 48h · Aucun engagement"
               : "Sans engagement · Devis gratuit sous 24h"}
           </p>
         </div>
@@ -207,32 +215,28 @@ function PopupCard({
 export default function ConversionPopup() {
   const [showPopup1, setShowPopup1] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
+  const [showExitPopup, setShowExitPopup] = useState(false);
   const popup2EligibleAt = useRef<number | null>(null);
-  const activeRef = useRef<"mid" | "end" | null>(null);
+  const activeRef = useRef<"mid" | "end" | "exit" | null>(null);
 
-  const handleClose1 = useCallback(() => {
+  const closeAll = useCallback((keys: string[]) => {
     setShowPopup1(false);
-    sessionStorage.setItem(KEY_1, "true");
-    sessionStorage.setItem(KEY_2, "true");
+    setShowPopup2(false);
+    setShowExitPopup(false);
+    keys.forEach((k) => sessionStorage.setItem(k, "true"));
     activeRef.current = null;
   }, []);
 
-  const handleClose2 = useCallback(() => {
-    setShowPopup2(false);
-    sessionStorage.setItem(KEY_1, "true");
-    sessionStorage.setItem(KEY_2, "true");
-    activeRef.current = null;
-  }, []);
+  const handleClose1 = useCallback(() => closeAll([KEY_1, KEY_2]), [closeAll]);
+  const handleClose2 = useCallback(() => closeAll([KEY_1, KEY_2]), [closeAll]);
+  const handleCloseExit = useCallback(() => closeAll([KEY_EXIT]), [closeAll]);
 
-  const handleCtaClick = () => {
-    setShowPopup1(false);
-    setShowPopup2(false);
-    sessionStorage.setItem(KEY_1, "true");
-    sessionStorage.setItem(KEY_2, "true");
+  const handleCtaClick = useCallback(() => {
+    closeAll([KEY_1, KEY_2, KEY_EXIT]);
     popup2EligibleAt.current = null;
-    activeRef.current = null;
-  };
+  }, [closeAll]);
 
+  // Scroll-based popups (mid + end)
   useEffect(() => {
     if (sessionStorage.getItem(KEY_1) === "true") {
       popup2EligibleAt.current = 0;
@@ -249,6 +253,7 @@ export default function ConversionPopup() {
         pct >= 90 &&
         !key2Closed &&
         activeRef.current !== "end" &&
+        activeRef.current !== "exit" &&
         popup2EligibleAt.current !== null &&
         Date.now() >= popup2EligibleAt.current
       ) {
@@ -265,15 +270,33 @@ export default function ConversionPopup() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Exit intent — cursor leaves viewport toward top
+  useEffect(() => {
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (
+        e.clientY <= 8 &&
+        activeRef.current === null &&
+        sessionStorage.getItem(KEY_EXIT) !== "true"
+      ) {
+        activeRef.current = "exit";
+        setShowExitPopup(true);
+      }
+    };
+    document.addEventListener("mouseleave", handleMouseLeave);
+    return () => document.removeEventListener("mouseleave", handleMouseLeave);
+  }, []);
+
+  // Keyboard escape
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key !== "Escape") return;
-      if (showPopup2) handleClose2();
+      if (showExitPopup) handleCloseExit();
+      else if (showPopup2) handleClose2();
       else if (showPopup1) handleClose1();
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [showPopup1, showPopup2, handleClose1, handleClose2]);
+  }, [showPopup1, showPopup2, showExitPopup, handleClose1, handleClose2, handleCloseExit]);
 
   return (
     <AnimatePresence>
@@ -282,6 +305,9 @@ export default function ConversionPopup() {
       )}
       {showPopup2 && (
         <PopupCard key="popup2" type="end" onClose={handleClose2} onCtaClick={handleCtaClick} />
+      )}
+      {showExitPopup && (
+        <PopupCard key="exit" type="exit" onClose={handleCloseExit} onCtaClick={handleCtaClick} />
       )}
     </AnimatePresence>
   );

@@ -68,7 +68,7 @@ export default function Offer() {
             className="text-lg max-w-xl mx-auto"
             style={{ fontFamily: "var(--font-body)", color: "#a1a1aa" }}
           >
-            Sur devis personnalisé — tarif compétitif et transparent, établi selon vos besoins.
+            Tarif transparent — devis précis sous 24h.
           </p>
         </motion.div>
 
@@ -108,13 +108,37 @@ export default function Offer() {
                   className="text-xl font-bold"
                   style={{ fontFamily: "var(--font-heading)", color: "#f0f0ff" }}
                 >
-                  Votre projet, votre devis.
+                  Site vitrine
                 </p>
+                <div className="flex items-baseline gap-1.5 mt-1">
+                  <span
+                    className="text-xs"
+                    style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                  >
+                    à partir de
+                  </span>
+                  <span
+                    className="font-extrabold text-2xl"
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      color: "#818cf8",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    690 €
+                  </span>
+                  <span
+                    className="text-xs"
+                    style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                  >
+                    TTC
+                  </span>
+                </div>
                 <p
-                  className="text-sm mt-1"
-                  style={{ fontFamily: "var(--font-body)", color: "#71717a" }}
+                  className="text-xs mt-1"
+                  style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
                 >
-                  Un tarif adapté à vos besoins, établi avec transparence.
+                  Devis précis gratuit sous 24h
                 </p>
               </div>
 

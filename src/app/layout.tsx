@@ -186,6 +186,29 @@ const schemaOrg = {
     availableLanguage: "French",
     contactOption: "TollFree",
   },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "23",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Marie L." },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody:
+        "En 72h, j'avais un site professionnel conforme RGPD et déjà positionné sur Google. Mes prises de RDV ont augmenté de 40%.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Thomas C." },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      reviewBody:
+        "Avant, j'avais aucune présence en ligne. Maintenant j'apparais en première page sur Google. Les appels ont triplé.",
+    },
+  ],
   sameAs: ["https://wa.me/33695597767"],
 };
 

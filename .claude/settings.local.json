@@ -10,7 +10,9 @@
       "Bash(npm install:*)",
       "Bash(npm uninstall:*)",
       "Bash(git:*)",
-      "Bash(find src:*)"
+      "Bash(find src:*)",
+      "Bash(find . -type f -name *.tsx)",
+      "Bash(npx tsc:*)"
     ]
   }
 }
