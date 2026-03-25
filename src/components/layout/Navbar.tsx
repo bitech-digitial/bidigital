@@ -109,8 +109,8 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex flex-col items-center">
-              <CalButton style={{ fontSize: 13, padding: "8px 16px", borderRadius: 10 }}>
-                Parlons de votre projet
+              <CalButton style={{ fontSize: 13, padding: "8px 18px", borderRadius: 10 }}>
+                Lancer mon projet
               </CalButton>
             </div>
 
