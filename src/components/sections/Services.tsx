@@ -42,7 +42,7 @@ const services = [
   },
   {
     icon: RefreshCw,
-    badge: "ABONNEMENT · SANS ENGAGEMENT",
+    badge: "Abonnement · sans engagement",
     badgeStyle: {
       background: "rgba(139,92,246,0.15)",
       border: "1px solid rgba(139,92,246,0.4)",
@@ -55,7 +55,6 @@ const services = [
       "Mises à jour légales & sécurité incluses",
       "SEO continu + positions Google surveillées",
       "Copywriting optimisé régulièrement",
-      "Hébergement + nom de domaine inclus",
       "Modifications sous 48h garanties",
       "Sans engagement",
     ],
