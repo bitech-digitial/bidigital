@@ -5,7 +5,6 @@ import { useEffect, useState, useRef } from 'react';
 const WORDS = [
   'inoubliable',
   'performant',
-  'conforme',
   'rentable',
   'optimisé',
   'professionnel',

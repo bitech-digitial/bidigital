@@ -140,7 +140,7 @@ export default function Hero() {
           >
             BiDigital conçoit des sites qui convertissent, conformes RGPD,
             optimisés SEO — livrés avec tout inclus.{" "}
-            <span style={{ color: "#f8fafc", fontWeight: 500 }}>
+            <span style={{ color: "#f8fafc", fontWeight: 700, fontSize: "clamp(1.25rem, 5vw, 1.5rem)", display: "inline-block", marginTop: "0.25rem" }}>
               À partir de 19,99€/mois.
             </span>
           </motion.p>
