@@ -254,6 +254,8 @@ const jsonLd = {
   ],
 };
 
+import MobileStickyCTA from "@/components/ui/MobileStickyCTA";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -266,6 +268,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <MobileStickyCTA />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -14,53 +14,6 @@ const navLinks = [
   { label: "FAQ", href: "#faq" },
 ];
 
-const BiDigitalLogo = () => (
-  <svg
-    width="36"
-    height="36"
-    viewBox="0 0 100 100"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-label="BiDigital"
-    style={{ borderRadius: 10, flexShrink: 0 }}
-  >
-    <rect width="100" height="100" rx="22" fill="#0d0e20" />
-    <circle cx="22" cy="22" r="2.5" fill="#6366f1" opacity="0.25" />
-    <circle cx="50" cy="22" r="2.5" fill="#6366f1" opacity="0.25" />
-    <circle cx="78" cy="22" r="2.5" fill="#6366f1" opacity="0.25" />
-    <circle cx="22" cy="50" r="2.5" fill="#6366f1" opacity="0.25" />
-    <circle cx="78" cy="50" r="2.5" fill="#6366f1" opacity="0.25" />
-    <circle cx="22" cy="78" r="2.5" fill="#6366f1" opacity="0.25" />
-    <circle cx="50" cy="78" r="2.5" fill="#6366f1" opacity="0.25" />
-    <circle cx="78" cy="78" r="2.5" fill="#6366f1" opacity="0.25" />
-    <rect x="28" y="26" width="6" height="48" rx="3" fill="url(#nl1)" />
-    <path
-      d="M34 26 L52 26 Q64 26 64 38 Q64 50 52 50 L34 50"
-      stroke="url(#nl1)"
-      strokeWidth="6"
-      strokeLinecap="round"
-      fill="none"
-    />
-    <path
-      d="M34 50 L54 50 Q68 50 68 62 Q68 74 54 74 L34 74"
-      stroke="url(#nl2)"
-      strokeWidth="6"
-      strokeLinecap="round"
-      fill="none"
-    />
-    <defs>
-      <linearGradient id="nl1" x1="28" y1="26" x2="68" y2="50" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#818cf8" />
-        <stop offset="100%" stopColor="#6366f1" />
-      </linearGradient>
-      <linearGradient id="nl2" x1="28" y1="50" x2="68" y2="74" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#6366f1" />
-        <stop offset="100%" stopColor="#8b5cf6" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -90,7 +43,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Outer wrapper: full-width fixed, pointer-events-none so content behind is clickable */}
+      {/* Outer wrapper: full-width fixed, pointer-events-none so content is clickable */}
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -101,15 +54,13 @@ export default function Navbar() {
           transition: "padding 0.35s ease",
         }}
       >
-        {/* Inner nav: pill that condenses when scrolled */}
+        {/* Inner pill nav */}
         <header
           className="pointer-events-auto mx-auto"
           style={{
             maxWidth: scrolled ? 896 : "100%",
             borderRadius: scrolled ? 18 : 0,
-            background: scrolled || menuOpen
-              ? "rgba(8,9,15,0.9)"
-              : "transparent",
+            background: scrolled || menuOpen ? "rgba(8,9,15,0.9)" : "transparent",
             backdropFilter: scrolled || menuOpen ? "blur(20px)" : "none",
             WebkitBackdropFilter: scrolled || menuOpen ? "blur(20px)" : "none",
             boxShadow: scrolled
@@ -120,18 +71,17 @@ export default function Navbar() {
           }}
         >
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            {/* Logo */}
+            {/* Logo — texte seul sans icône */}
             <a
               href="#"
-              className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 rounded-lg"
+              className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 rounded-lg"
               aria-label="BiDigital — Accueil"
             >
-              <BiDigitalLogo />
               <span
-                className="font-extrabold text-lg tracking-tight"
+                className="font-extrabold text-xl tracking-tight"
                 style={{
                   fontFamily: "var(--font-heading)",
-                  background: "linear-gradient(135deg, #f8fafc, #818cf8)",
+                  background: "linear-gradient(135deg, #f8fafc 0%, #818cf8 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
