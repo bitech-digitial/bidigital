@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Zap } from "lucide-react";
+import { Check } from "lucide-react";
 import { WHATSAPP_LINK } from "@/lib/constants";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import CalButton from "@/components/ui/CalButton";
@@ -17,7 +17,6 @@ const maintenanceBullets = [
   "Mises à jour légales & sécurité incluses",
   "SEO continu + positions Google surveillées",
   "Copywriting optimisé régulièrement",
-  "Hébergement + nom de domaine inclus",
   "Modifications sous 48h garanties",
   "Sans engagement — résiliable à tout moment",
 ];
@@ -235,8 +234,7 @@ export default function Offer() {
                     fontFamily: "var(--font-body)",
                   }}
                 >
-                  <Zap className="w-3 h-3" />
-                  ABONNEMENT · SANS ENGAGEMENT
+                  Abonnement · sans engagement
                 </span>
                 <p
                   className="text-xl font-bold"
