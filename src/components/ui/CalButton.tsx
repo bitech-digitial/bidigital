@@ -2,7 +2,6 @@
 
 import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
-import { Calendar } from "lucide-react";
 import { ReactNode, CSSProperties } from "react";
 
 interface CalButtonProps {
@@ -65,7 +64,6 @@ export default function CalButton({
       }}
       onClick={onClick}
     >
-      <Calendar size={18} style={{ flexShrink: 0 }} />
       {children}
     </button>
   );
