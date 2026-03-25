@@ -108,10 +108,14 @@ export default function Navbar() {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center">
+            <div className="hidden lg:flex flex-col items-center">
               <CalButton className="text-sm px-5 py-2.5">
-                Prendre RDV
+                <span className="hidden sm:inline">Votre projet nous intéresse</span>
+                <span className="inline sm:hidden">Prendre RDV</span>
               </CalButton>
+              <span className="hidden sm:block text-[10px] text-center mt-0.5 leading-none" style={{ color: "rgba(129,140,248,0.6)" }}>
+                Sans engagement
+              </span>
             </div>
 
             {/* Burger */}

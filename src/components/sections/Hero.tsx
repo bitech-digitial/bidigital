@@ -100,9 +100,9 @@ export default function Hero() {
             className="text-gradient"
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(2.8rem, 8vw, 6.5rem)",
+              fontSize: "clamp(1.75rem, 8.5vw, 5.5rem)",
               fontWeight: 900,
-              lineHeight: 1.05,
+              lineHeight: 1.1,
               letterSpacing: "-0.04em",
               marginBottom: "1.5rem",
             }}
@@ -113,7 +113,7 @@ export default function Hero() {
             {/* Ligne 2 — ne casse JAMAIS quelle que soit la taille */}
             <span
               className="block whitespace-nowrap"
-              style={{ ...gradientSpanStyle, fontSize: "clamp(1.1rem, 5vw, inherit)" }}
+              style={gradientSpanStyle}
             >
               Conforme, visible,
             </span>
