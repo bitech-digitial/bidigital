@@ -167,7 +167,7 @@ export default function Offer() {
               </ul>
 
               <div className="flex flex-col gap-3">
-                <CalButton className="w-full text-sm">
+                <CalButton className="w-full" style={{ fontSize: 14, padding: "11px 18px" }}>
                   Prendre rendez-vous
                 </CalButton>
                 <motion.a

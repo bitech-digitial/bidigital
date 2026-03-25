@@ -182,7 +182,7 @@ export default function LegalCompliance() {
             </div>
           </div>
           <div className="flex-shrink-0">
-            <CalButton className="text-sm px-5 py-3 whitespace-nowrap">
+            <CalButton style={{ fontSize: 14, padding: "10px 18px" }}>
               Mettre mon site en conformité
             </CalButton>
           </div>

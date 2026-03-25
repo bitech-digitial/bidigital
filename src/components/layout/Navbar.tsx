@@ -109,9 +109,8 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex flex-col items-center">
-              <CalButton className="text-sm px-5 py-2.5">
-                <span className="hidden sm:inline">Votre projet nous intéresse</span>
-                <span className="inline sm:hidden">Prendre RDV</span>
+              <CalButton style={{ fontSize: 13, padding: "8px 16px", borderRadius: 10 }}>
+                Votre projet nous intéresse
               </CalButton>
             </div>
 
@@ -223,7 +222,7 @@ export default function Navbar() {
             <div className="section-divider" style={{ margin: "16px 24px" }} />
 
             <div style={{ marginTop: "auto", padding: "0 24px 40px" }}>
-              <CalButton className="w-full justify-center py-4 text-base rounded-2xl">
+              <CalButton className="w-full justify-center" style={{ fontSize: 15, padding: "14px 20px", borderRadius: 16 }}>
                 Prendre rendez-vous — gratuit
               </CalButton>
               <a

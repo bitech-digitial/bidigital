@@ -153,7 +153,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8"
           >
             <div className="btn-glow rounded-[14px] w-full sm:w-auto">
-              <CalButton className="w-full sm:w-auto text-[15px] py-4 px-8 rounded-[14px]">
+              <CalButton className="w-full sm:w-auto" style={{ fontSize: 15, padding: "14px 28px", borderRadius: 14 }}>
                 Prendre rendez-vous
               </CalButton>
             </div>

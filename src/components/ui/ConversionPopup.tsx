@@ -166,7 +166,8 @@ function PopupCard({
 
           <div style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%" }}>
             <CalButton
-              className="w-full justify-center py-3.5 text-sm rounded-xl"
+              className="w-full justify-center"
+              style={{ fontSize: 14, padding: "12px 20px" }}
               onClick={onCtaClick}
             >
               Prendre rendez-vous

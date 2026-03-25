@@ -3,19 +3,21 @@
 import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 import { Calendar } from "lucide-react";
-import { ReactNode } from "react";
+import { ReactNode, CSSProperties } from "react";
 
 interface CalButtonProps {
   children?: ReactNode;
+  /** Layout only: w-full, justify-center, etc. */
   className?: string;
-  variant?: "primary" | "ghost";
+  /** Visual overrides: padding, fontSize, borderRadius, etc. */
+  style?: CSSProperties;
   onClick?: () => void;
 }
 
 export default function CalButton({
   children = "Prendre rendez-vous",
   className = "",
-  variant = "primary",
+  style,
   onClick,
 }: CalButtonProps) {
   useEffect(() => {
@@ -23,8 +25,8 @@ export default function CalButton({
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         cssVarsPerTheme: {
-          light: { "cal-brand": "#2563eb" },
-          dark: { "cal-brand": "#2563eb" },
+          light: { "cal-brand": "#6366f1" },
+          dark:  { "cal-brand": "#6366f1" },
         },
         hideEventTypeDetails: true,
         layout: "month_view",
@@ -32,25 +34,38 @@ export default function CalButton({
     })();
   }, []);
 
-  const baseStyles =
-    "inline-flex items-center justify-center gap-2 font-medium rounded-xl transition-all duration-200 cursor-pointer border-none";
-
-  const variantStyles = {
-    primary:
-      "bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 shadow-sm hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-200",
-    ghost:
-      "bg-transparent border border-slate-200 hover:border-blue-200 hover:bg-blue-50 text-slate-600 hover:text-slate-800 px-6 py-3.5",
-  };
-
   return (
     <button
       data-cal-namespace="15min"
       data-cal-link="bidigital/15min"
       data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-      className={`${baseStyles} ${variantStyles[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold ${className}`}
+      style={{
+        background:    "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+        color:         "#ffffff",
+        fontFamily:    "var(--font-heading)",
+        fontSize:      "15px",
+        padding:       "12px 22px",
+        borderRadius:  12,
+        border:        "none",
+        cursor:        "pointer",
+        boxShadow:     "0 4px 15px rgba(99,102,241,0.35)",
+        transition:    "transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease",
+        ...style,
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform  = "translateY(-1px)";
+        e.currentTarget.style.filter     = "brightness(1.1)";
+        e.currentTarget.style.boxShadow  = "0 6px 22px rgba(99,102,241,0.55)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform  = "translateY(0)";
+        e.currentTarget.style.filter     = "brightness(1)";
+        e.currentTarget.style.boxShadow  = (style?.boxShadow as string) ?? "0 4px 15px rgba(99,102,241,0.35)";
+      }}
       onClick={onClick}
     >
-      <Calendar size={18} />
+      <Calendar size={18} style={{ flexShrink: 0 }} />
       {children}
     </button>
   );

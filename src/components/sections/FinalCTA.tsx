@@ -103,7 +103,7 @@ export default function FinalCTA() {
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 w-full">
             <div className="btn-glow rounded-xl w-full md:w-auto">
-              <CalButton className="w-full md:w-auto text-base px-8 py-4">
+              <CalButton className="w-full md:w-auto" style={{ fontSize: 16, padding: "14px 28px" }}>
                 Prendre rendez-vous
               </CalButton>
             </div>
