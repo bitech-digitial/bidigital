@@ -245,14 +245,15 @@ export default function Offer() {
                   Maintenance & Évolution
                 </p>
                 <p
-                  className="font-extrabold text-2xl mt-1"
+                  className="font-extrabold mt-1"
                   style={{
                     fontFamily: "var(--font-heading)",
                     color: "#c084fc",
                     letterSpacing: "-0.02em",
+                    fontSize: "1.5rem",
                   }}
                 >
-                  19,99 €<span className="text-base font-medium text-[#71717a]">/mois</span>
+                  19,99 €<span style={{ fontSize: "1rem", fontWeight: 500, color: "#71717a" }}>/mois</span>
                 </p>
               </div>
 
