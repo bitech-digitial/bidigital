@@ -25,7 +25,8 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export async function POST(req: NextRequest) {
   // CORS restriction
   const origin = req.headers.get("origin") ?? "";
-  if (origin && !origin.startsWith("https://bidigital.fr") && !origin.startsWith("http://localhost")) {
+  const allowed = origin.startsWith("https://bidigital.fr") || origin.startsWith("https://www.bidigital.fr") || origin.startsWith("http://localhost");
+  if (origin && !allowed) {
     return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   }
 
