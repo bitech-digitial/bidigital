@@ -64,15 +64,7 @@ export const metadata: Metadata = {
   publisher: "BiDigital",
   category: "technology",
   classification: "Agence web, Création de site internet",
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.svg", sizes: "32x32", type: "image/svg+xml" },
-      { url: "/favicon.svg", sizes: "16x16", type: "image/svg+xml" },
-    ],
-    apple: [{ url: "/favicon.svg", sizes: "180x180", type: "image/svg+xml" }],
-    shortcut: "/favicon.svg",
-  },
+
   robots: {
     index: true,
     follow: true,
