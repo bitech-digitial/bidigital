@@ -94,7 +94,7 @@ export const metadata: Metadata = {
       "Création de site vitrine professionnel, 100% conforme RGPD, SEO inclus, maintenance 19,99€/mois sans engagement.",
     images: [
       {
-        url: "/images/og/og-image.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "BiDigital — Agence web création de site vitrine professionnel",
@@ -107,7 +107,7 @@ export const metadata: Metadata = {
     title: "BiDigital — Agence Web | Site Conforme & SEO",
     description:
       "Site vitrine professionnel, 100% conforme RGPD, SEO inclus, maintenance 19,99€/mois.",
-    images: ["/images/og/og-image.png"],
+    images: ["/opengraph-image"],
     creator: "@bidigital",
   },
   alternates: {
@@ -199,28 +199,6 @@ const jsonLd = {
           },
         ],
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5",
-        reviewCount: "10",
-        bestRating: "5",
-      },
-      review: [
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "Marie L." },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody:
-            "Un site professionnel conforme RGPD et déjà positionné sur Google. Mes prises de RDV ont augmenté de 40%.",
-        },
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "Thomas C." },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody:
-            "Avant, j'avais aucune présence en ligne. Maintenant j'apparais en première page sur Google. Les appels ont triplé.",
-        },
-      ],
     },
     {
       "@type": "FAQPage",

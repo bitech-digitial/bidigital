@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
     ],
-    sitemap: "https://bidigital.fr/sitemap.xml",
-    host: "https://bidigital.fr",
+    sitemap: "https://www.bidigital.fr/sitemap.xml",
+    host: "https://www.bidigital.fr",
   };
 }
