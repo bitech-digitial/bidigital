@@ -216,7 +216,7 @@ function PopupCard({
             }}
           >
             {isMid
-              ? "Sans engagement · Réponse garantie sous 2h"
+              ? "Sans engagement · Réponse garantie sous 24h"
               : isExit
               ? "Audit 100% gratuit · Aucun engagement"
               : "Sans engagement · Devis gratuit sous 24h"}

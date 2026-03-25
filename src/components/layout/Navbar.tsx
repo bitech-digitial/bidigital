@@ -113,9 +113,6 @@ export default function Navbar() {
                 <span className="hidden sm:inline">Votre projet nous intéresse</span>
                 <span className="inline sm:hidden">Prendre RDV</span>
               </CalButton>
-              <span className="hidden sm:block text-[10px] text-center mt-0.5 leading-none" style={{ color: "rgba(129,140,248,0.6)" }}>
-                Sans engagement
-              </span>
             </div>
 
             {/* Burger */}
@@ -254,7 +251,7 @@ export default function Navbar() {
                 Nous écrire sur WhatsApp
               </a>
               <p style={{ fontSize: 11, color: "#334155", textAlign: "center", marginTop: 16 }}>
-                ✓ Satisfait ou remboursé · Réponse sous 2h
+                ✓ Satisfait ou remboursé · Réponse sous 24h
               </p>
             </div>
           </motion.div>

@@ -137,7 +137,7 @@ export default function ContactForm() {
                 backgroundImage: "linear-gradient(135deg, #818cf8, #c084fc)",
               }}
             >
-              On revient sous 2h.
+              On revient sous 24h.
             </span>
           </h2>
           <p
@@ -180,7 +180,7 @@ export default function ContactForm() {
                   className="text-sm"
                   style={{ fontFamily: "var(--font-body)", color: "#71717a" }}
                 >
-                  On vous répond sous 2h en semaine. À très vite !
+                  On vous répond sous 24h en semaine. À très vite !
                 </p>
               </motion.div>
             ) : (
@@ -328,7 +328,7 @@ export default function ContactForm() {
                   className="text-center text-xs"
                   style={{ fontFamily: "var(--font-body)", color: "#3f3f46" }}
                 >
-                  Sans engagement · Réponse sous 2h · 100% confidentiel
+                  Sans engagement · Réponse sous 24h · 100% confidentiel
                 </p>
               </motion.form>
             )}

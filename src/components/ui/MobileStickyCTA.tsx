@@ -99,7 +99,7 @@ export default function MobileStickyCTA() {
               className="text-xs leading-tight mt-0.5"
               style={{ color: "rgba(129,140,248,0.7)", fontFamily: "var(--font-body)" }}
             >
-              Réponse sous 2h · Sans engagement
+              Réponse sous 24h · Sans engagement
             </p>
           </div>
 

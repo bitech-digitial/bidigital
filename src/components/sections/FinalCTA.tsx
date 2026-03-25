@@ -131,7 +131,7 @@ export default function FinalCTA() {
             className="text-sm"
             style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
           >
-            Sans engagement · Réponse sous 2h · Échange confidentiel
+            Sans engagement · Réponse sous 24h · Échange confidentiel
           </p>
         </motion.div>
       </div>
