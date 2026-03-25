@@ -7,32 +7,26 @@ const realisations = [
   {
     image: "/images/realisations/site-2.webp",
     sector: "Immobilier · Diagnostic",
-    url: "canopee-diagnostics.fr",
   },
   {
     image: "/images/realisations/site-3.webp",
     sector: "Artisan · Bâtiment",
-    url: "atvs-pro.fr",
   },
   {
     image: "/images/realisations/site-4.webp",
     sector: "Bien-être · Coaching",
-    url: "lebigsoleil.fr",
   },
   {
     image: "/images/realisations/site-5.webp",
     sector: "Décoration · Design",
-    url: "reno-fashion.fr",
   },
   {
     image: "/images/realisations/site-6.webp",
     sector: "Artisan · Climatisation",
-    url: "sparta-clim.fr",
   },
   {
     image: "/images/realisations/site-1.webp",
     sector: "Agence · Marketing Digital",
-    url: "bidigital.fr",
   },
 ];
 
@@ -73,11 +67,11 @@ function BrowserCard({
             boxShadow: "0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05)",
           }}
         >
-          {/* Browser bar */}
+          {/* Browser bar — traffic lights only */}
           <div
             style={{
               background: "#141420",
-              height: 36,
+              height: 32,
               display: "flex",
               alignItems: "center",
               gap: 8,
@@ -85,8 +79,7 @@ function BrowserCard({
               borderBottom: "1px solid rgba(255,255,255,0.06)",
             }}
           >
-            {/* Traffic light dots */}
-            <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+            <div style={{ display: "flex", gap: 6 }}>
               <span
                 style={{
                   width: 12,
@@ -115,32 +108,6 @@ function BrowserCard({
                 }}
               />
             </div>
-
-            {/* URL bar */}
-            <div
-              className="url-bar-shimmer"
-              style={{
-                background: "#0a0a14",
-                border: "1px solid rgba(255,255,255,0.08)",
-                borderRadius: 99,
-                padding: "3px 12px",
-                fontSize: 11,
-                color: "#94a3b8",
-                fontFamily: "var(--font-body)",
-                flex: 1,
-                maxWidth: "55%",
-                margin: "0 auto",
-                overflow: "hidden",
-                whiteSpace: "nowrap",
-                textOverflow: "ellipsis",
-                display: "flex",
-                alignItems: "center",
-                gap: 5,
-              }}
-            >
-              <span style={{ fontSize: 10 }}>🔒</span>
-              {realisation.url}
-            </div>
           </div>
 
           {/* Browser screen */}
@@ -163,34 +130,6 @@ function BrowserCard({
               className="group-hover:scale-[1.03]"
             />
           </div>
-        </div>
-
-        {/* Sector label */}
-        <div
-          style={{
-            padding: "12px 16px",
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-          }}
-        >
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              padding: "4px 10px",
-              borderRadius: 99,
-              background: "rgba(99,102,241,0.12)",
-              border: "1px solid rgba(99,102,241,0.2)",
-              color: "#818cf8",
-              fontSize: 11,
-              fontWeight: 600,
-              fontFamily: "var(--font-body)",
-              letterSpacing: "0.04em",
-            }}
-          >
-            {realisation.sector}
-          </span>
         </div>
       </div>
     </div>

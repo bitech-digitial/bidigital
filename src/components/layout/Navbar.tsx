@@ -90,112 +90,129 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.header
+      {/* Outer wrapper: full-width fixed, pointer-events-none so content behind is clickable */}
+      <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || menuOpen
-            ? "backdrop-blur-xl shadow-2xl"
-            : "bg-transparent"
-        }`}
-        style={
-          scrolled || menuOpen
-            ? {
-                background: "rgba(8,9,15,0.95)",
-                borderBottom: "1px solid rgba(255,255,255,0.05)",
-              }
-            : {}
-        }
+        className="fixed top-0 left-0 right-0 z-50 pointer-events-none"
+        style={{
+          padding: scrolled ? "12px 16px 0" : "0",
+          transition: "padding 0.35s ease",
+        }}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group" aria-label="BiDigital — Accueil">
-            <BiDigitalLogo />
-            <span
-              className="font-extrabold text-lg tracking-tight"
-              style={{
-                fontFamily: "var(--font-heading)",
-                background: "linear-gradient(135deg, #f8fafc, #818cf8)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
+        {/* Inner nav: pill that condenses when scrolled */}
+        <header
+          className="pointer-events-auto mx-auto"
+          style={{
+            maxWidth: scrolled ? 896 : "100%",
+            borderRadius: scrolled ? 18 : 0,
+            background: scrolled || menuOpen
+              ? "rgba(8,9,15,0.9)"
+              : "transparent",
+            backdropFilter: scrolled || menuOpen ? "blur(20px)" : "none",
+            WebkitBackdropFilter: scrolled || menuOpen ? "blur(20px)" : "none",
+            boxShadow: scrolled
+              ? "0 4px 24px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.07)"
+              : "none",
+            transition:
+              "max-width 0.35s ease, border-radius 0.35s ease, background 0.3s ease, box-shadow 0.35s ease",
+          }}
+        >
+          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            {/* Logo */}
+            <a
+              href="#"
+              className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 rounded-lg"
+              aria-label="BiDigital — Accueil"
             >
-              BiDigital
-            </span>
-          </a>
-
-          {/* Desktop nav links */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm transition-colors duration-200"
-                style={{ fontFamily: "var(--font-body)", color: "#64748b" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#64748b")}
+              <BiDigitalLogo />
+              <span
+                className="font-extrabold text-lg tracking-tight"
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  background: "linear-gradient(135deg, #f8fafc, #818cf8)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
               >
-                {link.label}
-              </a>
-            ))}
-          </div>
+                BiDigital
+              </span>
+            </a>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center">
-            <CalButton className="text-sm px-5 py-2.5">
-              Prendre rendez-vous
-            </CalButton>
-          </div>
-
-          {/* Burger */}
-          <div className="flex lg:hidden">
-            <button
-              onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              aria-expanded={menuOpen}
-              style={{
-                width: 40,
-                height: 40,
-                borderRadius: 10,
-                background: "transparent",
-                border: "1px solid rgba(255,255,255,0.1)",
-                cursor: "pointer",
-                padding: 8,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 5,
-                transition: "all 0.2s",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "rgba(255,255,255,0.06)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "transparent")
-              }
-            >
-              {[bar1Style, bar2Style, bar3Style].map((style, i) => (
-                <span
-                  key={i}
-                  style={{
-                    display: "block",
-                    width: 20,
-                    height: 2,
-                    borderRadius: 2,
-                    background: "#94a3b8",
-                    transformOrigin: "center",
-                    transition: "all 0.3s ease",
-                    ...style,
-                  }}
-                />
+            {/* Desktop nav links */}
+            <div className="hidden lg:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 rounded"
+                  style={{ fontFamily: "var(--font-body)", color: "#64748b" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#64748b")}
+                >
+                  {link.label}
+                </a>
               ))}
-            </button>
-          </div>
-        </nav>
-      </motion.header>
+            </div>
+
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center">
+              <CalButton className="text-sm px-5 py-2.5">
+                Prendre rendez-vous
+              </CalButton>
+            </div>
+
+            {/* Burger */}
+            <div className="flex lg:hidden">
+              <button
+                onClick={() => setMenuOpen((v) => !v)}
+                aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                aria-expanded={menuOpen}
+                className="focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 rounded-lg"
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 10,
+                  background: "transparent",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  cursor: "pointer",
+                  padding: 8,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 5,
+                  transition: "all 0.2s",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.background = "rgba(255,255,255,0.06)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = "transparent")
+                }
+              >
+                {[bar1Style, bar2Style, bar3Style].map((style, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      display: "block",
+                      width: 20,
+                      height: 2,
+                      borderRadius: 2,
+                      background: "#94a3b8",
+                      transformOrigin: "center",
+                      transition: "all 0.3s ease",
+                      ...style,
+                    }}
+                  />
+                ))}
+              </button>
+            </div>
+          </nav>
+        </header>
+      </motion.div>
 
       {/* Full-screen mobile menu */}
       <AnimatePresence>

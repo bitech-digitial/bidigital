@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { WHATSAPP_LINK } from "@/lib/constants";
 import CalButton from "@/components/ui/CalButton";
+import TypewriterWord from "@/components/ui/TypewriterWord";
 
 export default function Hero() {
   const blob1Ref = useRef<HTMLDivElement>(null);
@@ -111,8 +112,9 @@ export default function Hero() {
             >
               Conforme, visible,
               <br />
-              inoubliable.
             </span>
+            <TypewriterWord />
+            <span style={{ WebkitTextFillColor: "transparent", color: "transparent" }}>.</span>
           </motion.h1>
 
           {/* Subtitle */}
