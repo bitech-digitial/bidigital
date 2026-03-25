@@ -6,7 +6,6 @@ import CookieBanner from "@/components/ui/CookieBanner";
 
 const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
 const Examples = dynamic(() => import("@/components/sections/Examples"), { ssr: true });
-// const Testimonials = dynamic(() => import("@/components/sections/Testimonials"), { ssr: true });
 const Services = dynamic(() => import("@/components/sections/Services"), { ssr: true });
 const LegalCompliance = dynamic(() => import("@/components/sections/LegalCompliance"), { ssr: true });
 const Values = dynamic(() => import("@/components/sections/Values"), { ssr: true });
@@ -24,7 +23,6 @@ export default function Home() {
       <main style={{ overflowX: "hidden" }}>
         <Hero />
         <Examples />
-        {/* <Testimonials /> */}
         <Services />
         <LegalCompliance />
         <Values />
