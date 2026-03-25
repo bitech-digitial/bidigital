@@ -49,6 +49,7 @@ export default function Hero() {
           background: "radial-gradient(ellipse, rgba(99,102,241,0.18) 0%, transparent 70%)",
           borderRadius: "50%",
           filter: "blur(60px)",
+          willChange: "transform",
         }}
       />
       <div
@@ -62,6 +63,7 @@ export default function Hero() {
           background: "radial-gradient(ellipse, rgba(139,92,246,0.15) 0%, transparent 70%)",
           borderRadius: "50%",
           filter: "blur(60px)",
+          willChange: "transform",
         }}
       />
       <div

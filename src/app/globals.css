@@ -142,10 +142,19 @@ body {
 
 /* ── Animation classes ── */
 .mesh-blob {
+  will-change: transform;
   animation: meshFloat 12s ease-in-out infinite;
 }
 .mesh-blob-alt {
+  will-change: transform;
   animation: meshMoveAlt 14s ease-in-out infinite;
+}
+@media (max-width: 768px) {
+  .mesh-blob,
+  .mesh-blob-alt {
+    animation: none;
+    will-change: auto;
+  }
 }
 .float-anim {
   animation: float 4s ease-in-out infinite;
@@ -158,13 +167,25 @@ body {
   animation: cursorBlink 0.6s steps(1) infinite;
 }
 
-/* ── Glow button pulse ── */
-@keyframes btnGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3), 0 0 40px rgba(99, 102, 241, 0.1); }
-  50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.5), 0 0 60px rgba(99, 102, 241, 0.2); }
-}
+/* ── Glow button pulse — opacity only (GPU-composited, no repaint) ── */
 .btn-glow {
-  animation: btnGlow 3s ease-in-out infinite;
+  position: relative;
+}
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.45) 0%, transparent 70%);
+  filter: blur(12px);
+  opacity: 0.5;
+  animation: btnGlowOpacity 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes btnGlowOpacity {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.75; }
 }
 
 /* ── Section divider ── */

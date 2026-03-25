@@ -52,9 +52,7 @@ export default function MobileStickyCTA() {
       <div
         className="relative mx-3 mb-4 overflow-hidden"
         style={{
-          background: "rgba(13,13,31,0.95)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
+          background: "#0d0d1f",
           border: "1px solid rgba(99,102,241,0.2)",
           borderRadius: 18,
           boxShadow: "0 -4px 30px rgba(99,102,241,0.15), 0 8px 32px rgba(0,0,0,0.5)",
