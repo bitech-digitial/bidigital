@@ -223,7 +223,7 @@ export default function Hero() {
             </svg>
             <span style={{ color: "#fbbf24" }}>★★★★★</span>
             <span style={{ color: "#94a3b8", fontWeight: 600 }}>5/5</span>
-            <span style={{ color: "#475569" }}>· Clients satisfaits · Depuis 2022</span>
+            <span style={{ color: "#475569" }}>· Clients satisfaits · Depuis 2026</span>
           </motion.div>
         </div>
       </div>

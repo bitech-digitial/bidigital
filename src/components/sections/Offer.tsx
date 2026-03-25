@@ -101,13 +101,13 @@ export default function Offer() {
                     fontFamily: "var(--font-body)",
                   }}
                 >
-                  Site vitrine
+                  Site web
                 </span>
                 <p
                   className="text-xl font-bold"
                   style={{ fontFamily: "var(--font-heading)", color: "#f0f0ff" }}
                 >
-                  Site vitrine
+                  Site web
                 </p>
                 <div className="flex items-baseline gap-1.5 mt-1">
                   <span

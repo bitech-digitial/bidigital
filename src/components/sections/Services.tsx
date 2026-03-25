@@ -18,6 +18,7 @@ const services = [
       "Logo professionnel sur-mesure",
       "Charte graphique complète",
       "Flyer & carte de visite",
+      "Carte de visite virtuelle — Apple Wallet",
     ],
     glow: false,
   },
@@ -29,7 +30,7 @@ const services = [
       border: "1px solid rgba(99,102,241,0.3)",
       color: "#a5b4fc",
     },
-    title: "Site Vitrine qui Convertit",
+    title: "Site Web qui Convertit",
     description:
       "Votre vitrine en ligne, conçue pour convertir vos visiteurs en clients.",
     points: [
@@ -122,7 +123,7 @@ export default function Services() {
             className="text-lg max-w-2xl mx-auto"
             style={{ fontFamily: "var(--font-body)", color: "#a1a1aa" }}
           >
-            Du site vitrine conforme à la maintenance continue, nous couvrons tout votre digital.
+            Du site web conforme à la maintenance continue, nous couvrons tout votre digital.
           </p>
         </motion.div>
 

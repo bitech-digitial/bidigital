@@ -216,7 +216,7 @@ const jsonLd = {
           name: "Puis-je garder mon nom de domaine existant ?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Absolument. Nous pouvons utiliser votre domaine actuel ou vous en fournir un nouveau inclus dans l'abonnement.",
+            text: "Absolument. Nous pouvons utiliser votre domaine actuel.",
           },
         },
       ],

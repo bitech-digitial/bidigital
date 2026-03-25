@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "Puis-je garder mon nom de domaine existant ?",
-    a: "Absolument. Nous pouvons utiliser votre domaine actuel ou vous en fournir un nouveau inclus dans l'abonnement.",
+    a: "Absolument. Nous pouvons utiliser votre domaine actuel.",
   },
   {
     q: "Comment se déroule un projet avec BiDigital ?",
