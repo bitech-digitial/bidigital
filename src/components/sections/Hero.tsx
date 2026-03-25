@@ -6,7 +6,6 @@ import { ArrowDown } from "lucide-react";
 import { WHATSAPP_LINK } from "@/lib/constants";
 import CalButton from "@/components/ui/CalButton";
 import TypewriterWord from "@/components/ui/TypewriterWord";
-import Image from "next/image";
 
 export default function Hero() {
   const blob1Ref = useRef<HTMLDivElement>(null);
@@ -119,7 +118,7 @@ export default function Hero() {
             <span className="inline sm:hidden">
               <span className="block">Votre site web.</span>
               <span className="flex items-baseline flex-wrap" style={{ gap: "0.25em" }}>
-                <span style={gradientSpanStyle}>Visible,</span>
+                <span style={gradientSpanStyle}>Conforme, visible,</span>
                 <TypewriterWord />
               </span>
             </span>
@@ -208,13 +207,21 @@ export default function Hero() {
               color: "#64748b",
             }}
           >
-            <Image
-              src="/images/logos/google.svg"
-              alt="Google"
-              width={14}
-              height={14}
-              className="brightness-0 invert opacity-40"
-            />
+            <svg
+              width="46"
+              height="16"
+              viewBox="0 0 59 20"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="Google"
+              style={{ flexShrink: 0 }}
+            >
+              <path d="M7.17 8.17v2.4h4.04c-.16.99-1.1 2.9-4.04 2.9C4.73 13.47 2.67 11.38 2.67 8.83S4.73 4.2 7.17 4.2c1.39 0 2.32.59 2.85 1.1l1.93-1.86C10.6 2.12 9.04 1.33 7.17 1.33 3.26 1.33.33 4.26.33 8.17s2.93 6.83 6.83 6.83c3.94 0 6.55-2.77 6.55-6.67 0-.45-.05-.79-.11-1.13H7.17v-.03z" fill="#4285F4"/>
+              <path d="M21.08 5.42c-2.56 0-4.65 1.94-4.65 4.62s2.09 4.62 4.65 4.62 4.65-1.94 4.65-4.62-2.09-4.62-4.65-4.62zm0 7.42c-1.4 0-2.61-1.16-2.61-2.8s1.21-2.8 2.61-2.8 2.61 1.16 2.61 2.8-1.21 2.8-2.61 2.8z" fill="#EA4335"/>
+              <path d="M31.17 5.42c-2.56 0-4.65 1.94-4.65 4.62s2.09 4.62 4.65 4.62 4.65-1.94 4.65-4.62-2.09-4.62-4.65-4.62zm0 7.42c-1.4 0-2.61-1.16-2.61-2.8s1.21-2.8 2.61-2.8 2.61 1.16 2.61 2.8-1.21 2.8-2.61 2.8z" fill="#FBBC05"/>
+              <path d="M43.07 5.69h-.07c-.46-.55-1.33-.99-2.43-.99-2.31 0-4.4 2.02-4.4 4.63 0 2.59 2.09 4.6 4.4 4.6 1.1 0 1.97-.44 2.43-.99h.07v.62c0 1.77-.94 2.71-2.46 2.71-1.24 0-2.01-.9-2.33-1.65l-1.77.74c.51 1.23 1.85 2.74 4.1 2.74 2.38 0 4.39-1.41 4.39-4.83V5.74h-1.93v-.05zm-2.32 7.2c-1.4 0-2.56-1.18-2.56-2.79 0-1.63 1.16-2.82 2.56-2.82s2.46 1.2 2.46 2.82c0 1.61-1.14 2.79-2.46 2.79z" fill="#4285F4"/>
+              <path d="M48.26 1.67h2.03v12.5h-2.03z" fill="#34A853"/>
+              <path d="M56.24 12.84c-1.02 0-1.75-.47-2.22-1.39l6.11-2.53-.21-.52c-.39-1.04-1.56-2.95-3.95-2.95-2.38 0-4.36 1.87-4.36 4.62 0 2.59 1.96 4.62 4.58 4.62 2.12 0 3.34-1.3 3.85-2.05l-1.58-1.05c-.52.77-1.24 1.25-2.22 1.25zm-.14-5.68c.86 0 1.6.43 1.84 1.06l-4.41 1.83c-.04-1.78 1.39-2.89 2.57-2.89z" fill="#EA4335"/>
+            </svg>
             <span style={{ color: "#fbbf24" }}>★★★★★</span>
             <span>Noté 5/5 · Clients satisfaits · Depuis 2022</span>
           </motion.div>
