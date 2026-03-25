@@ -111,60 +111,56 @@ function PopupCard({
         </button>
 
         {/* Content */}
-        <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 20 }}>
+        <div className="flex flex-col items-center text-center" style={{ position: "relative", zIndex: 1, gap: 18 }}>
 
-          {/* Icône centrale */}
+          {/* Icône */}
           <div style={{
-            width: 52, height: 52, borderRadius: 16,
-            background: "linear-gradient(135deg, rgba(99,102,241,0.18), rgba(139,92,246,0.18))",
+            width: 60, height: 60, borderRadius: 18, fontSize: 28,
+            background: "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15))",
             border: "1px solid rgba(99,102,241,0.2)",
+            boxShadow: "0 0 28px rgba(99,102,241,0.1)",
             display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 24,
           }}>
-            {isExit ? "🎁" : "💬"}
+            🚀
           </div>
 
-          {/* Titre */}
+          {/* Titre + accroche */}
           <div>
             <h3 style={{
-              fontSize: "clamp(18px, 4vw, 22px)",
-              fontWeight: 800,
-              fontFamily: "var(--font-heading)",
-              color: "#f8fafc",
-              lineHeight: 1.25,
-              paddingRight: 28,
-              marginBottom: 6,
+              fontSize: 20, fontWeight: 900, lineHeight: 1.2,
+              fontFamily: "var(--font-heading)", color: "#f8fafc",
+              paddingRight: 28, marginBottom: 6,
             }}>
-              {isMid ? "Parlons de votre projet" : isExit ? "Audit de site offert" : "Votre site vous attend"}
+              Votre site, livré.
             </h3>
-            <p style={{ fontSize: 13, color: "#64748b", fontFamily: "var(--font-body)" }}>
-              Réponse sous 2h · Sans engagement
+            <p style={{ fontSize: 12, color: "#64748b", fontFamily: "var(--font-body)" }}>
+              Conforme · SEO · 19,99€/mois
             </p>
           </div>
 
-          {/* 3 bullets visuels */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, width: "100%" }}>
+          {/* 3 bullets */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 7, width: "100%" }}>
             {[
-              { icon: "✅", text: "Site 100% conforme RGPD" },
-              { icon: "🚀", text: "SEO inclus dès le lancement" },
-              { icon: "💰", text: "Maintenance à 19,99€/mois" },
-            ].map(({ icon, text }) => (
-              <div key={text} style={{
-                display: "flex", alignItems: "center", gap: 12,
-                padding: "10px 14px",
+              { icon: "✅", label: "100% conforme RGPD" },
+              { icon: "📈", label: "SEO Google inclus" },
+              { icon: "🔒", label: "Sans engagement" },
+            ].map(({ icon, label }) => (
+              <div key={label} style={{
+                display: "flex", alignItems: "center", gap: 11, textAlign: "left",
+                padding: "9px 13px",
                 background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.06)",
-                borderRadius: 12, textAlign: "left",
+                border: "1px solid rgba(255,255,255,0.05)",
+                borderRadius: 11,
               }}>
-                <span style={{ fontSize: 16, flexShrink: 0 }}>{icon}</span>
-                <span style={{ fontSize: 13, color: "#e2e8f0", fontWeight: 500, fontFamily: "var(--font-body)" }}>{text}</span>
+                <span style={{ fontSize: 15, lineHeight: 1, flexShrink: 0 }}>{icon}</span>
+                <span style={{ fontSize: 13, color: "#e2e8f0", fontWeight: 500, fontFamily: "var(--font-body)" }}>{label}</span>
               </div>
             ))}
           </div>
 
           {/* CTA principal */}
           <div style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%" }}>
-            <CalButton className="w-full justify-center py-3.5 text-sm rounded-xl" onClick={onCtaClick}>
+            <CalButton className="w-full justify-center py-4 text-base rounded-xl font-bold" onClick={onCtaClick}>
               Prendre rendez-vous →
             </CalButton>
             <a
@@ -174,14 +170,14 @@ function PopupCard({
               onClick={onCtaClick}
               style={{
                 display: "inline-flex", alignItems: "center", justifyContent: "center",
-                gap: 6, fontSize: 13, color: "#64748b", textDecoration: "none",
+                gap: 5, fontSize: 12, color: "#475569", textDecoration: "none",
                 fontFamily: "var(--font-body)", transition: "color 0.15s",
               }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#f8fafc")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#475569")}
             >
-              <WhatsAppIcon size={15} />
-              Ou écrire sur WhatsApp
+              <WhatsAppIcon size={13} />
+              Écrire sur WhatsApp
             </a>
           </div>
         </div>
