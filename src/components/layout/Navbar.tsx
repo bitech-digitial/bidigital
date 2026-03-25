@@ -110,7 +110,7 @@ export default function Navbar() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center">
               <CalButton className="text-sm px-5 py-2.5">
-                Prendre rendez-vous
+                Prendre RDV
               </CalButton>
             </div>
 

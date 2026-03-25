@@ -107,27 +107,20 @@ export default function Hero() {
               marginBottom: "1.5rem",
             }}
           >
-            {/* ── Desktop : tout sur 1–2 lignes naturelles ── */}
-            <span className="hidden sm:inline">
-              Votre site web.{" "}
-              <span style={gradientSpanStyle}>Conforme, visible,{" "}</span>
-              <TypewriterWord />
+            {/* Ligne 1 */}
+            <span className="block">Votre site web.</span>
+
+            {/* Ligne 2 — ne casse JAMAIS quelle que soit la taille */}
+            <span
+              className="block whitespace-nowrap"
+              style={{ ...gradientSpanStyle, fontSize: "clamp(1.1rem, 5vw, inherit)" }}
+            >
+              Conforme, visible,
             </span>
 
-            {/* ── Mobile : 2 lignes distinctes ── */}
-            <span className="inline sm:hidden">
-              <span className="block">Votre site web.</span>
-              <span className="flex items-baseline" style={{ gap: "0.2em" }}>
-                <span
-                  className="whitespace-nowrap shrink-0"
-                  style={{ ...gradientSpanStyle, fontSize: "clamp(1.35rem, 5.5vw, 1.75rem)" }}
-                >
-                  Conforme, visible,
-                </span>
-                <span className="shrink-0">
-                  <TypewriterWord />
-                </span>
-              </span>
+            {/* Ligne 3 — typewriter */}
+            <span className="block">
+              <TypewriterWord />
             </span>
           </motion.h1>
 

@@ -111,57 +111,65 @@ function PopupCard({
         </button>
 
         {/* Content */}
-        <div className="flex flex-col items-center text-center" style={{ position: "relative", zIndex: 1, gap: 18 }}>
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <p
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: isExit ? "#c084fc" : "#818cf8",
+              marginBottom: 8,
+              fontFamily: "var(--font-body)",
+            }}
+          >
+            {isMid ? "Votre projet nous intéresse" : isExit ? "Offre exclusive" : "Avant de partir..."}
+          </p>
 
-          {/* Icône */}
-          <div style={{
-            width: 60, height: 60, borderRadius: 18, fontSize: 28,
-            background: "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15))",
-            border: "1px solid rgba(99,102,241,0.2)",
-            boxShadow: "0 0 28px rgba(99,102,241,0.1)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}>
-            🚀
-          </div>
+          <h3
+            style={{
+              fontSize: "clamp(18px, 4vw, 22px)",
+              fontWeight: 700,
+              fontFamily: "var(--font-heading)",
+              color: "#f8fafc",
+              marginBottom: 8,
+              paddingRight: 32,
+              lineHeight: 1.3,
+              background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            {isMid
+              ? "Parlons de votre projet."
+              : isExit
+              ? "Obtenez votre audit de site offert."
+              : "Votre site vitrine vous attend."}
+          </h3>
 
-          {/* Titre + accroche */}
-          <div>
-            <h3 style={{
-              fontSize: 20, fontWeight: 900, lineHeight: 1.2,
-              fontFamily: "var(--font-heading)", color: "#f8fafc",
-              paddingRight: 28, marginBottom: 6,
-            }}>
-              Votre site, livré.
-            </h3>
-            <p style={{ fontSize: 12, color: "#64748b", fontFamily: "var(--font-body)" }}>
-              Conforme · SEO · 19,99€/mois
-            </p>
-          </div>
+          <p
+            style={{
+              fontSize: 14,
+              color: "#64748b",
+              marginBottom: 20,
+              lineHeight: 1.5,
+              fontFamily: "var(--font-body)",
+            }}
+          >
+            {isMid
+              ? "Un échange de 15 minutes suffit pour définir ensemble la meilleure solution pour votre activité."
+              : isExit
+              ? "Avant de partir — on analyse votre site actuel gratuitement et on vous envoie nos recommandations."
+              : "Des dizaines de professionnels nous font déjà confiance. Rejoignez-les."}
+          </p>
 
-          {/* 3 bullets */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 7, width: "100%" }}>
-            {[
-              { icon: "✅", label: "100% conforme RGPD" },
-              { icon: "📈", label: "SEO Google inclus" },
-              { icon: "🔒", label: "Sans engagement" },
-            ].map(({ icon, label }) => (
-              <div key={label} style={{
-                display: "flex", alignItems: "center", gap: 11, textAlign: "left",
-                padding: "9px 13px",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.05)",
-                borderRadius: 11,
-              }}>
-                <span style={{ fontSize: 15, lineHeight: 1, flexShrink: 0 }}>{icon}</span>
-                <span style={{ fontSize: 13, color: "#e2e8f0", fontWeight: 500, fontFamily: "var(--font-body)" }}>{label}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA principal */}
           <div style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%" }}>
-            <CalButton className="w-full justify-center py-4 text-base rounded-xl font-bold" onClick={onCtaClick}>
-              Prendre rendez-vous →
+            <CalButton
+              className="w-full justify-center py-3.5 text-sm rounded-xl"
+              onClick={onCtaClick}
+            >
+              Prendre rendez-vous
             </CalButton>
             <a
               href={WHATSAPP_LINK}
@@ -169,17 +177,50 @@ function PopupCard({
               rel="noopener noreferrer"
               onClick={onCtaClick}
               style={{
-                display: "inline-flex", alignItems: "center", justifyContent: "center",
-                gap: 5, fontSize: 12, color: "#475569", textDecoration: "none",
-                fontFamily: "var(--font-body)", transition: "color 0.15s",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+                width: "100%",
+                padding: "14px 20px",
+                fontSize: 14,
+                borderRadius: 12,
+                boxSizing: "border-box",
+                background: "rgba(37,211,102,0.1)",
+                border: "1px solid rgba(37,211,102,0.25)",
+                color: "#4ade80",
+                textDecoration: "none",
+                fontFamily: "var(--font-body)",
+                fontWeight: 500,
+                transition: "background 0.2s",
               }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#475569")}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(37,211,102,0.18)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(37,211,102,0.1)";
+              }}
             >
-              <WhatsAppIcon size={13} />
-              Écrire sur WhatsApp
+              <WhatsAppIcon size={18} />
+              Nous écrire sur WhatsApp
             </a>
           </div>
+
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: 11,
+              color: "#334155",
+              marginTop: 14,
+              fontFamily: "var(--font-body)",
+            }}
+          >
+            {isMid
+              ? "Sans engagement · Réponse garantie sous 2h"
+              : isExit
+              ? "Audit 100% gratuit · Aucun engagement"
+              : "Sans engagement · Devis gratuit sous 24h"}
+          </p>
         </div>
       </motion.div>
     </motion.div>
