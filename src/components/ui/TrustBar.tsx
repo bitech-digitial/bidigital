@@ -19,8 +19,8 @@ const items = [
   },
   {
     Icon: HeartHandshake,
-    iconColor: "#818cf8",
-    bg: "rgba(99,102,241,0.1)",
+    iconColor: "#0077B6",
+    bg: "rgba(0,119,182,0.08)",
     title: "Accompagnement inclus",
     sub: "Avant, pendant et après",
   },
@@ -31,9 +31,9 @@ export default function TrustBar() {
     <div
       className="py-5 px-6"
       style={{
-        background: "rgba(255,255,255,0.015)",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        background: "#F0F9FF",
+        borderTop: "1px solid #e1eaf5",
+        borderBottom: "1px solid #e1eaf5",
       }}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-center gap-6 sm:gap-8 flex-wrap">
@@ -42,7 +42,7 @@ export default function TrustBar() {
             {i > 0 && (
               <div
                 className="hidden sm:block flex-shrink-0"
-                style={{ width: 1, height: 32, background: "rgba(255,255,255,0.06)" }}
+                style={{ width: 1, height: 32, background: "#e1eaf5" }}
               />
             )}
             <div className="flex items-center gap-3">
@@ -55,13 +55,13 @@ export default function TrustBar() {
               <div className="flex flex-col text-center sm:text-left">
                 <span
                   className="font-semibold text-sm"
-                  style={{ fontFamily: "var(--font-heading)", color: "#e0e0ff" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#03045E" }}
                 >
                   {title}
                 </span>
                 <span
                   className="text-xs"
-                  style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
                 >
                   {sub}
                 </span>

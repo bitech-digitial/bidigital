@@ -26,7 +26,7 @@ export default function Hero() {
   }, []);
 
   const gradientSpanStyle = {
-    background: "linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%)",
+    background: "linear-gradient(135deg, #03045E 0%, #0077B6 60%, #90E0EF 100%)",
     WebkitBackgroundClip: "text" as const,
     WebkitTextFillColor: "transparent" as const,
     backgroundClip: "text" as const,
@@ -35,7 +35,7 @@ export default function Hero() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ background: "#08090f", minHeight: "100svh" }}
+      style={{ background: "#FFFFFF", minHeight: "100svh" }}
     >
       {/* ── Animated mesh blobs ── */}
       <div
@@ -46,10 +46,11 @@ export default function Hero() {
           height: 700,
           top: "-200px",
           left: "-150px",
-          background: "radial-gradient(ellipse, rgba(99,102,241,0.18) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(202,240,248,0.6) 0%, transparent 70%)",
           borderRadius: "50%",
           filter: "blur(60px)",
           willChange: "transform",
+          opacity: 0.8,
         }}
       />
       <div
@@ -60,10 +61,11 @@ export default function Hero() {
           height: 600,
           top: "-100px",
           right: "-120px",
-          background: "radial-gradient(ellipse, rgba(139,92,246,0.15) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(144,224,239,0.45) 0%, transparent 70%)",
           borderRadius: "50%",
           filter: "blur(60px)",
           willChange: "transform",
+          opacity: 0.7,
         }}
       />
       <div
@@ -74,18 +76,18 @@ export default function Hero() {
           bottom: "0px",
           left: "50%",
           transform: "translateX(-50%)",
-          background: "radial-gradient(ellipse, rgba(34,211,238,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(0,119,182,0.08) 0%, transparent 70%)",
           borderRadius: "50%",
           filter: "blur(80px)",
           animationDelay: "3s",
         }}
       />
 
-      {/* Dot grid */}
+      {/* Dot grid — subtil sur blanc */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
@@ -94,7 +96,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center pt-24 pb-16">
         <div className="text-center">
 
-          {/* H1 — desktop et mobile structurés différemment */}
+          {/* H1 */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,7 +114,7 @@ export default function Hero() {
             {/* Ligne 1 */}
             <span className="block">Votre site web.</span>
 
-            {/* Ligne 2 — ne casse JAMAIS quelle que soit la taille */}
+            {/* Ligne 2 */}
             <span
               className="block whitespace-nowrap"
               style={gradientSpanStyle}
@@ -134,7 +136,7 @@ export default function Hero() {
             style={{
               fontFamily: "var(--font-body)",
               fontSize: "clamp(15px, 2vw, 18px)",
-              color: "#94a3b8",
+              color: "#4a6080",
               lineHeight: 1.7,
               maxWidth: "600px",
               margin: "0 auto 2rem",
@@ -142,7 +144,7 @@ export default function Hero() {
           >
             BiDigital conçoit des sites qui convertissent, conformes RGPD,
             optimisés SEO — livrés avec tout inclus.{" "}
-            <span style={{ color: "#f8fafc", fontWeight: 500 }}>
+            <span style={{ color: "#03045E", fontWeight: 600 }}>
               À partir de 19,99€/mois.
             </span>
           </motion.p>
@@ -165,19 +167,19 @@ export default function Hero() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 font-semibold rounded-[14px] transition-all duration-200 text-[15px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+              className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 font-semibold rounded-[14px] transition-all duration-200 text-[15px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0077B6]/30"
               style={{
                 background: "transparent",
-                border: "1px solid rgba(255,255,255,0.15)",
-                color: "#f8fafc",
+                border: "1px solid #e1eaf5",
+                color: "#1a2a4a",
                 fontFamily: "var(--font-body)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-                e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+                e.currentTarget.style.borderColor = "rgba(0,119,182,0.3)";
+                e.currentTarget.style.background = "rgba(0,119,182,0.04)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+                e.currentTarget.style.borderColor = "#e1eaf5";
                 e.currentTarget.style.background = "transparent";
               }}
             >
@@ -195,18 +197,18 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* Trust badge avec logo Google */}
+          {/* Trust badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
             style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
+              background: "rgba(0,0,0,0.03)",
+              border: "1px solid rgba(0,0,0,0.06)",
               fontFamily: "var(--font-body)",
               fontSize: 12,
-              color: "#64748b",
+              color: "#4a6080",
             }}
           >
             {/* "G" Google officiel 4 couleurs */}
@@ -222,8 +224,8 @@ export default function Hero() {
               <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
             </svg>
             <span style={{ color: "#fbbf24" }}>★★★★★</span>
-            <span style={{ color: "#94a3b8", fontWeight: 600 }}>5/5</span>
-            <span style={{ color: "#475569" }}>· Clients satisfaits · Depuis 2026</span>
+            <span style={{ color: "#03045E", fontWeight: 600 }}>5/5</span>
+            <span style={{ color: "#4a6080" }}>· Clients satisfaits · Depuis 2026</span>
           </motion.div>
         </div>
       </div>
@@ -239,7 +241,7 @@ export default function Hero() {
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ArrowDown className="w-5 h-5" style={{ color: "#334155" }} />
+          <ArrowDown className="w-5 h-5" style={{ color: "#4a6080" }} />
         </motion.div>
       </motion.div>
     </section>

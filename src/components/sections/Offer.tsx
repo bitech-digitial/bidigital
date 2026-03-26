@@ -23,7 +23,7 @@ const maintenanceBullets = [
 
 export default function Offer() {
   return (
-    <section id="offre" className="py-20 px-4" style={{ background: "#06071a" }}>
+    <section id="offre" className="py-20 px-4" style={{ background: "#F0F9FF" }}>
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,9 +35,9 @@ export default function Offer() {
           <span
             className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
             style={{
-              background: "rgba(99,102,241,0.1)",
-              border: "1px solid rgba(99,102,241,0.25)",
-              color: "#818cf8",
+              background: "rgba(0,119,182,0.08)",
+              border: "1px solid rgba(0,119,182,0.2)",
+              color: "#0077B6",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -47,7 +47,7 @@ export default function Offer() {
             className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
             style={{
               fontFamily: "var(--font-heading)",
-              color: "#f0f0ff",
+              color: "#03045E",
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
             }}
@@ -57,7 +57,7 @@ export default function Offer() {
             <span
               className="text-transparent bg-clip-text"
               style={{
-                backgroundImage: "linear-gradient(135deg, #818cf8, #c084fc)",
+                backgroundImage: "linear-gradient(135deg, #0077B6, #023E8A)",
               }}
             >
               aucune surprise.
@@ -65,7 +65,7 @@ export default function Offer() {
           </h2>
           <p
             className="text-lg max-w-xl mx-auto"
-            style={{ fontFamily: "var(--font-body)", color: "#a1a1aa" }}
+            style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
           >
             Tarif transparent — devis précis sous 24h.
           </p>
@@ -80,24 +80,24 @@ export default function Offer() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="rounded-3xl overflow-hidden"
             style={{
-              background: "rgba(255,255,255,0.02)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+              background: "#FFFFFF",
+              border: "1px solid #e1eaf5",
+              boxShadow: "0 8px 32px rgba(0,119,182,0.07)",
             }}
           >
             {/* Top bar */}
             <div
               className="h-1 w-full"
-              style={{ background: "linear-gradient(90deg, #6366f1, #818cf8)" }}
+              style={{ background: "linear-gradient(90deg, #0077B6, #023E8A)" }}
             />
             <div className="p-7">
               <div className="mb-5">
                 <span
                   className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3"
                   style={{
-                    background: "rgba(99,102,241,0.12)",
-                    border: "1px solid rgba(99,102,241,0.3)",
-                    color: "#818cf8",
+                    background: "rgba(0,119,182,0.08)",
+                    border: "1px solid rgba(0,119,182,0.2)",
+                    color: "#0077B6",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -105,14 +105,14 @@ export default function Offer() {
                 </span>
                 <p
                   className="text-xl font-bold"
-                  style={{ fontFamily: "var(--font-heading)", color: "#f0f0ff" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#03045E" }}
                 >
                   Site web
                 </p>
                 <div className="flex items-baseline gap-1.5 mt-1">
                   <span
                     className="text-xs"
-                    style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                    style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
                   >
                     à partir de
                   </span>
@@ -120,7 +120,7 @@ export default function Offer() {
                     className="font-extrabold text-2xl"
                     style={{
                       fontFamily: "var(--font-heading)",
-                      color: "#818cf8",
+                      color: "#0077B6",
                       letterSpacing: "-0.02em",
                     }}
                   >
@@ -128,14 +128,14 @@ export default function Offer() {
                   </span>
                   <span
                     className="text-xs"
-                    style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                    style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
                   >
                     TTC
                   </span>
                 </div>
                 <p
                   className="text-xs mt-1"
-                  style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
                 >
                   Devis précis gratuit sous 24h
                 </p>
@@ -143,7 +143,7 @@ export default function Offer() {
 
               <div
                 className="border-t mb-5"
-                style={{ borderColor: "rgba(255,255,255,0.06)" }}
+                style={{ borderColor: "#e1eaf5" }}
               />
 
               <ul className="flex flex-col gap-3 mb-6">
@@ -158,7 +158,7 @@ export default function Offer() {
                     >
                       <Check className="w-3 h-3" style={{ color: "#4ade80" }} />
                     </div>
-                    <span style={{ fontFamily: "var(--font-body)", color: "#a1a1aa" }}>
+                    <span style={{ fontFamily: "var(--font-body)", color: "#1a2a4a" }}>
                       {item}
                     </span>
                   </li>
@@ -177,9 +177,9 @@ export default function Offer() {
                   whileTap={{ scale: 0.98 }}
                   className="flex items-center justify-center gap-2 w-full px-5 py-3 font-semibold rounded-xl transition-all duration-200 text-sm"
                   style={{
-                    background: "rgba(37,211,102,0.1)",
-                    border: "1px solid rgba(37,211,102,0.25)",
-                    color: "#4ade80",
+                    background: "rgba(37,211,102,0.08)",
+                    border: "1px solid rgba(37,211,102,0.2)",
+                    color: "#16a34a",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -189,7 +189,7 @@ export default function Offer() {
               </div>
               <p
                 className="text-xs text-center mt-3"
-                style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
               >
                 Sans engagement · Devis gratuit sous 24h
               </p>
@@ -204,23 +204,23 @@ export default function Offer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="rounded-3xl overflow-hidden relative"
             style={{
-              background: "rgba(139,92,246,0.06)",
-              border: "1px solid rgba(139,92,246,0.25)",
+              background: "rgba(0,119,182,0.05)",
+              border: "1px solid rgba(0,119,182,0.25)",
               boxShadow:
-                "0 0 40px rgba(139,92,246,0.12), 0 8px 32px rgba(0,0,0,0.3)",
+                "0 0 40px rgba(0,119,182,0.1), 0 8px 32px rgba(0,119,182,0.06)",
             }}
           >
             {/* Top bar */}
             <div
               className="h-1 w-full"
-              style={{ background: "linear-gradient(90deg, #8b5cf6, #c084fc)" }}
+              style={{ background: "linear-gradient(90deg, #0077B6, #023E8A)" }}
             />
             {/* Inner glow */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(ellipse at top, rgba(139,92,246,0.08) 0%, transparent 60%)",
+                  "radial-gradient(ellipse at top, rgba(0,119,182,0.06) 0%, transparent 60%)",
               }}
             />
             <div className="relative p-7">
@@ -228,9 +228,9 @@ export default function Offer() {
                 <span
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold mb-3"
                   style={{
-                    background: "rgba(139,92,246,0.15)",
-                    border: "1px solid rgba(139,92,246,0.4)",
-                    color: "#c084fc",
+                    background: "rgba(0,119,182,0.1)",
+                    border: "1px solid rgba(0,119,182,0.3)",
+                    color: "#0077B6",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -238,7 +238,7 @@ export default function Offer() {
                 </span>
                 <p
                   className="text-xl font-bold"
-                  style={{ fontFamily: "var(--font-heading)", color: "#f0f0ff" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#03045E" }}
                 >
                   Maintenance & Évolution
                 </p>
@@ -246,18 +246,18 @@ export default function Offer() {
                   className="font-extrabold mt-1"
                   style={{
                     fontFamily: "var(--font-heading)",
-                    color: "#c084fc",
+                    color: "#0077B6",
                     letterSpacing: "-0.02em",
                     fontSize: "1.5rem",
                   }}
                 >
-                  19,99 €<span style={{ fontSize: "1rem", fontWeight: 500, color: "#71717a" }}>/mois</span>
+                  19,99 €<span style={{ fontSize: "1rem", fontWeight: 500, color: "#4a6080" }}>/mois</span>
                 </p>
               </div>
 
               <div
                 className="border-t mb-5"
-                style={{ borderColor: "rgba(139,92,246,0.15)" }}
+                style={{ borderColor: "rgba(0,119,182,0.12)" }}
               />
 
               <ul className="flex flex-col gap-3 mb-6">
@@ -266,13 +266,13 @@ export default function Offer() {
                     <div
                       className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                       style={{
-                        background: "rgba(192,132,252,0.12)",
-                        border: "1px solid rgba(192,132,252,0.3)",
+                        background: "rgba(0,119,182,0.1)",
+                        border: "1px solid rgba(0,119,182,0.25)",
                       }}
                     >
-                      <Check className="w-3 h-3" style={{ color: "#c084fc" }} />
+                      <Check className="w-3 h-3" style={{ color: "#0077B6" }} />
                     </div>
-                    <span style={{ fontFamily: "var(--font-body)", color: "#a1a1aa" }}>
+                    <span style={{ fontFamily: "var(--font-body)", color: "#1a2a4a" }}>
                       {item}
                     </span>
                   </li>
@@ -284,7 +284,7 @@ export default function Offer() {
               </CalButton>
               <p
                 className="text-xs text-center mt-3"
-                style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
               >
                 Résiliable à tout moment · Sans engagement
               </p>

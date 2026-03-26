@@ -39,7 +39,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 px-4" style={{ background: "#050814" }}>
+    <section id="faq" className="py-20 px-4" style={{ background: "#FFFFFF" }}>
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -51,9 +51,9 @@ export default function FAQ() {
           <span
             className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
             style={{
-              background: "rgba(99,102,241,0.1)",
-              border: "1px solid rgba(99,102,241,0.25)",
-              color: "#818cf8",
+              background: "rgba(0,119,182,0.08)",
+              border: "1px solid rgba(0,119,182,0.2)",
+              color: "#0077B6",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -63,7 +63,7 @@ export default function FAQ() {
             className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
             style={{
               fontFamily: "var(--font-heading)",
-              color: "#f0f0ff",
+              color: "#03045E",
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
             }}
@@ -73,7 +73,7 @@ export default function FAQ() {
             <span
               className="text-transparent bg-clip-text"
               style={{
-                backgroundImage: "linear-gradient(135deg, #818cf8, #c084fc)",
+                backgroundImage: "linear-gradient(135deg, #0077B6, #023E8A)",
               }}
             >
               qu&apos;on nous pose souvent.
@@ -92,11 +92,11 @@ export default function FAQ() {
               className="rounded-2xl overflow-hidden"
               style={{
                 background: openIndex === i
-                  ? "rgba(99,102,241,0.06)"
-                  : "rgba(255,255,255,0.02)",
+                  ? "rgba(0,119,182,0.04)"
+                  : "#F0F9FF",
                 border: openIndex === i
-                  ? "1px solid rgba(99,102,241,0.2)"
-                  : "1px solid rgba(255,255,255,0.07)",
+                  ? "1px solid rgba(0,119,182,0.2)"
+                  : "1px solid #e1eaf5",
               }}
             >
               <button
@@ -108,7 +108,7 @@ export default function FAQ() {
                   className="font-semibold text-sm md:text-base leading-snug"
                   style={{
                     fontFamily: "var(--font-heading)",
-                    color: openIndex === i ? "#a5b4fc" : "#e0e0ff",
+                    color: openIndex === i ? "#0077B6" : "#03045E",
                   }}
                 >
                   {faq.q}
@@ -119,17 +119,17 @@ export default function FAQ() {
                   className="flex-shrink-0 w-7 h-7 rounded-full border flex items-center justify-center"
                   style={{
                     borderColor: openIndex === i
-                      ? "rgba(99,102,241,0.4)"
-                      : "rgba(255,255,255,0.1)",
+                      ? "rgba(0,119,182,0.4)"
+                      : "#e1eaf5",
                     background: openIndex === i
-                      ? "rgba(99,102,241,0.12)"
+                      ? "rgba(0,119,182,0.08)"
                       : "transparent",
                   }}
                 >
                   <Plus
                     className="w-4 h-4"
                     style={{
-                      color: openIndex === i ? "#818cf8" : "#52525b",
+                      color: openIndex === i ? "#0077B6" : "#4a6080",
                     }}
                   />
                 </motion.div>
@@ -148,8 +148,8 @@ export default function FAQ() {
                       className="px-5 pb-5 text-sm leading-relaxed border-t pt-4"
                       style={{
                         fontFamily: "var(--font-body)",
-                        color: "#a1a1aa",
-                        borderColor: "rgba(99,102,241,0.12)",
+                        color: "#4a6080",
+                        borderColor: "rgba(0,119,182,0.1)",
                       }}
                     >
                       {faq.a}

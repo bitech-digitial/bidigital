@@ -17,32 +17,32 @@ function BrowserCard({ realisation }: { realisation: (typeof realisations)[0] })
     <div
       className="rounded-2xl overflow-hidden transition-all duration-300 group"
       style={{
-        background: "rgba(255,255,255,0.03)",
-        border: "1px solid rgba(255,255,255,0.06)",
-        boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
+        background: "#F0F9FF",
+        border: "1px solid #e1eaf5",
+        boxShadow: "0 4px 24px rgba(0,119,182,0.07)",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget;
         el.style.transform = "translateY(-6px)";
-        el.style.borderColor = "rgba(99,102,241,0.3)";
-        el.style.boxShadow = "0 8px 40px rgba(99,102,241,0.15)";
+        el.style.borderColor = "rgba(0,119,182,0.3)";
+        el.style.boxShadow = "0 8px 40px rgba(0,119,182,0.12)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget;
         el.style.transform = "translateY(0)";
-        el.style.borderColor = "rgba(255,255,255,0.06)";
-        el.style.boxShadow = "0 4px 24px rgba(0,0,0,0.4)";
+        el.style.borderColor = "#e1eaf5";
+        el.style.boxShadow = "0 4px 24px rgba(0,119,182,0.07)";
       }}
     >
-      {/* Browser bar — traffic lights only, no URL */}
+      {/* Browser bar — traffic lights only */}
       <div
         style={{
-          background: "#141420",
+          background: "#F0F9FF",
           height: 32,
           display: "flex",
           alignItems: "center",
           padding: "0 12px",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          borderBottom: "1px solid #e1eaf5",
         }}
       >
         <div style={{ display: "flex", gap: 6 }}>
@@ -69,7 +69,7 @@ function BrowserCard({ realisation }: { realisation: (typeof realisations)[0] })
 
 export default function Examples() {
   return (
-    <section id="exemples" className="py-24 overflow-hidden" style={{ background: "#06070e" }}>
+    <section id="exemples" className="py-24 overflow-hidden" style={{ background: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -83,9 +83,9 @@ export default function Examples() {
           <span
             className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-5"
             style={{
-              background: "rgba(99,102,241,0.12)",
-              border: "1px solid rgba(99,102,241,0.3)",
-              color: "#818cf8",
+              background: "rgba(0,119,182,0.08)",
+              border: "1px solid rgba(0,119,182,0.2)",
+              color: "#0077B6",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -103,7 +103,7 @@ export default function Examples() {
             Des sites qui convertissent,{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #818cf8, #c084fc)",
+                background: "linear-gradient(135deg, #0077B6, #023E8A)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -115,7 +115,7 @@ export default function Examples() {
           <p
             style={{
               fontFamily: "var(--font-body)",
-              color: "#94a3b8",
+              color: "#4a6080",
               fontSize: "1.1rem",
               maxWidth: 600,
               margin: "0 auto",

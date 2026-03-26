@@ -19,30 +19,30 @@ const BiDigitalLogo = () => (
     aria-label="BiDigital"
     style={{ borderRadius: 8, flexShrink: 0 }}
   >
-    <rect width="100" height="100" rx="22" fill="#0f0f1a" />
-    <rect x="28" y="26" width="6" height="48" rx="3" fill="url(#fg1)" />
+    <rect width="100" height="100" rx="22" fill="rgba(255,255,255,0.1)" />
+    <rect x="28" y="26" width="6" height="48" rx="3" fill="url(#fg1-light)" />
     <path
       d="M34 26 L52 26 Q64 26 64 38 Q64 50 52 50 L34 50"
-      stroke="url(#fg1)"
+      stroke="url(#fg1-light)"
       strokeWidth="6"
       strokeLinecap="round"
       fill="none"
     />
     <path
       d="M34 50 L54 50 Q68 50 68 62 Q68 74 54 74 L34 74"
-      stroke="url(#fg2)"
+      stroke="url(#fg2-light)"
       strokeWidth="6"
       strokeLinecap="round"
       fill="none"
     />
     <defs>
-      <linearGradient id="fg1" x1="28" y1="26" x2="68" y2="50" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#818cf8" />
-        <stop offset="100%" stopColor="#6366f1" />
+      <linearGradient id="fg1-light" x1="28" y1="26" x2="68" y2="50" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#90E0EF" />
+        <stop offset="100%" stopColor="#CAF0F8" />
       </linearGradient>
-      <linearGradient id="fg2" x1="28" y1="50" x2="68" y2="74" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#6366f1" />
-        <stop offset="100%" stopColor="#8b5cf6" />
+      <linearGradient id="fg2-light" x1="28" y1="50" x2="68" y2="74" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#CAF0F8" />
+        <stop offset="100%" stopColor="#90E0EF" />
       </linearGradient>
     </defs>
   </svg>
@@ -60,8 +60,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "#060609",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
+        background: "#03045E",
+        borderTop: "1px solid rgba(255,255,255,0.08)",
       }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
@@ -72,7 +72,7 @@ export default function Footer() {
               className="font-extrabold text-base tracking-tight"
               style={{
                 fontFamily: "var(--font-heading)",
-                background: "linear-gradient(135deg, #f8fafc, #818cf8)",
+                background: "linear-gradient(135deg, #FFFFFF, #90E0EF)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -84,7 +84,7 @@ export default function Footer() {
 
           <p
             className="hidden sm:block text-sm"
-            style={{ fontFamily: "var(--font-body)", color: "#475569" }}
+            style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.5)" }}
           >
             Votre site, conforme et visible.
           </p>
@@ -93,9 +93,9 @@ export default function Footer() {
             <a
               href="mailto:contact@bidigital.fr"
               className="flex items-center gap-1.5 text-sm transition-colors"
-              style={{ fontFamily: "var(--font-body)", color: "#475569" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#6366f1")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
+              style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.5)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#90E0EF")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
               aria-label="Email"
             >
               <Mail className="w-4 h-4" />
@@ -106,9 +106,9 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-sm transition-colors"
-              style={{ fontFamily: "var(--font-body)", color: "#475569" }}
+              style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.5)" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#4ade80")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
               aria-label="WhatsApp"
             >
               <span style={{ color: "#4ade80" }}>
@@ -123,7 +123,7 @@ export default function Footer() {
           {navLinks.map((link, i) => (
             <span key={link.label} className="flex items-center gap-4">
               {i > 0 && (
-                <span className="hidden sm:inline" style={{ color: "rgba(255,255,255,0.06)" }}>
+                <span className="hidden sm:inline" style={{ color: "rgba(255,255,255,0.15)" }}>
                   ·
                 </span>
               )}
@@ -132,9 +132,9 @@ export default function Footer() {
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
                 className="text-sm transition-colors"
-                style={{ fontFamily: "var(--font-body)", color: "#475569" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#6366f1")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
+                style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.5)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#90E0EF")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
               >
                 {link.label}
               </a>
@@ -144,9 +144,9 @@ export default function Footer() {
 
         <div
           className="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderColor: "rgba(255,255,255,0.05)" }}
+          style={{ borderColor: "rgba(255,255,255,0.08)" }}
         >
-          <p className="text-xs" style={{ fontFamily: "var(--font-body)", color: "#334155" }}>
+          <p className="text-xs" style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.3)" }}>
             © 2026 BiDigital — Votre site, conforme et visible.
           </p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
@@ -156,13 +156,13 @@ export default function Footer() {
               { label: "RGPD", href: "/politique-de-confidentialite" },
             ].map((item, i) => (
               <span key={item.label} className="flex items-center gap-4">
-                {i > 0 && <span style={{ color: "rgba(255,255,255,0.06)" }}>·</span>}
+                {i > 0 && <span style={{ color: "rgba(255,255,255,0.1)" }}>·</span>}
                 <a
                   href={item.href}
                   className="text-xs transition-colors"
-                  style={{ fontFamily: "var(--font-body)", color: "#334155" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#6366f1")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#334155")}
+                  style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.3)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#90E0EF")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.3)")}
                 >
                   {item.label}
                 </a>

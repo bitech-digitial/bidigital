@@ -10,7 +10,7 @@ const services = [
     badgeStyle: {
       background: "rgba(74,222,128,0.1)",
       border: "1px solid rgba(74,222,128,0.25)",
-      color: "#4ade80",
+      color: "#16a34a",
     },
     title: "Identité Visuelle Complète",
     description: "Logo, flyer, carte de visite — offerts avec chaque projet.",
@@ -26,9 +26,9 @@ const services = [
     icon: Globe,
     badge: "Notre spécialité",
     badgeStyle: {
-      background: "rgba(99,102,241,0.12)",
-      border: "1px solid rgba(99,102,241,0.3)",
-      color: "#a5b4fc",
+      background: "rgba(0,119,182,0.08)",
+      border: "1px solid rgba(0,119,182,0.25)",
+      color: "#0077B6",
     },
     title: "Site Web qui Convertit",
     description:
@@ -45,9 +45,9 @@ const services = [
     icon: RefreshCw,
     badge: "Abonnement · sans engagement",
     badgeStyle: {
-      background: "rgba(139,92,246,0.15)",
-      border: "1px solid rgba(139,92,246,0.4)",
-      color: "#c084fc",
+      background: "rgba(0,119,182,0.1)",
+      border: "1px solid rgba(0,119,182,0.3)",
+      color: "#023E8A",
     },
     title: "Maintenance & Évolution Continue",
     description:
@@ -79,7 +79,7 @@ const cardVariants = {
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 px-4" style={{ background: "#050814" }}>
+    <section id="services" className="py-20 px-4" style={{ background: "#F0F9FF" }}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -92,9 +92,9 @@ export default function Services() {
           <span
             className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
             style={{
-              background: "rgba(99,102,241,0.1)",
-              border: "1px solid rgba(99,102,241,0.25)",
-              color: "#818cf8",
+              background: "rgba(0,119,182,0.08)",
+              border: "1px solid rgba(0,119,182,0.2)",
+              color: "#0077B6",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -104,7 +104,7 @@ export default function Services() {
             className="text-4xl sm:text-5xl font-extrabold mb-4"
             style={{
               fontFamily: "var(--font-heading)",
-              color: "#f0f0ff",
+              color: "#03045E",
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
             }}
@@ -113,7 +113,7 @@ export default function Services() {
             <span
               className="text-transparent bg-clip-text"
               style={{
-                backgroundImage: "linear-gradient(135deg, #818cf8, #c084fc)",
+                backgroundImage: "linear-gradient(135deg, #0077B6, #023E8A)",
               }}
             >
               à votre service
@@ -121,7 +121,7 @@ export default function Services() {
           </h2>
           <p
             className="text-lg max-w-2xl mx-auto"
-            style={{ fontFamily: "var(--font-body)", color: "#a1a1aa" }}
+            style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
           >
             Du site web conforme à la maintenance continue, nous couvrons tout votre digital.
           </p>
@@ -146,14 +146,14 @@ export default function Services() {
                 className="relative flex flex-col rounded-2xl p-6"
                 style={{
                   background: service.glow
-                    ? "rgba(139,92,246,0.06)"
-                    : "rgba(255,255,255,0.03)",
+                    ? "rgba(0,119,182,0.06)"
+                    : "#FFFFFF",
                   border: service.glow
-                    ? "1px solid rgba(139,92,246,0.25)"
-                    : "1px solid rgba(255,255,255,0.07)",
+                    ? "1px solid rgba(0,119,182,0.25)"
+                    : "1px solid #e1eaf5",
                   boxShadow: service.glow
-                    ? "0 0 40px rgba(139,92,246,0.12), 0 4px 20px rgba(0,0,0,0.3)"
-                    : "0 4px 20px rgba(0,0,0,0.2)",
+                    ? "0 0 40px rgba(0,119,182,0.1), 0 4px 20px rgba(0,119,182,0.06)"
+                    : "0 4px 20px rgba(0,119,182,0.05)",
                 }}
               >
                 {/* Featured glow ring for maintenance card */}
@@ -162,7 +162,7 @@ export default function Services() {
                     className="absolute inset-0 rounded-2xl pointer-events-none"
                     style={{
                       background:
-                        "radial-gradient(ellipse at top, rgba(139,92,246,0.08) 0%, transparent 70%)",
+                        "radial-gradient(ellipse at top, rgba(0,119,182,0.06) 0%, transparent 70%)",
                     }}
                   />
                 )}
@@ -180,16 +180,16 @@ export default function Services() {
                   className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
                   style={{
                     background: service.glow
-                      ? "rgba(139,92,246,0.15)"
-                      : "rgba(99,102,241,0.12)",
+                      ? "rgba(0,119,182,0.12)"
+                      : "rgba(0,119,182,0.08)",
                     border: service.glow
-                      ? "1px solid rgba(139,92,246,0.3)"
-                      : "1px solid rgba(99,102,241,0.2)",
+                      ? "1px solid rgba(0,119,182,0.3)"
+                      : "1px solid rgba(0,119,182,0.2)",
                   }}
                 >
                   <Icon
                     className="w-5 h-5"
-                    style={{ color: service.glow ? "#c084fc" : "#818cf8" }}
+                    style={{ color: "#0077B6" }}
                   />
                 </div>
 
@@ -197,7 +197,7 @@ export default function Services() {
                   className="font-bold text-lg mb-2"
                   style={{
                     fontFamily: "var(--font-heading)",
-                    color: "#f0f0ff",
+                    color: "#03045E",
                   }}
                 >
                   {service.title}
@@ -205,7 +205,7 @@ export default function Services() {
 
                 <p
                   className="text-sm leading-relaxed mb-4 flex-1"
-                  style={{ fontFamily: "var(--font-body)", color: "#71717a" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
                 >
                   {service.description}
                 </p>
@@ -215,7 +215,7 @@ export default function Services() {
                     <li
                       key={point}
                       className="flex items-start gap-2 text-sm"
-                      style={{ fontFamily: "var(--font-body)", color: "#a1a1aa" }}
+                      style={{ fontFamily: "var(--font-body)", color: "#1a2a4a" }}
                     >
                       <Check
                         className="w-3.5 h-3.5 flex-shrink-0 mt-0.5"
@@ -229,12 +229,12 @@ export default function Services() {
                 {service.price && (
                   <div
                     className="mt-auto pt-4 border-t"
-                    style={{ borderColor: "rgba(139,92,246,0.2)" }}
+                    style={{ borderColor: "rgba(0,119,182,0.15)" }}
                   >
                     <span
                       className="font-bold text-base"
                       style={{
-                        color: "#c084fc",
+                        color: "#0077B6",
                         fontFamily: "var(--font-heading)",
                       }}
                     >

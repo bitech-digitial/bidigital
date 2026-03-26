@@ -80,7 +80,7 @@ export default function TypewriterWord() {
     >
       <span
         style={{
-          background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%)',
+          background: 'linear-gradient(135deg, #03045E 0%, #0077B6 60%, #90E0EF 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
@@ -98,10 +98,10 @@ export default function TypewriterWord() {
           height: '0.8em',
           marginLeft: 4,
           borderRadius: 2,
-          background: 'linear-gradient(to bottom, #818cf8, #8b5cf6)',
+          background: '#0077B6',
           opacity: showCursor ? 1 : 0,
           transition: 'opacity 0.1s ease',
-          boxShadow: showCursor ? '0 0 8px rgba(139,92,246,0.8)' : 'none',
+          boxShadow: showCursor ? '0 0 8px rgba(0,119,182,0.6)' : 'none',
         }}
       />
     </span>

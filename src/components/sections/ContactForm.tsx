@@ -46,10 +46,10 @@ export default function ContactForm() {
   };
 
   const inputStyle = {
-    background: "rgba(255,255,255,0.04)",
-    border: "1px solid rgba(255,255,255,0.08)",
+    background: "#FFFFFF",
+    border: "1px solid #e1eaf5",
     borderRadius: 12,
-    color: "#f0f0ff",
+    color: "#1a2a4a",
     fontFamily: "var(--font-body)",
     fontSize: 14,
     padding: "12px 14px",
@@ -61,11 +61,11 @@ export default function ContactForm() {
 
   const focusStyle = {
     onFocus: (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-      e.currentTarget.style.borderColor = "rgba(99,102,241,0.6)";
-      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.12)";
+      e.currentTarget.style.borderColor = "rgba(0,119,182,0.6)";
+      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(0,119,182,0.1)";
     },
     onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-      e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+      e.currentTarget.style.borderColor = "#e1eaf5";
       e.currentTarget.style.boxShadow = "none";
     },
   };
@@ -76,7 +76,7 @@ export default function ContactForm() {
     fontWeight: 600,
     textTransform: "uppercase" as const,
     letterSpacing: "0.08em",
-    color: "#52525b",
+    color: "#4a6080",
     marginBottom: 6,
     fontFamily: "var(--font-body)",
   };
@@ -85,7 +85,7 @@ export default function ContactForm() {
     <section
       id="formulaire"
       className="py-24 px-4 relative overflow-hidden"
-      style={{ background: "#06071a" }}
+      style={{ background: "#F0F9FF" }}
     >
       {/* Glow */}
       <div
@@ -96,7 +96,7 @@ export default function ContactForm() {
           top: "40%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          background: "radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(0,119,182,0.06) 0%, transparent 70%)",
           filter: "blur(50px)",
         }}
       />
@@ -113,9 +113,9 @@ export default function ContactForm() {
           <span
             className="inline-block text-xs font-semibold uppercase tracking-widest rounded-full px-4 py-1.5 mb-4"
             style={{
-              background: "rgba(99,102,241,0.1)",
-              border: "1px solid rgba(99,102,241,0.25)",
-              color: "#818cf8",
+              background: "rgba(0,119,182,0.08)",
+              border: "1px solid rgba(0,119,182,0.2)",
+              color: "#0077B6",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -125,7 +125,7 @@ export default function ContactForm() {
             className="font-extrabold text-3xl mb-2"
             style={{
               fontFamily: "var(--font-heading)",
-              color: "#f0f0ff",
+              color: "#03045E",
               letterSpacing: "-0.02em",
             }}
           >
@@ -134,7 +134,7 @@ export default function ContactForm() {
             <span
               className="text-transparent bg-clip-text"
               style={{
-                backgroundImage: "linear-gradient(135deg, #818cf8, #c084fc)",
+                backgroundImage: "linear-gradient(135deg, #0077B6, #023E8A)",
               }}
             >
               On revient sous 24h.
@@ -142,7 +142,7 @@ export default function ContactForm() {
           </h2>
           <p
             className="text-sm"
-            style={{ fontFamily: "var(--font-body)", color: "#71717a" }}
+            style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
           >
             Sans engagement. Pas de démo commerciale. Juste une vraie réponse.
           </p>
@@ -156,9 +156,9 @@ export default function ContactForm() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="rounded-2xl p-6 sm:p-8"
           style={{
-            background: "rgba(255,255,255,0.025)",
-            border: "1px solid rgba(255,255,255,0.07)",
-            boxShadow: "0 8px 40px rgba(0,0,0,0.3)",
+            background: "#FFFFFF",
+            border: "1px solid #e1eaf5",
+            boxShadow: "0 8px 40px rgba(0,119,182,0.08)",
           }}
         >
           <AnimatePresence mode="wait">
@@ -172,13 +172,13 @@ export default function ContactForm() {
                 <CheckCircle className="w-14 h-14" style={{ color: "#4ade80" }} />
                 <p
                   className="font-bold text-xl"
-                  style={{ fontFamily: "var(--font-heading)", color: "#f0f0ff" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#03045E" }}
                 >
                   Message envoyé !
                 </p>
                 <p
                   className="text-sm"
-                  style={{ fontFamily: "var(--font-body)", color: "#71717a" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
                 >
                   On vous répond sous 24h en semaine. À très vite !
                 </p>
@@ -227,14 +227,14 @@ export default function ContactForm() {
                     required
                     value={form.sector}
                     onChange={handleChange}
-                    style={{ ...inputStyle, cursor: "pointer", colorScheme: "dark" }}
+                    style={{ ...inputStyle, cursor: "pointer", colorScheme: "light" }}
                     {...focusStyle}
                   >
-                    <option value="" disabled style={{ background: "#0d0f23" }}>
+                    <option value="" disabled style={{ background: "#FFFFFF", color: "#1a2a4a" }}>
                       Choisir…
                     </option>
                     {SECTORS.map((s) => (
-                      <option key={s} value={s} style={{ background: "#0d0f23" }}>
+                      <option key={s} value={s} style={{ background: "#FFFFFF", color: "#1a2a4a" }}>
                         {s}
                       </option>
                     ))}
@@ -260,7 +260,7 @@ export default function ContactForm() {
                 {status === "error" && (
                   <p
                     className="text-xs text-center"
-                    style={{ color: "#f87171", fontFamily: "var(--font-body)" }}
+                    style={{ color: "#ef4444", fontFamily: "var(--font-body)" }}
                   >
                     Une erreur est survenue. Réessayez ou écrivez-nous sur WhatsApp.
                   </p>
@@ -274,8 +274,8 @@ export default function ContactForm() {
                   style={{
                     background:
                       status === "loading"
-                        ? "rgba(99,102,241,0.5)"
-                        : "linear-gradient(135deg, #6366f1, #818cf8)",
+                        ? "rgba(0,119,182,0.5)"
+                        : "linear-gradient(135deg, #0077B6, #023E8A)",
                     color: "#fff",
                     fontFamily: "var(--font-body)",
                     border: "none",
@@ -283,7 +283,7 @@ export default function ContactForm() {
                     boxShadow:
                       status === "loading"
                         ? "none"
-                        : "0 4px 20px rgba(99,102,241,0.35)",
+                        : "0 4px 20px rgba(0,119,182,0.3)",
                   }}
                 >
                   {status === "loading" ? (
@@ -305,18 +305,18 @@ export default function ContactForm() {
                     checked={form.consent}
                     onChange={handleChange}
                     className="mt-0.5 flex-shrink-0"
-                    style={{ accentColor: "#6366f1" }}
+                    style={{ accentColor: "#0077B6" }}
                   />
                   <span
                     className="text-xs leading-relaxed"
-                    style={{ fontFamily: "var(--font-body)", color: "#52525b" }}
+                    style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
                   >
                     J&apos;accepte que BiDigital traite mes données pour répondre à ma demande, conformément à sa{" "}
                     <a
                       href="/politique-de-confidentialite"
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: "#818cf8" }}
+                      style={{ color: "#0077B6" }}
                     >
                       politique de confidentialité
                     </a>
@@ -326,7 +326,7 @@ export default function ContactForm() {
 
                 <p
                   className="text-center text-xs"
-                  style={{ fontFamily: "var(--font-body)", color: "#3f3f46" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
                 >
                   Sans engagement · Réponse sous 24h · 100% confidentiel
                 </p>

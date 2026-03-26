@@ -16,7 +16,7 @@ export default function OGImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#08090f",
+          background: "#03045E",
           fontFamily: "system-ui, sans-serif",
           position: "relative",
           overflow: "hidden",
@@ -31,7 +31,7 @@ export default function OGImage() {
             top: -200,
             left: -200,
             borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(99,102,241,0.25) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(144,224,239,0.15) 0%, transparent 70%)",
             filter: "blur(80px)",
           }}
         />
@@ -43,7 +43,7 @@ export default function OGImage() {
             bottom: -200,
             right: -100,
             borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(139,92,246,0.2) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(0,119,182,0.2) 0%, transparent 70%)",
             filter: "blur(60px)",
           }}
         />
@@ -67,9 +67,9 @@ export default function OGImage() {
               alignItems: "center",
               padding: "8px 20px",
               borderRadius: 100,
-              background: "rgba(99,102,241,0.12)",
-              border: "1px solid rgba(99,102,241,0.3)",
-              color: "#818cf8",
+              background: "rgba(144,224,239,0.12)",
+              border: "1px solid rgba(144,224,239,0.3)",
+              color: "#90E0EF",
               fontSize: 14,
               fontWeight: 600,
               letterSpacing: "0.1em",
@@ -84,7 +84,7 @@ export default function OGImage() {
             style={{
               fontSize: 72,
               fontWeight: 800,
-              background: "linear-gradient(135deg, #f8fafc 0%, #818cf8 100%)",
+              background: "linear-gradient(135deg, #FFFFFF 0%, #90E0EF 100%)",
               backgroundClip: "text",
               color: "transparent",
               letterSpacing: "-0.03em",
@@ -98,7 +98,7 @@ export default function OGImage() {
           <div
             style={{
               fontSize: 28,
-              color: "#94a3b8",
+              color: "rgba(255,255,255,0.65)",
               fontWeight: 400,
               lineHeight: 1.4,
               maxWidth: 800,
@@ -117,9 +117,9 @@ export default function OGImage() {
                     display: "flex",
                     padding: "10px 20px",
                     borderRadius: 12,
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    color: "#e0e0ff",
+                    background: "rgba(255,255,255,0.07)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "#CAF0F8",
                     fontSize: 16,
                     fontWeight: 500,
                   }}
@@ -136,7 +136,7 @@ export default function OGImage() {
           style={{
             position: "absolute",
             bottom: 40,
-            color: "#334155",
+            color: "rgba(255,255,255,0.35)",
             fontSize: 18,
             fontWeight: 500,
             letterSpacing: "0.05em",

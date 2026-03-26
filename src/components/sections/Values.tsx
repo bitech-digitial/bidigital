@@ -6,17 +6,17 @@ import { ShieldCheck, TrendingUp, Clock, Sparkles } from "lucide-react";
 const miniCards = [
   {
     icon: ShieldCheck,
-    color: "#818cf8",
-    bg: "rgba(99,102,241,0.1)",
-    border: "rgba(99,102,241,0.2)",
+    color: "#0077B6",
+    bg: "rgba(0,119,182,0.08)",
+    border: "rgba(0,119,182,0.2)",
     title: "Site 100% conforme",
     text: "RGPD, cookies, CGU — zéro risque légal. Tout est inclus dès le jour 1.",
   },
   {
     icon: TrendingUp,
-    color: "#22d3ee",
-    bg: "rgba(34,211,238,0.08)",
-    border: "rgba(34,211,238,0.2)",
+    color: "#0077B6",
+    bg: "rgba(0,119,182,0.08)",
+    border: "rgba(0,119,182,0.2)",
     title: "SEO inclus dès J1",
     text: "Google vous voit d'abord. Optimisation technique et éditoriale dès la mise en ligne.",
   },
@@ -30,9 +30,9 @@ const miniCards = [
   },
   {
     icon: Sparkles,
-    color: "#c084fc",
-    bg: "rgba(192,132,252,0.08)",
-    border: "rgba(192,132,252,0.2)",
+    color: "#0077B6",
+    bg: "rgba(0,119,182,0.08)",
+    border: "rgba(0,119,182,0.2)",
     title: "Tout inclus, 19,99€/mois",
     text: "Hébergement, domaine, maintenance, mises à jour légales. Sans engagement.",
   },
@@ -60,7 +60,7 @@ export default function Values() {
     <section
       id="valeurs"
       className="py-24 px-4"
-      style={{ background: "#08090f" }}
+      style={{ background: "#FFFFFF" }}
     >
       <div className="max-w-5xl mx-auto">
         {/* Header */}
@@ -74,9 +74,9 @@ export default function Values() {
           <span
             className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-widest uppercase mb-5"
             style={{
-              background: "rgba(34,211,238,0.08)",
-              border: "1px solid rgba(34,211,238,0.2)",
-              color: "#22d3ee",
+              background: "rgba(0,119,182,0.08)",
+              border: "1px solid rgba(0,119,182,0.2)",
+              color: "#0077B6",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -94,7 +94,7 @@ export default function Values() {
             Pourquoi nous{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #818cf8, #c084fc)",
+                background: "linear-gradient(135deg, #0077B6, #023E8A)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -106,7 +106,7 @@ export default function Values() {
           <p
             style={{
               fontFamily: "var(--font-body)",
-              color: "#94a3b8",
+              color: "#4a6080",
               fontSize: "1.1rem",
               maxWidth: 500,
               margin: "0 auto",
@@ -133,19 +133,19 @@ export default function Values() {
                 variants={cardVariants}
                 className="rounded-2xl p-6 transition-all duration-300"
                 style={{
-                  background: "rgba(255,255,255,0.02)",
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
+                  background: "#F0F9FF",
+                  border: "1px solid #e1eaf5",
+                  boxShadow: "0 4px 24px rgba(0,119,182,0.06)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.borderColor = "rgba(99,102,241,0.3)";
-                  e.currentTarget.style.boxShadow = "0 8px 40px rgba(99,102,241,0.12)";
+                  e.currentTarget.style.borderColor = "rgba(0,119,182,0.3)";
+                  e.currentTarget.style.boxShadow = "0 8px 40px rgba(0,119,182,0.1)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
-                  e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,0,0,0.3)";
+                  e.currentTarget.style.borderColor = "#e1eaf5";
+                  e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,119,182,0.06)";
                 }}
               >
                 <div
@@ -156,13 +156,13 @@ export default function Values() {
                 </div>
                 <h4
                   className="font-bold text-base mb-2"
-                  style={{ fontFamily: "var(--font-heading)", color: "#f8fafc" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#03045E" }}
                 >
                   ✦ {card.title}
                 </h4>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ fontFamily: "var(--font-body)", color: "#64748b" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
                 >
                   {card.text}
                 </p>

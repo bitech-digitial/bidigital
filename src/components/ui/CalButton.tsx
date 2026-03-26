@@ -24,8 +24,8 @@ export default function CalButton({
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {
         cssVarsPerTheme: {
-          light: { "cal-brand": "#6366f1" },
-          dark:  { "cal-brand": "#6366f1" },
+          light: { "cal-brand": "#0077B6" },
+          dark:  { "cal-brand": "#0077B6" },
         },
         hideEventTypeDetails: true,
         layout: "month_view",
@@ -40,7 +40,7 @@ export default function CalButton({
       data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
       className={`inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold ${className}`}
       style={{
-        background:    "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+        background:    "linear-gradient(135deg, #0077B6 0%, #023E8A 100%)",
         color:         "#ffffff",
         fontFamily:    "var(--font-heading)",
         fontSize:      "15px",
@@ -48,19 +48,19 @@ export default function CalButton({
         borderRadius:  12,
         border:        "none",
         cursor:        "pointer",
-        boxShadow:     "0 4px 15px rgba(99,102,241,0.35)",
+        boxShadow:     "0 4px 15px rgba(0,119,182,0.3)",
         transition:    "transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease",
         ...style,
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform  = "translateY(-1px)";
-        e.currentTarget.style.filter     = "brightness(1.1)";
-        e.currentTarget.style.boxShadow  = "0 6px 22px rgba(99,102,241,0.55)";
+        e.currentTarget.style.filter     = "brightness(1.08)";
+        e.currentTarget.style.boxShadow  = "0 6px 22px rgba(0,119,182,0.5)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform  = "translateY(0)";
         e.currentTarget.style.filter     = "brightness(1)";
-        e.currentTarget.style.boxShadow  = (style?.boxShadow as string) ?? "0 4px 15px rgba(99,102,241,0.35)";
+        e.currentTarget.style.boxShadow  = (style?.boxShadow as string) ?? "0 4px 15px rgba(0,119,182,0.3)";
       }}
       onClick={onClick}
     >

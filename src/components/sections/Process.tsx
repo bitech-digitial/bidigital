@@ -63,7 +63,7 @@ const ArrowIcon = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="rgba(99,102,241,0.3)"
+    stroke="rgba(0,119,182,0.3)"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -76,7 +76,7 @@ const ArrowIcon = () => (
 
 export default function Process() {
   return (
-    <section id="processus" className="py-24 px-4" style={{ background: "#06070e" }}>
+    <section id="processus" className="py-24 px-4" style={{ background: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -89,9 +89,9 @@ export default function Process() {
           <span
             className="inline-block text-xs font-semibold uppercase tracking-widest rounded-full px-3 py-1 mb-5"
             style={{
-              background: "rgba(139,92,246,0.12)",
-              border: "1px solid rgba(139,92,246,0.3)",
-              color: "#c084fc",
+              background: "rgba(0,119,182,0.08)",
+              border: "1px solid rgba(0,119,182,0.2)",
+              color: "#0077B6",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -111,7 +111,7 @@ export default function Process() {
           <p
             style={{
               fontFamily: "var(--font-body)",
-              color: "#94a3b8",
+              color: "#4a6080",
               fontSize: "1.1rem",
             }}
           >
@@ -131,15 +131,15 @@ export default function Process() {
                 className="flex-1 relative rounded-2xl p-7 overflow-hidden"
                 style={{
                   background: step.featured
-                    ? "rgba(139,92,246,0.08)"
-                    : "rgba(255,255,255,0.02)",
+                    ? "rgba(0,119,182,0.06)"
+                    : "#F0F9FF",
                   border: `1px solid ${
                     step.featured
-                      ? "rgba(139,92,246,0.25)"
-                      : "rgba(255,255,255,0.06)"
+                      ? "rgba(0,119,182,0.25)"
+                      : "#e1eaf5"
                   }`,
                   boxShadow: step.featured
-                    ? "0 0 40px rgba(139,92,246,0.1)"
+                    ? "0 0 40px rgba(0,119,182,0.1)"
                     : "none",
                   marginBottom: i < steps.length - 1 ? "0.75rem" : 0,
                 }}
@@ -154,8 +154,8 @@ export default function Process() {
                     fontSize: "6rem",
                     fontWeight: 900,
                     fontFamily: "var(--font-heading)",
-                    color: "#6366f1",
-                    opacity: 0.08,
+                    color: "#0077B6",
+                    opacity: 0.07,
                     lineHeight: 1,
                     pointerEvents: "none",
                     userSelect: "none",
@@ -169,15 +169,15 @@ export default function Process() {
                   className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
                   style={{
                     background: step.featured
-                      ? "rgba(139,92,246,0.15)"
-                      : "rgba(99,102,241,0.1)",
+                      ? "rgba(0,119,182,0.12)"
+                      : "rgba(0,119,182,0.08)",
                     border: `1px solid ${
                       step.featured
-                        ? "rgba(139,92,246,0.4)"
-                        : "rgba(99,102,241,0.25)"
+                        ? "rgba(0,119,182,0.3)"
+                        : "rgba(0,119,182,0.2)"
                     }`,
                     boxShadow: step.featured
-                      ? "0 0 20px rgba(139,92,246,0.25)"
+                      ? "0 0 20px rgba(0,119,182,0.15)"
                       : "none",
                   }}
                 >
@@ -185,7 +185,7 @@ export default function Process() {
                     style={{
                       width: 20,
                       height: 20,
-                      color: step.featured ? "#c084fc" : "#818cf8",
+                      color: "#0077B6",
                     }}
                   />
                 </div>
@@ -195,14 +195,14 @@ export default function Process() {
                   className="inline-block text-xs px-2.5 py-1 rounded-full font-medium mb-3"
                   style={{
                     background: step.featured
-                      ? "rgba(139,92,246,0.12)"
-                      : "rgba(99,102,241,0.08)",
-                    color: step.featured ? "#c084fc" : "#818cf8",
+                      ? "rgba(0,119,182,0.1)"
+                      : "rgba(0,119,182,0.06)",
+                    color: "#0077B6",
                     fontFamily: "var(--font-body)",
                     border: `1px solid ${
                       step.featured
-                        ? "rgba(139,92,246,0.2)"
-                        : "rgba(99,102,241,0.15)"
+                        ? "rgba(0,119,182,0.2)"
+                        : "rgba(0,119,182,0.12)"
                     }`,
                   }}
                 >
@@ -213,7 +213,7 @@ export default function Process() {
                   className="font-bold text-base mb-2"
                   style={{
                     fontFamily: "var(--font-heading)",
-                    color: "#f8fafc",
+                    color: "#03045E",
                     letterSpacing: "-0.01em",
                   }}
                 >
@@ -223,7 +223,7 @@ export default function Process() {
                   className="text-sm leading-relaxed"
                   style={{
                     fontFamily: "var(--font-body)",
-                    color: step.featured ? "rgba(248,250,252,0.6)" : "#64748b",
+                    color: "#4a6080",
                   }}
                 >
                   {step.description}

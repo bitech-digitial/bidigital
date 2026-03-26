@@ -44,7 +44,7 @@ export default function MobileStickyCTA() {
         className="absolute inset-x-0 bottom-0 pointer-events-none"
         style={{
           height: 120,
-          background: "linear-gradient(to top, #08090f 0%, rgba(8,9,15,0.8) 60%, transparent 100%)",
+          background: "linear-gradient(to top, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.8) 60%, transparent 100%)",
         }}
       />
 
@@ -52,20 +52,20 @@ export default function MobileStickyCTA() {
       <div
         className="relative mx-3 mb-4 overflow-hidden"
         style={{
-          background: "#0d0d1f",
-          border: "1px solid rgba(99,102,241,0.2)",
+          background: "#FFFFFF",
+          border: "1px solid #e1eaf5",
           borderRadius: 18,
-          boxShadow: "0 -4px 30px rgba(99,102,241,0.15), 0 8px 32px rgba(0,0,0,0.5)",
+          boxShadow: "0 -2px 24px rgba(0,119,182,0.1), 0 8px 32px rgba(0,0,0,0.06)",
         }}
       >
-        {/* Glow ligne supérieure */}
+        {/* Glow ligne supérieure subtile */}
         <div
           className="absolute top-0 pointer-events-none"
           style={{
             left: "25%",
             right: "25%",
             height: 1,
-            background: "linear-gradient(to right, transparent, rgba(99,102,241,0.6), transparent)",
+            background: "linear-gradient(to right, transparent, rgba(0,119,182,0.4), transparent)",
           }}
         />
 
@@ -73,13 +73,13 @@ export default function MobileStickyCTA() {
           {/* Indicateur pulsant */}
           <div className="relative shrink-0">
             <div
-              className="w-2.5 h-2.5 rounded-full bg-indigo-400"
-              style={{ animation: "ctaPulse 2s ease-in-out infinite" }}
+              className="w-2.5 h-2.5 rounded-full"
+              style={{ background: "#0077B6", animation: "ctaPulse 2s ease-in-out infinite" }}
             />
             <div
               className="absolute inset-0 rounded-full"
               style={{
-                background: "rgba(99,102,241,0.3)",
+                background: "rgba(0,119,182,0.3)",
                 animation: "ctaRing 2s ease-in-out infinite",
               }}
             />
@@ -89,13 +89,13 @@ export default function MobileStickyCTA() {
           <div className="flex-1 min-w-0">
             <p
               className="font-semibold text-sm leading-tight truncate"
-              style={{ color: "#f8fafc", fontFamily: "var(--font-heading)" }}
+              style={{ color: "#03045E", fontFamily: "var(--font-heading)" }}
             >
               Parlons de votre projet
             </p>
             <p
               className="text-xs leading-tight mt-0.5"
-              style={{ color: "rgba(129,140,248,0.7)", fontFamily: "var(--font-body)" }}
+              style={{ color: "#4a6080", fontFamily: "var(--font-body)" }}
             >
               Réponse sous 24h · Sans engagement
             </p>
@@ -108,11 +108,11 @@ export default function MobileStickyCTA() {
             rel="noopener noreferrer"
             className="shrink-0 whitespace-nowrap font-bold text-sm"
             style={{
-              background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+              background: "linear-gradient(135deg, #0077B6, #023E8A)",
               color: "#fff",
               padding: "10px 16px",
               borderRadius: 12,
-              boxShadow: "0 4px 15px rgba(99,102,241,0.4)",
+              boxShadow: "0 4px 15px rgba(0,119,182,0.3)",
               fontFamily: "var(--font-body)",
               transition: "transform 0.1s ease",
             }}
@@ -126,9 +126,9 @@ export default function MobileStickyCTA() {
           <button
             onClick={() => setDismissed(true)}
             className="shrink-0 ml-1 p-1 rounded-lg focus:outline-none"
-            style={{ color: "#475569", transition: "color 0.15s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#94a3b8")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
+            style={{ color: "#4a6080", transition: "color 0.15s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#03045E")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#4a6080")}
             aria-label="Fermer"
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

@@ -10,24 +10,24 @@ const checkpoints = [
     title: "RGPD & Politique de confidentialité",
     description: "Rédigée et intégrée selon votre activité. Conforme dès le jour 1.",
     color: "#4ade80",
-    bg: "rgba(74,222,128,0.08)",
-    border: "rgba(74,222,128,0.2)",
+    bg: "rgba(74,222,128,0.1)",
+    border: "rgba(74,222,128,0.25)",
   },
   {
     icon: FileText,
     title: "Mentions légales conformes",
     description: "À jour selon votre statut juridique et votre secteur d'activité.",
-    color: "#818cf8",
-    bg: "rgba(99,102,241,0.08)",
-    border: "rgba(99,102,241,0.2)",
+    color: "#90E0EF",
+    bg: "rgba(144,224,239,0.12)",
+    border: "rgba(144,224,239,0.25)",
   },
   {
     icon: Cookie,
     title: "Gestion des cookies — bandeau CNIL",
     description: "Bandeau de consentement conforme aux directives CNIL, intégré et fonctionnel.",
     color: "#fb923c",
-    bg: "rgba(251,146,60,0.08)",
-    border: "rgba(251,146,60,0.2)",
+    bg: "rgba(251,146,60,0.1)",
+    border: "rgba(251,146,60,0.25)",
   },
 ];
 
@@ -36,9 +36,9 @@ export default function LegalCompliance() {
     <section
       id="conformite"
       className="py-20 px-4 relative overflow-hidden"
-      style={{ background: "#06071a" }}
+      style={{ background: "#03045E" }}
     >
-      {/* Background glow */}
+      {/* Background glow subtil */}
       <div
         className="absolute pointer-events-none"
         style={{
@@ -48,7 +48,7 @@ export default function LegalCompliance() {
           left: "50%",
           transform: "translate(-50%, -50%)",
           background:
-            "radial-gradient(ellipse, rgba(239,68,68,0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(144,224,239,0.08) 0%, transparent 70%)",
           filter: "blur(60px)",
         }}
       />
@@ -65,9 +65,9 @@ export default function LegalCompliance() {
           <span
             className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
             style={{
-              background: "rgba(239,68,68,0.1)",
+              background: "rgba(239,68,68,0.12)",
               border: "1px solid rgba(239,68,68,0.3)",
-              color: "#f87171",
+              color: "#fca5a5",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -77,7 +77,7 @@ export default function LegalCompliance() {
             className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-5"
             style={{
               fontFamily: "var(--font-heading)",
-              color: "#f0f0ff",
+              color: "#FFFFFF",
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
             }}
@@ -96,14 +96,14 @@ export default function LegalCompliance() {
             className="text-base sm:text-lg max-w-3xl mx-auto"
             style={{
               fontFamily: "var(--font-body)",
-              color: "#a1a1aa",
+              color: "rgba(255,255,255,0.6)",
               lineHeight: 1.7,
             }}
           >
             En France, la loi impose des obligations précises à tout site web (RGPD, mentions légales, cookies, accessibilité).
             La plupart des PME et indépendants ne sont pas conformes — et s&apos;exposent à des sanctions lourdes.
             Chez BiDigital,{" "}
-            <span style={{ color: "#f0f0ff", fontWeight: 500 }}>
+            <span style={{ color: "#FFFFFF", fontWeight: 500 }}>
               chaque site livré est 100% conforme dès le premier jour.
             </span>
           </p>
@@ -134,13 +134,13 @@ export default function LegalCompliance() {
                 </div>
                 <h4
                   className="font-semibold text-sm mb-1.5"
-                  style={{ fontFamily: "var(--font-heading)", color: "#f0f0ff" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF" }}
                 >
                   {cp.title}
                 </h4>
                 <p
                   className="text-xs leading-relaxed"
-                  style={{ fontFamily: "var(--font-body)", color: "#71717a" }}
+                  style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.55)" }}
                 >
                   {cp.description}
                 </p>
@@ -175,7 +175,7 @@ export default function LegalCompliance() {
               </p>
               <p
                 className="text-xs sm:text-sm"
-                style={{ fontFamily: "var(--font-body)", color: "#a1a1aa" }}
+                style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.55)" }}
               >
                 La CNIL sanctionne activement les entreprises non conformes. Ne prenez pas ce risque.
               </p>
