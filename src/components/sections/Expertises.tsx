@@ -38,7 +38,7 @@ const cardVariants = {
 
 export default function Expertises() {
   return (
-    <section id="expertises" className="py-20 px-4" style={{ background: "#FFFFFF" }}>
+    <section id="expertises" className="py-20 px-4" style={{ background: "#F0F9FF" }}>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

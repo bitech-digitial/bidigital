@@ -69,7 +69,7 @@ function BrowserCard({ realisation }: { realisation: (typeof realisations)[0] })
 
 export default function Examples() {
   return (
-    <section id="exemples" className="py-24 overflow-hidden" style={{ background: "#FFFFFF" }}>
+    <section id="exemples" className="py-24 overflow-hidden" style={{ background: "#F0F9FF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
