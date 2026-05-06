@@ -4,7 +4,9 @@ import Hero from "@/components/sections/Hero";
 import ConversionPopup from "@/components/ui/ConversionPopup";
 import CookieBanner from "@/components/ui/CookieBanner";
 
-const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
+const Expertises = dynamic(() => import("@/components/sections/Expertises"), { ssr: true });
+const Stats = dynamic(() => import("@/components/sections/Stats"), { ssr: true });
+const Solutions = dynamic(() => import("@/components/sections/Solutions"), { ssr: true });
 const Examples = dynamic(() => import("@/components/sections/Examples"), { ssr: true });
 const Services = dynamic(() => import("@/components/sections/Services"), { ssr: true });
 const LegalCompliance = dynamic(() => import("@/components/sections/LegalCompliance"), { ssr: true });
@@ -15,6 +17,7 @@ const ContactForm = dynamic(() => import("@/components/sections/ContactForm"), {
 const FAQ = dynamic(() => import("@/components/sections/FAQ"), { ssr: true });
 const TrustBar = dynamic(() => import("@/components/ui/TrustBar"), { ssr: true });
 const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"), { ssr: true });
+const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: true });
 
 export default function Home() {
   return (
@@ -22,6 +25,9 @@ export default function Home() {
       <Navbar />
       <main style={{ overflowX: "hidden" }}>
         <Hero />
+        <Expertises />
+        <Stats />
+        <Solutions />
         <Examples />
         <Services />
         <LegalCompliance />
