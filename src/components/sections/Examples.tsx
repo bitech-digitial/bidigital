@@ -89,7 +89,7 @@ export default function Examples() {
               fontFamily: "var(--font-body)",
             }}
           >
-            RÉALISATIONS
+            NOS RÉFÉRENCES
           </span>
           <h2
             className="font-extrabold text-gradient mb-4"
