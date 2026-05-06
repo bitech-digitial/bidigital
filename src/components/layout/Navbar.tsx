@@ -13,30 +13,30 @@ const expertisesColumns = [
   {
     title: "Création de sites",
     items: [
-      { label: "Site vitrine", href: "#" },
-      { label: "Site e-commerce", href: "#" },
-      { label: "Site de réservation", href: "#" },
+      { label: "Site vitrine", href: "#solutions" },
+      { label: "Site e-commerce", href: "#solutions" },
+      { label: "Site de réservation", href: "#solutions" },
     ],
   },
   {
     title: "Visibilité",
     items: [
-      { label: "Référencement SEO", href: "#" },
-      { label: "Référencement SEA", href: "#" },
+      { label: "Référencement SEO", href: "#solutions" },
+      { label: "Référencement SEA", href: "#solutions" },
     ],
   },
 ];
 
 const secteurItems = [
-  { label: "Bâtiment / Artisan", href: "#" },
-  { label: "Commerce", href: "#" },
-  { label: "Restauration", href: "#" },
-  { label: "Agriculture", href: "#" },
-  { label: "Hébergement", href: "#" },
-  { label: "Beauté / Bien-être", href: "#" },
-  { label: "Taxi / VTC", href: "#" },
-  { label: "Automobile", href: "#" },
-  { label: "Services", href: "#" },
+  { label: "Bâtiment / Artisan", href: "#contact" },
+  { label: "Commerce", href: "#contact" },
+  { label: "Restauration", href: "#contact" },
+  { label: "Agriculture", href: "#contact" },
+  { label: "Hébergement", href: "#contact" },
+  { label: "Beauté / Bien-être", href: "#contact" },
+  { label: "Taxi / VTC", href: "#contact" },
+  { label: "Automobile", href: "#contact" },
+  { label: "Services", href: "#contact" },
 ];
 
 const dropdownPanelStyle: React.CSSProperties = {
