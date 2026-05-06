@@ -50,8 +50,9 @@ const BiDigitalLogo = () => (
 
 const navLinks = [
   { label: "Accueil", href: "#" },
+  { label: "Nos expertises", href: "#expertises" },
+  { label: "Nos réalisations", href: "#exemples" },
   { label: "Services", href: "#services" },
-  { label: "Processus", href: "#processus" },
   { label: "FAQ", href: "#faq" },
   { label: "Prendre rendez-vous", href: CAL_FULL_URL, external: true },
 ];
