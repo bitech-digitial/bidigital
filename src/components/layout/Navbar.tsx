@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { WHATSAPP_LINK } from "@/lib/constants";
@@ -38,6 +38,18 @@ const secteurItems = [
   { label: "Automobile", href: "#" },
   { label: "Services", href: "#" },
 ];
+
+const dropdownPanelStyle: React.CSSProperties = {
+  position: "absolute",
+  top: "calc(100% + 8px)",
+  left: "50%",
+  transform: "translateX(-50%)",
+  background: "#FFFFFF",
+  border: "1px solid #e1eaf5",
+  borderRadius: 16,
+  boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+  zIndex: 100,
+};
 
 // ── Dropdown Panels ───────────────────────────────────────────────────────────
 
@@ -132,12 +144,23 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setOpenAccordion(null);
+  };
+
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") { setMenuOpen(false); setOpenDropdown(null); }
+      if (e.key === "Escape") { closeMenu(); setOpenDropdown(null); }
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
   }, []);
 
   const openMenu = (key: string) => {
@@ -152,18 +175,6 @@ export default function Navbar() {
   const bar1Style = menuOpen ? { transform: "rotate(45deg) translateY(7px)" } : {};
   const bar2Style = menuOpen ? { opacity: 0, transform: "scaleX(0)" } : {};
   const bar3Style = menuOpen ? { transform: "rotate(-45deg) translateY(-7px)" } : {};
-
-  const dropdownPanelStyle = {
-    position: "absolute" as const,
-    top: "calc(100% + 8px)",
-    left: "50%",
-    transform: "translateX(-50%)",
-    background: "#FFFFFF",
-    border: "1px solid #e1eaf5",
-    borderRadius: 16,
-    boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
-    zIndex: 100,
-  };
 
   return (
     <>
@@ -222,6 +233,8 @@ export default function Navbar() {
                 onMouseLeave={scheduleClose}
               >
                 <button
+                  aria-haspopup="true"
+                  aria-expanded={openDropdown === "expertises"}
                   className="flex items-center gap-1 text-sm focus:outline-none"
                   style={{
                     fontFamily: "var(--font-body)",
@@ -263,6 +276,8 @@ export default function Navbar() {
                 onMouseLeave={scheduleClose}
               >
                 <button
+                  aria-haspopup="true"
+                  aria-expanded={openDropdown === "secteur"}
                   className="flex items-center gap-1 text-sm focus:outline-none"
                   style={{
                     fontFamily: "var(--font-body)",
@@ -370,6 +385,7 @@ export default function Navbar() {
               {/* Nos expertises accordion */}
               <div>
                 <button
+                  aria-expanded={openAccordion === "expertises"}
                   onClick={() => setOpenAccordion(openAccordion === "expertises" ? null : "expertises")}
                   style={{
                     display: "flex", width: "100%", alignItems: "center",
@@ -410,7 +426,7 @@ export default function Navbar() {
                             <a
                               key={item.label}
                               href={item.href}
-                              onClick={() => setMenuOpen(false)}
+                              onClick={() => closeMenu()}
                               style={{
                                 display: "block", padding: "8px 12px", borderRadius: 8,
                                 fontSize: 14, color: "#4a6080", textDecoration: "none",
@@ -430,6 +446,7 @@ export default function Navbar() {
               {/* Votre secteur accordion */}
               <div>
                 <button
+                  aria-expanded={openAccordion === "secteur"}
                   onClick={() => setOpenAccordion(openAccordion === "secteur" ? null : "secteur")}
                   style={{
                     display: "flex", width: "100%", alignItems: "center",
@@ -462,7 +479,7 @@ export default function Navbar() {
                           <a
                             key={item.label}
                             href={item.href}
-                            onClick={() => setMenuOpen(false)}
+                            onClick={() => closeMenu()}
                             style={{
                               padding: "8px 14px", borderRadius: 8, fontSize: 13,
                               color: "#4a6080", textDecoration: "none",
@@ -483,7 +500,7 @@ export default function Navbar() {
               {/* Nos réalisations */}
               <a
                 href="#exemples"
-                onClick={() => setMenuOpen(false)}
+                onClick={() => closeMenu()}
                 style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   padding: "16px 20px", borderRadius: 14,
