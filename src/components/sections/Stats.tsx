@@ -28,14 +28,16 @@ function Counter({ value, suffix, label }: { value: number; suffix: string; labe
     if (!started) return;
     const duration = 1800;
     const startTime = performance.now();
+    let rafId: number;
     const tick = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.round(eased * value));
-      if (progress < 1) requestAnimationFrame(tick);
+      if (progress < 1) rafId = requestAnimationFrame(tick);
     };
-    requestAnimationFrame(tick);
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
   }, [started, value]);
 
   return (
