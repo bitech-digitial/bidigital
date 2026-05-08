@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck, TrendingUp, Clock, Sparkles } from "lucide-react";
+import FloatingShapesLayer from "@/components/ui/FloatingShapesLayer";
 
 const miniCards = [
   {
@@ -59,10 +60,12 @@ export default function Values() {
   return (
     <section
       id="valeurs"
-      className="py-24 px-4"
+      className="relative py-24 px-4 overflow-hidden"
       style={{ background: "#FFFFFF" }}
     >
-      <div className="max-w-5xl mx-auto">
+      <FloatingShapesLayer variant="light" />
+
+      <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

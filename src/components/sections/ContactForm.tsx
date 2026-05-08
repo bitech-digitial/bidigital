@@ -51,7 +51,7 @@ export default function ContactForm() {
     borderRadius: 12,
     color: "#1a2a4a",
     fontFamily: "var(--font-body)",
-    fontSize: 14,
+    fontSize: 15,
     padding: "12px 14px",
     width: "100%",
     outline: "2px solid transparent",
@@ -72,7 +72,7 @@ export default function ContactForm() {
 
   const labelStyle = {
     display: "block",
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: 600,
     textTransform: "uppercase" as const,
     letterSpacing: "0.08em",
@@ -84,7 +84,7 @@ export default function ContactForm() {
   return (
     <section
       id="formulaire"
-      className="py-24 px-4 relative overflow-hidden"
+      className="relative py-24 px-4 overflow-hidden"
       style={{ background: "#F0F9FF" }}
     >
       {/* Glow */}
@@ -100,6 +100,38 @@ export default function ContactForm() {
           filter: "blur(50px)",
         }}
       />
+
+      {/* ── Décos géométriques ── */}
+      {/* Carré outline haut-gauche */}
+      <div className="absolute pointer-events-none hidden lg:block" style={{
+        top: 50, left: 60, width: 100, height: 100,
+        border: "1.5px solid rgba(0,119,182,0.1)", borderRadius: 18,
+        transform: "rotate(12deg)",
+      }} />
+      {/* Petit carré rempli haut-gauche */}
+      <div className="absolute pointer-events-none hidden md:block" style={{
+        top: 100, left: 140, width: 36, height: 36,
+        background: "rgba(0,119,182,0.05)", border: "1px solid rgba(0,119,182,0.15)",
+        borderRadius: 8, transform: "rotate(-8deg)",
+      }} />
+      {/* Cercle droite */}
+      <div className="absolute pointer-events-none hidden lg:block" style={{
+        top: "50%", right: -60, marginTop: -120,
+        width: 240, height: 240,
+        border: "1.5px solid rgba(0,119,182,0.08)", borderRadius: "50%",
+      }} />
+      {/* Rectangle fin bas-droite */}
+      <div className="absolute pointer-events-none hidden md:block" style={{
+        bottom: 60, right: 80, width: 90, height: 50,
+        border: "1px solid rgba(0,119,182,0.1)", borderRadius: 10,
+        transform: "rotate(15deg)",
+      }} />
+      {/* Trait diagonal bas-gauche */}
+      <div className="absolute pointer-events-none hidden lg:block" style={{
+        bottom: "10%", left: 40, width: 1, height: 150,
+        background: "linear-gradient(180deg, transparent, rgba(0,119,182,0.15), transparent)",
+        transform: "rotate(20deg)",
+      }} />
 
       <div className="relative z-10 max-w-xl mx-auto">
         {/* Header */}

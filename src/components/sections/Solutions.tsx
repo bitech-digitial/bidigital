@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Check } from "lucide-react";
 
 const solutions = [
@@ -17,7 +16,8 @@ const solutions = [
       "Livré en 7 jours",
     ],
     cta: { label: "Découvrir nos réalisations", href: "#exemples" },
-    image: "/images/realisations/site-2.webp",
+    illustration: "/images/illustrations/undraw_designer_efwz.svg",
+    illustrationAlt: "Designer créant votre vitrine numérique",
     imageLeft: false,
   },
   {
@@ -32,15 +32,54 @@ const solutions = [
       "SEA optionnel pour accélérer",
     ],
     cta: { label: "Optimiser ma visibilité", href: "#contact" },
-    image: "/images/realisations/site-1.webp",
+    illustration: "/images/illustrations/undraw_performance-comparison_qd1q.svg",
+    illustrationAlt: "Comparaison de performances SEO",
     imageLeft: true,
   },
 ];
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="py-24 px-4" style={{ background: "#FFFFFF" }}>
-      <div className="max-w-6xl mx-auto">
+    <section id="solutions" className="relative py-24 px-4 overflow-hidden" style={{ background: "#FFFFFF" }}>
+
+      {/* ── Décos géométriques ── */}
+      {/* Carré outline haut-gauche */}
+      <div className="absolute pointer-events-none" style={{
+        top: 40, left: -30, width: 160, height: 160,
+        border: "1.5px solid rgba(0,119,182,0.1)", borderRadius: 20,
+        transform: "rotate(15deg)",
+      }} />
+      {/* Petit carré haut-gauche */}
+      <div className="absolute pointer-events-none" style={{
+        top: 80, left: 100, width: 48, height: 48,
+        background: "rgba(0,119,182,0.04)", border: "1px solid rgba(0,119,182,0.15)",
+        borderRadius: 10, transform: "rotate(-8deg)",
+      }} />
+      {/* Trait diagonal droite */}
+      <div className="absolute pointer-events-none hidden lg:block" style={{
+        top: "15%", right: -40, width: 200, height: 1,
+        background: "linear-gradient(90deg, transparent, rgba(0,119,182,0.15), transparent)",
+        transform: "rotate(-20deg)",
+      }} />
+      {/* Grand cercle outline bas-droite */}
+      <div className="absolute pointer-events-none hidden lg:block" style={{
+        bottom: -80, right: -80, width: 300, height: 300,
+        border: "1.5px solid rgba(0,119,182,0.07)", borderRadius: "50%",
+      }} />
+      {/* Petit rectangle bas-gauche */}
+      <div className="absolute pointer-events-none" style={{
+        bottom: 60, left: 20, width: 80, height: 40,
+        border: "1px solid rgba(0,119,182,0.12)", borderRadius: 8,
+        transform: "rotate(10deg)",
+      }} />
+      {/* Cercle accent milieu-droit */}
+      <div className="absolute pointer-events-none hidden md:block" style={{
+        top: "50%", right: 40, width: 24, height: 24,
+        background: "rgba(0,119,182,0.06)", border: "1px solid rgba(0,119,182,0.2)",
+        borderRadius: "50%",
+      }} />
+
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -122,7 +161,7 @@ export default function Solutions() {
                 </h3>
                 <p
                   className="mb-6 leading-relaxed"
-                  style={{ fontFamily: "var(--font-body)", color: "#4a6080", fontSize: 16 }}
+                  style={{ fontFamily: "var(--font-body)", color: "#4a6080", fontSize: 17 }}
                 >
                   {sol.description}
                 </p>
@@ -136,7 +175,7 @@ export default function Solutions() {
                         <Check size={11} style={{ color: "#0077B6" }} />
                       </span>
                       <span
-                        style={{ fontFamily: "var(--font-body)", color: "#1a2a4a", fontSize: 15 }}
+                        style={{ fontFamily: "var(--font-body)", color: "#1a2a4a", fontSize: 16 }}
                       >
                         {point}
                       </span>
@@ -159,41 +198,15 @@ export default function Solutions() {
                 </a>
               </div>
 
-              {/* Image */}
-              <div
-                className="flex-1 w-full"
-                style={{
-                  borderRadius: 20,
-                  overflow: "hidden",
-                  border: "1px solid #e1eaf5",
-                  boxShadow: "0 8px 40px rgba(0,119,182,0.1)",
-                }}
-              >
-                {/* Browser chrome */}
-                <div
-                  style={{
-                    background: "#F0F9FF",
-                    height: 36,
-                    display: "flex",
-                    alignItems: "center",
-                    padding: "0 14px",
-                    borderBottom: "1px solid #e1eaf5",
-                    gap: 6,
-                  }}
-                >
-                  {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
-                    <span key={c} style={{ width: 10, height: 10, borderRadius: "50%", background: c, display: "block" }} />
-                  ))}
-                </div>
-                <div style={{ position: "relative", aspectRatio: "16/10", overflow: "hidden" }}>
-                  <Image
-                    src={sol.image}
-                    alt={sol.tag}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
+              {/* Illustration */}
+              <div className="flex-1 w-full flex items-center justify-center">
+                <img
+                  src={sol.illustration}
+                  alt={sol.illustrationAlt}
+                  width={480}
+                  height={380}
+                  style={{ width: "100%", maxWidth: 480, height: "auto", display: "block" }}
+                />
               </div>
             </motion.div>
           ))}

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { WHATSAPP_LINK } from "@/lib/constants";
+import FloatingShapesLayer from "@/components/ui/FloatingShapesLayer";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import CalButton from "@/components/ui/CalButton";
 
@@ -43,7 +44,7 @@ export default function FinalCTA() {
         }}
       />
 
-      {/* Dot grid — subtil sur fond clair */}
+      {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -52,6 +53,8 @@ export default function FinalCTA() {
           backgroundSize: "28px 28px",
         }}
       />
+
+      <FloatingShapesLayer variant="light" />
 
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         <motion.div

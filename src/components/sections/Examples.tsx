@@ -34,7 +34,7 @@ function BrowserCard({ realisation }: { realisation: (typeof realisations)[0] })
         el.style.boxShadow = "0 4px 24px rgba(0,119,182,0.07)";
       }}
     >
-      {/* Browser bar — traffic lights only */}
+      {/* Browser bar */}
       <div
         style={{
           background: "#F0F9FF",
@@ -69,8 +69,39 @@ function BrowserCard({ realisation }: { realisation: (typeof realisations)[0] })
 
 export default function Examples() {
   return (
-    <section id="exemples" className="py-24 overflow-hidden" style={{ background: "#F0F9FF" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="exemples" className="relative py-24 overflow-hidden" style={{ background: "#F0F9FF" }}>
+
+      {/* ── Décos géométriques ── */}
+      {/* Trait vertical gauche */}
+      <div className="absolute pointer-events-none hidden lg:block" style={{
+        top: "15%", bottom: "15%", left: 24, width: 1,
+        background: "linear-gradient(180deg, transparent, rgba(0,119,182,0.1), transparent)",
+      }} />
+      {/* Carré outline haut-gauche */}
+      <div className="absolute pointer-events-none hidden lg:block" style={{
+        top: 50, left: 50, width: 70, height: 70,
+        border: "1.5px solid rgba(0,119,182,0.12)", borderRadius: 12,
+        transform: "rotate(12deg)",
+      }} />
+      {/* Grand cercle droite */}
+      <div className="absolute pointer-events-none hidden lg:block" style={{
+        top: "50%", right: -120, marginTop: -200,
+        width: 400, height: 400,
+        border: "1.5px solid rgba(0,119,182,0.06)", borderRadius: "50%",
+      }} />
+      {/* Petit rectangle bas-droite */}
+      <div className="absolute pointer-events-none hidden md:block" style={{
+        bottom: 40, right: 70, width: 90, height: 45,
+        border: "1px solid rgba(0,119,182,0.1)", borderRadius: 8,
+        transform: "rotate(-10deg)",
+      }} />
+      {/* Trait horizontal bas */}
+      <div className="absolute pointer-events-none" style={{
+        bottom: 0, left: "10%", right: "10%", height: 1,
+        background: "linear-gradient(90deg, transparent, rgba(0,119,182,0.1), transparent)",
+      }} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <motion.div
@@ -126,24 +157,26 @@ export default function Examples() {
           </p>
         </motion.div>
 
-        {/* Desktop grid 3×2 */}
-        <div className="hidden lg:grid grid-cols-3 gap-6">
-          {realisations.map((r) => (
-            <BrowserCard key={r.sector} realisation={r} />
-          ))}
-        </div>
-
-        {/* Mobile — carrousel CSS infini */}
-        <div className="block lg:hidden w-full">
+        {/* Carrousel infini — desktop + mobile */}
+        <div className="w-full">
           <div className="cards-container">
             <div className="cards-track">
               {realisations.map((r, i) => (
-                <div key={`a-${i}`} className="mx-2.5 shrink-0" style={{ width: "min(76vw, 300px)" }}>
+                <div
+                  key={`a-${i}`}
+                  className="mx-3 shrink-0"
+                  style={{ width: "min(76vw, 420px)" }}
+                >
                   <BrowserCard realisation={r} />
                 </div>
               ))}
               {realisations.map((r, i) => (
-                <div key={`b-${i}`} aria-hidden className="mx-2.5 shrink-0" style={{ width: "min(76vw, 300px)" }}>
+                <div
+                  key={`b-${i}`}
+                  aria-hidden
+                  className="mx-3 shrink-0"
+                  style={{ width: "min(76vw, 420px)" }}
+                >
                   <BrowserCard realisation={r} />
                 </div>
               ))}

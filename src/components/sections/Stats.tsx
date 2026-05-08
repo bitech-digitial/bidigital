@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import FloatingShapesLayer from "@/components/ui/FloatingShapesLayer";
 
 const stats = [
   { value: 100, suffix: "%", label: "Clients satisfaits" },
@@ -46,10 +47,10 @@ function Counter({ value, suffix, label }: { value: number; suffix: string; labe
         style={{
           fontSize: "clamp(2.5rem, 5vw, 4rem)",
           fontWeight: 900,
-          color: "#FFFFFF",
           fontFamily: "var(--font-heading)",
           lineHeight: 1,
           letterSpacing: "-0.03em",
+          color: "#FFFFFF",
         }}
       >
         {count}
@@ -57,8 +58,8 @@ function Counter({ value, suffix, label }: { value: number; suffix: string; labe
       </div>
       <p
         style={{
-          fontSize: 15,
-          color: "rgba(255,255,255,0.6)",
+          fontSize: 16,
+          color: "#FFFFFF",
           marginTop: 10,
           fontFamily: "var(--font-body)",
           lineHeight: 1.4,
@@ -73,13 +74,15 @@ function Counter({ value, suffix, label }: { value: number; suffix: string; labe
 export default function Stats() {
   return (
     <section
+      className="relative overflow-hidden"
       style={{
         background: "#03045E",
         borderTop: "1px solid rgba(255,255,255,0.06)",
         borderBottom: "1px solid rgba(255,255,255,0.06)",
       }}
     >
-      <div className="max-w-5xl mx-auto px-4 py-20">
+      <FloatingShapesLayer variant="dark" />
+      <div className="relative z-10 max-w-5xl mx-auto px-4 py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,9 +95,9 @@ export default function Stats() {
               fontFamily: "var(--font-heading)",
               fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
               fontWeight: 800,
-              color: "#FFFFFF",
               letterSpacing: "-0.03em",
               lineHeight: 1.2,
+              color: "#FFFFFF",
             }}
           >
             BiDigital en chiffres
@@ -114,7 +117,9 @@ export default function Stats() {
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
+
   );
 }

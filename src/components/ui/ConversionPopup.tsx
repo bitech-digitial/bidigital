@@ -61,12 +61,12 @@ function PopupCard({
           width: "100%",
           maxWidth: "420px",
           margin: "0 auto",
-          background: "#0f1018",
-          border: "1px solid rgba(255,255,255,0.08)",
+          background: "#FFFFFF",
+          border: "1px solid #e1eaf5",
           borderRadius: "20px",
           padding: "32px 28px 28px",
           boxSizing: "border-box",
-          boxShadow: "0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.1)",
+          boxShadow: "0 24px 80px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,119,182,0.08)",
           overflow: "hidden",
         }}
       >
@@ -78,7 +78,7 @@ function PopupCard({
             left: 0,
             width: 220,
             height: 220,
-            background: "radial-gradient(circle at top left, rgba(99,102,241,0.12), transparent 70%)",
+            background: "radial-gradient(circle at top left, rgba(0,119,182,0.07), transparent 70%)",
             pointerEvents: "none",
           }}
         />
@@ -90,8 +90,8 @@ function PopupCard({
             position: "absolute",
             top: 12,
             right: 12,
-            background: "rgba(255,255,255,0.05)",
-            border: "1px solid rgba(255,255,255,0.08)",
+            background: "rgba(0,119,182,0.05)",
+            border: "1px solid #e1eaf5",
             borderRadius: 8,
             width: 32,
             height: 32,
@@ -100,11 +100,11 @@ function PopupCard({
             justifyContent: "center",
             cursor: "pointer",
             zIndex: 10,
-            color: "#94a3b8",
+            color: "#4a6080",
             transition: "color 0.2s",
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#03045E")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#4a6080")}
           aria-label="Fermer"
         >
           <X size={16} />
@@ -118,7 +118,7 @@ function PopupCard({
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.1em",
-              color: isExit ? "#c084fc" : "#818cf8",
+              color: "#0077B6",
               marginBottom: 8,
               fontFamily: "var(--font-body)",
             }}
@@ -131,14 +131,10 @@ function PopupCard({
               fontSize: "clamp(18px, 4vw, 22px)",
               fontWeight: 700,
               fontFamily: "var(--font-heading)",
-              color: "#f8fafc",
+              color: "#03045E",
               marginBottom: 8,
               paddingRight: 32,
               lineHeight: 1.3,
-              background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
             }}
           >
             {isMid
@@ -151,7 +147,7 @@ function PopupCard({
           <p
             style={{
               fontSize: 14,
-              color: "#64748b",
+              color: "#4a6080",
               marginBottom: 20,
               lineHeight: 1.5,
               fontFamily: "var(--font-body)",
@@ -211,7 +207,7 @@ function PopupCard({
             style={{
               textAlign: "center",
               fontSize: 11,
-              color: "#334155",
+              color: "#4a6080",
               marginTop: 14,
               fontFamily: "var(--font-body)",
             }}
