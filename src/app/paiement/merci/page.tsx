@@ -73,7 +73,7 @@ export default function PaiementMerciPage() {
             letterSpacing: "-0.02em",
           }}
         >
-          Paiement confirmé !
+          Bienvenue chez BiDigital !
         </h1>
 
         <p
@@ -81,14 +81,46 @@ export default function PaiementMerciPage() {
             fontSize: 15,
             color: "#475467",
             fontFamily: "var(--font-body)",
-            lineHeight: 1.6,
-            margin: "0 0 32px",
+            lineHeight: 1.7,
+            margin: "0 0 20px",
           }}
         >
-          Votre abonnement est maintenant actif.
-          <br />
-          Un email de confirmation vient de vous être envoyé.
+          Votre paiement a bien été reçu — merci pour votre confiance.
+          <br /><br />
+          Nous vous contactons <strong style={{ color: "#1D2939" }}>dans les 24h</strong> pour
+          recueillir vos informations et lancer la création de votre site.
+          Préparez-vous à avoir un site qui vous ressemble et qui travaille pour vous 24h/24.
         </p>
+
+        <div
+          style={{
+            background: "#F0F9FF",
+            border: "1px solid rgba(0,122,255,0.15)",
+            borderRadius: 12,
+            padding: "14px 20px",
+            marginBottom: 28,
+            textAlign: "left",
+          }}
+        >
+          {[
+            "✦ Design sur-mesure pensé pour convertir",
+            "✦ SEO intégré dès le premier jour",
+            "✦ Site livré rapidement, sans jargon",
+          ].map((item) => (
+            <p
+              key={item}
+              style={{
+                fontSize: 13,
+                color: "#007AFF",
+                fontFamily: "var(--font-body)",
+                fontWeight: 600,
+                margin: "5px 0",
+              }}
+            >
+              {item}
+            </p>
+          ))}
+        </div>
 
         <Link
           href="/"
