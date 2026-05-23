@@ -106,17 +106,17 @@ function CheckoutForm({
       }}>
         <div>
           <div style={{ fontSize: 12, color: "#475467", fontFamily: "var(--font-body)", marginBottom: 2 }}>
-            Votre abonnement
+            Création de site internet
           </div>
           <div style={{ fontSize: 15, fontWeight: 700, color: "#1D2939", fontFamily: "var(--font-heading)" }}>
             {offer.label}
           </div>
         </div>
-        <div style={{ textAlign: "right" }}>
+        <div style={{ textAlign: "right", display: "flex", alignItems: "baseline", gap: 3 }}>
           <span style={{ fontSize: 28, fontWeight: 800, color: "#007AFF", fontFamily: "var(--font-heading)" }}>
             {offer.display}
           </span>
-          <span style={{ fontSize: 12, color: "#475467", display: "block" }}>/mois</span>
+          <span style={{ fontSize: 12, color: "#475467" }}>/mois</span>
         </div>
       </div>
 
@@ -183,13 +183,13 @@ function CheckoutForm({
             }} />
             Traitement en cours...
           </>
-        ) : "Activer mon abonnement →"}
+        ) : "Payer"}
       </button>
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
-        <Lock size={13} color="#475467" />
+        <Lock size={13} color="#475467" strokeWidth={2.5} />
         <span style={{ fontSize: 12, color: "#475467", fontFamily: "var(--font-body)" }}>
-          Paiement sécurisé par Stripe · SSL
+          Paiement 100% sécurisé · Stripe · SSL
         </span>
       </div>
     </form>
