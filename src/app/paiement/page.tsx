@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Lock } from "lucide-react";
 import PaymentForm from "@/components/sections/PaymentForm";
 import CookieBanner from "@/components/ui/CookieBanner";
 
@@ -68,8 +69,8 @@ export default function PaiementPage() {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: 5,
-                padding: "5px 12px",
+                gap: 6,
+                padding: "5px 14px",
                 borderRadius: 20,
                 background: "rgba(0,122,255,0.06)",
                 border: "1px solid rgba(0,122,255,0.2)",
@@ -79,7 +80,8 @@ export default function PaiementPage() {
                 fontFamily: "var(--font-body)",
               }}
             >
-              🔒 Stripe · Paiement 100% sécurisé SSL
+              <Lock size={12} strokeWidth={2.5} />
+              Stripe · Paiement 100% sécurisé SSL
             </span>
           </div>
 
