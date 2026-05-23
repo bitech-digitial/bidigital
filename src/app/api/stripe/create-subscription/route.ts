@@ -58,17 +58,45 @@ export async function POST(req: NextRequest) {
       existing.data[0] ?? (await stripe.customers.create({ email }));
 
     // Crée la Subscription en mode "incomplete" pour capturer le paiement
+    // On demande les deux expand possibles selon la version de l'API Stripe
     const subscription = await stripe.subscriptions.create({
       customer: customer.id,
       items: [{ price: priceId }],
       payment_behavior: "default_incomplete",
-      payment_settings: { save_default_payment_method: "on_subscription" },
-      expand: ["latest_invoice"],
+      payment_settings: {
+        save_default_payment_method: "on_subscription",
+        payment_method_types: ["card"],
+      },
+      expand: [
+        "latest_invoice.payment_intent",
+        "latest_invoice.confirmation_secret",
+      ],
     });
 
-    // Le SDK Stripe v17 expose confirmation_secret.client_secret sur Invoice
-    const invoice = subscription.latest_invoice as Stripe.Invoice;
-    const clientSecret = invoice?.confirmation_secret?.client_secret ?? null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const invoiceRaw = subscription.latest_invoice as any;
+    const invoiceId: string | undefined = invoiceRaw?.id;
+
+    // Tentative 1 : payment_intent (API classique)
+    let clientSecret: string | null =
+      invoiceRaw?.payment_intent?.client_secret ?? null;
+
+    // Tentative 2 : confirmation_secret (API Stripe v17 dahlia)
+    if (!clientSecret) {
+      clientSecret = invoiceRaw?.confirmation_secret?.client_secret ?? null;
+    }
+
+    // Tentative 3 : récupérer l'invoice séparément avec les deux expands
+    if (!clientSecret && invoiceId) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const inv = await stripe.invoices.retrieve(invoiceId, {
+        expand: ["payment_intent", "confirmation_secret"],
+      }) as any;
+      clientSecret =
+        inv?.payment_intent?.client_secret ??
+        inv?.confirmation_secret?.client_secret ??
+        null;
+    }
 
     if (!clientSecret) {
       return NextResponse.json(

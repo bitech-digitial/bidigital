@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import PaymentForm from "@/components/sections/PaymentForm";
 import CookieBanner from "@/components/ui/CookieBanner";
-
-const PaymentForm = dynamic(() => import("@/components/sections/PaymentForm"), {
-  ssr: false,
-});
 
 export const metadata: Metadata = {
   title: "Paiement sécurisé — BiDigital",
