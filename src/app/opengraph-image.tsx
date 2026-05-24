@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/og";
+﻿import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt = "BiDigital — Agence Web | Site Conforme, SEO & Maintenance";
@@ -16,7 +16,7 @@ export default function OGImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#03045E",
+          background: "#1D2939",
           fontFamily: "system-ui, sans-serif",
           position: "relative",
           overflow: "hidden",
@@ -43,7 +43,7 @@ export default function OGImage() {
             bottom: -200,
             right: -100,
             borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(0,119,182,0.2) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(0,122,255,0.2) 0%, transparent 70%)",
             filter: "blur(60px)",
           }}
         />
@@ -109,7 +109,7 @@ export default function OGImage() {
 
           {/* Pills */}
           <div style={{ display: "flex", gap: 16, marginTop: 8 }}>
-            {["✓ Devis gratuit sous 24h", "✓ 690€ TTC", "✓ 19,99€/mois sans engagement"].map(
+            {["✓ Devis gratuit sous 24h", "✓ Optimisé SEO", "✓ Conforme RGPD"].map(
               (text) => (
                 <div
                   key={text}

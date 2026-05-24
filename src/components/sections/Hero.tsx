@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -31,7 +31,7 @@ export default function Hero() {
     <section
       className="relative overflow-hidden"
       style={{
-        background: "#FFFFFF",
+        background: "transparent",
         minHeight: "100svh",
       }}
     >
@@ -61,7 +61,7 @@ export default function Hero() {
         className="absolute pointer-events-none"
         style={{
           width: 700, height: 700, top: "-200px", left: "-150px",
-          background: "radial-gradient(ellipse, rgba(0,119,182,0.08) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse, rgba(0,122,255,0.08) 0%, transparent 65%)",
           borderRadius: "50%", filter: "blur(60px)", willChange: "transform",
         }}
       />
@@ -88,7 +88,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(rgba(0,119,182,0.08) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(rgba(0,122,255,0.08) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
@@ -102,7 +102,7 @@ export default function Hero() {
             style={{
               width: 520,
               height: 520,
-              border: "1.5px solid rgba(0,119,182,0.12)",
+              border: "1.5px solid rgba(0,122,255,0.12)",
               borderRadius: 28,
               top: "50%",
               right: -140,
@@ -117,8 +117,8 @@ export default function Hero() {
             style={{
               width: 180,
               height: 180,
-              background: "rgba(0,119,182,0.04)",
-              border: "1.5px solid rgba(0,119,182,0.15)",
+              background: "rgba(0,122,255,0.04)",
+              border: "1.5px solid rgba(0,122,255,0.15)",
               borderRadius: 18,
               top: "14%",
               right: "18%",
@@ -133,7 +133,7 @@ export default function Hero() {
               width: 80,
               height: 80,
               background: "rgba(144,224,239,0.1)",
-              border: "1.5px solid rgba(0,119,182,0.2)",
+              border: "1.5px solid rgba(0,122,255,0.2)",
               borderRadius: 10,
               bottom: "22%",
               right: "10%",
@@ -147,8 +147,8 @@ export default function Hero() {
             style={{
               width: 110,
               height: 110,
-              background: "rgba(0,119,182,0.04)",
-              border: "1.5px solid rgba(0,119,182,0.15)",
+              background: "rgba(0,122,255,0.04)",
+              border: "1.5px solid rgba(0,122,255,0.15)",
               borderRadius: 14,
               top: "65%",
               left: "5%",
@@ -162,8 +162,8 @@ export default function Hero() {
             style={{
               width: 48,
               height: 48,
-              background: "rgba(0,119,182,0.07)",
-              border: "1.5px solid rgba(0,119,182,0.25)",
+              background: "rgba(0,122,255,0.07)",
+              border: "1.5px solid rgba(0,122,255,0.25)",
               borderRadius: 8,
               top: "20%",
               left: "12%",
@@ -185,19 +185,21 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(1.75rem, 8.5vw, 5.5rem)",
+              fontSize: "clamp(2.8rem, 13vw, 5.5rem)",
               fontWeight: 900,
               lineHeight: 1.1,
               letterSpacing: "-0.04em",
               marginBottom: "1.5rem",
-              color: "#03045E",
+              color: "#1D2939",
             }}
           >
-            <span className="block">Agence Web</span>
+            <span className="block" style={{ color: "#1D2939" }}>
+              Agence Web
+            </span>
             <span
               className="block"
               style={{
-                background: "linear-gradient(135deg, #00B4D8 0%, #0077B6 55%, #023E8A 100%)",
+                background: "linear-gradient(135deg, #00B4D8 0%, #007AFF 55%, #0044CC 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -216,13 +218,13 @@ export default function Hero() {
             style={{
               fontFamily: "var(--font-body)",
               fontSize: "clamp(17px, 2vw, 20px)",
-              color: "#4a6080",
+              color: "#1D2939",
               lineHeight: 1.7,
               maxWidth: "600px",
               margin: "0 auto 2rem",
             }}
           >
-            BiDigital est une agence digitale spécialisée dans la création de site internet sur-mesure.
+            BiDigital est une agence web spécialisée dans la création de sites internet professionnels, conçus sur-mesure pour votre activité.
           </motion.p>
 
           {/* CTAs */}
@@ -243,18 +245,18 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 font-semibold rounded-[14px] transition-all duration-200 text-[15px] focus:outline-none"
               style={{
-                background: "rgba(0,119,182,0.05)",
-                border: "1px solid rgba(0,119,182,0.2)",
-                color: "#03045E",
-                fontFamily: "var(--font-body)",
+                background: "rgba(0,122,255,0.05)",
+                border: "1px solid rgba(0,122,255,0.2)",
+                color: "#1D2939",
+                fontFamily: "var(--font-heading)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(0,119,182,0.1)";
-                e.currentTarget.style.borderColor = "rgba(0,119,182,0.35)";
+                e.currentTarget.style.background = "rgba(0,122,255,0.1)";
+                e.currentTarget.style.borderColor = "rgba(0,122,255,0.35)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "rgba(0,119,182,0.05)";
-                e.currentTarget.style.borderColor = "rgba(0,119,182,0.2)";
+                e.currentTarget.style.background = "rgba(0,122,255,0.05)";
+                e.currentTarget.style.borderColor = "rgba(0,122,255,0.2)";
               }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
@@ -275,11 +277,11 @@ export default function Hero() {
             <span
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
               style={{
-                background: "rgba(0,119,182,0.05)",
-                border: "1px solid rgba(0,119,182,0.15)",
+                background: "rgba(0,122,255,0.05)",
+                border: "1px solid rgba(0,122,255,0.15)",
                 fontFamily: "var(--font-body)",
                 fontSize: 12,
-                color: "#4a6080",
+                color: "#475467",
               }}
             >
               <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Google" style={{ flexShrink: 0 }}>
@@ -289,7 +291,7 @@ export default function Hero() {
                 <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
               </svg>
               <span style={{ color: "#f59e0b" }}>★★★★★</span>
-              <span style={{ color: "#03045E", fontWeight: 600 }}>5/5</span>
+              <span style={{ color: "#1D2939", fontWeight: 600 }}>5/5</span>
               <span>· Clients satisfaits</span>
             </span>
           </motion.div>
@@ -307,7 +309,7 @@ export default function Hero() {
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ArrowDown className="w-5 h-5" style={{ color: "rgba(0,119,182,0.4)" }} />
+          <ArrowDown className="w-5 h-5" style={{ color: "rgba(0,122,255,0.4)" }} />
         </motion.div>
       </motion.div>
     </section>

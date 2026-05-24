@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { ShieldCheck, FileText, Cookie, AlertTriangle } from "lucide-react";
@@ -36,7 +36,7 @@ export default function LegalCompliance() {
     <section
       id="conformite"
       className="py-20 px-4 relative overflow-hidden"
-      style={{ background: "#03045E" }}
+      style={{ background: "#1D2939" }}
     >
       {/* Background glow subtil */}
       <div
@@ -63,7 +63,7 @@ export default function LegalCompliance() {
           className="text-center mb-12"
         >
           <span
-            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
+            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest mb-4"
             style={{
               background: "rgba(239,68,68,0.12)",
               border: "1px solid rgba(239,68,68,0.3)",

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { ShieldCheck, Star, HeartHandshake } from "lucide-react";
 
@@ -19,8 +19,8 @@ const items = [
   },
   {
     Icon: HeartHandshake,
-    iconColor: "#0077B6",
-    bg: "rgba(0,119,182,0.08)",
+    iconColor: "#007AFF",
+    bg: "rgba(0,122,255,0.08)",
     title: "Accompagnement inclus",
     sub: "Avant, pendant et après",
   },
@@ -55,13 +55,13 @@ export default function TrustBar() {
               <div className="flex flex-col text-center sm:text-left">
                 <span
                   className="font-semibold text-sm"
-                  style={{ fontFamily: "var(--font-heading)", color: "#03045E" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#1D2939" }}
                 >
                   {title}
                 </span>
                 <span
                   className="text-xs"
-                  style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#475467" }}
                 >
                   {sub}
                 </span>

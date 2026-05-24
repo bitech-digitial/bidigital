@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
@@ -30,8 +30,8 @@ export default function MentionsLegales() {
             Adresse : Chaville, 92370 Hauts-de-Seine, France
             <br />
             Téléphone :{" "}
-            <a href="tel:+33759748383" className="text-[#2563eb] underline">
-              +33 6 95 59 77 67
+            <a href="tel:+33749999425" className="text-[#2563eb] underline">
+              07 49 99 94 25
             </a>
             <br />
             E-mail :{" "}

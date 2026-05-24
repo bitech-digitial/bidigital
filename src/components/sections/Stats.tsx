@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -76,7 +76,7 @@ export default function Stats() {
     <section
       className="relative overflow-hidden"
       style={{
-        background: "#03045E",
+        background: "#1D2939",
         borderTop: "1px solid rgba(255,255,255,0.06)",
         borderBottom: "1px solid rgba(255,255,255,0.06)",
       }}
@@ -104,7 +104,7 @@ export default function Stats() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}

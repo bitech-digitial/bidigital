@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -21,16 +21,18 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: "#FFFFFF",
+  viewportFit: "cover",
+  interactiveWidget: "resizes-visual",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.bidigital.fr"),
   title: {
-    default: "BiDigital — Agence Web | Site Vitrine Conforme RGPD, SEO & Maintenance",
+    default: "Agence Web - BiDigital",
     template: "%s | BiDigital — Agence Web",
   },
   description:
-    "BiDigital, agence web création de site vitrine professionnel. 100% conforme RGPD, SEO optimisé pour apparaître en 1ère page Google. Maintenance, hébergement et nom de domaine inclus. 19,99€/mois sans engagement.",
+    "BiDigital est une agence web spécialisée dans la création et la refonte de sites internet : site vitrine, e-commerce, SEO et maintenance.",
   keywords: [
     "BiDigital",
     "bidigital",
@@ -234,7 +236,9 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${heading.variable} ${body.variable}`}>
       <head>
-        <link rel="dns-prefetch" href="https://app.cal.com" />
+        <link rel="preconnect" href="https://app.cal.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://challenges.cloudflare.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
       </head>
       <body className="antialiased">
         {children}

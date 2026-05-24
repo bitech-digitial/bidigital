@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { ShieldCheck, TrendingUp, Clock, Sparkles } from "lucide-react";
@@ -7,35 +7,35 @@ import FloatingShapesLayer from "@/components/ui/FloatingShapesLayer";
 const miniCards = [
   {
     icon: ShieldCheck,
-    color: "#0077B6",
-    bg: "rgba(0,119,182,0.08)",
-    border: "rgba(0,119,182,0.2)",
-    title: "Site 100% conforme",
-    text: "RGPD, cookies, CGU — zéro risque légal. Tout est inclus dès le jour 1.",
+    color: "#007AFF",
+    bg: "rgba(0,122,255,0.08)",
+    border: "rgba(0,122,255,0.2)",
+    title: "Site conforme",
+    text: "Mentions légales, politique de cookies, CGU — chaque site est livré en conformité avec la réglementation en vigueur.",
   },
   {
     icon: TrendingUp,
-    color: "#0077B6",
-    bg: "rgba(0,119,182,0.08)",
-    border: "rgba(0,119,182,0.2)",
-    title: "SEO inclus dès J1",
-    text: "Google vous voit d'abord. Optimisation technique et éditoriale dès la mise en ligne.",
+    color: "#007AFF",
+    bg: "rgba(0,122,255,0.08)",
+    border: "rgba(0,122,255,0.2)",
+    title: "SEO intégré",
+    text: "Optimisation technique et éditoriale incluse dès la création, pour un référencement naturel opérationnel dès le lancement.",
   },
   {
     icon: Clock,
     color: "#4ade80",
     bg: "rgba(74,222,128,0.08)",
     border: "rgba(74,222,128,0.2)",
-    title: "Modifications <48h",
-    text: "Besoin d'un changement ? Réponse garantie sous 48h ouvrées. Sans supplément.",
+    title: "Réactivité",
+    text: "Toute demande de modification est prise en charge rapidement, sans frais supplémentaires.",
   },
   {
     icon: Sparkles,
-    color: "#0077B6",
-    bg: "rgba(0,119,182,0.08)",
-    border: "rgba(0,119,182,0.2)",
-    title: "Tout inclus, 19,99€/mois",
-    text: "Hébergement, domaine, maintenance, mises à jour légales. Sans engagement.",
+    color: "#007AFF",
+    bg: "rgba(0,122,255,0.08)",
+    border: "rgba(0,122,255,0.2)",
+    title: "Tout inclus",
+    text: "Hébergement, nom de domaine, maintenance et mises à jour légales inclus dans chaque projet.",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function Values() {
   return (
     <section
       id="valeurs"
-      className="relative py-24 px-4 overflow-hidden"
+      className="relative py-12 md:py-24 px-4 overflow-hidden"
       style={{ background: "#FFFFFF" }}
     >
       <FloatingShapesLayer variant="light" />
@@ -75,15 +75,15 @@ export default function Values() {
           className="text-center mb-12"
         >
           <span
-            className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-widest uppercase mb-5"
+            className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-widest mb-5"
             style={{
-              background: "rgba(0,119,182,0.08)",
-              border: "1px solid rgba(0,119,182,0.2)",
-              color: "#0077B6",
+              background: "rgba(0,122,255,0.08)",
+              border: "1px solid rgba(0,122,255,0.2)",
+              color: "#007AFF",
               fontFamily: "var(--font-body)",
             }}
           >
-            ENGAGEMENTS
+            Nos engagements
           </span>
           <h2
             className="font-extrabold text-gradient mb-4"
@@ -94,29 +94,29 @@ export default function Values() {
               lineHeight: 1.1,
             }}
           >
-            Pourquoi nous{" "}
+            Ce que nous vous{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #0077B6, #023E8A)",
+                background: "linear-gradient(135deg, #007AFF, #0044CC)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}
             >
-              faire confiance ?
+              garantissons
             </span>
           </h2>
           <p
             style={{
               fontFamily: "var(--font-body)",
-              color: "#4a6080",
+              color: "#475467",
               fontSize: "1.1rem",
               maxWidth: 500,
               margin: "0 auto",
               lineHeight: 1.7,
             }}
           >
-            Nous restons présents bien après la mise en ligne.
+            dès la mise en ligne.
           </p>
         </motion.div>
 
@@ -138,17 +138,17 @@ export default function Values() {
                 style={{
                   background: "#F0F9FF",
                   border: "1px solid #e1eaf5",
-                  boxShadow: "0 4px 24px rgba(0,119,182,0.06)",
+                  boxShadow: "0 4px 24px rgba(0,122,255,0.06)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.borderColor = "rgba(0,119,182,0.3)";
-                  e.currentTarget.style.boxShadow = "0 8px 40px rgba(0,119,182,0.1)";
+                  e.currentTarget.style.borderColor = "rgba(0,122,255,0.3)";
+                  e.currentTarget.style.boxShadow = "0 8px 40px rgba(0,122,255,0.1)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.borderColor = "#e1eaf5";
-                  e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,119,182,0.06)";
+                  e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,122,255,0.06)";
                 }}
               >
                 <div
@@ -159,13 +159,13 @@ export default function Values() {
                 </div>
                 <h4
                   className="font-bold text-base mb-2"
-                  style={{ fontFamily: "var(--font-heading)", color: "#03045E" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#1D2939" }}
                 >
-                  ✦ {card.title}
+                  {card.title}
                 </h4>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#475467" }}
                 >
                   {card.text}
                 </p>

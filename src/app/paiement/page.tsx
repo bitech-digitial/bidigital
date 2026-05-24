@@ -13,71 +13,42 @@ export default function PaiementPage() {
   return (
     <>
       <main
-        style={{
-          minHeight: "100vh",
-          background: "linear-gradient(180deg, #F0F4FA 0%, #F5F8FC 40%, #FFFFFF 100%)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "40px 16px",
-        }}
+        className="min-h-screen flex items-center justify-center px-4 py-10"
+        style={{ background: "linear-gradient(180deg, #F0F4FA 0%, #F5F8FC 40%, #FFFFFF 100%)" }}
       >
         <div
-          style={{
-            width: "100%",
-            maxWidth: 520,
-            background: "#FFFFFF",
-            borderRadius: 20,
-            boxShadow: "0 8px 40px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04)",
-            padding: "40px 40px 36px",
-          }}
+          className="w-full max-w-[520px] bg-white rounded-2xl px-5 py-8 sm:px-10 sm:py-10"
+          style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04)" }}
         >
-          {/* Header de confiance */}
-          <div style={{ textAlign: "center", marginBottom: 28 }}>
+          <div className="text-center mb-7">
             <a
               href="/"
+              className="inline-block font-extrabold text-[22px] no-underline mb-4"
               style={{
-                display: "inline-block",
-                fontWeight: 800,
-                fontSize: 22,
                 fontFamily: "var(--font-heading)",
                 background: "linear-gradient(135deg, #00B4D8 0%, #007AFF 55%, #0044CC 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                textDecoration: "none",
-                marginBottom: 16,
               }}
             >
               BiDigital
             </a>
 
             <h1
-              style={{
-                fontSize: 22,
-                fontWeight: 800,
-                color: "#1D2939",
-                fontFamily: "var(--font-heading)",
-                margin: "0 0 10px",
-                letterSpacing: "-0.02em",
-              }}
+              className="text-xl sm:text-[22px] font-extrabold m-0 mb-2.5 tracking-tight"
+              style={{ color: "#1D2939", fontFamily: "var(--font-heading)" }}
             >
               Paiement sécurisé
             </h1>
 
             <span
+              className="inline-flex items-center gap-1.5 px-3.5 py-[5px] rounded-full text-xs font-semibold"
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                padding: "5px 14px",
-                borderRadius: 20,
+                fontFamily: "var(--font-body)",
                 background: "rgba(0,122,255,0.06)",
                 border: "1px solid rgba(0,122,255,0.2)",
                 color: "#007AFF",
-                fontSize: 12,
-                fontWeight: 600,
-                fontFamily: "var(--font-body)",
               }}
             >
               <Lock size={12} strokeWidth={2.5} />
@@ -86,11 +57,8 @@ export default function PaiementPage() {
           </div>
 
           <div
-            style={{
-              height: 1,
-              background: "linear-gradient(90deg, transparent, #e1eaf5, transparent)",
-              marginBottom: 28,
-            }}
+            className="h-px mb-7"
+            style={{ background: "linear-gradient(90deg, transparent, #e1eaf5, transparent)" }}
           />
 
           <PaymentForm />

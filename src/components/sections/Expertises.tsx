@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Globe, Search, Share2, ArrowRight } from "lucide-react";
@@ -49,11 +49,11 @@ export default function Expertises() {
           className="text-center mb-14"
         >
           <span
-            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
+            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest mb-4"
             style={{
-              background: "rgba(0,119,182,0.08)",
-              border: "1px solid rgba(0,119,182,0.2)",
-              color: "#0077B6",
+              background: "rgba(0,122,255,0.08)",
+              border: "1px solid rgba(0,122,255,0.2)",
+              color: "#007AFF",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -66,13 +66,13 @@ export default function Expertises() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               letterSpacing: "-0.03em",
               lineHeight: 1.1,
-              color: "#03045E",
+              color: "#1D2939",
             }}
           >
             Notre savoir-faire{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #0077B6, #023E8A)",
+                background: "linear-gradient(135deg, #007AFF, #0044CC)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -84,7 +84,7 @@ export default function Expertises() {
           <p
             style={{
               fontFamily: "var(--font-body)",
-              color: "#4a6080",
+              color: "#475467",
               fontSize: "1.1rem",
               maxWidth: 520,
               margin: "0 auto",
@@ -112,36 +112,36 @@ export default function Expertises() {
                 style={{
                   background: "#F0F9FF",
                   border: "1px solid #e1eaf5",
-                  boxShadow: "0 4px 20px rgba(0,119,182,0.05)",
+                  boxShadow: "0 4px 20px rgba(0,122,255,0.05)",
                 }}
               >
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                   style={{
-                    background: "rgba(0,119,182,0.1)",
-                    border: "1px solid rgba(0,119,182,0.2)",
+                    background: "rgba(0,122,255,0.1)",
+                    border: "1px solid rgba(0,122,255,0.2)",
                   }}
                 >
-                  <Icon className="w-5 h-5" style={{ color: "#0077B6" }} />
+                  <Icon className="w-5 h-5" style={{ color: "#007AFF" }} />
                 </div>
                 <h3
                   className="font-bold text-lg mb-3"
-                  style={{ fontFamily: "var(--font-heading)", color: "#03045E" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#1D2939" }}
                 >
                   {item.title}
                 </h3>
                 <p
                   className="text-sm leading-relaxed flex-1 mb-5"
-                  style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#475467" }}
                 >
                   {item.description}
                 </p>
                 <a
                   href={item.href}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold"
-                  style={{ color: "#0077B6", fontFamily: "var(--font-body)", textDecoration: "none" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#03045E")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#0077B6")}
+                  style={{ color: "#007AFF", fontFamily: "var(--font-body)", textDecoration: "none" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#1D2939")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#007AFF")}
                 >
                   En savoir plus
                   <ArrowRight size={14} />

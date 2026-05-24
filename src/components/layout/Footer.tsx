@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Mail } from "lucide-react";
 import { WHATSAPP_LINK, CAL_FULL_URL } from "@/lib/constants";
@@ -61,7 +61,7 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "linear-gradient(135deg, #0077B6 0%, #023E8A 100%)",
+        background: "linear-gradient(135deg, #007AFF 0%, #0044CC 100%)",
         borderTop: "1px solid rgba(255,255,255,0.08)",
       }}
     >
@@ -83,12 +83,6 @@ export default function Footer() {
             </span>
           </a>
 
-          <p
-            className="hidden sm:block text-sm"
-            style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.5)" }}
-          >
-            Votre site, conforme et visible.
-          </p>
 
           <div className="flex items-center gap-4">
             <a
@@ -148,7 +142,7 @@ export default function Footer() {
           style={{ borderColor: "rgba(255,255,255,0.08)" }}
         >
           <p className="text-xs" style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.3)" }}>
-            © 2026 BiDigital — Votre site, conforme et visible.
+            © 2026 BiDigital
           </p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
             {[

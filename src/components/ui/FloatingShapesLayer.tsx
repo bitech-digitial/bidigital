@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
@@ -16,7 +16,7 @@ type S = {
   fill?: boolean;
 };
 
-// ── Dark variant (fond #020318 / #03045E) ──────────────────
+// ── Dark variant (fond #020318 / #1D2939) ──────────────────
 const DARK: [S[], S[], S[]] = [
   // Layer 1 — loin, lent
   [
@@ -128,13 +128,13 @@ export default function FloatingShapesLayer({
         l1: "rgba(144,224,239,0.12)",
         l2: "rgba(0,150,199,0.18)",
         l3: "rgba(144,224,239,0.24)",
-        fill: "rgba(0,119,182,0.07)",
+        fill: "rgba(0,122,255,0.07)",
       }
     : {
-        l1: "rgba(0,119,182,0.09)",
-        l2: "rgba(0,119,182,0.13)",
-        l3: "rgba(0,119,182,0.19)",
-        fill: "rgba(0,119,182,0.04)",
+        l1: "rgba(0,122,255,0.09)",
+        l2: "rgba(0,122,255,0.13)",
+        l3: "rgba(0,122,255,0.19)",
+        fill: "rgba(0,122,255,0.04)",
       };
 
   const [L1, L2, L3] = isDark ? DARK : LIGHT;

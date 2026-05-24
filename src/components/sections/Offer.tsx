@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
@@ -33,11 +33,11 @@ export default function Offer() {
           className="text-center mb-14"
         >
           <span
-            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
+            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest mb-4"
             style={{
-              background: "rgba(0,119,182,0.08)",
-              border: "1px solid rgba(0,119,182,0.2)",
-              color: "#0077B6",
+              background: "rgba(0,122,255,0.08)",
+              border: "1px solid rgba(0,122,255,0.2)",
+              color: "#007AFF",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -47,7 +47,7 @@ export default function Offer() {
             className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
             style={{
               fontFamily: "var(--font-heading)",
-              color: "#03045E",
+              color: "#1D2939",
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
             }}
@@ -57,7 +57,7 @@ export default function Offer() {
             <span
               className="text-transparent bg-clip-text"
               style={{
-                backgroundImage: "linear-gradient(135deg, #0077B6, #023E8A)",
+                backgroundImage: "linear-gradient(135deg, #007AFF, #0044CC)",
               }}
             >
               aucune surprise.
@@ -65,7 +65,7 @@ export default function Offer() {
           </h2>
           <p
             className="text-lg max-w-xl mx-auto"
-            style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
+            style={{ fontFamily: "var(--font-body)", color: "#475467" }}
           >
             Tarif transparent — devis précis sous 24h.
           </p>
@@ -82,22 +82,22 @@ export default function Offer() {
             style={{
               background: "#FFFFFF",
               border: "1px solid #e1eaf5",
-              boxShadow: "0 8px 32px rgba(0,119,182,0.07)",
+              boxShadow: "0 8px 32px rgba(0,122,255,0.07)",
             }}
           >
             {/* Top bar */}
             <div
               className="h-1 w-full"
-              style={{ background: "linear-gradient(90deg, #0077B6, #023E8A)" }}
+              style={{ background: "linear-gradient(90deg, #007AFF, #0044CC)" }}
             />
             <div className="p-7">
               <div className="mb-5">
                 <span
                   className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3"
                   style={{
-                    background: "rgba(0,119,182,0.08)",
-                    border: "1px solid rgba(0,119,182,0.2)",
-                    color: "#0077B6",
+                    background: "rgba(0,122,255,0.08)",
+                    border: "1px solid rgba(0,122,255,0.2)",
+                    color: "#007AFF",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -105,14 +105,14 @@ export default function Offer() {
                 </span>
                 <p
                   className="text-xl font-bold"
-                  style={{ fontFamily: "var(--font-heading)", color: "#03045E" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#1D2939" }}
                 >
                   Site web
                 </p>
                 <div className="flex items-baseline gap-1.5 mt-1">
                   <span
                     className="text-xs"
-                    style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
+                    style={{ fontFamily: "var(--font-body)", color: "#475467" }}
                   >
                     à partir de
                   </span>
@@ -120,7 +120,7 @@ export default function Offer() {
                     className="font-extrabold text-2xl"
                     style={{
                       fontFamily: "var(--font-heading)",
-                      color: "#0077B6",
+                      color: "#007AFF",
                       letterSpacing: "-0.02em",
                     }}
                   >
@@ -128,14 +128,14 @@ export default function Offer() {
                   </span>
                   <span
                     className="text-xs"
-                    style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
+                    style={{ fontFamily: "var(--font-body)", color: "#475467" }}
                   >
                     TTC
                   </span>
                 </div>
                 <p
                   className="text-xs mt-1"
-                  style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#475467" }}
                 >
                   Devis précis gratuit sous 24h
                 </p>
@@ -158,7 +158,7 @@ export default function Offer() {
                     >
                       <Check className="w-3 h-3" style={{ color: "#4ade80" }} />
                     </div>
-                    <span style={{ fontFamily: "var(--font-body)", color: "#1a2a4a" }}>
+                    <span style={{ fontFamily: "var(--font-body)", color: "#1D2939" }}>
                       {item}
                     </span>
                   </li>
@@ -189,7 +189,7 @@ export default function Offer() {
               </div>
               <p
                 className="text-xs text-center mt-3"
-                style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
+                style={{ fontFamily: "var(--font-body)", color: "#475467" }}
               >
                 Sans engagement · Devis gratuit sous 24h
               </p>
@@ -204,23 +204,23 @@ export default function Offer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="rounded-3xl overflow-hidden relative"
             style={{
-              background: "rgba(0,119,182,0.05)",
-              border: "1px solid rgba(0,119,182,0.25)",
+              background: "rgba(0,122,255,0.05)",
+              border: "1px solid rgba(0,122,255,0.25)",
               boxShadow:
-                "0 0 40px rgba(0,119,182,0.1), 0 8px 32px rgba(0,119,182,0.06)",
+                "0 0 40px rgba(0,122,255,0.1), 0 8px 32px rgba(0,122,255,0.06)",
             }}
           >
             {/* Top bar */}
             <div
               className="h-1 w-full"
-              style={{ background: "linear-gradient(90deg, #0077B6, #023E8A)" }}
+              style={{ background: "linear-gradient(90deg, #007AFF, #0044CC)" }}
             />
             {/* Inner glow */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(ellipse at top, rgba(0,119,182,0.06) 0%, transparent 60%)",
+                  "radial-gradient(ellipse at top, rgba(0,122,255,0.06) 0%, transparent 60%)",
               }}
             />
             <div className="relative p-7">
@@ -228,9 +228,9 @@ export default function Offer() {
                 <span
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold mb-3"
                   style={{
-                    background: "rgba(0,119,182,0.1)",
-                    border: "1px solid rgba(0,119,182,0.3)",
-                    color: "#0077B6",
+                    background: "rgba(0,122,255,0.1)",
+                    border: "1px solid rgba(0,122,255,0.3)",
+                    color: "#007AFF",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -238,7 +238,7 @@ export default function Offer() {
                 </span>
                 <p
                   className="text-xl font-bold"
-                  style={{ fontFamily: "var(--font-heading)", color: "#03045E" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#1D2939" }}
                 >
                   Maintenance & Évolution
                 </p>
@@ -246,18 +246,18 @@ export default function Offer() {
                   className="font-extrabold mt-1"
                   style={{
                     fontFamily: "var(--font-heading)",
-                    color: "#0077B6",
+                    color: "#007AFF",
                     letterSpacing: "-0.02em",
                     fontSize: "1.5rem",
                   }}
                 >
-                  19,99 €<span style={{ fontSize: "1rem", fontWeight: 500, color: "#4a6080" }}>/mois</span>
+                  19,99 €<span style={{ fontSize: "1rem", fontWeight: 500, color: "#475467" }}>/mois</span>
                 </p>
               </div>
 
               <div
                 className="border-t mb-5"
-                style={{ borderColor: "rgba(0,119,182,0.12)" }}
+                style={{ borderColor: "rgba(0,122,255,0.12)" }}
               />
 
               <ul className="flex flex-col gap-3 mb-6">
@@ -266,13 +266,13 @@ export default function Offer() {
                     <div
                       className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                       style={{
-                        background: "rgba(0,119,182,0.1)",
-                        border: "1px solid rgba(0,119,182,0.25)",
+                        background: "rgba(0,122,255,0.1)",
+                        border: "1px solid rgba(0,122,255,0.25)",
                       }}
                     >
-                      <Check className="w-3 h-3" style={{ color: "#0077B6" }} />
+                      <Check className="w-3 h-3" style={{ color: "#007AFF" }} />
                     </div>
-                    <span style={{ fontFamily: "var(--font-body)", color: "#1a2a4a" }}>
+                    <span style={{ fontFamily: "var(--font-body)", color: "#1D2939" }}>
                       {item}
                     </span>
                   </li>
@@ -284,7 +284,7 @@ export default function Offer() {
               </CalButton>
               <p
                 className="text-xs text-center mt-3"
-                style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
+                style={{ fontFamily: "var(--font-body)", color: "#475467" }}
               >
                 Résiliable à tout moment · Sans engagement
               </p>

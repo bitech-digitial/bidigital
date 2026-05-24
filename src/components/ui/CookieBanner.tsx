@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -62,7 +62,7 @@ export default function CookieBanner() {
                   fontFamily: "var(--font-heading)",
                   fontWeight: 600,
                   fontSize: 15,
-                  color: "#03045E",
+                  color: "#1D2939",
                   marginBottom: 4,
                 }}
               >
@@ -72,7 +72,7 @@ export default function CookieBanner() {
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "0.85rem",
-                  color: "#4a6080",
+                  color: "#475467",
                   lineHeight: 1.6,
                   maxWidth: 640,
                 }}
@@ -80,7 +80,7 @@ export default function CookieBanner() {
                 Nous utilisons des cookies essentiels au fonctionnement du site. Aucune donnée n&apos;est vendue à des tiers.{" "}
                 <a
                   href="/politique-de-confidentialite"
-                  style={{ color: "#0077B6", textDecoration: "underline" }}
+                  style={{ color: "#007AFF", textDecoration: "underline" }}
                 >
                   En savoir plus
                 </a>
@@ -94,7 +94,7 @@ export default function CookieBanner() {
                 style={{
                   background: "transparent",
                   border: "1px solid #e1eaf5",
-                  color: "#4a6080",
+                  color: "#475467",
                   borderRadius: 8,
                   padding: "10px 20px",
                   fontSize: 14,
@@ -105,12 +105,12 @@ export default function CookieBanner() {
                   minWidth: 100,
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(0,119,182,0.3)";
-                  e.currentTarget.style.color = "#03045E";
+                  e.currentTarget.style.borderColor = "rgba(0,122,255,0.3)";
+                  e.currentTarget.style.color = "#1D2939";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = "#e1eaf5";
-                  e.currentTarget.style.color = "#4a6080";
+                  e.currentTarget.style.color = "#475467";
                 }}
               >
                 Refuser
@@ -118,7 +118,7 @@ export default function CookieBanner() {
               <button
                 onClick={accept}
                 style={{
-                  background: "#0077B6",
+                  background: "#007AFF",
                   border: "none",
                   color: "white",
                   borderRadius: 8,
@@ -127,17 +127,17 @@ export default function CookieBanner() {
                   fontWeight: 600,
                   cursor: "pointer",
                   fontFamily: "var(--font-body)",
-                  boxShadow: "0 4px 15px rgba(0,119,182,0.3)",
+                  boxShadow: "0 4px 15px rgba(0,122,255,0.3)",
                   transition: "all 0.2s",
                   minWidth: 100,
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#023E8A";
-                  e.currentTarget.style.boxShadow = "0 6px 24px rgba(0,119,182,0.45)";
+                  e.currentTarget.style.background = "#0044CC";
+                  e.currentTarget.style.boxShadow = "0 6px 24px rgba(0,122,255,0.45)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#0077B6";
-                  e.currentTarget.style.boxShadow = "0 4px 15px rgba(0,119,182,0.3)";
+                  e.currentTarget.style.background = "#007AFF";
+                  e.currentTarget.style.boxShadow = "0 4px 15px rgba(0,122,255,0.3)";
                 }}
               >
                 Accepter

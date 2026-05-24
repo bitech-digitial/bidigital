@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { WHATSAPP_LINK } from "@/lib/constants";
@@ -10,7 +10,7 @@ export default function FinalCTA() {
   return (
     <section
       id="contact"
-      className="relative py-32 px-4 overflow-hidden"
+      className="relative py-16 md:py-32 px-4 overflow-hidden"
       style={{ background: "#F0F9FF" }}
     >
       {/* Animated mesh blobs */}
@@ -64,11 +64,11 @@ export default function FinalCTA() {
           transition={{ duration: 0.6 }}
         >
           <span
-            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
+            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest mb-6"
             style={{
-              background: "rgba(0,119,182,0.08)",
-              border: "1px solid rgba(0,119,182,0.2)",
-              color: "#0077B6",
+              background: "rgba(0,122,255,0.08)",
+              border: "1px solid rgba(0,122,255,0.2)",
+              color: "#007AFF",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -79,7 +79,7 @@ export default function FinalCTA() {
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight"
             style={{
               fontFamily: "var(--font-heading)",
-              color: "#03045E",
+              color: "#1D2939",
               letterSpacing: "-0.03em",
             }}
           >
@@ -87,7 +87,7 @@ export default function FinalCTA() {
             <span
               className="text-transparent bg-clip-text"
               style={{
-                backgroundImage: "linear-gradient(135deg, #0077B6, #023E8A)",
+                backgroundImage: "linear-gradient(135deg, #007AFF, #0044CC)",
               }}
             >
               le meilleur.
@@ -99,7 +99,7 @@ export default function FinalCTA() {
             className="text-lg mb-10 max-w-xl mx-auto leading-relaxed"
             style={{
               fontFamily: "var(--font-body)",
-              color: "#4a6080",
+              color: "#475467",
             }}
           >
             Chaque projet est unique. Nous prenons le temps de comprendre vos
@@ -132,12 +132,6 @@ export default function FinalCTA() {
             </motion.a>
           </div>
 
-          <p
-            className="text-sm"
-            style={{ fontFamily: "var(--font-body)", color: "#4a6080" }}
-          >
-            Sans engagement · Réponse sous 24h · Échange confidentiel
-          </p>
         </motion.div>
       </div>
     </section>

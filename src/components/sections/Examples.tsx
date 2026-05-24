@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -19,19 +19,19 @@ function BrowserCard({ realisation }: { realisation: (typeof realisations)[0] })
       style={{
         background: "#F0F9FF",
         border: "1px solid #e1eaf5",
-        boxShadow: "0 4px 24px rgba(0,119,182,0.07)",
+        boxShadow: "0 4px 24px rgba(0,122,255,0.07)",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget;
         el.style.transform = "translateY(-6px)";
-        el.style.borderColor = "rgba(0,119,182,0.3)";
-        el.style.boxShadow = "0 8px 40px rgba(0,119,182,0.12)";
+        el.style.borderColor = "rgba(0,122,255,0.3)";
+        el.style.boxShadow = "0 8px 40px rgba(0,122,255,0.12)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget;
         el.style.transform = "translateY(0)";
         el.style.borderColor = "#e1eaf5";
-        el.style.boxShadow = "0 4px 24px rgba(0,119,182,0.07)";
+        el.style.boxShadow = "0 4px 24px rgba(0,122,255,0.07)";
       }}
     >
       {/* Browser bar */}
@@ -69,36 +69,36 @@ function BrowserCard({ realisation }: { realisation: (typeof realisations)[0] })
 
 export default function Examples() {
   return (
-    <section id="exemples" className="relative py-24 overflow-hidden" style={{ background: "#F0F9FF" }}>
+    <section id="exemples" className="relative py-12 md:py-24 overflow-hidden" style={{ background: "#F0F9FF" }}>
 
       {/* ── Décos géométriques ── */}
       {/* Trait vertical gauche */}
       <div className="absolute pointer-events-none hidden lg:block" style={{
         top: "15%", bottom: "15%", left: 24, width: 1,
-        background: "linear-gradient(180deg, transparent, rgba(0,119,182,0.1), transparent)",
+        background: "linear-gradient(180deg, transparent, rgba(0,122,255,0.1), transparent)",
       }} />
       {/* Carré outline haut-gauche */}
       <div className="absolute pointer-events-none hidden lg:block" style={{
         top: 50, left: 50, width: 70, height: 70,
-        border: "1.5px solid rgba(0,119,182,0.12)", borderRadius: 12,
+        border: "1.5px solid rgba(0,122,255,0.12)", borderRadius: 12,
         transform: "rotate(12deg)",
       }} />
       {/* Grand cercle droite */}
       <div className="absolute pointer-events-none hidden lg:block" style={{
         top: "50%", right: -120, marginTop: -200,
         width: 400, height: 400,
-        border: "1.5px solid rgba(0,119,182,0.06)", borderRadius: "50%",
+        border: "1.5px solid rgba(0,122,255,0.06)", borderRadius: "50%",
       }} />
       {/* Petit rectangle bas-droite */}
       <div className="absolute pointer-events-none hidden md:block" style={{
         bottom: 40, right: 70, width: 90, height: 45,
-        border: "1px solid rgba(0,119,182,0.1)", borderRadius: 8,
+        border: "1px solid rgba(0,122,255,0.1)", borderRadius: 8,
         transform: "rotate(-10deg)",
       }} />
       {/* Trait horizontal bas */}
       <div className="absolute pointer-events-none" style={{
         bottom: 0, left: "10%", right: "10%", height: 1,
-        background: "linear-gradient(90deg, transparent, rgba(0,119,182,0.1), transparent)",
+        background: "linear-gradient(90deg, transparent, rgba(0,122,255,0.1), transparent)",
       }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -112,15 +112,15 @@ export default function Examples() {
           className="text-center mb-14"
         >
           <span
-            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-5"
+            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest mb-5"
             style={{
-              background: "rgba(0,119,182,0.08)",
-              border: "1px solid rgba(0,119,182,0.2)",
-              color: "#0077B6",
+              background: "rgba(0,122,255,0.08)",
+              border: "1px solid rgba(0,122,255,0.2)",
+              color: "#007AFF",
               fontFamily: "var(--font-body)",
             }}
           >
-            NOS RÉFÉRENCES
+            Nos références
           </span>
           <h2
             className="font-extrabold text-gradient mb-4"
@@ -134,7 +134,7 @@ export default function Examples() {
             Des sites qui convertissent,{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #0077B6, #023E8A)",
+                background: "linear-gradient(135deg, #007AFF, #0044CC)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -146,14 +146,14 @@ export default function Examples() {
           <p
             style={{
               fontFamily: "var(--font-body)",
-              color: "#4a6080",
+              color: "#475467",
               fontSize: "1.1rem",
               maxWidth: 600,
               margin: "0 auto",
               lineHeight: 1.7,
             }}
           >
-            Chaque métier a ses codes. Nous les connaissons. Nous les appliquons.
+            Un aperçu de nos réalisations, déclinées selon les univers de nos clients.
           </p>
         </motion.div>
 

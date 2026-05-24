@@ -97,32 +97,43 @@ function CheckoutForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-5">
       {/* Récapitulatif offre */}
-      <div style={{
-        background: "#F0F9FF", border: "1px solid #e1eaf5",
-        borderRadius: 12, padding: "16px 20px",
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-      }}>
-        <div>
-          <div style={{ fontSize: 12, color: "#475467", fontFamily: "var(--font-body)", marginBottom: 2 }}>
+      <div
+        className="rounded-xl p-4 sm:p-5 flex justify-between items-center gap-3 flex-wrap"
+        style={{ background: "#F0F9FF", border: "1px solid #e1eaf5" }}
+      >
+        <div className="min-w-0">
+          <div
+            className="text-xs mb-0.5"
+            style={{ color: "#475467", fontFamily: "var(--font-body)" }}
+          >
             Création de site internet
           </div>
-          <div style={{ fontSize: 15, fontWeight: 700, color: "#1D2939", fontFamily: "var(--font-heading)" }}>
+          <div
+            className="text-[15px] font-bold leading-snug"
+            style={{ color: "#1D2939", fontFamily: "var(--font-heading)" }}
+          >
             {offer.label}
           </div>
         </div>
-        <div style={{ textAlign: "right", display: "flex", alignItems: "baseline", gap: 3 }}>
-          <span style={{ fontSize: 28, fontWeight: 800, color: "#007AFF", fontFamily: "var(--font-heading)" }}>
+        <div className="flex items-baseline gap-1 shrink-0">
+          <span
+            className="text-2xl sm:text-[28px] font-extrabold"
+            style={{ color: "#007AFF", fontFamily: "var(--font-heading)" }}
+          >
             {offer.display}
           </span>
-          <span style={{ fontSize: 12, color: "#475467" }}>/mois</span>
+          <span className="text-xs" style={{ color: "#475467" }}>/mois</span>
         </div>
       </div>
 
       {/* Email */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        <label style={{ fontSize: 14, fontWeight: 600, color: "#1D2939", fontFamily: "var(--font-heading)" }}>
+      <div className="flex flex-col gap-1.5">
+        <label
+          className="text-sm font-semibold"
+          style={{ color: "#1D2939", fontFamily: "var(--font-heading)" }}
+        >
           Email
         </label>
         <input
@@ -131,30 +142,31 @@ function CheckoutForm({
           onChange={(e) => setEmail(e.target.value)}
           required
           placeholder="vous@exemple.fr"
+          className="pay-input w-full px-3.5 py-3 rounded-[10px] text-[15px] bg-white"
           style={{
-            padding: "12px 14px", border: "1px solid #e1eaf5",
-            borderRadius: 10, fontSize: 15, color: "#1D2939",
-            fontFamily: "var(--font-body)", outline: "none",
-            transition: "border-color 0.2s", background: "#FFFFFF",
+            border: "1px solid #e1eaf5",
+            color: "#1D2939",
+            fontFamily: "var(--font-body)",
           }}
-          onFocus={(e) => (e.currentTarget.style.borderColor = "#007AFF")}
-          onBlur={(e) => (e.currentTarget.style.borderColor = "#e1eaf5")}
         />
       </div>
 
       {/* Stripe Payment Element */}
       <div>
-        <label style={{
-          display: "block", marginBottom: 8,
-          fontSize: 14, fontWeight: 600, color: "#1D2939", fontFamily: "var(--font-heading)",
-        }}>
+        <label
+          className="block mb-2 text-sm font-semibold"
+          style={{ color: "#1D2939", fontFamily: "var(--font-heading)" }}
+        >
           Informations de paiement
         </label>
         <PaymentElement />
       </div>
 
       {errorMsg && (
-        <p style={{ fontSize: 14, color: "#ef4444", fontFamily: "var(--font-body)", margin: 0 }}>
+        <p
+          className="text-sm m-0"
+          style={{ color: "#ef4444", fontFamily: "var(--font-body)" }}
+        >
           {errorMsg}
         </p>
       )}
@@ -162,33 +174,39 @@ function CheckoutForm({
       <button
         type="submit"
         disabled={loading || !EMAIL_RE.test(email) || !stripe || !elements}
+        className="pay-submit w-full py-4 rounded-[14px] text-base font-bold border-none flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
         style={{
-          width: "100%", padding: "16px", borderRadius: 14,
           background: loading ? "#86efac" : "#22c55e",
-          color: "#FFFFFF", fontSize: 16, fontWeight: 700,
-          fontFamily: "var(--font-heading)", border: "none",
+          color: "#FFFFFF",
+          fontFamily: "var(--font-heading)",
           cursor: loading ? "not-allowed" : "pointer",
-          transition: "background 0.2s",
-          display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+          minHeight: 52,
         }}
-        onMouseEnter={(e) => { if (!loading) e.currentTarget.style.background = "#16a34a"; }}
-        onMouseLeave={(e) => { if (!loading) e.currentTarget.style.background = "#22c55e"; }}
       >
         {loading ? (
           <>
-            <span className="animate-spin" style={{
-              width: 16, height: 16, display: "inline-block",
-              border: "2px solid rgba(255,255,255,0.4)",
-              borderTopColor: "#FFFFFF", borderRadius: "50%",
-            }} />
+            <span
+              className="animate-spin inline-block rounded-full shrink-0"
+              style={{
+                width: 16,
+                height: 16,
+                border: "2px solid rgba(255,255,255,0.4)",
+                borderTopColor: "#FFFFFF",
+              }}
+            />
             Traitement en cours...
           </>
-        ) : "Payer"}
+        ) : (
+          "Payer"
+        )}
       </button>
 
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
+      <div className="flex items-center justify-center gap-1.5">
         <Lock size={13} color="#475467" strokeWidth={2.5} />
-        <span style={{ fontSize: 12, color: "#475467", fontFamily: "var(--font-body)" }}>
+        <span
+          className="text-xs"
+          style={{ color: "#475467", fontFamily: "var(--font-body)" }}
+        >
           Paiement 100% sécurisé · Stripe · SSL
         </span>
       </div>
@@ -198,33 +216,37 @@ function CheckoutForm({
 
 function OfferSelector({ onSelect }: { onSelect: (offre: string) => void }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-      <p style={{ fontSize: 15, color: "#475467", fontFamily: "var(--font-body)", margin: 0, textAlign: "center" }}>
+    <div className="flex flex-col gap-3">
+      <p
+        className="text-[15px] text-center m-0"
+        style={{ color: "#475467", fontFamily: "var(--font-body)" }}
+      >
         Choisissez votre abonnement :
       </p>
       {Object.entries(OFFERS).map(([key, o]) => (
         <button
           key={key}
           onClick={() => onSelect(key)}
+          className="pay-offer-btn w-full px-4 sm:px-5 py-4 rounded-xl flex justify-between items-center gap-3 cursor-pointer"
           style={{
-            padding: "16px 20px", borderRadius: 12,
-            border: "1px solid #e1eaf5", background: "#F0F9FF",
-            cursor: "pointer", display: "flex",
-            justifyContent: "space-between", alignItems: "center",
-            fontFamily: "var(--font-heading)", transition: "border-color 0.2s, box-shadow 0.2s",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "#007AFF";
-            e.currentTarget.style.boxShadow = "0 0 0 3px rgba(0,122,255,0.1)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "#e1eaf5";
-            e.currentTarget.style.boxShadow = "none";
+            background: "#F0F9FF",
+            border: "1px solid #e1eaf5",
+            fontFamily: "var(--font-heading)",
           }}
         >
-          <span style={{ fontSize: 15, fontWeight: 700, color: "#1D2939" }}>{o.label}</span>
-          <span style={{ fontSize: 18, fontWeight: 800, color: "#007AFF" }}>
-            {o.display}<span style={{ fontSize: 12, fontWeight: 400, color: "#475467" }}>/mois</span>
+          <span
+            className="text-[15px] font-bold text-left"
+            style={{ color: "#1D2939" }}
+          >
+            {o.label}
+          </span>
+          <span className="flex items-baseline gap-1 shrink-0">
+            <span className="text-lg font-extrabold" style={{ color: "#007AFF" }}>
+              {o.display}
+            </span>
+            <span className="text-xs font-normal" style={{ color: "#475467" }}>
+              /mois
+            </span>
           </span>
         </button>
       ))}
@@ -260,11 +282,16 @@ function PaymentFormInner() {
 
 export default function PaymentForm() {
   return (
-    <Suspense fallback={
-      <div style={{ textAlign: "center", color: "#475467", padding: 40 }}>
-        Chargement...
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div
+          className="text-center py-10"
+          style={{ color: "#475467" }}
+        >
+          Chargement...
+        </div>
+      }
+    >
       <PaymentFormInner />
     </Suspense>
   );

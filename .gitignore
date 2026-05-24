@@ -52,3 +52,5 @@ Bidigital-logo*.webp
 
 # Brainstorm sessions
 .superpowers/
+
+/src/generated/prisma

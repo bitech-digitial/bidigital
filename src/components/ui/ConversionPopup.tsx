@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -66,7 +66,7 @@ function PopupCard({
           borderRadius: "20px",
           padding: "32px 28px 28px",
           boxSizing: "border-box",
-          boxShadow: "0 24px 80px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,119,182,0.08)",
+          boxShadow: "0 24px 80px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,122,255,0.08)",
           overflow: "hidden",
         }}
       >
@@ -78,7 +78,7 @@ function PopupCard({
             left: 0,
             width: 220,
             height: 220,
-            background: "radial-gradient(circle at top left, rgba(0,119,182,0.07), transparent 70%)",
+            background: "radial-gradient(circle at top left, rgba(0,122,255,0.07), transparent 70%)",
             pointerEvents: "none",
           }}
         />
@@ -90,7 +90,7 @@ function PopupCard({
             position: "absolute",
             top: 12,
             right: 12,
-            background: "rgba(0,119,182,0.05)",
+            background: "rgba(0,122,255,0.05)",
             border: "1px solid #e1eaf5",
             borderRadius: 8,
             width: 32,
@@ -100,11 +100,11 @@ function PopupCard({
             justifyContent: "center",
             cursor: "pointer",
             zIndex: 10,
-            color: "#4a6080",
+            color: "#475467",
             transition: "color 0.2s",
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#03045E")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#4a6080")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#1D2939")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#475467")}
           aria-label="Fermer"
         >
           <X size={16} />
@@ -118,7 +118,7 @@ function PopupCard({
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.1em",
-              color: "#0077B6",
+              color: "#007AFF",
               marginBottom: 8,
               fontFamily: "var(--font-body)",
             }}
@@ -131,7 +131,7 @@ function PopupCard({
               fontSize: "clamp(18px, 4vw, 22px)",
               fontWeight: 700,
               fontFamily: "var(--font-heading)",
-              color: "#03045E",
+              color: "#1D2939",
               marginBottom: 8,
               paddingRight: 32,
               lineHeight: 1.3,
@@ -147,7 +147,7 @@ function PopupCard({
           <p
             style={{
               fontSize: 14,
-              color: "#4a6080",
+              color: "#475467",
               marginBottom: 20,
               lineHeight: 1.5,
               fontFamily: "var(--font-body)",
@@ -207,7 +207,7 @@ function PopupCard({
             style={{
               textAlign: "center",
               fontSize: 11,
-              color: "#4a6080",
+              color: "#475467",
               marginTop: 14,
               fontFamily: "var(--font-body)",
             }}
@@ -230,6 +230,14 @@ export default function ConversionPopup() {
   const [showExitPopup, setShowExitPopup] = useState(false);
   const popup2EligibleAt = useRef<number | null>(null);
   const activeRef = useRef<"mid" | "end" | "exit" | null>(null);
+  const isMobileRef = useRef(false);
+
+  useEffect(() => {
+    isMobileRef.current = window.innerWidth < 768;
+    const handleResize = () => { isMobileRef.current = window.innerWidth < 768; };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const closeAll = useCallback((keys: string[]) => {
     setShowPopup1(false);
@@ -254,6 +262,7 @@ export default function ConversionPopup() {
     }
 
     const handleScroll = () => {
+      if (isMobileRef.current) return;
       const key1Closed = sessionStorage.getItem(KEY_1) === "true";
       const key2Closed = sessionStorage.getItem(KEY_2) === "true";
       const total = document.body.scrollHeight - window.innerHeight;
@@ -284,6 +293,7 @@ export default function ConversionPopup() {
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
       if (
+        !isMobileRef.current &&
         e.clientY <= 8 &&
         activeRef.current === null &&
         sessionStorage.getItem(KEY_EXIT) !== "true"
