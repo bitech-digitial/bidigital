@@ -47,3 +47,8 @@ Bidigital-logo-*.webp
 "Bidigital logo fond *.png"
 Bidigital-logo*.webp
 *.pem
+
+.vercel
+
+# Brainstorm sessions
+.superpowers/
