@@ -53,5 +53,5 @@ export const CONTRACT_META = {
   prestataire: "BiDigital",
   email: "contact@bidigital.fr",
   adresse: "Chaville, Île-de-France, 92370",
-  siret: "XXX XXX XXX XXXXX",
+  siret: "947 796 967 00026",
 };
