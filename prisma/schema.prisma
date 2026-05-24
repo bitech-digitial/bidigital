@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL")
+}
+
+model ContractSession {
+  id                String    @id @default(cuid())
+  token             String    @unique @default(cuid())
+
+  email             String
+  nom               String?
+
+  signatureData     String    @db.Text
+  ip                String
+  userAgent         String
+  signedAt          DateTime
+
+  checkoutSessionId String?   @unique
+  stripeCustomerId  String?
+  paid              Boolean   @default(false)
+  paidAt            DateTime?
+
+  createdAt         DateTime  @default(now())
+}
