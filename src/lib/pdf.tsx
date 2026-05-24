@@ -67,7 +67,10 @@ function ContractDocument({ email, nom, signatureData, ip, signedAt }: ContractP
         <View style={styles.header}>
           <Text style={styles.logo}>{CONTRACT_META.prestataire}</Text>
           <Text style={styles.headerSub}>
-            {CONTRACT_META.email} · {CONTRACT_META.adresse} · SIRET {CONTRACT_META.siret}
+            Gérant : {CONTRACT_META.gerant} · SIRET {CONTRACT_META.siret} · {CONTRACT_META.rcs}
+          </Text>
+          <Text style={styles.headerSub}>
+            {CONTRACT_META.adresse} · {CONTRACT_META.email} · {CONTRACT_META.tva}
           </Text>
         </View>
 
@@ -91,8 +94,7 @@ function ContractDocument({ email, nom, signatureData, ip, signedAt }: ContractP
         </View>
 
         <Text style={styles.footer}>
-          {CONTRACT_META.prestataire} · {CONTRACT_META.adresse} · {CONTRACT_META.email} —
-          Document généré automatiquement le {new Date().toLocaleDateString("fr-FR")}
+          {CONTRACT_META.prestataire} · SIRET {CONTRACT_META.siret} · {CONTRACT_META.rcs} · {CONTRACT_META.adresse} · {CONTRACT_META.email} — Document généré le {new Date().toLocaleDateString("fr-FR")} · Tribunal de Commerce de Nanterre
         </Text>
       </Page>
     </Document>
