@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Paiement confirmé — BiDigital",
@@ -41,10 +42,9 @@ export default function PaiementMerciPage() {
             alignItems: "center",
             justifyContent: "center",
             margin: "0 auto 24px",
-            fontSize: 36,
           }}
         >
-          ✅
+          <CheckCircle size={36} color="#22C55E" strokeWidth={1.8} />
         </div>
 
         {/* Logo */}
@@ -91,36 +91,6 @@ export default function PaiementMerciPage() {
           recueillir vos informations et lancer la création de votre site.
           Préparez-vous à avoir un site qui vous ressemble et qui travaille pour vous 24h/24.
         </p>
-
-        <div
-          style={{
-            background: "#F0F9FF",
-            border: "1px solid rgba(0,122,255,0.15)",
-            borderRadius: 12,
-            padding: "14px 20px",
-            marginBottom: 28,
-            textAlign: "left",
-          }}
-        >
-          {[
-            "✦ Design sur-mesure pensé pour convertir",
-            "✦ SEO intégré dès le premier jour",
-            "✦ Site livré rapidement, sans jargon",
-          ].map((item) => (
-            <p
-              key={item}
-              style={{
-                fontSize: 13,
-                color: "#007AFF",
-                fontFamily: "var(--font-body)",
-                fontWeight: 600,
-                margin: "5px 0",
-              }}
-            >
-              {item}
-            </p>
-          ))}
-        </div>
 
         <Link
           href="/"
