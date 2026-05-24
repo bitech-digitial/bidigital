@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { db } from "@/lib/db";
 import { generateContractPDF } from "@/lib/pdf";
+import type { Offre } from "@/lib/contract-content";
 import {
   sendClientConfirmationEmail,
   sendInternalAlertEmail,
@@ -63,6 +64,7 @@ export async function POST(req: NextRequest) {
   const pdfBuffer = await generateContractPDF({
     email: contractSession.email,
     nom: contractSession.nom,
+    offre: contractSession.offre as Offre,
     signatureData: contractSession.signatureData,
     ip: contractSession.ip,
     signedAt: contractSession.signedAt,

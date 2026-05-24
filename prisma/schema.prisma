@@ -14,6 +14,7 @@ model ContractSession {
 
   email             String
   nom               String?
+  offre             String    @default("vitrine")
 
   signatureData     String    @db.Text
   ip                String

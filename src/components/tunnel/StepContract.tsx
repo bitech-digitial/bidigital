@@ -1,6 +1,6 @@
 // src/components/tunnel/StepContract.tsx
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { CONTRACT_CLAUSES } from "@/lib/contract-content";
+import { getContractClauses, type Offre } from "@/lib/contract-content";
 
 const ACCENT_COLORS = [
   "#007AFF", "#00B4D8", "#0044CC", "#5B8DEF",
@@ -8,11 +8,13 @@ const ACCENT_COLORS = [
 ];
 
 interface StepContractProps {
+  offre: Offre;
   onNext: () => void;
   onBack: () => void;
 }
 
-export default function StepContract({ onNext, onBack }: StepContractProps) {
+export default function StepContract({ offre, onNext, onBack }: StepContractProps) {
+  const clauses = getContractClauses(offre);
   return (
     <div>
       <h2
@@ -46,7 +48,7 @@ export default function StepContract({ onNext, onBack }: StepContractProps) {
           paddingRight: 4,
         }}
       >
-        {CONTRACT_CLAUSES.map((clause, i) => (
+        {clauses.map((clause, i) => (
           <div
             key={clause.id}
             style={{

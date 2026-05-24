@@ -8,11 +8,14 @@ import TunnelShell from "@/components/tunnel/TunnelShell";
 import StepOffer from "@/components/tunnel/StepOffer";
 import StepContract from "@/components/tunnel/StepContract";
 import StepSignature from "@/components/tunnel/StepSignature";
+import type { Offre } from "@/lib/contract-content";
 
 function TunnelContent() {
   const searchParams = useSearchParams();
   const email = searchParams.get("email") ?? "";
   const nom = searchParams.get("nom") ?? "";
+  const offreParam = searchParams.get("offre");
+  const offre: Offre = offreParam === "ecommerce" ? "ecommerce" : "vitrine";
 
   const [step, setStep] = useState(1);
   const [error, setError] = useState<string | null>(null);
@@ -48,14 +51,15 @@ function TunnelContent() {
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <StepOffer nom={nom} onNext={next} />;
+        return <StepOffer nom={nom} offre={offre} onNext={next} />;
       case 2:
-        return <StepContract onNext={next} onBack={back} />;
+        return <StepContract offre={offre} onNext={next} onBack={back} />;
       case 3:
         return (
           <StepSignature
             email={email}
             nom={nom}
+            offre={offre}
             onBack={back}
             onSuccess={handleSigned}
           />

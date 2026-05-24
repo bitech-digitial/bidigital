@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import SignatureCanvas from "./SignatureCanvas";
+import type { Offre } from "@/lib/contract-content";
 
 interface StepSignatureProps {
   email: string;
   nom: string;
+  offre: Offre;
   onBack: () => void;
   onSuccess: (token: string) => void;
 }
@@ -14,6 +16,7 @@ interface StepSignatureProps {
 export default function StepSignature({
   email,
   nom,
+  offre,
   onBack,
   onSuccess,
 }: StepSignatureProps) {
@@ -33,7 +36,7 @@ export default function StepSignature({
       const res = await fetch("/api/tunnel/sign", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, nom, signatureData, consent }),
+        body: JSON.stringify({ email, nom, offre, signatureData, consent }),
       });
       const data = await res.json();
       if (!res.ok) {

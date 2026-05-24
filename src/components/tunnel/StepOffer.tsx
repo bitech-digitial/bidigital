@@ -1,22 +1,36 @@
 // src/components/tunnel/StepOffer.tsx
 import { ArrowRight, Check } from "lucide-react";
+import { OFFRES, type Offre } from "@/lib/contract-content";
 
-const INCLUS = [
-  "Site vitrine sur-mesure",
-  "Design premium + copywriting",
-  "SEO intégré dès le 1er jour",
-  "Hébergement + nom de domaine inclus",
-  "Mises à jour illimitées",
-  "Conformité RGPD complète",
-];
+const INCLUS: Record<Offre, string[]> = {
+  vitrine: [
+    "Site vitrine sur-mesure",
+    "Design premium + copywriting",
+    "SEO intégré dès le 1er jour",
+    "Hébergement + nom de domaine inclus",
+    "Mises à jour illimitées",
+    "Conformité RGPD complète",
+  ],
+  ecommerce: [
+    "Boutique en ligne sur-mesure",
+    "Design premium + copywriting",
+    "SEO e-commerce intégré",
+    "Hébergement + nom de domaine inclus",
+    "Paiement en ligne Stripe intégré",
+    "Mises à jour illimitées",
+    "Conformité RGPD complète",
+  ],
+};
 
 interface StepOfferProps {
   nom: string;
+  offre: Offre;
   onNext: () => void;
 }
 
-export default function StepOffer({ nom, onNext }: StepOfferProps) {
+export default function StepOffer({ nom, offre, onNext }: StepOfferProps) {
   const prenom = nom.split(" ")[0];
+  const o = OFFRES[offre];
 
   return (
     <div>
@@ -56,6 +70,19 @@ export default function StepOffer({ nom, onNext }: StepOfferProps) {
       >
         <div
           style={{
+            fontSize: 13,
+            fontWeight: 700,
+            color: "#007AFF",
+            fontFamily: "var(--font-body)",
+            marginBottom: 6,
+            textTransform: "uppercase",
+            letterSpacing: "0.06em",
+          }}
+        >
+          {o.label}
+        </div>
+        <div
+          style={{
             fontSize: 40,
             fontWeight: 800,
             color: "#1D2939",
@@ -63,7 +90,7 @@ export default function StepOffer({ nom, onNext }: StepOfferProps) {
             letterSpacing: "-0.03em",
           }}
         >
-          100€
+          {o.prix}
         </div>
         <div
           style={{
@@ -73,12 +100,12 @@ export default function StepOffer({ nom, onNext }: StepOfferProps) {
             fontFamily: "var(--font-body)",
           }}
         >
-          par mois · tout inclus · sans engagement
+          par mois · engagement 12 mois · {o.total} total
         </div>
       </div>
 
       <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px" }}>
-        {INCLUS.map((item) => (
+        {INCLUS[offre].map((item) => (
           <li
             key={item}
             style={{

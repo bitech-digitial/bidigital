@@ -34,14 +34,14 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let body: { email?: string; nom?: string; signatureData?: string; consent?: boolean };
+  let body: { email?: string; nom?: string; offre?: string; signatureData?: string; consent?: boolean };
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "Requête invalide." }, { status: 400 });
   }
 
-  const { email, nom, signatureData, consent } = body;
+  const { email, nom, offre, signatureData, consent } = body;
 
   if (!email || !EMAIL_RE.test(email)) {
     return NextResponse.json({ error: "Email invalide." }, { status: 400 });
@@ -53,10 +53,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Signature invalide." }, { status: 400 });
   }
 
+  const validOffre = offre === "ecommerce" ? "ecommerce" : "vitrine";
+
   const session = await db.contractSession.create({
     data: {
       email: sanitize(email),
       nom: nom ? sanitize(nom) : null,
+      offre: validOffre,
       signatureData,
       ip,
       userAgent: req.headers.get("user-agent") ?? "unknown",

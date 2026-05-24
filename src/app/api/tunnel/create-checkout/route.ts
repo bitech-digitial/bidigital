@@ -40,7 +40,15 @@ export async function POST(req: NextRequest) {
   const checkoutSession = await stripe.checkout.sessions.create({
     mode: "subscription",
     customer_email: contractSession.email,
-    line_items: [{ price: process.env.STRIPE_PRICE_VITRINE!, quantity: 1 }],
+    line_items: [
+      {
+        price:
+          contractSession.offre === "ecommerce"
+            ? process.env.STRIPE_PRICE_ECOMMERCE!
+            : process.env.STRIPE_PRICE_VITRINE!,
+        quantity: 1,
+      },
+    ],
     success_url: `${origin}/paiement/merci?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${origin}/tunnel`,
     allow_promotion_codes: true,

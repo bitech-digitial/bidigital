@@ -8,7 +8,7 @@ import {
   Image,
   renderToBuffer,
 } from "@react-pdf/renderer";
-import { CONTRACT_CLAUSES, CONTRACT_META } from "@/lib/contract-content";
+import { getContractClauses, OFFRES, CONTRACT_META, type Offre } from "@/lib/contract-content";
 
 const styles = StyleSheet.create({
   page: { fontFamily: "Helvetica", fontSize: 10, padding: 44, color: "#1D2939" },
@@ -44,15 +44,16 @@ const styles = StyleSheet.create({
   },
 });
 
-interface ContractPDFData {
+export interface ContractPDFData {
   email: string;
   nom: string | null;
   signatureData: string;
   ip: string;
   signedAt: Date;
+  offre: Offre;
 }
 
-function ContractDocument({ email, nom, signatureData, ip, signedAt }: ContractPDFData) {
+function ContractDocument({ email, nom, signatureData, ip, signedAt, offre }: ContractPDFData) {
   const dateStr = signedAt.toLocaleDateString("fr-FR", {
     day: "2-digit",
     month: "long",
@@ -75,9 +76,9 @@ function ContractDocument({ email, nom, signatureData, ip, signedAt }: ContractP
         </View>
 
         <Text style={styles.title}>Contrat de Prestation de Services</Text>
-        <Text style={styles.subtitle}>Abonnement mensuel — Site web professionnel · 100 € TTC / mois</Text>
+        <Text style={styles.subtitle}>{OFFRES[offre].label} · {OFFRES[offre].prix} HT / mois · Engagement 12 mois</Text>
 
-        {CONTRACT_CLAUSES.map((clause) => (
+        {getContractClauses(offre).map((clause) => (
           <View key={clause.id}>
             <Text style={styles.sectionTitle}>{clause.title}</Text>
             <Text style={styles.sectionText}>{clause.content}</Text>
