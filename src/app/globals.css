@@ -1,22 +1,22 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 :root {
   --color-bg:           #FFFFFF;
   --color-bg-card:      #F0F9FF;
   --color-bg-subtle:    #CAF0F8;
-  --color-bg-dark:      #03045E;
-  --color-text-primary: #03045E;
-  --color-text-body:    #1a2a4a;
-  --color-text-muted:   #4a6080;
-  --color-accent:       #0077B6;
-  --color-accent-hover: #023E8A;
+  --color-bg-dark:      #1D2939;
+  --color-text-primary: #1D2939;
+  --color-text-body:    #1D2939;
+  --color-text-muted:   #475467;
+  --color-accent:       #007AFF;
+  --color-accent-hover: #0044CC;
   --color-accent-light: #90E0EF;
   --color-border:       #e1eaf5;
-  --color-border-strong:#0077B6;
+  --color-border-strong:#007AFF;
 
   /* Legacy aliases (pour @theme inline) */
   --background: #FFFFFF;
-  --foreground: #1a2a4a;
+  --foreground: #1D2939;
 }
 
 @theme inline {
@@ -44,8 +44,9 @@ html {
 
 body {
   font-size: 1rem;
-  background: #FFFFFF;
-  color: #1a2a4a;
+  background: linear-gradient(180deg, #F0F4FA 0%, #F5F8FC 18%, #FFFFFF 55%);
+  background-attachment: fixed;
+  color: #1D2939;
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -64,32 +65,32 @@ body {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0077B6;
+  background: #007AFF;
 }
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(0, 119, 182, 0.15);
-  color: #03045E;
+  background: rgba(0, 122, 255, 0.15);
+  color: #1D2939;
 }
 
 /* ── Gradient text — navy→blue (Apple) ── */
 .text-gradient {
-  background: linear-gradient(135deg, #03045E 0%, #0077B6 100%);
+  background: linear-gradient(135deg, #1D2939 0%, #007AFF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-accent {
-  background: linear-gradient(135deg, #0077B6 0%, #023E8A 100%);
+  background: linear-gradient(135deg, #007AFF 0%, #0044CC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-shimmer {
-  background: linear-gradient(135deg, #0077B6 0%, #90E0EF 50%, #0077B6 100%);
+  background: linear-gradient(135deg, #007AFF 0%, #90E0EF 50%, #007AFF 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -116,8 +117,8 @@ body {
 }
 
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 119, 182, 0.15); }
-  50%       { box-shadow: 0 0 40px rgba(0, 119, 182, 0.35); }
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 122, 255, 0.15); }
+  50%       { box-shadow: 0 0 40px rgba(0, 122, 255, 0.35); }
 }
 
 @keyframes shimmerBar {
@@ -176,7 +177,7 @@ body {
   position: absolute;
   inset: -4px;
   border-radius: inherit;
-  background: radial-gradient(ellipse at center, rgba(0, 119, 182, 0.35) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(0, 122, 255, 0.35) 0%, transparent 70%);
   filter: blur(12px);
   opacity: 0.5;
   animation: btnGlowOpacity 3s ease-in-out infinite;
@@ -194,7 +195,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 119, 182, 0.3) 50%,
+    rgba(0, 122, 255, 0.3) 50%,
     transparent 100%
   );
 }
@@ -204,13 +205,13 @@ body {
   background: #F0F9FF;
   border: 1px solid #e1eaf5;
   border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 119, 182, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 122, 255, 0.08);
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 .glass-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(0, 119, 182, 0.3);
-  box-shadow: 0 8px 40px rgba(0, 119, 182, 0.12);
+  border-color: rgba(0, 122, 255, 0.3);
+  box-shadow: 0 8px 40px rgba(0, 122, 255, 0.12);
 }
 
 /* ── URL bar shimmer ── */
@@ -229,7 +230,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 119, 182, 0.1) 50%,
+    rgba(0, 122, 255, 0.1) 50%,
     transparent 100%
   );
   animation: urlShimmer 2.5s ease-in-out infinite;
@@ -262,6 +263,33 @@ body {
   [data-floating-shape] { animation: none !important; }
 }
 
+/* ── Mobile responsive — contact page layout ── */
+@media (max-width: 767px) {
+  .contact-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding-top: 96px !important;
+    padding-bottom: 56px !important;
+  }
+  .contact-form-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .contact-form-card {
+    padding: 24px 18px 20px !important;
+  }
+}
+
+/* ── Page Paiement — états interactifs ── */
+.pay-offer-btn { transition: border-color 0.2s, box-shadow 0.2s; }
+.pay-offer-btn:hover {
+  border-color: #007AFF;
+  box-shadow: 0 0 0 3px rgba(0,122,255,0.1);
+}
+.pay-input { transition: border-color 0.2s; }
+.pay-input:focus { border-color: #007AFF !important; outline: none; }
+.pay-submit { transition: background 0.2s; }
+.pay-submit:not(:disabled):hover { background: #16a34a !important; }
+
 /* ── Vibrant Neon Gradient Text — fond sombre uniquement ── */
 .text-neon {
   background: linear-gradient(
@@ -278,7 +306,7 @@ body {
   filter:
     drop-shadow(0 0 8px  rgba(144,224,239,0.6))
     drop-shadow(0 0 24px rgba(0,180,216,0.35))
-    drop-shadow(0 0 48px rgba(0,119,182,0.2));
+    drop-shadow(0 0 48px rgba(0,122,255,0.2));
 }
 
 /* Variante animée — battement de lueur */
@@ -302,13 +330,13 @@ body {
     filter:
       drop-shadow(0 0 6px  rgba(144,224,239,0.5))
       drop-shadow(0 0 18px rgba(0,180,216,0.25))
-      drop-shadow(0 0 40px rgba(0,119,182,0.15));
+      drop-shadow(0 0 40px rgba(0,122,255,0.15));
   }
   50% {
     filter:
       drop-shadow(0 0 12px rgba(144,224,239,0.85))
       drop-shadow(0 0 32px rgba(0,180,216,0.55))
-      drop-shadow(0 0 60px rgba(0,119,182,0.3));
+      drop-shadow(0 0 60px rgba(0,122,255,0.3));
   }
 }
 
@@ -328,7 +356,7 @@ body {
 
 .bd-base {
   display: block;
-  color: #03045E;
+  color: #1D2939;
 }
 
 /*
@@ -343,7 +371,7 @@ body {
   display: block;
   white-space: nowrap;
   pointer-events: none;
-  background: linear-gradient(135deg, #0077B6 0%, #023E8A 50%, #0096C7 100%);
+  background: linear-gradient(135deg, #007AFF 0%, #0044CC 50%, #0096C7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -386,7 +414,7 @@ body {
   to   {
     filter:
       drop-shadow(0 0  8px rgba(0, 150, 199, 0.7))
-      drop-shadow(0 0 22px rgba(0, 119, 182, 0.4));
+      drop-shadow(0 0 22px rgba(0, 122, 255, 0.4));
   }
 }
 
@@ -445,6 +473,43 @@ body {
   87.5%, 100% { rotate: 1080deg; }
 }
 
+/* ── Contact page — responsive grids ── */
+@media (max-width: 1023px) {
+  .contact-main-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 640px) {
+  .contact-form-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .contact-footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 480px) {
+  .contact-footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Scroll margin — compense la navbar fixe sur les ancres ── */
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* ── Section overflow protection ── */
+section {
+  overflow-x: clip;
+}
+
+/* ── Mobile bottom padding — espace pour la barre de CTA flottante ── */
+@media (max-width: 767px) {
+  main {
+    padding-bottom: 82px;
+  }
+}
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -486,4 +551,9 @@ body {
 @keyframes ctaRing {
   0%   { transform: scale(1);   opacity: 0.6; }
   100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
