@@ -67,10 +67,10 @@ function ContractDocument({ email, nom, signatureData, ip, signedAt }: ContractP
         <View style={styles.header}>
           <Text style={styles.logo}>{CONTRACT_META.prestataire}</Text>
           <Text style={styles.headerSub}>
-            Gérant : {CONTRACT_META.gerant} · SIRET {CONTRACT_META.siret} · {CONTRACT_META.rcs}
+            SIRET {CONTRACT_META.siret} · {CONTRACT_META.rcs} · {CONTRACT_META.tva}
           </Text>
           <Text style={styles.headerSub}>
-            {CONTRACT_META.adresse} · {CONTRACT_META.email} · {CONTRACT_META.tva}
+            {CONTRACT_META.adresse} · {CONTRACT_META.email}
           </Text>
         </View>
 

@@ -3,7 +3,7 @@ export const CONTRACT_CLAUSES = [
     id: "objet",
     title: "1. Objet du contrat",
     content:
-      "BiDigital (Gérant : Bilel Moussa, SIRET 947 796 967 00026 RCS Nanterre, TVA non applicable — Art. 293B CGI) s'engage à concevoir, développer et maintenir un site web vitrine professionnel pour le Client dans le cadre d'un abonnement mensuel sans engagement. Les prestations comprennent : design sur-mesure, intégration du contenu fourni par le Client, optimisation SEO locale, conformité RGPD, hébergement et nom de domaine inclus.",
+      "BiDigital (SIRET 947 796 967 00026 RCS Nanterre, TVA non applicable — Art. 293B CGI) s'engage à concevoir, développer et maintenir un site web vitrine professionnel pour le Client dans le cadre d'un abonnement mensuel sans engagement. Les prestations comprennent : design sur-mesure, intégration du contenu fourni par le Client, optimisation SEO locale, conformité RGPD, hébergement et nom de domaine inclus.",
   },
   {
     id: "prix",
@@ -57,7 +57,6 @@ export const CONTRACT_CLAUSES = [
 
 export const CONTRACT_META = {
   prestataire: "BiDigital",
-  gerant: "Bilel Moussa",
   email: "contact@bidigital.fr",
   adresse: "1 Rue du Gros Chêne, 92370 Chaville",
   siret: "947 796 967 00026",
