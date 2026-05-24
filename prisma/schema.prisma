@@ -8,6 +8,26 @@ datasource db {
   directUrl = env("DATABASE_URL")
 }
 
+model OnboardingSession {
+  id           String    @id @default(cuid())
+  token        String    @unique @default(cuid())
+
+  email        String
+  nom          String?
+  offre        String?
+
+  objectif     String?
+  styleVisuel  String?
+  couleurs     String?
+  logoUrl      String?
+  inspirations String?
+  pages        String?
+  photosUrls   String?
+
+  completedAt  DateTime?
+  createdAt    DateTime  @default(now())
+}
+
 model ContractSession {
   id                String    @id @default(cuid())
   token             String    @unique @default(cuid())

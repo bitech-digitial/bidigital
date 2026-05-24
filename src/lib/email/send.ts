@@ -14,7 +14,8 @@ export interface EmailSessionData {
 
 export async function sendClientConfirmationEmail(
   session: EmailSessionData,
-  pdfBuffer: Buffer
+  pdfBuffer: Buffer,
+  onboardingUrl?: string
 ): Promise<void> {
   const dateTag = session.signedAt
     .toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" })
@@ -25,7 +26,7 @@ export async function sendClientConfirmationEmail(
     from: "BiDigital <contact@bidigital.fr>",
     to: [session.email],
     subject: "Votre contrat BiDigital signé — bienvenue !",
-    html: clientConfirmationHTML(session.nom, session.email, session.signedAt),
+    html: clientConfirmationHTML(session.nom, session.email, session.signedAt, onboardingUrl),
     attachments: [
       {
         filename: `contrat-bidigital-${nomSlug}-${dateTag}.pdf`,

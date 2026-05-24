@@ -9,7 +9,8 @@ const FEATURES = [
 export function clientConfirmationHTML(
   nom: string | null,
   email: string,
-  signedAt: Date
+  signedAt: Date,
+  onboardingUrl?: string
 ): string {
   const prenom = nom?.split(" ")[0] ?? "cher client";
   const dateStr = signedAt.toLocaleDateString("fr-FR", {
@@ -40,6 +41,12 @@ export function clientConfirmationHTML(
     <p style="font-size:15px;color:#475467;line-height:1.7;margin:0 0 24px;">
       Je vous contacte dans les <strong style="color:#1D2939;">24 heures</strong> pour recueillir vos informations et lancer la création de votre site.
     </p>
+    ${onboardingUrl ? `
+    <div style="background:#F0FFF4;border:1px solid rgba(34,197,94,0.25);border-radius:12px;padding:20px 24px;margin-bottom:24px;">
+      <div style="font-size:13px;font-weight:700;color:#16A34A;margin-bottom:8px;">Une dernière étape — 5 minutes</div>
+      <p style="font-size:14px;color:#475467;margin:0 0 16px;line-height:1.6;">Remplissez ce court questionnaire pour qu&apos;on puisse créer votre site exactement comme vous le souhaitez.</p>
+      <a href="${onboardingUrl}" style="display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#00B4D8,#007AFF);color:#fff;font-weight:700;font-size:14px;border-radius:10px;text-decoration:none;">Remplir le questionnaire →</a>
+    </div>` : ""}
     <p style="font-size:13px;color:#94A3B8;margin:0;">Votre contrat signé est joint à cet email en pièce jointe PDF.</p>
   </div>
   <div style="padding:20px 40px;background:#F8FAFC;border-top:1px solid #E1EAF5;text-align:center;">

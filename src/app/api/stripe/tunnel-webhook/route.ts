@@ -79,8 +79,18 @@ export async function POST(req: NextRequest) {
     stripeCustomerId: checkoutSession.customer as string | null,
   };
 
+  const onboarding = await db.onboardingSession.create({
+    data: {
+      email: contractSession.email,
+      nom: contractSession.nom ?? null,
+      offre: contractSession.offre,
+    },
+  });
+
+  const onboardingUrl = `https://www.bidigital.fr/onboarding/${onboarding.token}`;
+
   await Promise.all([
-    sendClientConfirmationEmail(sessionData, pdfBuffer),
+    sendClientConfirmationEmail(sessionData, pdfBuffer, onboardingUrl),
     sendInternalAlertEmail(sessionData),
   ]);
 
