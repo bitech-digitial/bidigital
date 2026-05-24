@@ -19,15 +19,20 @@ export default function SignatureCanvas({ onChange }: SignatureCanvasProps) {
   };
 
   const isEmpty = useCallback((canvas: HTMLCanvasElement): boolean => {
-    const ctx = canvas.getContext("2d")!;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return true;
     const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-    return !Array.from(data).some((v, i) => i % 4 === 3 && v > 0);
+    for (let i = 3; i < data.length; i += 4) {
+      if (data[i] > 0) return false;
+    }
+    return true;
   }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d")!;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
     ctx.strokeStyle = "#1D2939";
     ctx.lineWidth = 2.5;
     ctx.lineCap = "round";
@@ -75,7 +80,8 @@ export default function SignatureCanvas({ onChange }: SignatureCanvasProps) {
   const clear = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d")!;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     onChange(null);
   }, [onChange]);
