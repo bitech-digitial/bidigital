@@ -1,142 +1,106 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CAL_FULL_URL } from "@/lib/constants";
-
-const SHOW_AFTER_PERCENT = 25;
-const HIDE_NEAR_FOOTER   = 92;
-const HIDE_AT_TOP        = 8;
+import { usePathname } from "next/navigation";
+import { Phone } from "lucide-react";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 export default function MobileStickyCTA() {
-  const [visible, setVisible]     = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  const pathname = usePathname();
+  if (pathname.startsWith("/tunnel")) return null;
+
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const handler = () => {
-      if (dismissed) return;
-      const scrolled = window.scrollY;
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = total > 0 ? (scrolled / total) * 100 : 0;
-
-      setVisible(
-        pct > SHOW_AFTER_PERCENT &&
-        pct < HIDE_NEAR_FOOTER   &&
-        pct > HIDE_AT_TOP
-      );
-    };
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, [dismissed]);
+    const t = setTimeout(() => setShow(true), 900);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
-    <div
-      className="fixed bottom-0 left-0 right-0 z-40 md:hidden"
-      style={{
-        transform: visible && !dismissed ? "translateY(0)" : "translateY(100%)",
-        opacity: visible && !dismissed ? 1 : 0,
-        pointerEvents: visible && !dismissed ? "auto" : "none",
-        transition: "transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease",
-      }}
-      aria-hidden={!visible}
-    >
-      {/* Dégradé de fond */}
-      <div
-        className="absolute inset-x-0 bottom-0 pointer-events-none"
-        style={{
-          height: 120,
-          background: "linear-gradient(to top, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.8) 60%, transparent 100%)",
-        }}
-      />
+    <>
+      <style>{`
+        @keyframes waGlowPulse {
+          0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.55), 0 2px 8px rgba(0,0,0,0.14); }
+          50%       { box-shadow: 0 6px 34px rgba(37,211,102,0.82), 0 2px 8px rgba(0,0,0,0.14); }
+        }
+        .wa-cta-btn { animation: waGlowPulse 2.4s ease-in-out infinite; }
+      `}</style>
 
-      {/* Barre CTA */}
       <div
-        className="relative mx-3 mb-4 overflow-hidden"
+        className="fixed z-50 md:hidden"
+        aria-label="Nous contacter"
         style={{
-          background: "#FFFFFF",
-          border: "1px solid #e1eaf5",
-          borderRadius: 18,
-          boxShadow: "0 -2px 24px rgba(0,119,182,0.1), 0 8px 32px rgba(0,0,0,0.06)",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          padding: "10px 14px",
+          paddingBottom: "max(14px, env(safe-area-inset-bottom, 14px))",
+          background: "linear-gradient(to top, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.9) 60%, transparent 100%)",
+          transform: show ? "translateY(0)" : "translateY(100%)",
+          opacity: show ? 1 : 0,
+          transition: "transform 0.55s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease",
+          pointerEvents: show ? "auto" : "none",
         }}
       >
-        {/* Glow ligne supérieure subtile */}
-        <div
-          className="absolute top-0 pointer-events-none"
-          style={{
-            left: "25%",
-            right: "25%",
-            height: 1,
-            background: "linear-gradient(to right, transparent, rgba(0,119,182,0.4), transparent)",
-          }}
-        />
-
-        <div className="flex items-center gap-3 px-4 py-3.5">
-          {/* Indicateur pulsant */}
-          <div className="relative shrink-0">
-            <div
-              className="w-2.5 h-2.5 rounded-full"
-              style={{ background: "#0077B6", animation: "ctaPulse 2s ease-in-out infinite" }}
-            />
-            <div
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: "rgba(0,119,182,0.3)",
-                animation: "ctaRing 2s ease-in-out infinite",
-              }}
-            />
-          </div>
-
-          {/* Texte */}
-          <div className="flex-1 min-w-0">
-            <p
-              className="font-semibold text-sm leading-tight truncate"
-              style={{ color: "#03045E", fontFamily: "var(--font-heading)" }}
-            >
-              Parlons de votre projet
-            </p>
-            <p
-              className="text-xs leading-tight mt-0.5"
-              style={{ color: "#4a6080", fontFamily: "var(--font-body)" }}
-            >
-              Réponse sous 24h · Sans engagement
-            </p>
-          </div>
-
-          {/* Bouton RDV */}
+        <div className="flex gap-3">
+          {/* ── Phone button — large avec numéro ── */}
           <a
-            href={CAL_FULL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 whitespace-nowrap font-bold text-sm"
+            href="tel:+33759748383"
+            aria-label="Appeler BiDigital au 07 59 74 83 83"
             style={{
-              background: "linear-gradient(135deg, #0077B6, #023E8A)",
-              color: "#fff",
-              padding: "10px 16px",
-              borderRadius: 12,
-              boxShadow: "0 4px 15px rgba(0,119,182,0.3)",
-              fontFamily: "var(--font-body)",
-              transition: "transform 0.1s ease",
+              flex: 1,
+              height: 54,
+              borderRadius: 16,
+              background: "linear-gradient(145deg, #1A8AFF 0%, #007AFF 50%, #0055D4 100%)",
+              color: "#FFFFFF",
+              boxShadow: "0 4px 18px rgba(0,122,255,0.55), 0 2px 6px rgba(0,0,0,0.12)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 10,
+              textDecoration: "none",
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              fontSize: 17,
+              letterSpacing: "-0.01em",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(0.97)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
-            Prendre RDV
+            <Phone size={20} strokeWidth={2.5} style={{ flexShrink: 0 }} />
+            07 59 74 83 83
           </a>
 
-          {/* Bouton fermer */}
-          <button
-            onClick={() => setDismissed(true)}
-            className="shrink-0 ml-1 p-1 rounded-lg focus:outline-none"
-            style={{ color: "#4a6080", transition: "color 0.15s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#03045E")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#4a6080")}
-            aria-label="Fermer"
+          {/* ── WhatsApp button — petit icône ── */}
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contacter BiDigital sur WhatsApp"
+            className="wa-cta-btn"
+            style={{
+              flexShrink: 0,
+              width: 54,
+              height: 54,
+              borderRadius: 16,
+              background: "linear-gradient(135deg, #0A7A6B 0%, #128C7E 22%, #1DB95A 58%, #25D366 80%, #1DBD5A 100%)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textDecoration: "none",
+            }}
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="white"
+              aria-hidden
+              style={{ flexShrink: 0, position: "relative", zIndex: 1 }}
+            >
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
             </svg>
-          </button>
+          </a>
         </div>
       </div>
-    </div>
+    </>
   );
 }
