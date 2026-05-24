@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
   const onboardingUrl = `https://www.bidigital.fr/onboarding/${onboarding.token}`;
 
   await Promise.all([
-    sendClientConfirmationEmail(sessionData, pdfBuffer, onboardingUrl),
+    sendClientConfirmationEmail(sessionData, pdfBuffer, onboardingUrl, contractSession.offre),
     sendInternalAlertEmail(sessionData),
   ]);
 

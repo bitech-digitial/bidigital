@@ -1,16 +1,34 @@
-const FEATURES = [
-  "Site vitrine sur-mesure",
-  "SEO intégré dès le 1er jour",
-  "Hébergement + nom de domaine inclus",
-  "Mises à jour illimitées",
-  "Conformité RGPD complète",
-];
+const FEATURES: Record<string, string[]> = {
+  vitrine: [
+    "Site vitrine sur-mesure",
+    "Design premium + copywriting",
+    "SEO intégré dès le 1er jour",
+    "Hébergement + nom de domaine inclus",
+    "Mises à jour illimitées",
+    "Conformité RGPD complète",
+  ],
+  ecommerce: [
+    "Boutique en ligne sur-mesure",
+    "Design premium + copywriting",
+    "SEO e-commerce intégré",
+    "Hébergement + nom de domaine inclus",
+    "Paiement en ligne Stripe intégré",
+    "Mises à jour illimitées",
+    "Conformité RGPD complète",
+  ],
+};
+
+const OFFRE_LABELS: Record<string, { label: string; prix: string }> = {
+  vitrine: { label: "Site Vitrine Pro", prix: "99 €/mois" },
+  ecommerce: { label: "Site E-commerce Pro", prix: "199 €/mois" },
+};
 
 export function clientConfirmationHTML(
   nom: string | null,
   email: string,
   signedAt: Date,
-  onboardingUrl?: string
+  onboardingUrl?: string,
+  offre?: string
 ): string {
   const prenom = nom?.split(" ")[0] ?? "cher client";
   const dateStr = signedAt.toLocaleDateString("fr-FR", {
@@ -18,6 +36,9 @@ export function clientConfirmationHTML(
     month: "long",
     year: "numeric",
   });
+  const key = offre === "ecommerce" ? "ecommerce" : "vitrine";
+  const { label, prix } = OFFRE_LABELS[key];
+  const features = FEATURES[key];
 
   return `
 <!DOCTYPE html>
@@ -30,13 +51,13 @@ export function clientConfirmationHTML(
     <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-top:4px;">Agence Web — Votre contrat est signé</div>
   </div>
   <div style="padding:36px 40px;">
-    <h1 style="font-size:22px;font-weight:800;color:#1D2939;margin:0 0 12px;letter-spacing:-0.02em;">Bienvenue, ${prenom} !</h1>
+    <h1 style="font-size:22px;font-weight:800;color:#1D2939;margin:0 0 12px;letter-spacing:-0.02em;">Merci pour votre confiance, ${prenom} !</h1>
     <p style="font-size:15px;color:#475467;line-height:1.7;margin:0 0 24px;">
-      Votre contrat a bien été signé le <strong style="color:#1D2939;">${dateStr}</strong> et votre premier paiement est confirmé. Je suis ravi de vous compter parmi mes clients.
+      Votre contrat a bien été signé le <strong style="color:#1D2939;">${dateStr}</strong> et votre premier paiement est confirmé. La création de votre site commence dès maintenant.
     </p>
     <div style="background:#F0F9FF;border:1px solid rgba(0,122,255,0.15);border-radius:12px;padding:20px 24px;margin-bottom:24px;">
-      <div style="font-size:11px;font-weight:700;color:#007AFF;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.06em;">Votre abonnement · 100€/mois</div>
-      ${FEATURES.map((f) => `<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;"><span style="color:#007AFF;font-weight:700;font-size:13px;">✓</span><span style="font-size:13px;color:#1D2939;">${f}</span></div>`).join("")}
+      <div style="font-size:11px;font-weight:700;color:#007AFF;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.06em;">${label} · ${prix}</div>
+      ${features.map((f) => `<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;"><span style="color:#007AFF;font-weight:700;font-size:13px;">✓</span><span style="font-size:13px;color:#1D2939;">${f}</span></div>`).join("")}
     </div>
     <p style="font-size:15px;color:#475467;line-height:1.7;margin:0 0 24px;">
       Je vous contacte dans les <strong style="color:#1D2939;">24 heures</strong> pour recueillir vos informations et lancer la création de votre site.
