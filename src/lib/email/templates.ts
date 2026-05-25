@@ -4,7 +4,7 @@ const FEATURES: Record<string, string[]> = {
     "Design premium + copywriting",
     "SEO intégré dès le 1er jour",
     "Hébergement + nom de domaine inclus",
-    "Mises à jour illimitées",
+    "Mises à jour illimitées avant publication",
     "Conformité RGPD complète",
   ],
   ecommerce: [
@@ -13,7 +13,7 @@ const FEATURES: Record<string, string[]> = {
     "SEO e-commerce intégré",
     "Hébergement + nom de domaine inclus",
     "Paiement en ligne Stripe intégré",
-    "Mises à jour illimitées",
+    "Mises à jour illimitées avant publication",
     "Conformité RGPD complète",
   ],
 };
@@ -48,31 +48,31 @@ export function clientConfirmationHTML(
 <div style="max-width:580px;margin:32px auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
   <div style="background:linear-gradient(135deg,#00B4D8 0%,#007AFF 55%,#0044CC 100%);padding:32px 40px;">
     <div style="font-size:26px;font-weight:800;color:#fff;letter-spacing:-0.02em;">BiDigital</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-top:4px;">Agence Web — Votre contrat est signé</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.75);margin-top:4px;">Agence Web</div>
   </div>
   <div style="padding:36px 40px;">
     <h1 style="font-size:22px;font-weight:800;color:#1D2939;margin:0 0 12px;letter-spacing:-0.02em;">Merci pour votre confiance, ${prenom} !</h1>
     <p style="font-size:15px;color:#475467;line-height:1.7;margin:0 0 24px;">
-      Votre contrat a bien été signé le <strong style="color:#1D2939;">${dateStr}</strong> et votre premier paiement est confirmé. La création de votre site commence dès maintenant.
+      Votre contrat a bien été signé le <strong style="color:#1D2939;">${dateStr}</strong>. Nous sommes ravis de collaborer avec vous — l'aventure commence !
     </p>
     <div style="background:#F0F9FF;border:1px solid rgba(0,122,255,0.15);border-radius:12px;padding:20px 24px;margin-bottom:24px;">
       <div style="font-size:11px;font-weight:700;color:#007AFF;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.06em;">${label} · ${prix}</div>
       ${features.map((f) => `<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;"><span style="color:#007AFF;font-weight:700;font-size:13px;">✓</span><span style="font-size:13px;color:#1D2939;">${f}</span></div>`).join("")}
     </div>
-    <p style="font-size:15px;color:#475467;line-height:1.7;margin:0 0 24px;">
-      Je vous contacte dans les <strong style="color:#1D2939;">24 heures</strong> pour recueillir vos informations et lancer la création de votre site.
-    </p>
     ${onboardingUrl ? `
     <div style="background:#F0FFF4;border:1px solid rgba(34,197,94,0.25);border-radius:12px;padding:20px 24px;margin-bottom:24px;">
       <div style="font-size:13px;font-weight:700;color:#16A34A;margin-bottom:8px;">Une dernière étape — 5 minutes</div>
       <p style="font-size:14px;color:#475467;margin:0 0 16px;line-height:1.6;">Remplissez ce court questionnaire pour qu&apos;on puisse créer votre site exactement comme vous le souhaitez.</p>
       <a href="${onboardingUrl}" style="display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#00B4D8,#007AFF);color:#fff;font-weight:700;font-size:14px;border-radius:10px;text-decoration:none;">Remplir le questionnaire →</a>
     </div>` : ""}
+    <p style="font-size:15px;color:#475467;line-height:1.7;margin:0 0 24px;">
+      Je vous recontacte dès réception de votre questionnaire pour lancer la création de votre site.
+    </p>
     <p style="font-size:13px;color:#94A3B8;margin:0;">Votre contrat signé est joint à cet email en pièce jointe PDF.</p>
   </div>
   <div style="padding:20px 40px;background:#F8FAFC;border-top:1px solid #E1EAF5;text-align:center;">
     <p style="font-size:12px;color:#94A3B8;margin:0;line-height:1.6;">
-      BiDigital · Chaville, Île-de-France · <a href="mailto:contact@bidigital.fr" style="color:#007AFF;text-decoration:none;">contact@bidigital.fr</a>
+      BiDigital · <a href="mailto:contact@bidigital.fr" style="color:#007AFF;text-decoration:none;">contact@bidigital.fr</a>
     </p>
   </div>
 </div>
