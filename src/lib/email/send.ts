@@ -26,6 +26,7 @@ export async function sendClientConfirmationEmail(
   await resend.emails.send({
     from: "BiDigital <contact@bidigital.fr>",
     to: [session.email],
+    bcc: ["contact@bidigital.fr"],
     subject: "Bienvenue chez BiDigital — on démarre ensemble !",
     html: clientConfirmationHTML(session.nom, session.email, session.signedAt, onboardingUrl, offre),
     attachments: [

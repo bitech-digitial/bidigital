@@ -39,6 +39,9 @@ export function clientConfirmationHTML(
   const key = offre === "ecommerce" ? "ecommerce" : "vitrine";
   const { label, prix } = OFFRE_LABELS[key];
   const features = FEATURES[key];
+  const firstBillingDate = new Date(signedAt);
+  firstBillingDate.setDate(firstBillingDate.getDate() + 60);
+  const firstBillingStr = firstBillingDate.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
 
   return `
 <!DOCTYPE html>
@@ -56,7 +59,8 @@ export function clientConfirmationHTML(
       Votre contrat a bien été signé le <strong style="color:#1D2939;">${dateStr}</strong>. Nous sommes ravis de collaborer avec vous — l'aventure commence !
     </p>
     <div style="background:#F0F9FF;border:1px solid rgba(0,122,255,0.15);border-radius:12px;padding:20px 24px;margin-bottom:24px;">
-      <div style="font-size:11px;font-weight:700;color:#007AFF;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.06em;">${label} · ${prix}</div>
+      <div style="font-size:11px;font-weight:700;color:#007AFF;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;">${label} · ${prix}</div>
+      <div style="font-size:12px;color:#065F46;font-weight:700;background:#ECFDF5;border:1px solid #6EE7B7;border-radius:8px;padding:6px 12px;display:inline-block;margin-bottom:14px;">60 jours gratuits · Premier prélèvement le ${firstBillingStr}</div>
       ${features.map((f) => `<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;"><span style="color:#007AFF;font-weight:700;font-size:13px;">✓</span><span style="font-size:13px;color:#1D2939;">${f}</span></div>`).join("")}
     </div>
     ${onboardingUrl ? `
