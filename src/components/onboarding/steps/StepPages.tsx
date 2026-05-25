@@ -7,9 +7,7 @@ const ALL_PAGES = [
   "Services",
   "Portfolio / Réalisations",
   "Tarifs",
-  "Blog / Actualités",
   "Contact",
-  "FAQ",
   "Mentions légales",
   "Page de vente",
 ];
