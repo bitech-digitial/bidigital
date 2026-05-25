@@ -8,8 +8,6 @@ const ALL_PAGES = [
   "Portfolio / Réalisations",
   "Tarifs",
   "Contact",
-  "Mentions légales",
-  "Page de vente",
 ];
 
 interface Props {
