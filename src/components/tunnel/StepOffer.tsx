@@ -8,7 +8,7 @@ const INCLUS: Record<Offre, string[]> = {
     "Design premium + copywriting",
     "SEO intégré dès le 1er jour",
     "Hébergement + nom de domaine inclus",
-    "Mises à jour illimitées",
+    "Mises à jour illimitées avant publication",
     "Conformité RGPD complète",
   ],
   ecommerce: [
@@ -17,7 +17,7 @@ const INCLUS: Record<Offre, string[]> = {
     "SEO e-commerce intégré",
     "Hébergement + nom de domaine inclus",
     "Paiement en ligne Stripe intégré",
-    "Mises à jour illimitées",
+    "Mises à jour illimitées avant publication",
     "Conformité RGPD complète",
   ],
 };
@@ -28,9 +28,16 @@ interface StepOfferProps {
   onNext: () => void;
 }
 
+function dateIn60Days(): string {
+  const d = new Date();
+  d.setDate(d.getDate() + 60);
+  return d.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+}
+
 export default function StepOffer({ nom, offre, onNext }: StepOfferProps) {
   const prenom = nom.split(" ")[0];
   const o = OFFRES[offre];
+  const debutFacturation = dateIn60Days();
 
   return (
     <div>
@@ -60,6 +67,27 @@ export default function StepOffer({ nom, offre, onNext }: StepOfferProps) {
 
       <div
         style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 8,
+          padding: "10px 16px",
+          background: "#ECFDF5",
+          border: "1px solid #6EE7B7",
+          borderRadius: 10,
+          marginBottom: 16,
+          fontSize: 13,
+          fontWeight: 700,
+          color: "#065F46",
+          fontFamily: "var(--font-body)",
+        }}
+      >
+        <span>🎁</span>
+        <span>2 mois offerts — 0 € prélevé aujourd&apos;hui</span>
+      </div>
+
+      <div
+        style={{
           textAlign: "center",
           padding: "20px",
           background: "#F8FAFC",
@@ -74,7 +102,7 @@ export default function StepOffer({ nom, offre, onNext }: StepOfferProps) {
             fontWeight: 700,
             color: "#007AFF",
             fontFamily: "var(--font-body)",
-            marginBottom: 6,
+            marginBottom: 10,
             textTransform: "uppercase",
             letterSpacing: "0.06em",
           }}
@@ -83,24 +111,25 @@ export default function StepOffer({ nom, offre, onNext }: StepOfferProps) {
         </div>
         <div
           style={{
-            fontSize: 40,
+            fontSize: 36,
             fontWeight: 800,
-            color: "#1D2939",
+            color: "#065F46",
             fontFamily: "var(--font-heading)",
             letterSpacing: "-0.03em",
+            marginBottom: 6,
           }}
         >
-          {o.prix}
+          60 jours gratuits
         </div>
         <div
           style={{
             fontSize: 13,
-            color: "#94A3B8",
+            color: "#475467",
             fontWeight: 500,
             fontFamily: "var(--font-body)",
           }}
         >
-          par mois · engagement 12 mois · {o.total} total
+          Puis {o.prix}/mois à partir du {debutFacturation}
         </div>
       </div>
 
@@ -124,6 +153,18 @@ export default function StepOffer({ nom, offre, onNext }: StepOfferProps) {
           </li>
         ))}
       </ul>
+
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: 12,
+          color: "#64748B",
+          fontFamily: "var(--font-body)",
+          margin: "0 0 14px",
+        }}
+      >
+        Carte bancaire enregistrée maintenant · premier prélèvement dans 2 mois
+      </p>
 
       <button
         onClick={onNext}

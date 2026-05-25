@@ -53,7 +53,10 @@ export async function POST(req: NextRequest) {
     cancel_url: `${origin}/tunnel`,
     allow_promotion_codes: true,
     metadata: { token },
-    subscription_data: { metadata: { token } },
+    subscription_data: {
+      trial_period_days: 60,
+      metadata: { token },
+    },
   });
 
   await db.contractSession.update({

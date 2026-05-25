@@ -76,7 +76,7 @@ function ContractDocument({ email, nom, signatureData, ip, signedAt, offre }: Co
         </View>
 
         <Text style={styles.title}>Contrat de Prestation de Services</Text>
-        <Text style={styles.subtitle}>{OFFRES[offre].label} · {OFFRES[offre].prix} HT / mois · Engagement 12 mois</Text>
+        <Text style={styles.subtitle}>{OFFRES[offre].label} · {OFFRES[offre].prix} HT / mois · Engagement 24 mois · 2 mois offerts · {OFFRES[offre].total} total</Text>
 
         {getContractClauses(offre).map((clause) => (
           <View key={clause.id}>

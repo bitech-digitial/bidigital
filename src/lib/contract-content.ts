@@ -4,12 +4,12 @@ export const OFFRES = {
   vitrine: {
     label: "Site Vitrine Pro",
     prix: "99 €",
-    total: "1 188 €",
+    total: "2 178 €",
   },
   ecommerce: {
     label: "Site E-commerce Pro",
     prix: "199 €",
-    total: "2 388 €",
+    total: "4 378 €",
   },
 } as const;
 
@@ -19,7 +19,7 @@ export function getContractClauses(offre: Offre) {
     {
       id: "objet",
       title: "1. Objet du contrat",
-      content: `BiDigital (SIRET 947 796 967 00026 RCS Nanterre, TVA non applicable — Art. 293B CGI) s'engage à concevoir, développer et maintenir un ${o.label} pour le Client dans le cadre d'un abonnement mensuel sur une durée ferme de 12 mois. Les prestations comprennent : design sur-mesure, intégration du contenu fourni par le Client, optimisation SEO locale, conformité RGPD, hébergement et nom de domaine inclus.`,
+      content: `BiDigital (SIRET 947 796 967 00026 RCS Nanterre, TVA non applicable — Art. 293B CGI) s'engage à concevoir, développer et maintenir un ${o.label} pour le Client dans le cadre d'un abonnement mensuel sur une durée ferme de 24 mois, dont 60 jours offerts à titre promotionnel (soit 22 mensualités facturées). Les prestations comprennent : design sur-mesure, intégration du contenu fourni par le Client, optimisation SEO locale, conformité RGPD, hébergement et nom de domaine inclus.`,
     },
     {
       id: "prix",
@@ -47,13 +47,13 @@ export function getContractClauses(offre: Offre) {
     {
       id: "resiliation",
       title: "6. Résiliation",
-      content: `Le présent contrat est conclu pour une durée ferme et irrévocable de 12 mois à compter de la date de signature. En cas de résiliation anticipée par le Client, la totalité des mensualités restantes (${o.total} maximum) est immédiatement exigible. À l'échéance des 12 mois, le contrat se renouvelle tacitement par périodes de 12 mois, sauf dénonciation par email à contact@bidigital.fr avec un préavis de 2 mois avant la date d'échéance. En cas de faute grave de BiDigital (indisponibilité supérieure à 7 jours consécutifs non justifiée), le Client peut résilier sans pénalités.`,
+      content: `Le présent contrat est conclu pour une durée ferme et irrévocable de 24 mois à compter de la date de signature, dont 60 jours offerts à titre promotionnel (22 mensualités facturées, soit ${o.total} au total). En cas de résiliation anticipée par le Client, la totalité des mensualités restantes est immédiatement exigible. À l'échéance des 24 mois, le contrat se renouvelle tacitement par périodes de 12 mois, sauf dénonciation par email à contact@bidigital.fr avec un préavis de 2 mois avant la date d'échéance. En cas de faute grave de BiDigital (indisponibilité supérieure à 7 jours consécutifs non justifiée), le Client peut résilier sans pénalités.`,
     },
     {
       id: "responsabilite",
       title: "7. Responsabilité",
       content:
-        "BiDigital s'engage à mettre en œuvre tous les moyens nécessaires pour assurer la disponibilité du site (objectif 99,5 % par mois hors maintenance planifiée). BiDigital ne saurait être tenu responsable des dommages indirects, perte de chiffre d'affaires ou manque à gagner résultant d'une indisponibilité du site. La responsabilité totale de BiDigital est limitée au montant d'un mois d'abonnement en cours.",
+        "BiDigital s'engage à mettre en œuvre tous les moyens nécessaires pour assurer la disponibilité du site (objectif 99,5 % par mois hors maintenance planifiée).",
     },
     {
       id: "donnees",
@@ -65,7 +65,7 @@ export function getContractClauses(offre: Offre) {
       id: "loi",
       title: "9. Loi applicable et juridiction",
       content:
-        "Le présent contrat est soumis au droit français. En cas de litige, les parties s'engagent à rechercher une solution amiable avant tout recours judiciaire. À défaut d'accord amiable dans un délai de 30 jours, le tribunal compétent sera le Tribunal de Commerce de Nanterre (siège social de BiDigital — 1 Rue du Gros Chêne, 92370 Chaville).",
+        "Le présent contrat est soumis au droit français. En cas de litige, les parties s'engagent à rechercher une solution amiable avant tout recours judiciaire. À défaut d'accord amiable dans un délai de 30 jours, le tribunal compétent sera le Tribunal de Commerce de Nanterre.",
     },
   ];
 }

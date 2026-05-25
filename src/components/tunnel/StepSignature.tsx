@@ -215,7 +215,7 @@ export default function StepSignature({
               Envoi...
             </>
           ) : (
-            "Signer & Payer →"
+            "Continuer"
           )}
         </button>
       </div>

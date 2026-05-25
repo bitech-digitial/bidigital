@@ -81,18 +81,6 @@ export default function PaiementMerciPage() {
             color: "#475467",
             fontFamily: "var(--font-body)",
             lineHeight: 1.7,
-            margin: "0 0 8px",
-          }}
-        >
-          Votre paiement a bien été reçu — merci pour votre confiance.
-        </p>
-
-        <p
-          style={{
-            fontSize: 15,
-            color: "#475467",
-            fontFamily: "var(--font-body)",
-            lineHeight: 1.7,
             margin: "0 0 28px",
           }}
         >
