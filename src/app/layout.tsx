@@ -150,7 +150,7 @@ const jsonLd = {
       description:
         "Agence web spécialisée en création de site vitrine professionnel, conformité RGPD, SEO et maintenance mensuelle.",
       url: "https://www.bidigital.fr",
-      telephone: "+33759748383",
+      telephone: "+33749999425",
       email: "contact@bidigital.fr",
       priceRange: "€€",
       currenciesAccepted: "EUR",

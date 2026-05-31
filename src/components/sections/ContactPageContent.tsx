@@ -218,7 +218,7 @@ export default function ContactPageContent() {
           <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 36 }}>
             {(
               [
-                { Icon: Phone, text: "07 59 74 83 83",   href: "tel:+33759748383" },
+                { Icon: Phone, text: "07 49 99 94 25",   href: "tel:+33749999425" },
                 { Icon: Mail,  text: "contact@bidigital.fr", href: "mailto:contact@bidigital.fr" },
                 { Icon: Clock, text: "Lun–Ven, 9h–19h",  href: undefined },
               ] as { Icon: React.ElementType; text: string; href: string | undefined }[]

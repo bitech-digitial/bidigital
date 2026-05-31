@@ -156,7 +156,7 @@ export default function ContactFooter() {
               {[
                 "BiDigital",
                 "Chaville, Île-de-France 92370",
-                "07 59 74 83 83",
+                "07 49 99 94 25",
                 "contact@bidigital.fr",
               ].map((line) => (
                 <p

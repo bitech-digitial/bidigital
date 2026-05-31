@@ -45,8 +45,8 @@ export default function MobileStickyCTA() {
         <div className="flex gap-3">
           {/* ── Phone button — large avec numéro ── */}
           <a
-            href="tel:+33759748383"
-            aria-label="Appeler BiDigital au 07 59 74 83 83"
+            href="tel:+33749999425"
+            aria-label="Appeler BiDigital au 07 49 99 94 25"
             style={{
               flex: 1,
               height: 54,
@@ -66,7 +66,7 @@ export default function MobileStickyCTA() {
             }}
           >
             <Phone size={20} strokeWidth={2.5} style={{ flexShrink: 0 }} />
-            07 59 74 83 83
+            07 49 99 94 25
           </a>
 
           {/* ── WhatsApp button — petit icône ── */}
