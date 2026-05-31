@@ -50,7 +50,8 @@
       "Bash(node --input-type=module -e \"import\\('./next.config.ts'\\).then\\(\\(\\) => console.log\\('ESM: next.config.ts loads successfully'\\)\\)\")",
       "Bash(npx prisma *)",
       "Bash(node -e ' *)",
-      "Bash(Test-Path *)"
+      "Bash(Test-Path *)",
+      "Skill(commit-commands:commit-push-pr)"
     ]
   }
 }
