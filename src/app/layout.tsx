@@ -128,11 +128,11 @@ const jsonLd = {
       },
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+33-7-59-74-83-83",
+        telephone: "+33-7-49-99-94-25",
         contactType: "customer service",
         availableLanguage: "French",
       },
-      sameAs: ["https://wa.me/33759748383"],
+      sameAs: ["https://wa.me/33749999425"],
     },
     {
       "@type": "WebSite",
