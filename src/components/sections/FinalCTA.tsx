@@ -6,7 +6,6 @@ import FloatingShapesLayer from "@/components/ui/FloatingShapesLayer";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import CalButton from "@/components/ui/CalButton";
 import { BackgroundBeams } from "@/components/ui/BackgroundBeams";
-import { MovingBorder } from "@/components/ui/MovingBorder";
 
 export default function FinalCTA() {
   return (
@@ -15,34 +14,16 @@ export default function FinalCTA() {
       className="relative py-16 md:py-32 px-4 overflow-hidden"
       style={{ background: "#F0F9FF" }}
     >
-      {/* Animated mesh blobs */}
+      {/* Glows sans blur — GPU-friendly */}
       <div
-        className="absolute pointer-events-none mesh-blob"
+        className="absolute pointer-events-none"
         style={{
-          width: 600,
-          height: 400,
+          width: "80%",
+          height: "80%",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          background:
-            "radial-gradient(ellipse, rgba(202,240,248,0.7) 0%, transparent 70%)",
-          filter: "blur(60px)",
-          borderRadius: "50%",
-          opacity: 0.8,
-        }}
-      />
-      <div
-        className="absolute pointer-events-none mesh-blob-alt"
-        style={{
-          width: 300,
-          height: 300,
-          bottom: "10%",
-          right: "10%",
-          background:
-            "radial-gradient(ellipse, rgba(144,224,239,0.5) 0%, transparent 70%)",
-          filter: "blur(50px)",
-          borderRadius: "50%",
-          opacity: 0.6,
+          background: "radial-gradient(ellipse at center, rgba(202,240,248,0.5) 0%, transparent 65%)",
         }}
       />
 
@@ -116,25 +97,23 @@ export default function FinalCTA() {
               </CalButton>
             </div>
 
-            <MovingBorder rx="12px" ry="12px" duration={2800}>
-              <motion.a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center gap-3 w-full md:w-auto px-8 py-4 font-bold rounded-xl transition-all duration-200 text-base"
-                style={{
-                  background: "rgba(74,222,128,0.08)",
-                  color: "#16a34a",
-                  fontFamily: "var(--font-heading)",
-                  border: "none",
-                }}
-              >
-                <WhatsAppIcon size={20} />
-                Nous écrire sur WhatsApp
-              </motion.a>
-            </MovingBorder>
+            <motion.a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex items-center justify-center gap-3 w-full md:w-auto px-8 py-4 font-bold rounded-xl transition-all duration-200 text-base"
+              style={{
+                background: "rgba(74,222,128,0.08)",
+                border: "1px solid rgba(74,222,128,0.25)",
+                color: "#16a34a",
+                fontFamily: "var(--font-heading)",
+              }}
+            >
+              <WhatsAppIcon size={20} />
+              Nous écrire sur WhatsApp
+            </motion.a>
           </div>
 
         </motion.div>

@@ -16,17 +16,7 @@ export default function Hero() {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile) return;
-    const onScroll = () => {
-      const y = window.scrollY;
-      if (blob1Ref.current) blob1Ref.current.style.transform = `translateY(${y * 0.15}px)`;
-      if (blob2Ref.current) blob2Ref.current.style.transform = `translateY(${y * 0.1}px)`;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  // Parallax désactivé — filter:blur + scroll JS = jank garanti
 
   return (
     <section
@@ -60,31 +50,21 @@ export default function Hero() {
       <AuroraBackground />
 
       {/* ── Glows de fond ── */}
+      {/* Glows sans blur — GPU-friendly radial gradients */}
       <div
         ref={blob1Ref}
         className="absolute pointer-events-none"
         style={{
-          width: 700, height: 700, top: "-200px", left: "-150px",
-          background: "radial-gradient(ellipse, rgba(0,122,255,0.08) 0%, transparent 65%)",
-          borderRadius: "50%", filter: "blur(60px)", willChange: "transform",
+          width: 900, height: 900, top: "-300px", left: "-200px",
+          background: "radial-gradient(ellipse at center, rgba(0,122,255,0.07) 0%, transparent 60%)",
         }}
       />
       <div
         ref={blob2Ref}
         className="absolute pointer-events-none"
         style={{
-          width: 600, height: 600, top: "-80px", right: "-100px",
-          background: "radial-gradient(ellipse, rgba(144,224,239,0.12) 0%, transparent 65%)",
-          borderRadius: "50%", filter: "blur(60px)", willChange: "transform",
-        }}
-      />
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          width: 500, height: 500, bottom: "-100px", left: "50%",
-          transform: "translateX(-50%)",
-          background: "radial-gradient(ellipse, rgba(0,77,182,0.06) 0%, transparent 70%)",
-          borderRadius: "50%", filter: "blur(80px)",
+          width: 800, height: 800, top: "-150px", right: "-150px",
+          background: "radial-gradient(ellipse at center, rgba(144,224,239,0.09) 0%, transparent 60%)",
         }}
       />
 

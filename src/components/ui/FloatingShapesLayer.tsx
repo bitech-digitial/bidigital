@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 
 type S = {
   w: number;
@@ -59,17 +59,16 @@ const LIGHT: [S[], S[], S[]] = [
 
 function Layer({
   shapes,
-  y,
   border,
   fill,
 }: {
   shapes: S[];
-  y: MotionValue<string>;
+  y: string;
   border: string;
   fill: string;
 }) {
   return (
-    <motion.div style={{ y }} className="absolute inset-0">
+    <div className="absolute inset-0">
       {shapes.map((s, i) => (
         // Outer div: float animation (translateY/translate only)
         <div
@@ -96,7 +95,7 @@ function Layer({
           />
         </div>
       ))}
-    </motion.div>
+    </div>
   );
 }
 
@@ -112,15 +111,10 @@ export default function FloatingShapesLayer({
     setMounted(true);
   }, []);
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  // 3 couches de parallaxe — vitesses croissantes
-  const y1 = useTransform(scrollYProgress, [0, 1], ["0px", "-60px"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], ["0px", "-110px"]);
-  const y3 = useTransform(scrollYProgress, [0, 1], ["0px", "-180px"]);
+  // Parallaxe JS supprimé — causait du jank. Animations CSS pures à la place.
+  const y1 = "0px";
+  const y2 = "0px";
+  const y3 = "0px";
 
   const isDark = variant === "dark";
   const colors = isDark

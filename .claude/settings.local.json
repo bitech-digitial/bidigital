@@ -52,7 +52,8 @@
       "Bash(node -e ' *)",
       "Bash(Test-Path *)",
       "Skill(commit-commands:commit-push-pr)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(npx skills *)"
     ]
   }
 }

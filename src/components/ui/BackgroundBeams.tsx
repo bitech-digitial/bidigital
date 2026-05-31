@@ -103,65 +103,43 @@ export function AuroraBackground({ className }: { className?: string }) {
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
       <style>{`
         @keyframes aurora-1 {
-          0%, 100% { transform: translate(0%, 0%) scale(1); opacity: 0.6; }
-          33% { transform: translate(3%, -4%) scale(1.08); opacity: 0.9; }
-          66% { transform: translate(-2%, 3%) scale(0.95); opacity: 0.5; }
+          0%, 100% { transform: translate(0%, 0%) scale(1); }
+          50% { transform: translate(2%, -3%) scale(1.04); }
         }
         @keyframes aurora-2 {
-          0%, 100% { transform: translate(0%, 0%) scale(1); opacity: 0.5; }
-          33% { transform: translate(-4%, 2%) scale(1.06); opacity: 0.8; }
-          66% { transform: translate(3%, -3%) scale(0.97); opacity: 0.4; }
-        }
-        @keyframes aurora-3 {
-          0%, 100% { transform: translate(0%, 0%) scale(1); opacity: 0.4; }
-          50% { transform: translate(2%, 2%) scale(1.04); opacity: 0.7; }
+          0%, 100% { transform: translate(0%, 0%) scale(1); }
+          50% { transform: translate(-3%, 2%) scale(1.03); }
         }
         @media (prefers-reduced-motion: reduce) {
           .aurora-blob { animation: none !important; }
         }
+        @media (max-width: 768px) {
+          .aurora-blob { animation: none !important; }
+        }
       `}</style>
 
-      {/* Blob 1 — blue, top-left */}
+      {/* Blobs sans filter:blur — gradients larges GPU-friendly */}
       <div
         className="aurora-blob absolute"
         style={{
-          width: "70%",
-          height: "70%",
+          width: "90%",
+          height: "90%",
+          top: "-30%",
+          left: "-20%",
+          background: "radial-gradient(ellipse at 40% 40%, rgba(0,122,255,0.07) 0%, transparent 65%)",
+          animation: "aurora-1 16s ease-in-out infinite",
+          willChange: "transform",
+        }}
+      />
+      <div
+        className="aurora-blob absolute"
+        style={{
+          width: "80%",
+          height: "80%",
           top: "-20%",
-          left: "-15%",
-          background: "radial-gradient(ellipse at center, rgba(0,122,255,0.09) 0%, rgba(0,68,204,0.04) 50%, transparent 75%)",
-          filter: "blur(48px)",
-          animation: "aurora-1 14s ease-in-out infinite",
-          willChange: "transform",
-        }}
-      />
-
-      {/* Blob 2 — cyan, top-right */}
-      <div
-        className="aurora-blob absolute"
-        style={{
-          width: "65%",
-          height: "65%",
-          top: "-10%",
-          right: "-10%",
-          background: "radial-gradient(ellipse at center, rgba(0,180,255,0.10) 0%, rgba(0,122,255,0.04) 50%, transparent 75%)",
-          filter: "blur(56px)",
-          animation: "aurora-2 18s ease-in-out infinite 2s",
-          willChange: "transform",
-        }}
-      />
-
-      {/* Blob 3 — indigo, center-bottom */}
-      <div
-        className="aurora-blob absolute"
-        style={{
-          width: "55%",
-          height: "55%",
-          bottom: "-15%",
-          left: "25%",
-          background: "radial-gradient(ellipse at center, rgba(0,44,204,0.07) 0%, transparent 70%)",
-          filter: "blur(64px)",
-          animation: "aurora-3 22s ease-in-out infinite 4s",
+          right: "-15%",
+          background: "radial-gradient(ellipse at 60% 30%, rgba(0,180,255,0.08) 0%, transparent 60%)",
+          animation: "aurora-2 20s ease-in-out infinite 3s",
           willChange: "transform",
         }}
       />
