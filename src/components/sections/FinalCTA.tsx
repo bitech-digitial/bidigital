@@ -5,6 +5,8 @@ import { WHATSAPP_LINK } from "@/lib/constants";
 import FloatingShapesLayer from "@/components/ui/FloatingShapesLayer";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import CalButton from "@/components/ui/CalButton";
+import { BackgroundBeams } from "@/components/ui/BackgroundBeams";
+import { MovingBorder } from "@/components/ui/MovingBorder";
 
 export default function FinalCTA() {
   return (
@@ -55,6 +57,7 @@ export default function FinalCTA() {
       />
 
       <FloatingShapesLayer variant="light" />
+      <BackgroundBeams />
 
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         <motion.div
@@ -113,23 +116,25 @@ export default function FinalCTA() {
               </CalButton>
             </div>
 
-            <motion.a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="flex items-center justify-center gap-3 w-full md:w-auto px-8 py-4 font-bold rounded-xl transition-all duration-200 text-base"
-              style={{
-                background: "rgba(74,222,128,0.08)",
-                border: "1px solid rgba(74,222,128,0.25)",
-                color: "#16a34a",
-                fontFamily: "var(--font-heading)",
-              }}
-            >
-              <WhatsAppIcon size={20} />
-              Nous écrire sur WhatsApp
-            </motion.a>
+            <MovingBorder rx="12px" ry="12px" duration={2800}>
+              <motion.a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center justify-center gap-3 w-full md:w-auto px-8 py-4 font-bold rounded-xl transition-all duration-200 text-base"
+                style={{
+                  background: "rgba(74,222,128,0.08)",
+                  color: "#16a34a",
+                  fontFamily: "var(--font-heading)",
+                  border: "none",
+                }}
+              >
+                <WhatsAppIcon size={20} />
+                Nous écrire sur WhatsApp
+              </motion.a>
+            </MovingBorder>
           </div>
 
         </motion.div>

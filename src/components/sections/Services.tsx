@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Globe, ShoppingCart, RefreshCw, Wrench, Server, Search } from "lucide-react";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 const expertises = [
   {
@@ -133,38 +134,30 @@ export default function Services() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-30px" }}
-                whileHover={{
-                  y: -6,
-                  transition: { type: "spring", stiffness: 300, damping: 24 },
-                }}
-                className="flex flex-col rounded-2xl p-6"
-                style={{
-                  background: "#FFFFFF",
-                  border: "1px solid #e1eaf5",
-                  boxShadow: "0 4px 20px rgba(0,122,255,0.05)",
-                }}
               >
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
-                  style={{
-                    background: "rgba(0,122,255,0.08)",
-                    border: "1px solid rgba(0,122,255,0.2)",
-                  }}
-                >
-                  <Icon className="w-5 h-5" style={{ color: "#007AFF" }} />
-                </div>
-                <h3
-                  className="font-bold text-base mb-2"
-                  style={{ fontFamily: "var(--font-heading)", color: "#1D2939" }}
-                >
-                  {expertise.title}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ fontFamily: "var(--font-body)", color: "#475467" }}
-                >
-                  {expertise.description}
-                </p>
+                <SpotlightCard className="flex flex-col p-6 h-full">
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                    style={{
+                      background: "rgba(0,122,255,0.08)",
+                      border: "1px solid rgba(0,122,255,0.2)",
+                    }}
+                  >
+                    <Icon className="w-5 h-5" style={{ color: "#007AFF" }} />
+                  </div>
+                  <h3
+                    className="font-bold text-base mb-2"
+                    style={{ fontFamily: "var(--font-heading)", color: "#1D2939" }}
+                  >
+                    {expertise.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ fontFamily: "var(--font-body)", color: "#475467" }}
+                  >
+                    {expertise.description}
+                  </p>
+                </SpotlightCard>
               </motion.div>
             );
           })}

@@ -557,3 +557,20 @@ section {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+
+/* ── CalButton shimmer ── */
+@keyframes calShimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ── Spotlight card transition ── */
+.spotlight-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ── Number ticker ── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

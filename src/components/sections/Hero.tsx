@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { WHATSAPP_LINK } from "@/lib/constants";
 import CalButton from "@/components/ui/CalButton";
+import { AuroraBackground } from "@/components/ui/BackgroundBeams";
 
 export default function Hero() {
   const blob1Ref = useRef<HTMLDivElement>(null);
@@ -54,6 +55,9 @@ export default function Hero() {
           50%       { opacity: 1; }
         }
       `}</style>
+
+      {/* ── Aurora background premium ── */}
+      <AuroraBackground />
 
       {/* ── Glows de fond ── */}
       <div

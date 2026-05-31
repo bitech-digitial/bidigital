@@ -51,7 +51,8 @@
       "Bash(npx prisma *)",
       "Bash(node -e ' *)",
       "Bash(Test-Path *)",
-      "Skill(commit-commands:commit-push-pr)"
+      "Skill(commit-commands:commit-push-pr)",
+      "WebSearch"
     ]
   }
 }

@@ -39,7 +39,7 @@ export default function CalButton({
       data-cal-namespace="15min"
       data-cal-link="bidigital/15min"
       data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold ${className}`}
+      className={`cal-shimmer-btn inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold ${className}`}
       style={{
         background:    "linear-gradient(135deg, #00B4D8 0%, #007AFF 55%, #0044CC 100%)",
         color:         "#ffffff",
@@ -51,6 +51,8 @@ export default function CalButton({
         cursor:        "pointer",
         boxShadow:     "0 4px 15px rgba(0,122,255,0.3)",
         transition:    "transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease",
+        position:      "relative",
+        overflow:      "hidden",
         ...style,
       }}
       onMouseEnter={(e) => {
@@ -65,8 +67,21 @@ export default function CalButton({
       }}
       onClick={onClick}
     >
-      <Calendar size={16} strokeWidth={2} style={{ flexShrink: 0 }} />
-      {children}
+      {/* Shimmer overlay */}
+      <span
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%)",
+          backgroundSize: "200% 100%",
+          animation: "calShimmer 2.2s linear infinite",
+          pointerEvents: "none",
+          borderRadius: "inherit",
+        }}
+      />
+      <Calendar size={16} strokeWidth={2} style={{ flexShrink: 0, position: "relative", zIndex: 1 }} />
+      <span style={{ position: "relative", zIndex: 1 }}>{children}</span>
     </button>
   );
 }
