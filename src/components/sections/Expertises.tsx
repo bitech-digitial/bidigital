@@ -54,7 +54,7 @@ export default function Expertises() {
               background: "rgba(0,122,255,0.08)",
               border: "1px solid rgba(0,122,255,0.2)",
               color: "#007AFF",
-              fontFamily: "var(--font-body)",
+              fontFamily: "var(--font-badge)",
             }}
           >
             Nos expertises

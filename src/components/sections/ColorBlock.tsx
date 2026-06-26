@@ -122,14 +122,14 @@ export default function ColorBlock() {
         <motion.span
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           className="inline-block text-xs font-semibold tracking-widest rounded-full px-4 py-1.5 mb-8"
           style={{
             background: "rgba(144,224,239,0.1)",
             border: "1px solid rgba(144,224,239,0.25)",
             color: "#90E0EF",
-            fontFamily: "var(--font-body)",
+            fontFamily: "var(--font-badge)",
           }}
         >
           Agence digitale
@@ -139,7 +139,7 @@ export default function ColorBlock() {
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           style={{
             fontFamily: "var(--font-heading)",
@@ -160,7 +160,7 @@ export default function ColorBlock() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.22 }}
           style={{
             fontFamily: "var(--font-body)",
@@ -179,7 +179,7 @@ export default function ColorBlock() {
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.7, delay: 0.35 }}
           style={{
             width: 80,

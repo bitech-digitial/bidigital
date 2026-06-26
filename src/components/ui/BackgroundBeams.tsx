@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export function BackgroundBeams({ className }: { className?: string }) {
@@ -101,23 +100,6 @@ export function BackgroundBeams({ className }: { className?: string }) {
 export function AuroraBackground({ className }: { className?: string }) {
   return (
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
-      <style>{`
-        @keyframes aurora-1 {
-          0%, 100% { transform: translate(0%, 0%) scale(1); }
-          50% { transform: translate(2%, -3%) scale(1.04); }
-        }
-        @keyframes aurora-2 {
-          0%, 100% { transform: translate(0%, 0%) scale(1); }
-          50% { transform: translate(-3%, 2%) scale(1.03); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .aurora-blob { animation: none !important; }
-        }
-        @media (max-width: 768px) {
-          .aurora-blob { animation: none !important; }
-        }
-      `}</style>
-
       {/* Blobs sans filter:blur — gradients larges GPU-friendly */}
       <div
         className="aurora-blob absolute"

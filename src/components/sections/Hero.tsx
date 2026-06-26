@@ -1,166 +1,63 @@
-﻿"use client";
+"use client";
 
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { WHATSAPP_LINK } from "@/lib/constants";
 import CalButton from "@/components/ui/CalButton";
-import { AuroraBackground } from "@/components/ui/BackgroundBeams";
 
 export default function Hero() {
-  const blob1Ref = useRef<HTMLDivElement>(null);
-  const blob2Ref = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Parallax désactivé — filter:blur + scroll JS = jank garanti
-
   return (
     <section
       className="relative overflow-hidden"
       style={{
-        background: "transparent",
+        background: "linear-gradient(180deg, #f8faff 0%, #eef3ff 60%, #ffffff 100%)",
         minHeight: "100svh",
       }}
     >
-      {/* CSS keyframes pour les carrés */}
-      <style>{`
-        @keyframes sq-rotate {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
-        }
-        @keyframes sq-float {
-          0%, 100% { transform: translateY(0px) rotate(45deg); }
-          50%       { transform: translateY(-18px) rotate(45deg); }
-        }
-        @keyframes sq-float-slow {
-          0%, 100% { transform: translateY(0px) rotate(12deg); }
-          50%       { transform: translateY(-12px) rotate(12deg); }
-        }
-        @keyframes sq-pulse {
-          0%, 100% { opacity: 0.5; }
-          50%       { opacity: 1; }
-        }
-      `}</style>
-
-      {/* ── Aurora background premium ── */}
-      <AuroraBackground />
-
-      {/* ── Glows de fond ── */}
-      {/* Glows sans blur — GPU-friendly radial gradients */}
+      {/* Halo décoratif centré */}
       <div
-        ref={blob1Ref}
         className="absolute pointer-events-none"
         style={{
-          width: 900, height: 900, top: "-300px", left: "-200px",
-          background: "radial-gradient(ellipse at center, rgba(0,122,255,0.07) 0%, transparent 60%)",
+          top: "50%",
+          left: "50%",
+          width: 700,
+          height: 700,
+          transform: "translate(-50%, -50%)",
+          background: "radial-gradient(circle, rgba(0,85,255,0.08) 0%, rgba(0,210,255,0.04) 50%, transparent 70%)",
+          borderRadius: "50%",
         }}
       />
+
+      {/* Contenu */}
       <div
-        ref={blob2Ref}
-        className="absolute pointer-events-none"
-        style={{
-          width: 800, height: 800, top: "-150px", right: "-150px",
-          background: "radial-gradient(ellipse at center, rgba(144,224,239,0.09) 0%, transparent 60%)",
-        }}
-      />
-
-      {/* ── Grille de points bleus ── */}
-      <div
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(rgba(0,122,255,0.08) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-
-      {/* ── Carrés géométriques (client-only) ── */}
-      {mounted && (
-        <>
-          {/* Grand carré tournant */}
-          <div
-            className="absolute pointer-events-none hidden lg:block"
-            style={{
-              width: 520,
-              height: 520,
-              border: "1.5px solid rgba(0,122,255,0.12)",
-              borderRadius: 28,
-              top: "50%",
-              right: -140,
-              marginTop: -260,
-              animation: "sq-rotate 40s linear infinite",
-              zIndex: 1,
-            }}
-          />
-          {/* Carré moyen en haut à droite */}
-          <div
-            className="absolute pointer-events-none hidden lg:block"
-            style={{
-              width: 180,
-              height: 180,
-              background: "rgba(0,122,255,0.04)",
-              border: "1.5px solid rgba(0,122,255,0.15)",
-              borderRadius: 18,
-              top: "14%",
-              right: "18%",
-              animation: "sq-float 7s ease-in-out infinite",
-              zIndex: 1,
-            }}
-          />
-          {/* Petit carré en bas à droite */}
-          <div
-            className="absolute pointer-events-none hidden lg:block"
-            style={{
-              width: 80,
-              height: 80,
-              background: "rgba(144,224,239,0.1)",
-              border: "1.5px solid rgba(0,122,255,0.2)",
-              borderRadius: 10,
-              bottom: "22%",
-              right: "10%",
-              animation: "sq-float-slow 5s ease-in-out infinite 1.5s",
-              zIndex: 1,
-            }}
-          />
-          {/* Carré à gauche */}
-          <div
-            className="absolute pointer-events-none hidden lg:block"
-            style={{
-              width: 110,
-              height: 110,
-              background: "rgba(0,122,255,0.04)",
-              border: "1.5px solid rgba(0,122,255,0.15)",
-              borderRadius: 14,
-              top: "65%",
-              left: "5%",
-              animation: "sq-float 9s ease-in-out infinite 0.8s",
-              zIndex: 1,
-            }}
-          />
-          {/* Petit carré accent cyan haut-gauche */}
-          <div
-            className="absolute pointer-events-none hidden md:block"
-            style={{
-              width: 48,
-              height: 48,
-              background: "rgba(0,122,255,0.07)",
-              border: "1.5px solid rgba(0,122,255,0.25)",
-              borderRadius: 8,
-              top: "20%",
-              left: "12%",
-              animation: "sq-pulse 4s ease-in-out infinite",
-              zIndex: 1,
-            }}
-          />
-        </>
-      )}
-
-      {/* ── Contenu ── */}
-      <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center pt-24 pb-16">
+        className="relative z-10 mx-auto px-4 min-h-screen flex flex-col justify-center"
+        style={{ maxWidth: 1430, paddingTop: 220, paddingBottom: 80 }}
+      >
         <div className="text-center">
+
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+            className="mb-8"
+          >
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                background: "#e2f7ff",
+                color: "#0055FF",
+                borderRadius: 50,
+                padding: "4px 16px",
+                fontSize: 13,
+                fontWeight: 500,
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Agence web — Création de sites professionnels
+            </span>
+          </motion.div>
 
           {/* H1 */}
           <motion.h1
@@ -169,28 +66,37 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(2.8rem, 13vw, 5.5rem)",
-              fontWeight: 900,
-              lineHeight: 1.1,
-              letterSpacing: "-0.04em",
+              fontSize: "clamp(48px, 6.25vw, 90px)",
+              fontWeight: 700,
+              lineHeight: 1.15,
               marginBottom: "1.5rem",
-              color: "#1D2939",
+              color: "#191e4f",
             }}
           >
-            <span className="block" style={{ color: "#1D2939" }}>
-              Agence Web
-            </span>
-            <span
-              className="block"
-              style={{
-                background: "linear-gradient(135deg, #00B4D8 0%, #007AFF 55%, #0044CC 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                paddingBottom: "0.12em",
-              }}
-            >
-              BiDigital
+            <span className="block">Votre site internet</span>
+            <span className="block" style={{ position: "relative", display: "inline-block" }}>
+              <span
+                style={{
+                  background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                professionnel
+              </span>
+              <span
+                style={{
+                  display: "block",
+                  height: 4,
+                  background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
+                  borderRadius: 2,
+                  position: "absolute",
+                  bottom: 2,
+                  left: 0,
+                  right: 0,
+                }}
+              />
             </span>
           </motion.h1>
 
@@ -198,50 +104,60 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: "clamp(17px, 2vw, 20px)",
-              color: "#1D2939",
+              fontSize: "clamp(16px, 1.8vw, 18px)",
+              color: "#474667",
               lineHeight: 1.7,
-              maxWidth: "600px",
-              margin: "0 auto 2rem",
+              maxWidth: 580,
+              margin: "0 auto 2.5rem",
             }}
           >
-            BiDigital est une agence web spécialisée dans la création de sites internet professionnels, conçus sur-mesure pour votre activité.
+            BiDigital conçoit des sites sur-mesure pour les PME et artisans — design moderne, SEO inclus et conformité RGPD dès la mise en ligne.
           </motion.p>
 
           {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8"
+            transition={{ duration: 0.6, delay: 0.38 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
           >
-            <div className="btn-glow rounded-[14px] w-full sm:w-auto">
-              <CalButton className="w-full sm:w-auto" style={{ fontSize: 15, padding: "14px 28px", borderRadius: 14 }}>
-                Prendre rendez-vous
-              </CalButton>
-            </div>
+            <CalButton
+              className="w-full sm:w-auto"
+              style={{
+                fontSize: 16,
+                fontWeight: 600,
+                padding: "14px 32px",
+                borderRadius: 50,
+                background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
+                border: "none",
+                boxShadow: "none",
+              }}
+            >
+              Prendre rendez-vous
+            </CalButton>
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 font-semibold rounded-[14px] transition-all duration-200 text-[15px] focus:outline-none"
+              className="flex items-center justify-center gap-2.5 w-full sm:w-auto focus:outline-none"
               style={{
-                background: "rgba(0,122,255,0.05)",
-                border: "1px solid rgba(0,122,255,0.2)",
-                color: "#1D2939",
-                fontFamily: "var(--font-heading)",
+                fontSize: 16,
+                fontWeight: 400,
+                padding: "14px 32px",
+                borderRadius: 50,
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.4)",
+                borderColor: "rgba(25,30,79,0.25)",
+                color: "#191e4f",
+                fontFamily: "var(--font-body)",
+                textDecoration: "none",
+                transition: "opacity 0.2s",
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(0,122,255,0.1)";
-                e.currentTarget.style.borderColor = "rgba(0,122,255,0.35)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "rgba(0,122,255,0.05)";
-                e.currentTarget.style.borderColor = "rgba(0,122,255,0.2)";
-              }}
+              onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.7"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
                 style={{ color: "#25D366", flexShrink: 0 }} aria-hidden="true">
@@ -251,21 +167,24 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* Badge Google */}
+          {/* Badge confiance */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.55 }}
             className="flex flex-wrap items-center justify-center gap-3"
           >
             <span
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
               style={{
-                background: "rgba(0,122,255,0.05)",
-                border: "1px solid rgba(0,122,255,0.15)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                background: "#e2f7ff",
+                borderRadius: 50,
+                padding: "6px 16px",
                 fontFamily: "var(--font-body)",
-                fontSize: 12,
-                color: "#475467",
+                fontSize: 13,
+                color: "#474667",
               }}
             >
               <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Google" style={{ flexShrink: 0 }}>
@@ -275,7 +194,7 @@ export default function Hero() {
                 <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
               </svg>
               <span style={{ color: "#f59e0b" }}>★★★★★</span>
-              <span style={{ color: "#1D2939", fontWeight: 600 }}>5/5</span>
+              <span style={{ color: "#191e4f", fontWeight: 600 }}>5/5</span>
               <span>· Clients satisfaits</span>
             </span>
           </motion.div>
@@ -293,7 +212,7 @@ export default function Hero() {
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ArrowDown className="w-5 h-5" style={{ color: "rgba(0,122,255,0.4)" }} />
+          <ArrowDown className="w-5 h-5" style={{ color: "rgba(0,85,255,0.35)" }} />
         </motion.div>
       </motion.div>
     </section>

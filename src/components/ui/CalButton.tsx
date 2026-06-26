@@ -5,6 +5,10 @@ import { useEffect } from "react";
 import { ReactNode, CSSProperties } from "react";
 import { Calendar } from "lucide-react";
 
+// Singleton — Cal.com s'initialise une seule fois quelle que soit
+// le nombre d'instances de CalButton montées sur la page.
+let calReady = false;
+
 interface CalButtonProps {
   children?: ReactNode;
   /** Layout only: w-full, justify-center, etc. */
@@ -21,6 +25,8 @@ export default function CalButton({
   onClick,
 }: CalButtonProps) {
   useEffect(() => {
+    if (calReady) return;
+    calReady = true;
     (async function () {
       const cal = await getCalApi({ namespace: "15min" });
       cal("ui", {

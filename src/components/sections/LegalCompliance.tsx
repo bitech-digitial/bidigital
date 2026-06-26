@@ -68,7 +68,7 @@ export default function LegalCompliance() {
               background: "rgba(239,68,68,0.12)",
               border: "1px solid rgba(239,68,68,0.3)",
               color: "#fca5a5",
-              fontFamily: "var(--font-body)",
+              fontFamily: "var(--font-badge)",
             }}
           >
             Conformité légale
@@ -118,7 +118,7 @@ export default function LegalCompliance() {
                 key={cp.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="rounded-2xl p-5"
                 style={{
@@ -153,7 +153,7 @@ export default function LegalCompliance() {
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl p-5 sm:p-6"
           style={{

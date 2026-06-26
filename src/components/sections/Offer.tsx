@@ -28,7 +28,7 @@ export default function Offer() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
@@ -38,7 +38,7 @@ export default function Offer() {
               background: "rgba(0,122,255,0.08)",
               border: "1px solid rgba(0,122,255,0.2)",
               color: "#007AFF",
-              fontFamily: "var(--font-body)",
+              fontFamily: "var(--font-badge)",
             }}
           >
             Notre offre
@@ -76,7 +76,7 @@ export default function Offer() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="rounded-3xl overflow-hidden"
             style={{
@@ -111,12 +111,6 @@ export default function Offer() {
                 </p>
                 <div className="flex items-baseline gap-1.5 mt-1">
                   <span
-                    className="text-xs"
-                    style={{ fontFamily: "var(--font-body)", color: "#475467" }}
-                  >
-                    à partir de
-                  </span>
-                  <span
                     className="font-extrabold text-2xl"
                     style={{
                       fontFamily: "var(--font-heading)",
@@ -124,13 +118,7 @@ export default function Offer() {
                       letterSpacing: "-0.02em",
                     }}
                   >
-                    690 €
-                  </span>
-                  <span
-                    className="text-xs"
-                    style={{ fontFamily: "var(--font-body)", color: "#475467" }}
-                  >
-                    TTC
+                    Sur devis
                   </span>
                 </div>
                 <p
@@ -200,7 +188,7 @@ export default function Offer() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="rounded-3xl overflow-hidden relative"
             style={{
@@ -251,7 +239,7 @@ export default function Offer() {
                     fontSize: "1.5rem",
                   }}
                 >
-                  19,99 €<span style={{ fontSize: "1rem", fontWeight: 500, color: "#475467" }}>/mois</span>
+                  Sur devis<span style={{ fontSize: "1rem", fontWeight: 500, color: "#475467" }}> personnalisé</span>
                 </p>
               </div>
 

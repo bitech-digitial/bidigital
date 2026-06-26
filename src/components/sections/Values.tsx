@@ -2,12 +2,11 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck, TrendingUp, Clock, Sparkles } from "lucide-react";
-import FloatingShapesLayer from "@/components/ui/FloatingShapesLayer";
 
 const miniCards = [
   {
     icon: ShieldCheck,
-    color: "#007AFF",
+    color: "#0055FF",
     bg: "rgba(0,122,255,0.08)",
     border: "rgba(0,122,255,0.2)",
     title: "Site conforme",
@@ -15,7 +14,7 @@ const miniCards = [
   },
   {
     icon: TrendingUp,
-    color: "#007AFF",
+    color: "#0055FF",
     bg: "rgba(0,122,255,0.08)",
     border: "rgba(0,122,255,0.2)",
     title: "SEO intégré",
@@ -31,7 +30,7 @@ const miniCards = [
   },
   {
     icon: Sparkles,
-    color: "#007AFF",
+    color: "#0055FF",
     bg: "rgba(0,122,255,0.08)",
     border: "rgba(0,122,255,0.2)",
     title: "Tout inclus",
@@ -63,8 +62,6 @@ export default function Values() {
       className="relative py-12 md:py-24 px-4 overflow-hidden"
       style={{ background: "#FFFFFF" }}
     >
-      <FloatingShapesLayer variant="light" />
-
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
@@ -77,39 +74,44 @@ export default function Values() {
           <span
             className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-widest mb-5"
             style={{
-              background: "rgba(0,122,255,0.08)",
-              border: "1px solid rgba(0,122,255,0.2)",
-              color: "#007AFF",
-              fontFamily: "var(--font-body)",
+              background: "#e2f7ff",
+              color: "#0055FF",
+              fontFamily: "var(--font-badge)",
             }}
           >
             Nos engagements
           </span>
           <h2
-            className="font-extrabold text-gradient mb-4"
+            className="font-bold mb-4"
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(2rem, 4vw, 3.5rem)",
-              letterSpacing: "-0.03em",
-              lineHeight: 1.1,
+              fontSize: "clamp(28px, 3vw, 43px)",
+              color: "#191e4f",
+              lineHeight: 1.25,
             }}
           >
             Ce que nous vous{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #007AFF, #0044CC)",
+            <span style={{ position: "relative", display: "inline-block" }}>
+              <span style={{
+                background: "linear-gradient(90deg, #0055FF, #00D2FF)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-              }}
-            >
-              garantissons
+              }}>
+                garantissons
+              </span>
+              <span style={{
+                display: "block", height: 3,
+                background: "linear-gradient(90deg, #0055FF, #00D2FF)",
+                borderRadius: 2,
+                position: "absolute", bottom: -2, left: 0, right: 0,
+              }} />
             </span>
           </h2>
           <p
             style={{
               fontFamily: "var(--font-body)",
-              color: "#475467",
+              color: "#474667",
               fontSize: "1.1rem",
               maxWidth: 500,
               margin: "0 auto",
@@ -136,36 +138,32 @@ export default function Values() {
                 variants={cardVariants}
                 className="rounded-2xl p-6 transition-all duration-300"
                 style={{
-                  background: "#F0F9FF",
-                  border: "1px solid #e1eaf5",
-                  boxShadow: "0 4px 24px rgba(0,122,255,0.06)",
+                  background: "#ffffff",
+                  border: "1px solid rgba(25,30,79,0.08)",
+                  transition: "box-shadow 0.2s",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.borderColor = "rgba(0,122,255,0.3)";
-                  e.currentTarget.style.boxShadow = "0 8px 40px rgba(0,122,255,0.1)";
+                  e.currentTarget.style.boxShadow = "0 8px 32px rgba(25,30,79,0.10)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.borderColor = "#e1eaf5";
-                  e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,122,255,0.06)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                  style={{ background: card.bg, border: `1px solid ${card.border}` }}
+                  style={{ background: "#e2f7ff" }}
                 >
                   <Icon style={{ width: 18, height: 18, color: card.color }} />
                 </div>
                 <h4
                   className="font-bold text-base mb-2"
-                  style={{ fontFamily: "var(--font-heading)", color: "#1D2939" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#191e4f" }}
                 >
                   {card.title}
                 </h4>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ fontFamily: "var(--font-body)", color: "#475467" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#474667" }}
                 >
                   {card.text}
                 </p>

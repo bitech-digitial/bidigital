@@ -78,43 +78,6 @@ export default function Process() {
   return (
     <section id="processus" className="relative py-12 md:py-24 px-4 overflow-hidden" style={{ background: "#FFFFFF" }}>
 
-      {/* ── Décos géométriques ── */}
-      {/* Trait diagonal haut-gauche */}
-      <div className="absolute pointer-events-none hidden lg:block" style={{
-        top: 0, left: "5%", width: 1, height: 180,
-        background: "linear-gradient(180deg, transparent, rgba(0,122,255,0.15), transparent)",
-        transform: "rotate(20deg)",
-      }} />
-      {/* Carré outline haut-droite */}
-      <div className="absolute pointer-events-none hidden md:block" style={{
-        top: 50, right: 60, width: 90, height: 90,
-        border: "1.5px solid rgba(0,122,255,0.1)", borderRadius: 16,
-        transform: "rotate(15deg)",
-      }} />
-      {/* Cercle outline gauche milieu */}
-      <div className="absolute pointer-events-none hidden lg:block" style={{
-        top: "50%", left: -60, marginTop: -100,
-        width: 200, height: 200,
-        border: "1.5px solid rgba(0,122,255,0.08)", borderRadius: "50%",
-      }} />
-      {/* Trait horizontal bas */}
-      <div className="absolute pointer-events-none" style={{
-        bottom: 0, left: "10%", right: "10%", height: 1,
-        background: "linear-gradient(90deg, transparent, rgba(0,122,255,0.1), transparent)",
-      }} />
-      {/* Rectangle bas-gauche */}
-      <div className="absolute pointer-events-none hidden md:block" style={{
-        bottom: 40, left: 40, width: 70, height: 40,
-        border: "1px solid rgba(0,122,255,0.12)", borderRadius: 8,
-        transform: "rotate(-8deg)",
-      }} />
-      {/* Petit carré accent bas-droite */}
-      <div className="absolute pointer-events-none hidden md:block" style={{
-        bottom: 60, right: 50, width: 28, height: 28,
-        background: "rgba(0,122,255,0.06)", border: "1px solid rgba(0,122,255,0.2)",
-        borderRadius: 6, transform: "rotate(20deg)",
-      }} />
-
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-0">
 
@@ -122,7 +85,7 @@ export default function Process() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex-shrink-0 flex items-center justify-center pr-0 lg:pr-10 hidden sm:flex"
             style={{ width: "100%", maxWidth: 340 }}
@@ -130,6 +93,8 @@ export default function Process() {
             <img
               src="/images/illustrations/undraw_ideas_vn7a.svg"
               alt="De votre idée à la mise en ligne"
+              width={300}
+              height={240}
               style={{ width: "100%", maxWidth: 300, height: "auto", display: "block" }}
             />
           </motion.div>
@@ -150,42 +115,48 @@ export default function Process() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5 }}
             className="flex-1 min-w-0 pl-0 lg:pl-10"
           >
             {/* Header */}
             <span
-              className="inline-block text-xs font-semibold tracking-widest rounded-full px-3 py-1 mb-5"
+              className="inline-block text-xs font-medium rounded-full px-3 py-1.5 mb-5"
               style={{
-                background: "rgba(0,122,255,0.08)",
-                border: "1px solid rgba(0,122,255,0.2)",
-                color: "#007AFF",
-                fontFamily: "var(--font-body)",
+                background: "#e2f7ff",
+                color: "#0055FF",
+                fontFamily: "var(--font-badge)",
               }}
             >
               Notre processus
             </span>
             <h2
-              className="font-extrabold text-gradient mb-3"
+              className="font-bold mb-3"
               style={{
                 fontFamily: "var(--font-heading)",
-                fontSize: "clamp(2rem, 4vw, 3.5rem)",
-                letterSpacing: "-0.03em",
-                lineHeight: 1.1,
+                fontSize: "clamp(28px, 3vw, 43px)",
+                color: "#191e4f",
+                lineHeight: 1.25,
               }}
             >
-              De votre idée à la mise en ligne, en toute simplicité.
+              De votre idée à la mise en ligne,{" "}
+              <span style={{ position: "relative", display: "inline-block" }}>
+                <span style={{
+                  background: "linear-gradient(90deg, #0055FF, #00D2FF)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}>
+                  en toute simplicité.
+                </span>
+                <span style={{
+                  display: "block", height: 3,
+                  background: "linear-gradient(90deg, #0055FF, #00D2FF)",
+                  borderRadius: 2,
+                  position: "absolute", bottom: -2, left: 0, right: 0,
+                }} />
+              </span>
             </h2>
-            <p
-              className="mb-10"
-              style={{
-                fontFamily: "var(--font-body)",
-                color: "#475467",
-                fontSize: "1.1rem",
-              }}
-            >
-            </p>
 
             {/* 4 étapes — empilées verticalement */}
             <div className="space-y-3">
@@ -194,11 +165,11 @@ export default function Process() {
                   key={step.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.45, delay: i * 0.1 }}
                   className="relative rounded-2xl p-5 overflow-hidden flex items-start gap-4"
                   style={{
-                    background: step.featured ? "rgba(0,122,255,0.06)" : "#F0F9FF",
+                    background: step.featured ? "rgba(0,85,255,0.06)" : "#f8faff",
                     border: `1px solid ${step.featured ? "rgba(0,122,255,0.25)" : "#e1eaf5"}`,
                     boxShadow: step.featured ? "0 0 30px rgba(0,122,255,0.08)" : "none",
                   }}
@@ -213,7 +184,7 @@ export default function Process() {
                       fontSize: "4.5rem",
                       fontWeight: 900,
                       fontFamily: "var(--font-heading)",
-                      color: "#007AFF",
+                      color: "#0055FF",
                       opacity: 0.07,
                       lineHeight: 1,
                       pointerEvents: "none",
@@ -231,7 +202,7 @@ export default function Process() {
                       border: `1px solid ${step.featured ? "rgba(0,122,255,0.3)" : "rgba(0,122,255,0.2)"}`,
                     }}
                   >
-                    <step.Icon style={{ width: 18, height: 18, color: "#007AFF" }} />
+                    <step.Icon style={{ width: 18, height: 18, color: "#0055FF" }} />
                   </div>
 
                   <div className="flex-1 min-w-0">
@@ -240,7 +211,7 @@ export default function Process() {
                       className="inline-block text-xs px-2.5 py-0.5 rounded-full font-medium mb-1.5"
                       style={{
                         background: step.featured ? "rgba(0,122,255,0.1)" : "rgba(0,122,255,0.06)",
-                        color: "#007AFF",
+                        color: "#0055FF",
                         fontFamily: "var(--font-body)",
                         border: `1px solid ${step.featured ? "rgba(0,122,255,0.2)" : "rgba(0,122,255,0.12)"}`,
                       }}
@@ -249,13 +220,13 @@ export default function Process() {
                     </span>
                     <h3
                       className="font-bold text-sm mb-1"
-                      style={{ fontFamily: "var(--font-heading)", color: "#1D2939", letterSpacing: "-0.01em" }}
+                      style={{ fontFamily: "var(--font-heading)", color: "#191e4f", letterSpacing: "-0.01em" }}
                     >
                       {step.title}
                     </h3>
                     <p
                       className="text-sm leading-relaxed"
-                      style={{ fontFamily: "var(--font-body)", color: "#475467" }}
+                      style={{ fontFamily: "var(--font-body)", color: "#474667" }}
                     >
                       {step.description}
                     </p>

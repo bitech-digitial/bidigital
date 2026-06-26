@@ -12,32 +12,28 @@ const realisations = [
   { image: "/images/realisations/site-1.webp", sector: "Agence · Marketing Digital" },
 ];
 
-function BrowserCard({ realisation }: { realisation: (typeof realisations)[0] }) {
+function BrowserCard({ realisation, lazy = false }: { realisation: (typeof realisations)[0]; lazy?: boolean }) {
   return (
     <div
       className="rounded-2xl overflow-hidden transition-all duration-300 group"
       style={{
-        background: "#F0F9FF",
-        border: "1px solid #e1eaf5",
-        boxShadow: "0 4px 24px rgba(0,122,255,0.07)",
+        background: "#ffffff",
+        border: "1px solid rgba(25,30,79,0.08)",
+        transition: "box-shadow 0.2s",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget;
-        el.style.transform = "translateY(-6px)";
-        el.style.borderColor = "rgba(0,122,255,0.3)";
-        el.style.boxShadow = "0 8px 40px rgba(0,122,255,0.12)";
+        el.style.boxShadow = "0 8px 32px rgba(25,30,79,0.10)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget;
-        el.style.transform = "translateY(0)";
-        el.style.borderColor = "#e1eaf5";
-        el.style.boxShadow = "0 4px 24px rgba(0,122,255,0.07)";
+        el.style.boxShadow = "none";
       }}
     >
       {/* Browser bar */}
       <div
         style={{
-          background: "#F0F9FF",
+          background: "#f8faff",
           height: 32,
           display: "flex",
           alignItems: "center",
@@ -58,6 +54,7 @@ function BrowserCard({ realisation }: { realisation: (typeof realisations)[0] })
           src={realisation.image}
           alt={`Réalisation BiDigital — ${realisation.sector}`}
           fill
+          loading={lazy ? "lazy" : "eager"}
           sizes="(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 33vw"
           style={{ objectFit: "cover", transition: "transform 0.4s ease" }}
           className="group-hover:scale-[1.03]"
@@ -69,37 +66,7 @@ function BrowserCard({ realisation }: { realisation: (typeof realisations)[0] })
 
 export default function Examples() {
   return (
-    <section id="exemples" className="relative py-12 md:py-24 overflow-hidden" style={{ background: "#F0F9FF" }}>
-
-      {/* ── Décos géométriques ── */}
-      {/* Trait vertical gauche */}
-      <div className="absolute pointer-events-none hidden lg:block" style={{
-        top: "15%", bottom: "15%", left: 24, width: 1,
-        background: "linear-gradient(180deg, transparent, rgba(0,122,255,0.1), transparent)",
-      }} />
-      {/* Carré outline haut-gauche */}
-      <div className="absolute pointer-events-none hidden lg:block" style={{
-        top: 50, left: 50, width: 70, height: 70,
-        border: "1.5px solid rgba(0,122,255,0.12)", borderRadius: 12,
-        transform: "rotate(12deg)",
-      }} />
-      {/* Grand cercle droite */}
-      <div className="absolute pointer-events-none hidden lg:block" style={{
-        top: "50%", right: -120, marginTop: -200,
-        width: 400, height: 400,
-        border: "1.5px solid rgba(0,122,255,0.06)", borderRadius: "50%",
-      }} />
-      {/* Petit rectangle bas-droite */}
-      <div className="absolute pointer-events-none hidden md:block" style={{
-        bottom: 40, right: 70, width: 90, height: 45,
-        border: "1px solid rgba(0,122,255,0.1)", borderRadius: 8,
-        transform: "rotate(-10deg)",
-      }} />
-      {/* Trait horizontal bas */}
-      <div className="absolute pointer-events-none" style={{
-        bottom: 0, left: "10%", right: "10%", height: 1,
-        background: "linear-gradient(90deg, transparent, rgba(0,122,255,0.1), transparent)",
-      }} />
+    <section id="exemples" className="relative py-12 md:py-24 overflow-hidden" style={{ background: "#ffffff" }}>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -112,41 +79,46 @@ export default function Examples() {
           className="text-center mb-14"
         >
           <span
-            className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest mb-5"
+            className="inline-block px-3 py-1.5 rounded-full text-xs font-medium mb-5"
             style={{
-              background: "rgba(0,122,255,0.08)",
-              border: "1px solid rgba(0,122,255,0.2)",
-              color: "#007AFF",
-              fontFamily: "var(--font-body)",
+              background: "#e2f7ff",
+              color: "#0055FF",
+              fontFamily: "var(--font-badge)",
             }}
           >
             Nos références
           </span>
           <h2
-            className="font-extrabold text-gradient mb-4"
+            className="font-bold mb-4"
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(2rem, 4vw, 3.5rem)",
-              letterSpacing: "-0.03em",
-              lineHeight: 1.1,
+              fontSize: "clamp(28px, 3vw, 43px)",
+              color: "#191e4f",
+              lineHeight: 1.25,
             }}
           >
             Des sites qui convertissent,{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #007AFF, #0044CC)",
+            <span style={{ position: "relative", display: "inline-block" }}>
+              <span style={{
+                background: "linear-gradient(90deg, #0055FF, #00D2FF)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-              }}
-            >
-              pour chaque secteur.
+              }}>
+                pour chaque secteur.
+              </span>
+              <span style={{
+                display: "block", height: 3,
+                background: "linear-gradient(90deg, #0055FF, #00D2FF)",
+                borderRadius: 2,
+                position: "absolute", bottom: -2, left: 0, right: 0,
+              }} />
             </span>
           </h2>
           <p
             style={{
               fontFamily: "var(--font-body)",
-              color: "#475467",
+              color: "#474667",
               fontSize: "1.1rem",
               maxWidth: 600,
               margin: "0 auto",
@@ -177,7 +149,7 @@ export default function Examples() {
                   className="mx-3 shrink-0"
                   style={{ width: "min(76vw, 420px)" }}
                 >
-                  <BrowserCard realisation={r} />
+                  <BrowserCard realisation={r} lazy />
                 </div>
               ))}
             </div>

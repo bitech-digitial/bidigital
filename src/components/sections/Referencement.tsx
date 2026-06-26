@@ -13,78 +13,55 @@ export default function Referencement() {
   return (
     <section
       className="relative py-12 md:py-24 px-4"
-      style={{ background: "#0A1128", overflow: "visible" }}
+      style={{ background: "#FFFFFF" }}
     >
-
-
-      {/* ── Radial glow top-right ── */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: 0,
-          right: 0,
-          width: 700,
-          height: 700,
-          background: "radial-gradient(circle at top right, rgba(0,180,255,0.25) 0%, rgba(10,17,40,0) 60%)",
-          zIndex: 0,
-        }}
-      />
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          bottom: 0,
-          left: 0,
-          width: 500,
-          height: 500,
-          background: "radial-gradient(circle at bottom left, rgba(0,68,204,0.2) 0%, rgba(10,17,40,0) 65%)",
-          zIndex: 0,
-        }}
-      />
-
-      {/* ── Grid pattern ── */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-          zIndex: 0,
-        }}
-      />
-
-      {/* ── Geometric accents ── */}
-      <div
-        className="absolute pointer-events-none hidden lg:block"
-        style={{
-          top: 80,
-          left: 40,
-          width: 130,
-          height: 130,
-          border: "1px solid rgba(255,255,255,0.06)",
-          borderRadius: 22,
-          transform: "rotate(-15deg)",
-          zIndex: 0,
-        }}
-      />
-      <div
-        className="absolute pointer-events-none hidden lg:block"
-        style={{
-          bottom: 80,
-          right: 60,
-          width: 70,
-          height: 70,
-          border: "1px solid rgba(0,180,255,0.1)",
-          borderRadius: 12,
-          transform: "rotate(10deg)",
-          zIndex: 0,
-        }}
-      />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="relative overflow-hidden rounded-3xl"
+          style={{
+            background: "#16182e",
+            padding: "clamp(36px, 6vw, 72px) clamp(24px, 5vw, 64px)",
+          }}
+        >
+          {/* Radial glow top-right */}
+          <div
+            className="absolute pointer-events-none"
+            style={{
+              top: 0,
+              right: 0,
+              width: 700,
+              height: 700,
+              background: "radial-gradient(circle, rgba(0,85,255,0.30) 0%, rgba(0,210,255,0.10) 50%, transparent 70%)",
+              zIndex: 0,
+            }}
+          />
+          <div
+            className="absolute pointer-events-none"
+            style={{
+              bottom: 0,
+              left: 0,
+              width: 500,
+              height: 500,
+              background: "radial-gradient(circle at bottom left, rgba(0,68,204,0.2) 0%, rgba(10,17,40,0) 65%)",
+              zIndex: 0,
+            }}
+          />
+          {/* Grid pattern */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
+              zIndex: 0,
+            }}
+          />
+
+          <div className="relative z-10">
+          <div
           className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20"
         >
           {/* ── Text side ── */}
@@ -103,7 +80,7 @@ export default function Referencement() {
               Soyez visible là où{" "}
               <span
                 style={{
-                  background: "linear-gradient(90deg, #007AFF 0%, #00D2FF 100%)",
+                  background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -176,9 +153,10 @@ export default function Referencement() {
             {/* CTA */}
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200"
+              className="inline-flex items-center gap-2 font-semibold text-sm transition-all duration-200"
+              style={{ borderRadius: 50, padding: "12px 24px" }}
               style={{
-                background: "linear-gradient(135deg, #0044CC 0%, #007AFF 100%)",
+                background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
                 color: "#FFFFFF",
                 fontFamily: "var(--font-body)",
                 textDecoration: "none",
@@ -207,7 +185,6 @@ export default function Referencement() {
                 padding: "clamp(16px, 4vw, 32px)",
                 background: "rgba(255,255,255,0.04)",
                 border: "1px solid rgba(255,255,255,0.08)",
-                backdropFilter: "blur(8px)",
                 boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
               }}
             >
@@ -237,6 +214,8 @@ export default function Referencement() {
                 }}
               />
             </div>
+          </div>
+          </div>
           </div>
         </motion.div>
       </div>

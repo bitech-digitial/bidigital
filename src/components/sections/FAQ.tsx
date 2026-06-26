@@ -33,36 +33,6 @@ export default function FAQ() {
   return (
     <section id="faq" className="relative py-10 md:py-20 px-4 overflow-hidden" style={{ background: "#FFFFFF" }}>
 
-      {/* ── Décos géométriques ── */}
-      {/* Trait vertical droit */}
-      <div className="absolute pointer-events-none hidden lg:block" style={{
-        top: "10%", bottom: "10%", right: 24, width: 1,
-        background: "linear-gradient(180deg, transparent, rgba(0,122,255,0.12), transparent)",
-      }} />
-      {/* Carré outline bas-droite */}
-      <div className="absolute pointer-events-none hidden md:block" style={{
-        bottom: 50, right: 60, width: 80, height: 80,
-        border: "1.5px solid rgba(0,122,255,0.1)", borderRadius: 14,
-        transform: "rotate(18deg)",
-      }} />
-      {/* Grand cercle outline gauche */}
-      <div className="absolute pointer-events-none hidden lg:block" style={{
-        top: "50%", left: -120, marginTop: -180,
-        width: 360, height: 360,
-        border: "1.5px solid rgba(0,122,255,0.06)", borderRadius: "50%",
-      }} />
-      {/* Petit carré haut-droite */}
-      <div className="absolute pointer-events-none hidden md:block" style={{
-        top: 40, right: 80, width: 36, height: 36,
-        background: "rgba(0,122,255,0.05)", border: "1px solid rgba(0,122,255,0.15)",
-        borderRadius: 8, transform: "rotate(-14deg)",
-      }} />
-      {/* Rectangle horizontal haut */}
-      <div className="absolute pointer-events-none" style={{
-        top: 0, left: "15%", right: "15%", height: 1,
-        background: "linear-gradient(90deg, transparent, rgba(0,122,255,0.1), transparent)",
-      }} />
-
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-0">
 
@@ -70,39 +40,45 @@ export default function FAQ() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6 }}
             className="flex-1 min-w-0 pr-0 lg:pr-10"
           >
             <span
-              className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest mb-4"
+              className="inline-block px-3 py-1.5 rounded-full text-xs font-medium mb-4"
               style={{
-                background: "rgba(0,122,255,0.08)",
-                border: "1px solid rgba(0,122,255,0.2)",
-                color: "#007AFF",
-                fontFamily: "var(--font-body)",
+                background: "#e2f7ff",
+                color: "#0055FF",
+                fontFamily: "var(--font-badge)",
               }}
             >
               FAQ
             </span>
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8"
+              className="font-bold mb-8"
               style={{
                 fontFamily: "var(--font-heading)",
-                color: "#1D2939",
-                letterSpacing: "-0.02em",
-                lineHeight: 1.1,
+                fontSize: "clamp(28px, 3vw, 43px)",
+                color: "#191e4f",
+                lineHeight: 1.25,
               }}
             >
-              Les questions
-              <br />
-              <span
-                className="text-transparent bg-clip-text"
-                style={{
-                  backgroundImage: "linear-gradient(135deg, #007AFF, #0044CC)",
-                }}
-              >
-                qu&apos;on nous pose souvent.
+              Les questions{" "}
+              <span style={{ position: "relative", display: "inline-block" }}>
+                <span style={{
+                  background: "linear-gradient(90deg, #0055FF, #00D2FF)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}>
+                  qu&apos;on nous pose souvent.
+                </span>
+                <span style={{
+                  display: "block", height: 3,
+                  background: "linear-gradient(90deg, #0055FF, #00D2FF)",
+                  borderRadius: 2,
+                  position: "absolute", bottom: -2, left: 0, right: 0,
+                }} />
               </span>
             </h2>
 
@@ -112,11 +88,11 @@ export default function FAQ() {
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.4, delay: i * 0.06 }}
                   className="rounded-2xl overflow-hidden"
                   style={{
-                    background: openIndex === i ? "rgba(0,122,255,0.04)" : "#F0F9FF",
+                    background: openIndex === i ? "rgba(0,85,255,0.04)" : "#f8faff",
                     border: openIndex === i ? "1px solid rgba(0,122,255,0.2)" : "1px solid #e1eaf5",
                   }}
                 >
@@ -129,7 +105,7 @@ export default function FAQ() {
                       className="font-bold text-base md:text-lg leading-snug"
                       style={{
                         fontFamily: "var(--font-heading)",
-                        color: openIndex === i ? "#007AFF" : "#1D2939",
+                        color: openIndex === i ? "#0055FF" : "#191e4f",
                       }}
                     >
                       {faq.q}
@@ -145,7 +121,7 @@ export default function FAQ() {
                     >
                       <Plus
                         className="w-5 h-5"
-                        style={{ color: openIndex === i ? "#007AFF" : "#475467" }}
+                        style={{ color: openIndex === i ? "#0055FF" : "#474667" }}
                       />
                     </motion.div>
                   </button>
@@ -163,7 +139,7 @@ export default function FAQ() {
                           className="px-6 pb-6 text-base leading-relaxed border-t pt-4"
                           style={{
                             fontFamily: "var(--font-body)",
-                            color: "#475467",
+                            color: "#474667",
                             borderColor: "rgba(0,122,255,0.1)",
                           }}
                         >
@@ -193,7 +169,7 @@ export default function FAQ() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex-shrink-0 flex items-center justify-center pl-0 lg:pl-10"
             style={{ width: "100%", maxWidth: 340 }}
@@ -201,6 +177,8 @@ export default function FAQ() {
             <img
               src="/images/illustrations/undraw_questions_52ic.svg"
               alt="Questions fréquentes"
+              width={300}
+              height={240}
               style={{ width: "100%", maxWidth: 300, height: "auto", display: "block" }}
             />
           </motion.div>

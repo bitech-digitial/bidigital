@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight, ChevronDown,
@@ -8,30 +8,28 @@ import {
   Hammer, ShoppingBag, UtensilsCrossed, Home, Sparkles, Car, Gauge, Briefcase,
   type LucideIcon,
 } from "lucide-react";
-import { WHATSAPP_LINK } from "@/lib/constants";
 import CalButton from "@/components/ui/CalButton";
-import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
 const expertiseItems: { icon: LucideIcon; label: string; desc: string; href: string }[] = [
-  { icon: Globe,      label: "Création de site internet", desc: "Un site conçu sur-mesure, optimisé SEO et conforme RGPD dès la mise en ligne",              href: "#services" },
-  { icon: RefreshCw,  label: "Refonte de site internet",  desc: "Modernisation de votre site existant — design, performances et conformité",                  href: "#services" },
-  { icon: Paintbrush, label: "Webdesign",                 desc: "Des interfaces pensées pour l'expérience utilisateur et l'image de votre marque",            href: "#services" },
-  { icon: Search,     label: "SEO",                       desc: "Optimisation technique et éditoriale pour améliorer votre positionnement Google",             href: "#services" },
-  { icon: Wrench,     label: "Maintenance",               desc: "Surveillance, mises à jour et support technique pour garder votre site opérationnel",         href: "#services" },
-  { icon: Server,     label: "Hébergement web",           desc: "Infrastructure sécurisée, rapide et infogérée incluse dans chaque projet",                    href: "#services" },
+  { icon: Globe,      label: "Création de site internet", desc: "Un site conçu sur-mesure, optimisé SEO et conforme RGPD dès la mise en ligne",              href: "/creation-site-internet" },
+  { icon: RefreshCw,  label: "Refonte de site internet",  desc: "Modernisation de votre site existant — design, performances et conformité",                  href: "/refonte-site-internet" },
+  { icon: Paintbrush, label: "Webdesign",                 desc: "Des interfaces pensées pour l'expérience utilisateur et l'image de votre marque",            href: "/webdesign" },
+  { icon: Search,     label: "SEO",                       desc: "Optimisation technique et éditoriale pour améliorer votre positionnement Google",             href: "/referencement-naturel-seo" },
+  { icon: Wrench,     label: "Maintenance",               desc: "Surveillance, mises à jour et support technique pour garder votre site opérationnel",         href: "/maintenance-site-internet" },
+  { icon: Server,     label: "Hébergement web",           desc: "Infrastructure sécurisée, rapide et infogérée incluse dans chaque projet",                    href: "/hebergement-web" },
 ];
 
 const secteurItems: { icon: LucideIcon; label: string; href: string }[] = [
-  { icon: Hammer,           label: "Bâtiment / Artisan",  href: "/contact" },
-  { icon: ShoppingBag,      label: "Commerce",            href: "/contact" },
-  { icon: UtensilsCrossed,  label: "Restauration",        href: "/contact" },
-  { icon: Home,             label: "Hébergement",         href: "/contact" },
-  { icon: Sparkles,         label: "Beauté / Bien-être",  href: "/contact" },
-  { icon: Car,              label: "Taxi / VTC",          href: "/contact" },
-  { icon: Gauge,            label: "Automobile",          href: "/contact" },
-  { icon: Briefcase,        label: "Services",            href: "/contact" },
+  { icon: Hammer,           label: "Bâtiment / Artisan",  href: "/secteurs/batiment" },
+  { icon: ShoppingBag,      label: "Commerce",            href: "/secteurs/ecommerce" },
+  { icon: UtensilsCrossed,  label: "Restauration",        href: "/secteurs/restauration" },
+  { icon: Home,             label: "Hébergement",         href: "/secteurs/hebergement" },
+  { icon: Sparkles,         label: "Beauté / Bien-être",  href: "/secteurs/beaute" },
+  { icon: Car,              label: "Taxi / VTC",          href: "/secteurs/taxi" },
+  { icon: Gauge,            label: "Automobile",          href: "/secteurs/automobile" },
+  { icon: Briefcase,        label: "Services",            href: "/secteurs/services" },
 ];
 
 const dropdownPanelStyle: React.CSSProperties = {
@@ -80,7 +78,7 @@ function ExpertisesPanel() {
               padding: "12px 14px", borderRadius: 12,
               textDecoration: "none", transition: "background 0.15s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,122,255,0.06)")}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,85,255,0.06)")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
           >
             <div style={{
@@ -89,17 +87,17 @@ function ExpertisesPanel() {
               display: "flex", alignItems: "center", justifyContent: "center",
               marginTop: 2,
             }}>
-              <Icon size={18} style={{ color: "#007AFF" }} />
+              <Icon size={18} style={{ color: "#0055FF" }} />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
               <span style={{
-                fontSize: 15, fontWeight: 700, color: "#1D2939",
+                fontSize: 15, fontWeight: 700, color: "#191e4f",
                 fontFamily: "var(--font-heading)", lineHeight: 1.3,
               }}>
                 {item.label}
               </span>
               <span style={{
-                fontSize: 13, color: "#475467",
+                fontSize: 13, color: "#474667",
                 fontFamily: "var(--font-body)", lineHeight: 1.5,
               }}>
                 {item.desc}
@@ -127,13 +125,13 @@ function SecteurPanel() {
             style={{
               display: "flex", alignItems: "center", gap: 10,
               padding: "11px 14px", borderRadius: 10,
-              fontSize: 15, fontWeight: 400, color: "#1D2939",
+              fontSize: 15, fontWeight: 400, color: "#191e4f",
               textDecoration: "none", fontFamily: "var(--font-body)",
               transition: "all 0.15s",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.color = "#007AFF";
-              e.currentTarget.style.background = "rgba(0,122,255,0.06)";
+              e.currentTarget.style.background = "rgba(0,85,255,0.06)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.color = "#1D2939";
@@ -145,7 +143,7 @@ function SecteurPanel() {
               background: "rgba(0,122,255,0.08)", border: "1px solid rgba(0,122,255,0.15)",
               display: "flex", alignItems: "center", justifyContent: "center",
             }}>
-              <Icon size={15} style={{ color: "#007AFF" }} />
+              <Icon size={15} style={{ color: "#0055FF" }} />
             </div>
             {item.label}
           </a>
@@ -158,7 +156,7 @@ function SecteurPanel() {
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrollState, setScrollState] = useState<"top" | "hidden" | "sticky">("top");
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
@@ -167,7 +165,18 @@ export default function Navbar() {
   const secteurRef    = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 60);
+    let lastScroll = 0;
+    const handler = () => {
+      const current = window.scrollY;
+      if (current <= 0) {
+        setScrollState("top");
+      } else if (current > lastScroll && current > 200) {
+        setScrollState("hidden");
+      } else if (current < lastScroll) {
+        setScrollState("sticky");
+      }
+      lastScroll = current;
+    };
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
@@ -196,39 +205,46 @@ export default function Navbar() {
     };
   }, []);
 
-  const openMenu = (key: string) => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setOpenDropdown(key);
-  };
+  // Positions calculées une fois à l'ouverture et au resize — pas à chaque render
+  const ddPositions = useRef<Record<string, React.CSSProperties>>({});
+  const arrowPositions = useRef<Record<string, number>>({});
 
-  const scheduleClose = () => {
-    closeTimer.current = setTimeout(() => setOpenDropdown(null), 120);
-  };
-
-  // position:absolute relative to trigger div, but visually centered on page
-  // (avoids Framer Motion transform containing-block bug that breaks position:fixed)
-  const getDDStyle = (ref: React.RefObject<HTMLDivElement | null>, width: number): React.CSSProperties => {
+  const calcPosition = useCallback((key: string, ref: React.RefObject<HTMLDivElement | null>, width: number) => {
     const el = ref.current;
-    if (!el) return { ...dropdownPanelStyle, position: "absolute", top: "calc(100% + 14px)" };
+    if (!el) return;
     const r = el.getBoundingClientRect();
     const margin = 16;
     const viewportLeft = Math.max(margin, Math.min(window.innerWidth / 2 - width / 2, window.innerWidth - width - margin));
-    return {
+    ddPositions.current[key] = {
       ...dropdownPanelStyle,
       position: "absolute",
       top: "calc(100% + 14px)",
       left: viewportLeft - r.left,
       transform: "none",
     };
+    arrowPositions.current[key] = r.left + r.width / 2 - viewportLeft;
+  }, []);
+
+  useLayoutEffect(() => {
+    const onResize = () => {
+      calcPosition("expertises", expertisesRef, 640);
+      calcPosition("secteur", secteurRef, 480);
+    };
+    onResize();
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => window.removeEventListener("resize", onResize);
+  }, [calcPosition]);
+
+  const openMenu = (key: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    const ref = key === "expertises" ? expertisesRef : secteurRef;
+    const width = key === "expertises" ? 640 : 480;
+    calcPosition(key, ref, width);
+    setOpenDropdown(key);
   };
 
-  const getArrowLeft = (ref: React.RefObject<HTMLDivElement | null>, width: number): number => {
-    const el = ref.current;
-    if (!el) return width / 2;
-    const r = el.getBoundingClientRect();
-    const margin = 16;
-    const viewportLeft = Math.max(margin, Math.min(window.innerWidth / 2 - width / 2, window.innerWidth - width - margin));
-    return r.left + r.width / 2 - viewportLeft;
+  const scheduleClose = () => {
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 120);
   };
 
   const bar1Style = menuOpen ? { transform: "rotate(45deg) translateY(7px)" } : {};
@@ -243,37 +259,32 @@ export default function Navbar() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="fixed top-0 left-0 right-0 z-50 pointer-events-none"
         style={{
-          padding: scrolled ? "12px 16px 0" : "0",
-          transition: "padding 0.35s ease",
+          transform: scrollState === "hidden" ? "translateY(-110px)" : "translateY(0)",
+          transition: "transform 0.4s ease",
         }}
       >
         <header
-          className="pointer-events-auto mx-auto"
+          className="pointer-events-auto"
           style={{
-            maxWidth: scrolled ? 896 : "100%",
-            borderRadius: scrolled ? 18 : 0,
-            background: scrolled || menuOpen ? "rgba(255,255,255,0.95)" : "transparent",
-            backdropFilter: scrolled || menuOpen ? "blur(20px)" : "none",
-            WebkitBackdropFilter: scrolled || menuOpen ? "blur(20px)" : "none",
-            boxShadow: scrolled
-              ? "0 4px 24px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(0,0,0,0.04)"
+            background: scrollState === "sticky" || menuOpen ? "#ffffff" : "transparent",
+            boxShadow: scrollState === "sticky"
+              ? "0 2px 20px rgba(25,30,79,0.08)"
               : "none",
-            transition:
-              "max-width 0.35s ease, border-radius 0.35s ease, background 0.3s ease, box-shadow 0.35s ease",
+            transition: "background 0.3s ease, box-shadow 0.3s ease",
           }}
         >
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <nav className="mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between" style={{ maxWidth: 1430, height: 80 }}>
             {/* Logo */}
             <a
-              href="#"
+              href="/"
               className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#007AFF]/40 rounded-lg"
               aria-label="BiDigital — Accueil"
             >
               <span
-                className="font-extrabold text-xl tracking-tight"
+                className="font-bold text-xl"
                 style={{
                   fontFamily: "var(--font-heading)",
-                  background: "linear-gradient(135deg, #00B4D8 0%, #007AFF 55%, #0044CC 100%)",
+                  background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -299,7 +310,7 @@ export default function Navbar() {
                   style={{
                     fontFamily: "var(--font-heading)",
                     fontSize: 16, fontWeight: 600,
-                    color: openDropdown === "expertises" ? "#007AFF" : "#1D2939",
+                    color: openDropdown === "expertises" ? "#0055FF" : "#191e4f",
                     background: "none", border: "none", cursor: "pointer", padding: 0,
                     transition: "color 0.2s",
                   }}
@@ -313,11 +324,11 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.18 }}
-                      style={getDDStyle(expertisesRef, 640)}
+                      style={ddPositions.current["expertises"] ?? dropdownPanelStyle}
                       onMouseEnter={() => openMenu("expertises")}
                       onMouseLeave={scheduleClose}
                     >
-                      <div style={{ ...bubbleArrow, left: getArrowLeft(expertisesRef, 640) }} />
+                      <div style={{ ...bubbleArrow, left: arrowPositions.current["expertises"] ?? 320 }} />
                       <ExpertisesPanel />
                     </motion.div>
                   )}
@@ -338,7 +349,7 @@ export default function Navbar() {
                   style={{
                     fontFamily: "var(--font-heading)",
                     fontSize: 16, fontWeight: 600,
-                    color: openDropdown === "secteur" ? "#007AFF" : "#1D2939",
+                    color: openDropdown === "secteur" ? "#0055FF" : "#191e4f",
                     background: "none", border: "none", cursor: "pointer", padding: 0,
                     transition: "color 0.2s",
                   }}
@@ -352,57 +363,54 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.18 }}
-                      style={getDDStyle(secteurRef, 480)}
+                      style={ddPositions.current["secteur"] ?? dropdownPanelStyle}
                       onMouseEnter={() => openMenu("secteur")}
                       onMouseLeave={scheduleClose}
                     >
-                      <div style={{ ...bubbleArrow, left: getArrowLeft(secteurRef, 480) }} />
+                      <div style={{ ...bubbleArrow, left: arrowPositions.current["secteur"] ?? 240 }} />
                       <SecteurPanel />
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
-              {/* Nos réalisations */}
+              {/* Agence */}
               <a
-                href="#exemples"
+                href="/agence"
                 className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#007AFF]/40 rounded"
                 style={{
                   fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 600,
-                  color: "#1D2939", transition: "color 0.2s", textDecoration: "none",
+                  color: "#191e4f", transition: "opacity 0.2s", textDecoration: "none",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#007AFF")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#1D2939")}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
-                Nos réalisations
+                Agence
               </a>
             </div>
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-2">
-              <CalButton style={{ fontSize: 14, padding: "8px 18px", borderRadius: 10, background: "transparent", color: "#1D2939", boxShadow: "none", border: "1px solid rgba(29,41,57,0.25)" }}>
+              <CalButton style={{ fontSize: 15, padding: "10px 22px", borderRadius: 50, background: "transparent", color: "#191e4f", boxShadow: "none", border: "1px solid rgba(25,30,79,0.25)", transition: "opacity 0.15s" }}>
                 Prendre RDV
               </CalButton>
               <a
                 href="/contact"
                 style={{
                   display: "inline-flex", alignItems: "center",
-                  fontSize: 14, fontWeight: 700, fontFamily: "var(--font-heading)",
+                  fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)",
                   color: "#FFFFFF", textDecoration: "none",
-                  background: "linear-gradient(135deg, #00B4D8 0%, #007AFF 55%, #0044CC 100%)",
-                  padding: "8px 18px", borderRadius: 10,
-                  boxShadow: "0 4px 15px rgba(0,122,255,0.3)",
-                  transition: "filter 0.15s, transform 0.15s, box-shadow 0.15s",
+                  background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
+                  padding: "10px 22px", borderRadius: 50,
+                  transition: "opacity 0.2s, transform 0.2s",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.filter = "brightness(1.08)";
+                  e.currentTarget.style.opacity = "0.9";
                   e.currentTarget.style.transform = "translateY(-1px)";
-                  e.currentTarget.style.boxShadow = "0 6px 22px rgba(0,122,255,0.5)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.filter = "brightness(1)";
+                  e.currentTarget.style.opacity = "1";
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "0 4px 15px rgba(0,122,255,0.3)";
                 }}
               >
                 Nous contacter
@@ -424,7 +432,7 @@ export default function Navbar() {
                   justifyContent: "center", alignItems: "center",
                   gap: 5, transition: "all 0.2s",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,122,255,0.06)")}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,85,255,0.06)")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
               >
                 {[bar1Style, bar2Style, bar3Style].map((style, i) => (
@@ -468,7 +476,7 @@ export default function Navbar() {
                   style={{
                     display: "flex", width: "100%", alignItems: "center",
                     justifyContent: "space-between", padding: "16px 20px",
-                    borderRadius: 14, fontSize: 16, fontWeight: 600, color: "#1D2939",
+                    borderRadius: 14, fontSize: 16, fontWeight: 600, color: "#191e4f",
                     background: "transparent", border: "1px solid transparent",
                     cursor: "pointer", fontFamily: "var(--font-heading)", transition: "all 0.15s",
                   }}
@@ -510,17 +518,17 @@ export default function Navbar() {
                               display: "flex", alignItems: "center", justifyContent: "center",
                               marginTop: 2,
                             }}>
-                              <Icon size={14} style={{ color: "#007AFF" }} />
+                              <Icon size={14} style={{ color: "#0055FF" }} />
                             </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
                               <span style={{
-                                fontSize: 16, fontWeight: 700, color: "#1D2939",
+                                fontSize: 16, fontWeight: 700, color: "#191e4f",
                                 fontFamily: "var(--font-heading)",
                               }}>
                                 {item.label}
                               </span>
                               <span style={{
-                                fontSize: 14, color: "#475467",
+                                fontSize: 14, color: "#474667",
                                 fontFamily: "var(--font-body)",
                               }}>
                                 {item.desc}
@@ -542,7 +550,7 @@ export default function Navbar() {
                   style={{
                     display: "flex", width: "100%", alignItems: "center",
                     justifyContent: "space-between", padding: "16px 20px",
-                    borderRadius: 14, fontSize: 16, fontWeight: 600, color: "#1D2939",
+                    borderRadius: 14, fontSize: 16, fontWeight: 600, color: "#191e4f",
                     background: "transparent", border: "1px solid transparent",
                     cursor: "pointer", fontFamily: "var(--font-heading)", transition: "all 0.15s",
                   }}
@@ -576,7 +584,7 @@ export default function Navbar() {
                               style={{
                                 display: "flex", alignItems: "center", gap: 8,
                                 padding: "9px 14px", borderRadius: 10, fontSize: 15,
-                                fontWeight: 500, color: "#1D2939", textDecoration: "none",
+                                fontWeight: 500, color: "#191e4f", textDecoration: "none",
                                 fontFamily: "var(--font-body)",
                                 background: "rgba(0,122,255,0.04)",
                                 border: "1px solid rgba(0,122,255,0.12)",
@@ -587,7 +595,7 @@ export default function Navbar() {
                                 background: "rgba(0,122,255,0.08)",
                                 display: "flex", alignItems: "center", justifyContent: "center",
                               }}>
-                                <Icon size={13} style={{ color: "#007AFF" }} />
+                                <Icon size={13} style={{ color: "#0055FF" }} />
                               </div>
                               {item.label}
                             </a>
@@ -599,18 +607,18 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              {/* Nos réalisations */}
+              {/* Agence */}
               <a
-                href="#exemples"
+                href="/agence"
                 onClick={() => closeMenu()}
                 style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   padding: "16px 20px", borderRadius: 14,
-                  fontSize: 16, fontWeight: 600, color: "#1D2939",
+                  fontSize: 16, fontWeight: 600, color: "#191e4f",
                   textDecoration: "none", fontFamily: "var(--font-heading)",
                 }}
               >
-                Nos réalisations
+                Agence
                 <ArrowRight size={15} color="#475467" />
               </a>
             </div>
@@ -620,7 +628,7 @@ export default function Navbar() {
             <div style={{ marginTop: "auto", padding: "0 24px 40px" }}>
               <CalButton
                 className="w-full justify-center"
-                style={{ fontSize: 15, padding: "14px 20px", borderRadius: 16, background: "transparent", color: "#0044CC", boxShadow: "none", border: "1px solid rgba(0,122,255,0.25)" }}
+                style={{ fontSize: 15, padding: "14px 20px", borderRadius: 50, background: "transparent", color: "#0055FF", boxShadow: "none", border: "1px solid rgba(0,85,255,0.25)" }}
               >
                 Prendre RDV
               </CalButton>
@@ -629,8 +637,8 @@ export default function Navbar() {
                 onClick={() => closeMenu()}
                 style={{
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  width: "100%", padding: "14px 20px", borderRadius: 16, marginTop: 10,
-                  background: "linear-gradient(135deg, #00B4D8 0%, #007AFF 55%, #0044CC 100%)",
+                  width: "100%", padding: "14px 20px", borderRadius: 50, marginTop: 10,
+                  background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
                   color: "#FFFFFF", fontSize: 15, fontWeight: 700,
                   textDecoration: "none", fontFamily: "var(--font-heading)",
                   boxShadow: "0 4px 15px rgba(0,122,255,0.3)",
@@ -638,23 +646,7 @@ export default function Navbar() {
               >
                 Nous contacter
               </a>
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  gap: 8, width: "100%", padding: 16, borderRadius: 16,
-                  border: "1px solid rgba(74,222,128,0.25)",
-                  background: "rgba(74,222,128,0.06)",
-                  color: "#16a34a", fontSize: 14, fontWeight: 600,
-                  textDecoration: "none", marginTop: 12,
-                }}
-              >
-                <WhatsAppIcon size={18} />
-                Nous écrire sur WhatsApp
-              </a>
-              <p style={{ fontSize: 12, color: "#475467", textAlign: "center", marginTop: 16 }}>
+              <p style={{ fontSize: 12, color: "#474667", textAlign: "center", marginTop: 16 }}>
                 ✓ Satisfait ou remboursé · Réponse sous 24h
               </p>
             </div>

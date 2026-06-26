@@ -56,7 +56,7 @@ export default function ContactForm() {
     background: "#FFFFFF",
     border: "1px solid #e1eaf5",
     borderRadius: 12,
-    color: "#1D2939",
+    color: "#191e4f",
     fontFamily: "var(--font-body)",
     fontSize: 15,
     padding: "12px 14px",
@@ -83,7 +83,7 @@ export default function ContactForm() {
     fontWeight: 600,
     textTransform: "uppercase" as const,
     letterSpacing: "0.08em",
-    color: "#475467",
+    color: "#474667",
     marginBottom: 6,
     fontFamily: "var(--font-body)",
   };
@@ -92,7 +92,7 @@ export default function ContactForm() {
     <section
       id="formulaire"
       className="relative py-12 md:py-24 px-4 overflow-hidden"
-      style={{ background: "#F0F9FF" }}
+      style={{ background: "#ffffff" }}
     >
       {/* Glow */}
       <div
@@ -103,49 +103,124 @@ export default function ContactForm() {
           top: "40%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          background: "radial-gradient(ellipse, rgba(0,122,255,0.06) 0%, transparent 70%)",
-          filter: "blur(50px)",
+          background: "radial-gradient(ellipse at center, rgba(0,122,255,0.08) 0%, transparent 70%)",
         }}
       />
 
-      {/* ── Décos géométriques ── */}
-      {/* Carré outline haut-gauche */}
-      <div className="absolute pointer-events-none hidden lg:block" style={{
-        top: 50, left: 60, width: 100, height: 100,
-        border: "1.5px solid rgba(0,122,255,0.1)", borderRadius: 18,
-        transform: "rotate(12deg)",
-      }} />
-      {/* Petit carré rempli haut-gauche */}
-      <div className="absolute pointer-events-none hidden md:block" style={{
-        top: 100, left: 140, width: 36, height: 36,
-        background: "rgba(0,122,255,0.05)", border: "1px solid rgba(0,122,255,0.15)",
-        borderRadius: 8, transform: "rotate(-8deg)",
-      }} />
-      {/* Cercle droite */}
-      <div className="absolute pointer-events-none hidden lg:block" style={{
-        top: "50%", right: -60, marginTop: -120,
-        width: 240, height: 240,
-        border: "1.5px solid rgba(0,122,255,0.08)", borderRadius: "50%",
-      }} />
-      {/* Rectangle fin bas-droite */}
-      <div className="absolute pointer-events-none hidden md:block" style={{
-        bottom: 60, right: 80, width: 90, height: 50,
-        border: "1px solid rgba(0,122,255,0.1)", borderRadius: 10,
-        transform: "rotate(15deg)",
-      }} />
-      {/* Trait diagonal bas-gauche */}
-      <div className="absolute pointer-events-none hidden lg:block" style={{
-        bottom: "10%", left: 40, width: 1, height: 150,
-        background: "linear-gradient(180deg, transparent, rgba(0,122,255,0.15), transparent)",
-        transform: "rotate(20deg)",
-      }} />
+      {/* ── Avis Google ── */}
+      <div className="relative z-10 max-w-4xl mx-auto mb-14 px-2">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Titre + Badge Google */}
+          <div style={{ textAlign: "center", marginBottom: 24 }}>
+            <h2 style={{
+              fontFamily: "var(--font-heading)", fontWeight: 800,
+              fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)", color: "#191e4f",
+              marginBottom: 12, letterSpacing: "-0.02em",
+            }}>
+              Avis clients
+            </h2>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/logos/google.svg" alt="Google" style={{ width: 18, height: 18, flexShrink: 0 }} />
+              <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 14, color: "#191e4f" }}>
+                5,0
+              </span>
+              <div style={{ display: "flex", gap: 1 }}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i} style={{ color: "#FBBF24", fontSize: 15, lineHeight: 1 }}>★</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Cards */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16 }}>
+            {[
+              {
+                initiale: "O", couleur: "#9333EA",
+                nom: "Oumayma Nbaya", date: "il y a un jour",
+                texte: "Je tiens à vous remercier pour votre travail réalisé pour le site de mon institut de beauté. La gestion des rendez-vous est impeccable, Bilel est une personne très à l'écoute et professionnelle, merci !",
+              },
+              {
+                initiale: "Y", couleur: "#0055FF",
+                nom: "Yassine E.", date: "il y a 6 jours",
+                texte: "Super satisfait du travail réalisé pour la création de mon site internet. J'ai longtemps hésité à sauter le pas, mais c'est un excellent investissement. Le rendu est extrêmement propre et professionnel. Je recommande sans hésiter !",
+              },
+              {
+                initiale: "N", couleur: "#059669",
+                nom: "Neima Moussa", date: "il y a une semaine",
+                texte: "Très satisfaite de la création de mon site e-commerce de toiles artistiques. Équipe à l'écoute, professionnelle et réactive. Le résultat est magnifique et correspond parfaitement à mes attentes. Je recommande cette agence !",
+              },
+            ].map((avis) => (
+              <div
+                key={avis.nom}
+                style={{
+                  background: "#FFFFFF",
+                  border: "1px solid #e1eaf5",
+                  borderRadius: 16,
+                  padding: "20px 22px",
+                  boxShadow: "0 2px 16px rgba(0,0,0,0.05)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 12,
+                }}
+              >
+                {/* Header : avatar + nom + date */}
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{
+                    width: 38, height: 38, borderRadius: "50%", flexShrink: 0,
+                    background: avis.couleur,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 15, fontWeight: 700, color: "#FFFFFF",
+                    fontFamily: "var(--font-heading)",
+                  }}>
+                    {avis.initiale}
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 14, color: "#191e4f" }}>
+                      {avis.nom}
+                    </div>
+                    <div style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "#9EAFC2" }}>
+                      {avis.date}
+                    </div>
+                  </div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/logos/google.svg"
+                    alt="Google"
+                    style={{ width: 16, height: 16, marginLeft: "auto", flexShrink: 0, opacity: 0.7 }}
+                  />
+                </div>
+                {/* Étoiles */}
+                <div style={{ display: "flex", gap: 1 }}>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span key={i} style={{ color: "#FBBF24", fontSize: 14, lineHeight: 1 }}>★</span>
+                  ))}
+                </div>
+                {/* Texte */}
+                <p style={{
+                  fontFamily: "var(--font-body)", fontSize: 13, color: "#474667",
+                  lineHeight: 1.65, margin: 0,
+                }}>
+                  {avis.texte}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
 
       <div className="relative z-10 max-w-xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
@@ -154,8 +229,8 @@ export default function ContactForm() {
             style={{
               background: "rgba(0,122,255,0.08)",
               border: "1px solid rgba(0,122,255,0.2)",
-              color: "#007AFF",
-              fontFamily: "var(--font-body)",
+              color: "#0055FF",
+              fontFamily: "var(--font-badge)",
             }}
           >
             Contact rapide
@@ -164,7 +239,7 @@ export default function ContactForm() {
             className="font-extrabold text-3xl mb-2"
             style={{
               fontFamily: "var(--font-heading)",
-              color: "#1D2939",
+              color: "#191e4f",
               letterSpacing: "-0.02em",
             }}
           >
@@ -172,7 +247,7 @@ export default function ContactForm() {
             <span
               className="text-transparent bg-clip-text"
               style={{
-                backgroundImage: "linear-gradient(135deg, #007AFF, #0044CC)",
+                backgroundImage: "linear-gradient(90deg, #0055FF, #00D2FF)",
               }}
             >
               votre projet
@@ -180,7 +255,7 @@ export default function ContactForm() {
           </h2>
           <p
             className="text-sm"
-            style={{ fontFamily: "var(--font-body)", color: "#475467" }}
+            style={{ fontFamily: "var(--font-body)", color: "#474667" }}
           >
             Décrivez-nous votre besoin, nous revenons vers vous sous 24h.
           </p>
@@ -190,7 +265,7 @@ export default function ContactForm() {
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="rounded-2xl p-6 sm:p-8"
           style={{
@@ -210,13 +285,13 @@ export default function ContactForm() {
                 <CheckCircle className="w-14 h-14" style={{ color: "#4ade80" }} />
                 <p
                   className="font-bold text-xl"
-                  style={{ fontFamily: "var(--font-heading)", color: "#1D2939" }}
+                  style={{ fontFamily: "var(--font-heading)", color: "#191e4f" }}
                 >
                   Message envoyé !
                 </p>
                 <p
                   className="text-sm"
-                  style={{ fontFamily: "var(--font-body)", color: "#475467" }}
+                  style={{ fontFamily: "var(--font-body)", color: "#474667" }}
                 >
                   On vous répond sous 24h en semaine. À très vite !
                 </p>
@@ -271,11 +346,11 @@ export default function ContactForm() {
                     style={{ ...inputStyle, cursor: "pointer", colorScheme: "light" }}
                     {...focusStyle}
                   >
-                    <option value="" disabled style={{ background: "#FFFFFF", color: "#1D2939" }}>
+                    <option value="" disabled style={{ background: "#FFFFFF", color: "#191e4f" }}>
                       Choisir…
                     </option>
                     {SECTORS.map((s) => (
-                      <option key={s} value={s} style={{ background: "#FFFFFF", color: "#1D2939" }}>
+                      <option key={s} value={s} style={{ background: "#FFFFFF", color: "#191e4f" }}>
                         {s}
                       </option>
                     ))}
@@ -313,11 +388,12 @@ export default function ContactForm() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 mt-1"
+                  className="flex items-center justify-center gap-2 w-full font-semibold text-sm transition-all duration-200 mt-1"
+                  style={{ borderRadius: 50, padding: "14px 32px" }}
                   style={{
                     background: status === "loading"
-                      ? "rgba(0,122,255,0.5)"
-                      : "linear-gradient(135deg, #00B4D8 0%, #007AFF 55%, #0044CC 100%)",
+                      ? "rgba(0,85,255,0.5)"
+                      : "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
                     color: "#fff",
                     fontFamily: "var(--font-body)",
                     border: "none",
@@ -344,18 +420,18 @@ export default function ContactForm() {
                     checked={form.consent}
                     onChange={handleChange}
                     className="mt-0.5 flex-shrink-0"
-                    style={{ accentColor: "#007AFF" }}
+                    style={{ accentColor: "#0055FF" }}
                   />
                   <span
                     className="text-xs leading-relaxed"
-                    style={{ fontFamily: "var(--font-body)", color: "#475467" }}
+                    style={{ fontFamily: "var(--font-body)", color: "#474667" }}
                   >
                     J&apos;accepte que BiDigital traite mes données pour répondre à ma demande, conformément à sa{" "}
                     <a
                       href="/politique-de-confidentialite"
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: "#007AFF" }}
+                      style={{ color: "#0055FF" }}
                     >
                       politique de confidentialité
                     </a>
@@ -363,11 +439,6 @@ export default function ContactForm() {
                   </span>
                 </label>
 
-                <p
-                  className="text-center text-xs"
-                  style={{ fontFamily: "var(--font-body)", color: "#475467" }}
-                >
-                </p>
               </motion.form>
             )}
           </AnimatePresence>

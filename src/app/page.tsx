@@ -1,7 +1,26 @@
-﻿import dynamic from "next/dynamic";
+﻿import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import CookieBanner from "@/components/ui/CookieBanner";
+
+export const metadata: Metadata = {
+  title: "BiDigital — Agence Web Lille | Création Site Internet PME & Artisans",
+  description:
+    "Créez votre site internet professionnel avec BiDigital, agence web à Lille. Site vitrine, e-commerce, SEO et maintenance sur-mesure. Devis gratuit sous 24h.",
+  alternates: {
+    canonical: "https://www.bidigital.fr",
+  },
+  openGraph: {
+    title: "BiDigital — Agence Web | Création Site Internet Professionnel",
+    description:
+      "Boostez votre visibilité en ligne avec BiDigital : site vitrine sur-mesure, SEO local, RGPD inclus et maintenance sans engagement. Obtenez un devis gratuit en 24h.",
+    url: "https://www.bidigital.fr",
+    type: "website",
+    locale: "fr_FR",
+    siteName: "BiDigital — Agence Web",
+  },
+};
 
 const Solutions = dynamic(() => import("@/components/sections/Solutions"), { ssr: true });
 const Examples = dynamic(() => import("@/components/sections/Examples"), { ssr: true });

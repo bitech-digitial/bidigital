@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Phone, Mail, Clock,
-  Paperclip, ChevronDown,
-  Send, CheckCircle, Loader2, X,
+  ChevronDown,
+  Send, CheckCircle, Loader2,
 } from "lucide-react";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -60,12 +60,10 @@ export default function ContactPageContent() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [charCount, setCharCount] = useState(0);
-  const [fileName, setFileName] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [form, setForm] = useState({
     nom: "", prenom: "", email: "", telephone: "",
-    societe: "", sujet: "", message: "", consent: false,
+    sujet: "", message: "", consent: false,
   });
 
   const handleChange = (
@@ -77,28 +75,10 @@ export default function ContactPageContent() {
     setForm((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
   };
 
-  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    setFileName(file ? file.name : null);
-  };
-
-  const clearFile = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setFileName(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
     try {
-      const extraInfo = [
-        form.societe ? `Société : ${form.societe}` : "",
-        fileName ? `Pièce jointe mentionnée : ${fileName}` : "",
-      ].filter(Boolean).join("\n");
-
-      const fullMessage = [form.message, extraInfo].filter(Boolean).join("\n\n");
-
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -107,7 +87,7 @@ export default function ContactPageContent() {
           email: form.email,
           phone: form.telephone || undefined,
           activity: form.sujet,
-          message: fullMessage,
+          message: form.message,
           consent: form.consent,
         }),
       });
@@ -390,71 +370,7 @@ export default function ContactPageContent() {
                   </div>
                 </div>
 
-                {/* Row 3 — Société | Pièce jointe */}
-                <div className="contact-form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-                  <div>
-                    <label htmlFor="cp-societe" style={labelStyle}>Société</label>
-                    <input
-                      id="cp-societe"
-                      name="societe" type="text"
-                      placeholder="BiDigital SAS"
-                      value={form.societe}
-                      onChange={handleChange}
-                      style={inputBase}
-                      {...focusStyle}
-                    />
-                  </div>
-                  <div>
-                    <label style={labelStyle}>Pièce jointe</label>
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => fileInputRef.current?.click()}
-                      onKeyDown={(e) => e.key === "Enter" && fileInputRef.current?.click()}
-                      style={{
-                        ...inputBase,
-                        display: "flex", alignItems: "center",
-                        justifyContent: "space-between",
-                        cursor: "pointer", userSelect: "none",
-                        paddingRight: 10,
-                      }}
-                    >
-                      <span
-                        style={{
-                          flex: 1, overflow: "hidden", textOverflow: "ellipsis",
-                          whiteSpace: "nowrap",
-                          color: fileName ? "#1D2939" : "#9EAFC2",
-                          fontSize: 15,
-                        }}
-                      >
-                        {fileName ?? "Choisir un fichier…"}
-                      </span>
-                      <div style={{ display: "flex", alignItems: "center", gap: 4, flexShrink: 0 }}>
-                        {fileName && (
-                          <button
-                            type="button"
-                            onClick={clearFile}
-                            aria-label="Retirer le fichier"
-                            style={{ background: "none", border: "none", cursor: "pointer", padding: 2, lineHeight: 1 }}
-                          >
-                            <X size={13} style={{ color: "#9EAFC2" }} />
-                          </button>
-                        )}
-                        <Paperclip size={16} style={{ color: "#007AFF" }} />
-                      </div>
-                    </div>
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp"
-                      onChange={handleFile}
-                      style={{ display: "none" }}
-                      aria-hidden
-                    />
-                  </div>
-                </div>
-
-                {/* Row 4 — Sujet */}
+                {/* Row 3 — Sujet */}
                 <div>
                   <label htmlFor="cp-sujet" style={labelStyle}>Sujet {requiredDot}</label>
                   <div style={{ position: "relative" }}>
@@ -548,14 +464,6 @@ export default function ContactPageContent() {
                       </a>
                     </span>
                   </label>
-                  <div style={{ display: "flex", alignItems: "center", gap: 5, flexShrink: 0, opacity: 0.6 }}>
-                    <svg width="16" height="16" viewBox="0 0 512 512" fill="#F4811F">
-                      <path d="M338.5 275.8c2-6.9.1-11.8-3.7-15.5-3.5-3.5-8.9-5.5-15.2-5.6l-138.3-1.8c-2-.1-3.1-2.5-1.2-3.7l140.5-20.2c23.1-2.4 48.3-23.7 57.1-49.1 0 0 15.5-43.3-14.3-70-23.2-21-55.5-22.4-55.5-22.4-15.6-49.5-61.4-85.5-115.4-85.5-44.1 0-82.7 22.7-105.2 57.1-8.3-5.4-18.2-8.6-28.8-8.6-28.7 0-52 23.3-52 52 0 3.7.4 7.3 1 10.8C-12.5 118-26 148-26 181.1c0 54.3 44 98.3 98.3 98.3h256c30.2 0 48.2-18.3 48.2-18.3s-40.5-2.9-38-85.3z" />
-                    </svg>
-                    <span style={{ fontFamily: "var(--font-body)", fontSize: 10, color: "#667085", lineHeight: 1.2 }}>
-                      Protégé par<br />Cloudflare
-                    </span>
-                  </div>
                 </div>
 
 

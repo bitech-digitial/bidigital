@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
 
 type S = {
   w: number;
@@ -63,7 +62,6 @@ function Layer({
   fill,
 }: {
   shapes: S[];
-  y: string;
   border: string;
   fill: string;
 }) {
@@ -111,11 +109,6 @@ export default function FloatingShapesLayer({
     setMounted(true);
   }, []);
 
-  // Parallaxe JS supprimé — causait du jank. Animations CSS pures à la place.
-  const y1 = "0px";
-  const y2 = "0px";
-  const y3 = "0px";
-
   const isDark = variant === "dark";
   const colors = isDark
     ? {
@@ -143,9 +136,9 @@ export default function FloatingShapesLayer({
       className="absolute inset-0 pointer-events-none overflow-hidden"
       aria-hidden
     >
-      <Layer shapes={L1} y={y1} border={colors.l1} fill={colors.fill} />
-      <Layer shapes={L2} y={y2} border={colors.l2} fill={colors.fill} />
-      <Layer shapes={L3} y={y3} border={colors.l3} fill={colors.fill} />
+      <Layer shapes={L1} border={colors.l1} fill={colors.fill} />
+      <Layer shapes={L2} border={colors.l2} fill={colors.fill} />
+      <Layer shapes={L3} border={colors.l3} fill={colors.fill} />
     </div>
   );
 }

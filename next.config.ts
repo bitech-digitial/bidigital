@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: __dirname,
+  },
   serverExternalPackages: ["@react-pdf/renderer"],
   compress: true,
   poweredByHeader: false,
@@ -12,7 +17,7 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 86400,
+    minimumCacheTTL: 31536000,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
@@ -90,15 +95,19 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        source: "/_next/static/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
+      ...(isProd
+        ? [
+            {
+              source: "/_next/static/(.*)",
+              headers: [
+                {
+                  key: "Cache-Control",
+                  value: "public, max-age=31536000, immutable",
+                },
+              ],
+            },
+          ]
+        : []),
     ];
   },
 };

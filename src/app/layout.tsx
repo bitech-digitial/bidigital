@@ -1,15 +1,22 @@
 ﻿import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Instrument_Sans } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const heading = Plus_Jakarta_Sans({
+const heading = Poppins({
   subsets: ["latin"],
   variable: "--font-heading",
-  weight: ["600", "700", "800"],
+  weight: ["600", "700"],
   display: "swap",
 });
 
-const body = Instrument_Sans({
+const badge = Poppins({
+  subsets: ["latin"],
+  variable: "--font-badge",
+  weight: ["500", "600"],
+  display: "swap",
+});
+
+const body = Poppins({
   subsets: ["latin"],
   variable: "--font-body",
   weight: ["400", "500"],
@@ -85,7 +92,7 @@ export const metadata: Metadata = {
     siteName: "BiDigital — Agence Web",
     title: "BiDigital — Agence Web | Site Conforme, SEO & Maintenance",
     description:
-      "Création de site vitrine professionnel, 100% conforme RGPD, SEO inclus, maintenance 19,99€/mois sans engagement.",
+      "Création de site vitrine professionnel, 100% conforme RGPD, SEO inclus, maintenance sans engagement. Devis gratuit.",
     images: [
       {
         url: "/opengraph-image",
@@ -100,7 +107,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BiDigital — Agence Web | Site Conforme & SEO",
     description:
-      "Site vitrine professionnel, 100% conforme RGPD, SEO inclus, maintenance 19,99€/mois.",
+      "Site vitrine professionnel, 100% conforme RGPD, SEO inclus, maintenance sans engagement.",
     images: ["/opengraph-image"],
     creator: "@bidigital",
   },
@@ -186,10 +193,8 @@ const jsonLd = {
           {
             "@type": "Offer",
             name: "Maintenance & Évolution",
-            price: "19.99",
-            priceCurrency: "EUR",
             description:
-              "Maintenance mensuelle, SEO continu, mises à jour légales, sans engagement",
+              "Maintenance mensuelle, SEO continu, mises à jour légales, sans engagement. Devis personnalisé.",
           },
         ],
       },
@@ -207,10 +212,10 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          name: "Que comprend l'abonnement à 19,99€/mois ?",
+          name: "Que comprend l'abonnement de maintenance ?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "L'hébergement, le nom de domaine, les mises à jour légales et de sécurité, la surveillance SEO et toutes vos modifications. Sans engagement.",
+            text: "L'hébergement, le nom de domaine, les mises à jour légales et de sécurité, la surveillance SEO et toutes vos modifications. Sans engagement. Contactez-nous pour un devis personnalisé.",
           },
         },
         {
@@ -226,15 +231,13 @@ const jsonLd = {
   ],
 };
 
-import MobileStickyCTA from "@/components/ui/MobileStickyCTA";
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${heading.variable} ${body.variable}`}>
+    <html lang="fr" className={`${heading.variable} ${body.variable} ${badge.variable}`}>
       <head>
         <link rel="preconnect" href="https://app.cal.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://challenges.cloudflare.com" crossOrigin="anonymous" />
@@ -242,7 +245,6 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
-        <MobileStickyCTA />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
