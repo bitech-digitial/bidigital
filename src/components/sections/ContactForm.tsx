@@ -389,8 +389,9 @@ export default function ContactForm() {
                   type="submit"
                   disabled={status === "loading"}
                   className="flex items-center justify-center gap-2 w-full font-semibold text-sm transition-all duration-200 mt-1"
-                  style={{ borderRadius: 50, padding: "14px 32px" }}
                   style={{
+                    borderRadius: 50,
+                    padding: "14px 32px",
                     background: status === "loading"
                       ? "rgba(0,85,255,0.5)"
                       : "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
@@ -398,7 +399,7 @@ export default function ContactForm() {
                     fontFamily: "var(--font-body)",
                     border: "none",
                     cursor: status === "loading" ? "wait" : "pointer",
-                    boxShadow: status === "loading" ? "none" : "0 4px 20px rgba(0,122,255,0.3)",
+                    boxShadow: status === "loading" ? "none" : "0 4px 20px rgba(0,85,255,0.3)",
                   }}
                 >
                   {status === "loading" ? (
