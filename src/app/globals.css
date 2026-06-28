@@ -246,8 +246,13 @@ section {
   }
   .shooting-photo {
     width: 100% !important;
-    height: 100px;
+    height: 140px;
     flex-shrink: 0;
+    background: #f0f4ff;
+  }
+  .shooting-photo img {
+    object-fit: contain !important;
+    object-position: center center !important;
   }
 }
 
