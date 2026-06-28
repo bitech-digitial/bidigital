@@ -246,7 +246,8 @@ section {
   }
   .shooting-photo {
     width: 100% !important;
-    height: 140px;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
     flex-shrink: 0;
     background: #f0f4ff;
   }
