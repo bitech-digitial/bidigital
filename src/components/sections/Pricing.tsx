@@ -6,7 +6,7 @@ import { Check, Camera, Gift, Rocket } from "lucide-react";
 
 type PlanType = "vitrine" | "ecommerce";
 
-const plansData: Record<PlanType, typeof plans_vitrine> = {
+const plansData = {
   vitrine: [
     {
       name: "Essentiel",
