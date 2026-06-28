@@ -32,7 +32,7 @@ const realisations2 = [
 const TRACK1 = realisations1.length * (CARD_W + GAP);
 const TRACK2 = realisations2.length * (CARD_W + GAP);
 
-function BrowserCard({ realisation, lazy = false }: { realisation: (typeof realisations)[0]; lazy?: boolean }) {
+function BrowserCard({ realisation, lazy = false }: { realisation: (typeof realisations1)[0]; lazy?: boolean }) {
   return (
     <div
       style={{
