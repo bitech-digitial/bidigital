@@ -17,7 +17,7 @@ const expertises = [
     title: "Création de site e-commerce",
     description:
       "Nous développons des boutiques en ligne performantes, adaptées à votre activité et prêtes à vendre.",
-    href: null,
+    href: "/secteurs/ecommerce",
   },
   {
     icon: RefreshCw,
@@ -80,9 +80,11 @@ export default function Services() {
           <span
             className="inline-block px-3 py-1.5 rounded-full text-xs font-medium mb-4"
             style={{
-              background: "#e2f7ff",
+              background: "#ffffff",
               color: "#0055FF",
               fontFamily: "var(--font-badge)",
+              border: "1px solid rgba(25,30,79,0.10)",
+              boxShadow: "0 2px 8px rgba(25,30,79,0.10), 0 1px 2px rgba(25,30,79,0.06)",
             }}
           >
             Nos expertises

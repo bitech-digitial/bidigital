@@ -236,6 +236,50 @@ section {
   }
 }
 
+/* ── Shooting banner — mobile stack ── */
+@media (max-width: 639px) {
+  .shooting-banner {
+    flex-direction: column !important;
+  }
+  .shooting-text {
+    padding: 20px 20px !important;
+  }
+  .shooting-photo {
+    width: 100% !important;
+    height: 100px;
+    flex-shrink: 0;
+  }
+}
+
+/* ── Responsive — sections padding adaptatif ── */
+@media (max-width: 767px) {
+  /* Sections avec padding vertical 80px → réduit sur mobile */
+  section[style*="padding: 80px"] {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+  /* CTA dark sections */
+  section[style*="padding: 100px"] {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+  /* Titres h1 avec fontSize inline trop grands sur mobile */
+  h1[style*="fontSize"] {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  /* Images dans grilles 2-col — s'adapte en largeur */
+  .grid-bat-intro img,
+  .grid-heb-seo img,
+  .grid-svc-intro img,
+  .grid-svc-confiance img {
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+}
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -291,4 +335,26 @@ section {
 @keyframes countUp {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Pricing rainbow border ── */
+@keyframes rainbow-shift {
+  to { background-position: 0% center, 200% center; }
+}
+.btn-rainbow-border {
+  color: #ffffff;
+  font-weight: 600;
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(#191e4f, #191e4f),
+    linear-gradient(90deg, #0055FF, #00D2FF, #0055FF, #00D2FF);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-size: 100% 100%, 200% 100%;
+  animation: rainbow-shift 3s linear infinite;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }

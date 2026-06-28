@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ShoppingBag, CheckCircle2, ChevronDown, Star,
-  CreditCard, Package, Search, Truck, BarChart3, Shield,
+  CreditCard, Package, Search, Truck, BarChart3, Shield, Lock,
 } from "lucide-react";
 import CalButton from "@/components/ui/CalButton";
 import { WHATSAPP_LINK } from "@/lib/constants";
@@ -106,7 +106,7 @@ export default function EcommerceContent() {
             </div>
 
             <h1 style={{
-              fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 3.8vw, 3rem)",
+              fontFamily: "var(--font-heading)", fontSize: "clamp(1.4rem, 2.2vw, 1.8rem)",
               fontWeight: 900, color: "#191e4f", lineHeight: 1.1,
               letterSpacing: "-0.03em", marginBottom: 20,
             }}>
@@ -123,14 +123,9 @@ export default function EcommerceContent() {
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <CalButton style={{
-                fontSize: 15, padding: "12px 24px", borderRadius: 50,
-                background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
-                color: "#FFFFFF", boxShadow: "0 4px 18px rgba(0,85,255,0.35)",
-                border: "none", fontWeight: 700,
-              }}>
-                Demander un devis gratuit
-              </CalButton>
+              <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 700, fontFamily: "var(--font-heading)", padding: "12px 24px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#FFFFFF", boxShadow: "0 4px 18px rgba(0,85,255,0.35)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                Demander ma maquette gratuite
+              </a>
               <a href="#focus-produit" style={{
                 display: "inline-flex", alignItems: "center", gap: 6,
                 fontSize: 15, fontWeight: 600, color: "#474667",
@@ -162,7 +157,7 @@ export default function EcommerceContent() {
 
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/ecommerce-hero.webp"
+              src="/images/commerce.webp"
               alt="Boutique en ligne e-commerce — achat sécurisé BiDigital"
               style={{
                 position: "relative", zIndex: 1,
@@ -242,49 +237,93 @@ export default function EcommerceContent() {
           style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 64, alignItems: "center" }}
           className="grid-ecom-boutique"
         >
-          {/* Gauche — mockup boutique avec coins arrondis */}
+          {/* Gauche — photo produit */}
           <motion.div
             initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.65 }}
           >
-            <div style={{
-              borderRadius: 18, overflow: "hidden",
-              border: "1px solid rgba(25,30,79,0.08)",
-            }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div style={{ borderRadius: 18, overflow: "hidden", border: "1px solid rgba(25,30,79,0.08)", boxShadow: "0 8px 40px rgba(25,30,79,0.10)" }}>
               {/* Barre browser */}
               <div style={{ background: "#030E13", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
                 {["#ff5f57", "#febc2e", "#28c840"].map((c) => <div key={c} style={{ width: 8, height: 8, borderRadius: "50%", background: c }} />)}
                 <div style={{ marginLeft: 10, flex: 1, maxWidth: 280, background: "rgba(0,85,255,0.06)", borderRadius: 5, height: 22, padding: "0 10px", display: "flex", alignItems: "center", border: "1px solid rgba(0,85,255,0.1)" }}>
-                  <span style={{ fontSize: 10, color: "rgba(0,85,255,0.35)", fontFamily: "monospace" }}>🔒 ma-boutique.fr</span>
+                  <Lock size={9} style={{ color: "rgba(0,85,255,0.35)", marginRight: 5 }} />
+                  <span style={{ fontSize: 10, color: "rgba(0,85,255,0.35)", fontFamily: "monospace" }}>ma-boutique.fr</span>
                 </div>
               </div>
-              {/* Contenu boutique simulé */}
-              <div style={{ background: "#FFFFFF", padding: "24px 24px 28px" }}>
-                {/* Barre de navigation boutique */}
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid rgba(25,30,79,0.08)" }}>
-                  <div style={{ width: 70, height: 10, background: "#191e4f", borderRadius: 4, opacity: 0.7 }} />
-                  <div style={{ display: "flex", gap: 12 }}>
-                    {[50, 40, 55, 45].map((w, i) => <div key={i} style={{ width: w, height: 8, background: "rgba(25,30,79,0.2)", borderRadius: 4 }} />)}
-                  </div>
-                  <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#e2f7ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <ShoppingBag size={14} color="#0055FF" />
-                  </div>
+              {/* Fiche produit */}
+              <div style={{ background: "#ffffff", display: "flex" }}>
+                {/* Photo produit */}
+                <div style={{ width: "42%", flexShrink: 0, position: "relative", background: "#f5f3f0" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/ecommerce.webp"
+                    alt="T-shirt en lin Marine"
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block", minHeight: 320 }}
+                    loading="lazy" decoding="async" />
+                  <span style={{ position: "absolute", top: 10, left: 10, background: "#191e4f", color: "#fff", fontSize: 8, fontWeight: 700, padding: "3px 8px", borderRadius: 50, letterSpacing: "0.06em", fontFamily: "var(--font-badge)" }}>
+                    NOUVEAUTÉ · EN STOCK
+                  </span>
                 </div>
-                {/* Grille produits */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
-                  {[
-                    { accent: "#0055FF" }, { accent: "#00D2FF" }, { accent: "#474667" },
-                    { accent: "#191e4f" }, { accent: "#0055FF" }, { accent: "#00D2FF" },
-                  ].map((p, i) => (
-                    <div key={i} style={{ borderRadius: 10, overflow: "hidden", border: "1px solid rgba(25,30,79,0.08)" }}>
-                      <div style={{ height: 80, background: `rgba(${i % 2 === 0 ? "0,85,255" : "0,210,255"},0.07)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <ShoppingBag size={18} color={`${p.accent}60`} />
-                      </div>
-                      <div style={{ padding: "8px 10px" }}>
-                        <div style={{ width: "75%", height: 6, background: "#191e4f", borderRadius: 3, marginBottom: 5, opacity: 0.5 }} />
-                        <div style={{ width: "50%", height: 7, background: p.accent, borderRadius: 3, opacity: 0.7 }} />
-                      </div>
+
+                {/* Infos produit */}
+                <div style={{ flex: 1, padding: "20px 18px", display: "flex", flexDirection: "column", gap: 10 }}>
+                  <div>
+                    <p style={{ fontSize: 9.5, color: "#9b9fb9", fontFamily: "var(--font-body)", marginBottom: 4 }}>Unisexe · T-shirts</p>
+                    <h3 style={{ fontSize: 13, fontWeight: 800, color: "#191e4f", fontFamily: "var(--font-heading)", lineHeight: 1.3, marginBottom: 6 }}>
+                      T-shirt en lin naturel<br />
+                      <span style={{ fontWeight: 500, color: "#474667" }}>Coloris Marine</span>
+                    </h3>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                      <span style={{ fontSize: 18, fontWeight: 800, color: "#191e4f", fontFamily: "var(--font-heading)" }}>59,00 €</span>
                     </div>
-                  ))}
+                    <p style={{ fontSize: 9, color: "#059669", fontWeight: 600, fontFamily: "var(--font-body)", marginTop: 3 }}>
+                      Livraison gratuite dès 60 € · Retours 30 jours
+                    </p>
+                  </div>
+
+                  <div style={{ height: 1, background: "rgba(25,30,79,0.07)" }} />
+
+                  <div>
+                    <p style={{ fontSize: 9.5, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-heading)", marginBottom: 6 }}>
+                      Couleur : <span style={{ fontWeight: 400, color: "#474667" }}>Marine</span>
+                    </p>
+                    <div style={{ display: "flex", gap: 6 }}>
+                      {[
+                        { color: "#1e3a5f", label: "Marine", active: true },
+                        { color: "#C9B99A", label: "Sable" },
+                        { color: "#6B7280", label: "Gris" },
+                        { color: "#D1FAE5", label: "Sauge" },
+                      ].map((c) => (
+                        <div key={c.label} title={c.label} style={{ width: 18, height: 18, borderRadius: "50%", background: c.color, border: c.active ? "2px solid #0055FF" : "1.5px solid rgba(25,30,79,0.15)", boxShadow: c.active ? "0 0 0 1px #fff inset" : "none", cursor: "pointer" }} />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p style={{ fontSize: 9.5, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-heading)", marginBottom: 6 }}>Taille</p>
+                    <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+                      {["XS", "S", "M", "L", "XL"].map((s) => (
+                        <div key={s} style={{ padding: "4px 8px", borderRadius: 6, fontSize: 9.5, fontWeight: 600, fontFamily: "var(--font-heading)", cursor: "pointer", background: s === "M" ? "#191e4f" : "transparent", color: s === "M" ? "#fff" : "#474667", border: s === "M" ? "1.5px solid #191e4f" : "1.5px solid rgba(25,30,79,0.2)" }}>{s}</div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div style={{ height: 1, background: "rgba(25,30,79,0.07)" }} />
+
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <button style={{ width: "100%", padding: "8px", borderRadius: 8, background: "#191e4f", color: "#fff", border: "none", fontSize: 10, fontWeight: 700, fontFamily: "var(--font-heading)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
+                      <ShoppingBag size={11} /> Ajouter au panier
+                    </button>
+                    <button style={{ width: "100%", padding: "8px", borderRadius: 8, background: "linear-gradient(90deg, #0055FF, #00D2FF)", color: "#fff", border: "none", fontSize: 10, fontWeight: 700, fontFamily: "var(--font-heading)", cursor: "pointer" }}>
+                      Acheter maintenant
+                    </button>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 2 }}>
+                    <span style={{ color: "#f59e0b", fontSize: 10 }}>★★★★★</span>
+                    <span style={{ fontSize: 9, color: "#9b9fb9", fontFamily: "var(--font-body)" }}>4,9 · 128 avis</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -359,134 +398,6 @@ export default function EcommerceContent() {
             Combiné à votre ancrage local, ce double effet vous permet de <strong style={{ color: "#191e4f" }}>toucher à la fois vos
             clients de proximité et des acheteurs partout en France</strong> — sans multiplier les budgets
             publicitaires. Votre boutique en ligne devient le prolongement naturel de votre boutique physique.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* ── H. FOCUS INTERFACE — Fiche produit simulée ───────────────────── */}
-      <section id="focus-produit" style={{ background: "#f8faff", padding: "80px 24px" }}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.7 }}
-          style={{ maxWidth: 1020, margin: "0 auto" }}
-        >
-          <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#0055FF", fontFamily: "var(--font-body)", marginBottom: 12, textAlign: "center" }}>
-            Focus interface
-          </p>
-          <h2 style={{
-            fontFamily: "var(--font-heading)", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)",
-            fontWeight: 800, color: "#191e4f", lineHeight: 1.2, letterSpacing: "-0.025em",
-            marginBottom: 48, textAlign: "center",
-          }}>
-            La fiche produit qui{" "}
-            <span style={{ position: "relative", display: "inline-block" }}>
-              <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
-                déclenche l&apos;achat
-              </span>
-              <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
-            </span>
-          </h2>
-
-          <div style={{
-            borderRadius: 20, overflow: "hidden",
-            border: "1px solid rgba(25,30,79,0.08)",
-          }}>
-            <div style={{ background: "#030E13", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-              {["#ff5f57", "#febc2e", "#28c840"].map((c) => <div key={c} style={{ width: 8, height: 8, borderRadius: "50%", background: c }} />)}
-              <div style={{ marginLeft: 10, flex: 1, maxWidth: 300, background: "rgba(0,85,255,0.06)", borderRadius: 5, height: 22, padding: "0 10px", display: "flex", alignItems: "center", border: "1px solid rgba(0,85,255,0.1)" }}>
-                <span style={{ fontSize: 10, color: "rgba(0,85,255,0.35)", fontFamily: "monospace" }}>🔒 ma-boutique.fr/produit/123</span>
-              </div>
-            </div>
-
-            <div style={{ background: "#FFFFFF", padding: "32px 40px 40px" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }} className="grid-ecom-focus">
-
-                {/* Gauche — galerie produit */}
-                <div>
-                  <div style={{
-                    background: "rgba(0,85,255,0.06)", borderRadius: 14, height: 280,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    border: "1px solid rgba(25,30,79,0.08)", marginBottom: 12,
-                  }}>
-                    <div style={{ textAlign: "center" }}>
-                      <ShoppingBag size={48} color="rgba(0,85,255,0.25)" />
-                    </div>
-                  </div>
-                  {/* Miniatures */}
-                  <div style={{ display: "flex", gap: 8 }}>
-                    {[1,2,3,4].map((i) => (
-                      <div key={i} style={{
-                        flex: 1, height: 56, borderRadius: 8,
-                        background: i === 1 ? "rgba(0,85,255,0.12)" : "rgba(0,85,255,0.05)",
-                        border: i === 1 ? "2px solid #0055FF" : "1px solid rgba(25,30,79,0.08)",
-                      }} />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Droite — informations produit */}
-                <div>
-                  <div style={{ fontSize: 11, fontWeight: 600, color: "#0055FF", letterSpacing: "0.08em", fontFamily: "var(--font-body)", marginBottom: 8 }}>
-                    NOUVEAUTÉ · EN STOCK
-                  </div>
-                  <div style={{ fontFamily: "var(--font-heading)", fontSize: 22, fontWeight: 800, color: "#191e4f", marginBottom: 6, lineHeight: 1.2 }}>
-                    Veste en lin naturel — Coloris Sable
-                  </div>
-                  <div style={{ fontFamily: "var(--font-heading)", fontSize: 28, fontWeight: 900, color: "#0055FF", marginBottom: 4 }}>
-                    89,00 €
-                  </div>
-                  <div style={{ fontSize: 12, color: "#474667", fontFamily: "var(--font-body)", marginBottom: 20 }}>
-                    Livraison gratuite dès 60 € · Retours 30 jours
-                  </div>
-
-                  {/* Couleurs */}
-                  <div style={{ marginBottom: 18 }}>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: "#191e4f", fontFamily: "var(--font-heading)", marginBottom: 8 }}>Couleur : Sable</div>
-                    <div style={{ display: "flex", gap: 8 }}>
-                      {["#C4A882", "#191e4f", "#0055FF", "#FFFFFF"].map((c, i) => (
-                        <div key={c} style={{
-                          width: 28, height: 28, borderRadius: "50%", background: c,
-                          border: i === 0 ? "2px solid #0055FF" : "1px solid rgba(25,30,79,0.2)",
-                          boxShadow: i === 0 ? "0 0 0 2px rgba(0,85,255,0.3)" : "none",
-                        }} />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Tailles */}
-                  <div style={{ marginBottom: 24 }}>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: "#191e4f", fontFamily: "var(--font-heading)", marginBottom: 8 }}>Taille</div>
-                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                      {["XS", "S", "M", "L", "XL"].map((t, i) => (
-                        <div key={t} style={{
-                          padding: "6px 14px", borderRadius: 8, fontSize: 12, fontWeight: 700,
-                          background: i === 2 ? "#0055FF" : "rgba(0,85,255,0.06)",
-                          color: i === 2 ? "#16182e" : "#191e4f",
-                          border: i === 2 ? "none" : "1px solid rgba(25,30,79,0.08)",
-                          fontFamily: "var(--font-body)",
-                        }}>
-                          {t}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Bouton panier */}
-                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                    <div style={{ width: "100%", height: 44, background: "#0055FF", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                      <ShoppingBag size={16} color="#16182e" />
-                      <span style={{ fontSize: 14, fontWeight: 800, color: "#16182e", fontFamily: "var(--font-heading)" }}>Ajouter au panier</span>
-                    </div>
-                    <div style={{ width: "100%", height: 40, background: "transparent", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid rgba(25,30,79,0.08)" }}>
-                      <span style={{ fontSize: 13, fontWeight: 600, color: "#474667", fontFamily: "var(--font-body)" }}>Acheter maintenant</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p style={{ textAlign: "center", fontSize: 12, color: "#474667", fontFamily: "var(--font-body)", marginTop: 20 }}>
-            Interface fiche produit — adaptée à votre catalogue et votre identité visuelle
           </p>
         </motion.div>
       </section>
@@ -576,33 +487,23 @@ export default function EcommerceContent() {
             physique, créateur indépendant ou pure-player.
           </p>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
-            {metiers.map((m, i) => (
-              <motion.div
-                key={m}
-                initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.35, delay: i * 0.04 }}
-                style={{
-                  padding: "10px 20px", borderRadius: 999,
-                  background: "#FFFFFF", border: "1px solid rgba(25,30,79,0.08)",
-                  fontSize: 14, fontWeight: 600, color: "#191e4f",
-                  fontFamily: "var(--font-body)", cursor: "default",
-                  transition: "all 0.15s",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "#e2f7ff";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,85,255,0.25)";
-                  (e.currentTarget as HTMLElement).style.color = "#0055FF";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "#FFFFFF";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(25,30,79,0.08)";
-                  (e.currentTarget as HTMLElement).style.color = "#191e4f";
-                }}
-              >
-                {m}
-              </motion.div>
-            ))}
+          <div style={{ position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to right, #f8faff 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to left, #f8faff 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ overflow: "hidden", marginBottom: 12 }}>
+              <div className="ecom-track-left">
+                {[...metiers.slice(0, 8), ...metiers.slice(0, 8)].map((m, i) => (
+                  <div key={i} style={{ padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12, background: "#ffffff", border: "1px solid rgba(25,30,79,0.10)", boxShadow: "0 2px 8px rgba(0,85,255,0.07)", fontSize: 14, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>{m}</div>
+                ))}
+              </div>
+            </div>
+            <div style={{ overflow: "hidden" }}>
+              <div className="ecom-track-right">
+                {[...metiers.slice(8), ...metiers.slice(8)].map((m, i) => (
+                  <div key={i} style={{ padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12, background: "#ffffff", border: "1px solid rgba(25,30,79,0.10)", boxShadow: "0 2px 8px rgba(0,85,255,0.07)", fontSize: 14, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>{m}</div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
@@ -730,6 +631,10 @@ export default function EcommerceContent() {
       </section>
 
       <style>{`
+        @keyframes ecom-left  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes ecom-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        .ecom-track-left  { display: flex; width: max-content; animation: ecom-left  28s linear infinite; }
+        .ecom-track-right { display: flex; width: max-content; animation: ecom-right 28s linear infinite; }
         @media (max-width: 900px) {
           .grid-ecom-hero,
           .grid-ecom-boutique,

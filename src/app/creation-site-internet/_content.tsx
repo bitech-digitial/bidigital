@@ -91,7 +91,7 @@ const faqs = [
   },
   {
     q: "La maintenance est-elle nécessaire après la création du site ?",
-    a: "La maintenance assure la sécurité de votre site, la mise à jour des composants, la conformité légale et le bon fonctionnement au quotidien. Contactez-nous pour un devis personnalisé adapté à vos besoins, sans engagement.",
+    a: "Elle n'est pas obligatoire, mais fortement recommandée. La maintenance assure la sécurité de votre site, la mise à jour des composants, la conformité légale et le bon fonctionnement au quotidien. Contactez-nous pour un devis personnalisé adapté à vos besoins, sans engagement.",
   },
 ];
 
@@ -102,9 +102,11 @@ function SectionBadge({ children }: { children: string }) {
     <span
       className="inline-block px-3 py-1.5 rounded-full text-xs font-medium mb-4"
       style={{
-        background: "#e2f7ff",
+        background: "#ffffff",
         color: "#0055FF",
         fontFamily: "var(--font-badge)",
+        border: "1px solid rgba(25,30,79,0.10)",
+        boxShadow: "0 2px 8px rgba(25,30,79,0.10), 0 1px 2px rgba(25,30,79,0.06)",
       }}
     >
       {children}
@@ -158,7 +160,7 @@ export default function CreationSiteContent() {
                 style={{ aspectRatio: "4/5", maxHeight: 540 }}
               >
                 <Image
-                  src="/images/site-internet.webp"
+                  src="/images/site-internet-new.webp"
                   alt="Création de site internet sur-mesure par BiDigital"
                   fill
                   style={{ objectFit: "cover", objectPosition: "center" }}
@@ -219,9 +221,22 @@ export default function CreationSiteContent() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <CalButton style={{ fontSize: 15, padding: "13px 24px", borderRadius: 50 }}>
-                  Demander un devis gratuit
-                </CalButton>
+                <a
+                  href="/maquette"
+                  style={{
+                    display: "inline-flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)",
+                    padding: "13px 24px", borderRadius: 50, textDecoration: "none",
+                    background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
+                    color: "#fff", border: "none",
+                    boxShadow: "0 4px 20px rgba(0,85,255,0.25)",
+                    transition: "opacity 0.2s",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
+                >
+                  Demander ma maquette gratuite
+                </a>
                 <a
                   href="#services"
                   className="inline-flex items-center justify-center gap-2 font-semibold text-sm"
@@ -470,8 +485,8 @@ export default function CreationSiteContent() {
                 style={{ aspectRatio: "16/10" }}
               >
                 <Image
-                  src="/images/site-internet-securise.webp"
-                  alt="Site internet sécurisé et performant — BiDigital"
+                  src="/images/maintenance.webp"
+                  alt="Maintenance et sécurité de site internet — BiDigital"
                   fill
                   style={{ objectFit: "cover", objectPosition: "center" }}
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -641,66 +656,73 @@ export default function CreationSiteContent() {
       ══════════════════════════════════════════════════════════════ */}
       <section
         className="relative py-20 md:py-28 px-4 overflow-hidden text-center"
-        style={{ background: "#16182e" }}
+        style={{ background: "#ffffff" }}
       >
-        {/* Halo centré */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            width: 700, height: 700,
-            top: "50%", left: "50%",
-            transform: "translate(-50%, -50%)",
-            background: "radial-gradient(circle, rgba(0,85,255,0.30) 0%, rgba(0,210,255,0.10) 50%, transparent 70%)",
-          }}
-        />
-
         <div className="relative z-10 max-w-2xl mx-auto">
-          <span
-            className="inline-block px-3 py-1.5 rounded-full text-xs font-medium mb-6"
-            style={{ background: "rgba(0,85,255,0.2)", color: "#00D2FF", fontFamily: "var(--font-badge)" }}
-          >
-            Projet web ?
-          </span>
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight"
-            style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF", letterSpacing: "-0.025em" }}
-          >
-            Vous avez un projet web ?
-          </h2>
-          <p
-            className="text-base mb-8 mx-auto"
-            style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.75)", maxWidth: 440 }}
-          >
-            Contactez-nous via notre formulaire ou directement sur WhatsApp.
-            Nous vous répondons dans les 24h avec une proposition sur-mesure.
-          </p>
+          <div style={{
+            background: "linear-gradient(135deg, #0055FF 0%, #00D2FF 100%)",
+            borderRadius: 24,
+            padding: "40px 36px",
+            boxShadow: "0 12px 48px rgba(0,85,255,0.25)",
+          }}>
+            <span
+              className="inline-block px-3 py-1.5 rounded-full text-xs font-medium mb-6"
+              style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff", fontFamily: "var(--font-badge)" }}
+            >
+              Projet web ?
+            </span>
+            <h2
+              className="font-extrabold mb-4"
+              style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF", letterSpacing: "-0.025em", fontSize: "clamp(22px, 3.5vw, 42px)", whiteSpace: "nowrap" }}
+            >
+              Vous avez un projet web ?
+            </h2>
+            <p
+              className="text-base mb-8 mx-auto"
+              style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.85)", maxWidth: 440 }}
+            >
+              Contactez-nous via notre formulaire ou directement sur WhatsApp.
+              Nous vous répondons avec une proposition sur-mesure.
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <CalButton
-              style={{ fontSize: 15, padding: "13px 28px", borderRadius: 50 }}
-            >
-              Demander un devis
-            </CalButton>
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-semibold text-sm"
-              style={{
-                fontFamily: "var(--font-heading)",
-                background: "rgba(255,255,255,0.15)",
-                color: "rgba(255,255,255,0.90)",
-                border: "1px solid rgba(255,255,255,0.3)",
-                padding: "13px 28px",
-                borderRadius: 50,
-                textDecoration: "none",
-                transition: "background 0.2s",
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.22)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.15)"; }}
-            >
-              Écrire sur WhatsApp
-            </a>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a
+                href="/maquette"
+                style={{
+                  display: "inline-flex", alignItems: "center", justifyContent: "center",
+                  fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)",
+                  padding: "13px 28px", borderRadius: 50, textDecoration: "none",
+                  background: "#ffffff",
+                  color: "#0055FF", border: "none",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
+                  transition: "opacity 0.2s",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
+              >
+                Demander une maquette
+              </a>
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-semibold text-sm"
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  background: "rgba(255,255,255,0.15)",
+                  color: "#ffffff",
+                  border: "1px solid rgba(255,255,255,0.4)",
+                  padding: "13px 28px",
+                  borderRadius: 50,
+                  textDecoration: "none",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.25)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.15)"; }}
+              >
+                Écrire sur WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </section>

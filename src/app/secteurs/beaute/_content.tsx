@@ -96,7 +96,7 @@ export default function BeauteContent() {
             </div>
 
             <h1 style={{
-              fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 3.8vw, 3rem)",
+              fontFamily: "var(--font-heading)", fontSize: "clamp(1.4rem, 2.2vw, 1.8rem)",
               fontWeight: 900, color: "#191e4f", lineHeight: 1.1,
               letterSpacing: "-0.03em", marginBottom: 20,
             }}>
@@ -113,14 +113,9 @@ export default function BeauteContent() {
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <CalButton style={{
-                fontSize: 15, padding: "12px 24px", borderRadius: 50,
-                background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
-                color: "#FFFFFF", boxShadow: "0 4px 18px rgba(0,85,255,0.35)",
-                border: "none", fontWeight: 700,
-              }}>
-                Demander un devis gratuit
-              </CalButton>
+              <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 700, fontFamily: "var(--font-heading)", padding: "12px 24px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#FFFFFF", boxShadow: "0 4px 18px rgba(0,85,255,0.35)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                Demander ma maquette gratuite
+              </a>
               <a href="#nos-offres" style={{
                 display: "inline-flex", alignItems: "center", gap: 6,
                 fontSize: 15, fontWeight: 600, color: "#474667",
@@ -153,7 +148,7 @@ export default function BeauteContent() {
 
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/beaute-1.webp"
+              src="/images/salon-beaute.webp"
               alt="Site internet pour instituts de beauté et esthéticiennes"
               style={{
                 position: "relative", zIndex: 1,
@@ -198,7 +193,7 @@ export default function BeauteContent() {
           {/* Photo gauche */}
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.65 }}>
             <img
-              src="/images/beaute-secteur.webp"
+              src="/images/salon-beaute-2.webp"
               alt="Institut de beauté — vitrine digitale professionnelle"
               style={{ width: "100%", borderRadius: 20, aspectRatio: "4/3", objectFit: "cover", objectPosition: "center", display: "block" }}
               loading="lazy" decoding="async" />
@@ -206,7 +201,7 @@ export default function BeauteContent() {
           {/* Texte droite */}
           <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.65, delay: 0.1 }}>
             <SectionBadge>Votre secteur</SectionBadge>
-            <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.7rem, 2.8vw, 2.4rem)", fontWeight: 800, color: "#191e4f", lineHeight: 1.15, letterSpacing: "-0.025em", marginBottom: 20 }}>
+            <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.3rem, 2vw, 1.7rem)", fontWeight: 800, color: "#191e4f", lineHeight: 1.15, letterSpacing: "-0.025em", marginBottom: 20 }}>
               Beauté et bien-être : votre expertise mérite une vitrine digitale à la hauteur
             </h2>
             <p style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "#474667", lineHeight: 1.8, marginBottom: 16 }}>
@@ -229,7 +224,7 @@ export default function BeauteContent() {
           {/* Texte gauche */}
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.65 }}>
             <SectionBadge>Réservation en ligne</SectionBadge>
-            <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.7rem, 2.8vw, 2.4rem)", fontWeight: 800, color: "#191e4f", lineHeight: 1.15, letterSpacing: "-0.025em", marginBottom: 20 }}>
+            <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(1.3rem, 2vw, 1.7rem)", fontWeight: 800, color: "#191e4f", lineHeight: 1.15, letterSpacing: "-0.025em", marginBottom: 20 }}>
               Un agenda intelligent pour multiplier vos prises de rendez-vous
             </h2>
             <p style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "#474667", lineHeight: 1.8, marginBottom: 16 }}>
@@ -250,13 +245,72 @@ export default function BeauteContent() {
               ))}
             </div>
           </motion.div>
-          {/* Photo droite */}
+          {/* Calendrier client */}
           <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.65, delay: 0.1 }}>
-            <img
-              src="/images/beaute-booking.webp"
-              alt="Réservation en ligne beauté — agenda digital sur smartphone"
-              style={{ width: "100%", borderRadius: 20, aspectRatio: "4/3", objectFit: "cover", objectPosition: "center top", display: "block" }}
-              loading="lazy" decoding="async" />
+            <div style={{ background: "#ffffff", borderRadius: 24, boxShadow: "0 8px 48px rgba(25,30,79,0.13)", overflow: "hidden", border: "1px solid rgba(25,30,79,0.07)" }}>
+
+              {/* Header */}
+              <div style={{ background: "linear-gradient(135deg, #0055FF 0%, #00D2FF 100%)", padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div>
+                  <div style={{ fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-body)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 2 }}>Prendre un rendez-vous</div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: "#fff", fontFamily: "var(--font-heading)" }}>Juin 2025</div>
+                </div>
+                <div style={{ display: "flex", gap: 6 }}>
+                  {["‹", "›"].map((a) => (
+                    <div key={a} style={{ width: 28, height: 28, borderRadius: 8, background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#fff", fontWeight: 700, cursor: "pointer" }}>{a}</div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Calendrier */}
+              <div style={{ padding: "14px 16px 0" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 2, marginBottom: 6 }}>
+                  {["L","M","M","J","V","S","D"].map((j, i) => (
+                    <div key={i} style={{ textAlign: "center", fontSize: 10, fontWeight: 700, color: "#9b9fb9", fontFamily: "var(--font-body)", paddingBottom: 6 }}>{j}</div>
+                  ))}
+                  {[
+                    { d: "", e: true }, { d: "", e: true },
+                    { d: "1" }, { d: "2" }, { d: "3", off: true }, { d: "4" }, { d: "5", off: true },
+                    { d: "6", off: true }, { d: "7" }, { d: "8" }, { d: "9" }, { d: "10" }, { d: "11" }, { d: "12", off: true },
+                    { d: "13", off: true }, { d: "14" }, { d: "15", sel: true }, { d: "16" }, { d: "17" }, { d: "18" }, { d: "19", off: true },
+                    { d: "20", off: true }, { d: "21" }, { d: "22" }, { d: "23" }, { d: "24" }, { d: "25" }, { d: "26", off: true },
+                    { d: "27", off: true }, { d: "28" }, { d: "29" }, { d: "30" },
+                  ].map((c, i) => (
+                    <div key={i} style={{
+                      aspectRatio: "1", display: "flex", alignItems: "center", justifyContent: "center",
+                      borderRadius: 7, fontSize: 12, fontWeight: c.sel ? 800 : 500, cursor: c.e || c.off ? "default" : "pointer",
+                      background: c.sel ? "#0055FF" : "transparent",
+                      color: c.sel ? "#fff" : c.e ? "transparent" : c.off ? "rgba(25,30,79,0.18)" : "#191e4f",
+                    }}>{c.d}</div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Créneaux */}
+              <div style={{ padding: "10px 16px 0", borderTop: "1px solid rgba(25,30,79,0.06)" }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "#9b9fb9", fontFamily: "var(--font-body)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8 }}>Créneaux disponibles · 15 juin</div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {["09:00", "09:30", "10:30", "11:00", "14:00", "14:30", "15:30", "16:00"].map((h, i) => (
+                    <div key={h} style={{
+                      padding: "6px 11px", borderRadius: 8, fontSize: 12, fontWeight: 600,
+                      fontFamily: "var(--font-body)", cursor: "pointer",
+                      background: i === 2 ? "#0055FF" : "rgba(0,85,255,0.05)",
+                      color: i === 2 ? "#fff" : "#191e4f",
+                      border: i === 2 ? "1.5px solid #0055FF" : "1.5px solid rgba(0,85,255,0.15)",
+                    }}>{h}</div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div style={{ padding: "14px 16px 16px" }}>
+                <div style={{ width: "100%", padding: "11px", borderRadius: 12, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, cursor: "pointer", boxShadow: "0 4px 14px rgba(0,85,255,0.28)" }}>
+                  <span style={{ fontSize: 13, fontWeight: 800, color: "#fff", fontFamily: "var(--font-heading)" }}>Confirmer mon rendez-vous →</span>
+                </div>
+                <div style={{ textAlign: "center", fontSize: 10, color: "#9b9fb9", fontFamily: "var(--font-body)", marginTop: 7 }}>Confirmation par SMS · Gratuit · Sans compte</div>
+              </div>
+
+            </div>
           </motion.div>
         </div>
       </section>
@@ -282,22 +336,35 @@ export default function BeauteContent() {
             accompagne tous les professionnels de la beauté-santé.
           </p>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
-            {metiers.map((m, i) => (
-              <motion.div
-                key={m}
-                initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.35, delay: i * 0.04 }}
-                style={{
-                  padding: "10px 20px", borderRadius: 999,
-                  background: "#0055FF",
-                  fontSize: 14, fontWeight: 600, color: "#FFFFFF",
-                  fontFamily: "var(--font-body)", cursor: "default",
-                }}
-              >
-                {m}
-              </motion.div>
-            ))}
+          {/* Ticker ligne 1 — gauche */}
+          <div style={{ overflow: "hidden", marginBottom: 12 }}>
+            <div className="marquee-track-left" style={{ gap: 12 }}>
+              {[...metiers.slice(0, 8), ...metiers.slice(0, 8)].map((m, i) => (
+                <div key={i} style={{
+                  padding: "10px 22px", borderRadius: 999, flexShrink: 0,
+                  background: "#ffffff",
+                  border: "1px solid rgba(25,30,79,0.10)",
+                  boxShadow: "0 2px 8px rgba(0,85,255,0.07)",
+                  fontSize: 14, fontWeight: 600, color: "#191e4f",
+                  fontFamily: "var(--font-body)", marginRight: 12,
+                }}>{m}</div>
+              ))}
+            </div>
+          </div>
+          {/* Ticker ligne 2 — droite */}
+          <div style={{ overflow: "hidden" }}>
+            <div className="marquee-track-right" style={{ gap: 12 }}>
+              {[...metiers.slice(8), ...metiers.slice(8)].map((m, i) => (
+                <div key={i} style={{
+                  padding: "10px 22px", borderRadius: 999, flexShrink: 0,
+                  background: "#ffffff",
+                  border: "1px solid rgba(25,30,79,0.10)",
+                  boxShadow: "0 2px 8px rgba(0,85,255,0.07)",
+                  fontSize: 14, fontWeight: 600, color: "#191e4f",
+                  fontFamily: "var(--font-body)", marginRight: 12,
+                }}>{m}</div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </section>
@@ -422,6 +489,16 @@ export default function BeauteContent() {
       </section>
 
       <style>{`
+        @keyframes marquee-left {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-right {
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .marquee-track-left  { display: flex; width: max-content; animation: marquee-left  28s linear infinite; }
+        .marquee-track-right { display: flex; width: max-content; animation: marquee-right 28s linear infinite; }
         @media (max-width: 900px) {
           .grid-beaute-hero,
           .grid-beaute-mockups,

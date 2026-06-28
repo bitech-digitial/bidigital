@@ -154,13 +154,14 @@ export default function Referencement() {
             <a
               href="#contact"
               className="inline-flex items-center gap-2 font-semibold text-sm transition-all duration-200"
-              style={{ borderRadius: 50, padding: "12px 24px" }}
               style={{
+                borderRadius: 50,
+                padding: "12px 24px",
                 background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
                 color: "#FFFFFF",
                 fontFamily: "var(--font-body)",
                 textDecoration: "none",
-                boxShadow: "0 4px 20px rgba(0,122,255,0.3)",
+                boxShadow: "none",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.boxShadow = "0 6px 28px rgba(0,180,255,0.45)";

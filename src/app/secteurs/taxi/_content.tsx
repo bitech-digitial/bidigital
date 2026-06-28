@@ -97,6 +97,10 @@ export default function TaxiContent() {
           grid-template-columns: 1fr 1fr;
           gap: 24px;
         }
+        @keyframes taxi-left  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes taxi-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        .taxi-track-left  { display: flex; width: max-content; animation: taxi-left  28s linear infinite; }
+        .taxi-track-right { display: flex; width: max-content; animation: taxi-right 28s linear infinite; }
         @media (max-width: 900px) {
           .grid-taxi-hero { grid-template-columns: 1fr; gap: 40px; }
           .grid-taxi-besoins { grid-template-columns: 1fr 1fr; }
@@ -195,12 +199,13 @@ export default function TaxiContent() {
               }} />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/taxi-1.webp"
+                src="/images/taxi.webp"
                 alt="Création site internet pour taxi et VTC"
                 style={{
                   position: "relative", zIndex: 1, borderRadius: 20,
-                  width: "100%", height: "auto", display: "block",
-                  objectFit: "cover", aspectRatio: "4/3",
+                  width: "100%", display: "block",
+                  objectFit: "cover", aspectRatio: "1 / 1",
+                  boxShadow: "0 20px 60px rgba(25,30,79,0.12)",
                 }}
                 fetchPriority="high" decoding="async" />
             </motion.div>
@@ -392,55 +397,50 @@ export default function TaxiContent() {
             <motion.div
               variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
             >
-              <div style={{ background: "rgba(0,85,255,0.07)", borderRadius: 20, padding: 28 }}>
-                <div
-                  style={{ background: "#FFFFFF", borderRadius: 14, overflow: "hidden", border: "1px solid rgba(25,30,79,0.08)", transition: "box-shadow 0.2s" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(25,30,79,0.10)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
-                >
-                  <div style={{ background: "#F2F2F7", padding: "10px 14px", display: "flex", gap: 6 }}>
+              <div style={{ background: "#0F0F1A", borderRadius: 20, padding: 28 }}>
+                <div style={{ borderRadius: 14, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <div style={{ background: "#1A1A2E", padding: "10px 14px", display: "flex", gap: 6 }}>
                     {["#FF5F57", "#FFBD2E", "#28CA41"].map((c) => (
                       <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />
                     ))}
                   </div>
-                  <div style={{ padding: 20 }}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: "#191e4f", fontFamily: "var(--font-heading)", marginBottom: 14 }}>
+                  <div style={{ padding: 20, background: "#0F0F1A" }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#ffffff", fontFamily: "var(--font-heading)", marginBottom: 14 }}>
                       Simulateur de trajet
                     </div>
                     <div style={{
-                      background: "linear-gradient(90deg, #191e4f 0%, #474667 100%)",
-                      borderRadius: 10, padding: 14, marginBottom: 14, color: "#FFFFFF",
+                      background: "#1A1A2E", borderRadius: 10, padding: 14, marginBottom: 14,
+                      border: "1px solid rgba(255,255,255,0.08)",
                     }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
                         <div>
-                          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.6)", fontFamily: "var(--font-body)" }}>Départ</div>
-                          <div style={{ fontSize: 12, fontWeight: 700, fontFamily: "var(--font-heading)" }}>Paris 10ème</div>
+                          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-body)" }}>Départ</div>
+                          <div style={{ fontSize: 12, fontWeight: 700, fontFamily: "var(--font-heading)", color: "#ffffff" }}>Paris 10ème</div>
                         </div>
-                        <ArrowRight size={14} color="#0055FF" />
+                        <ArrowRight size={14} color="#34D058" />
                         <div style={{ textAlign: "right" }}>
-                          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.6)", fontFamily: "var(--font-body)" }}>Arrivée</div>
-                          <div style={{ fontSize: 12, fontWeight: 700, fontFamily: "var(--font-heading)" }}>CDG Terminal 2</div>
+                          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-body)" }}>Arrivée</div>
+                          <div style={{ fontSize: 12, fontWeight: 700, fontFamily: "var(--font-heading)", color: "#ffffff" }}>CDG Terminal 2</div>
                         </div>
                       </div>
-                      <div style={{ display: "flex", gap: 16 }}>
-                        <div style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-body)" }}>
-                          <span style={{ color: "#00D2FF", fontWeight: 700 }}>45 min</span> · 28 km
-                        </div>
+                      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-body)" }}>
+                        <span style={{ color: "#34D058", fontWeight: 700 }}>45 min</span> · 28 km
                       </div>
                     </div>
                     <div style={{
                       display: "flex", justifyContent: "space-between", alignItems: "center",
-                      background: "#f8faff", borderRadius: 10, padding: "12px 14px", marginBottom: 10,
+                      background: "#1A1A2E", borderRadius: 10, padding: "12px 14px", marginBottom: 10,
+                      border: "1px solid rgba(255,255,255,0.06)",
                     }}>
                       <div>
-                        <div style={{ fontSize: 11, fontWeight: 600, color: "#474667", fontFamily: "var(--font-body)" }}>Tarif estimé</div>
-                        <div style={{ fontSize: 10, color: "#9CA3AF", fontFamily: "var(--font-body)" }}>Tarif de jour · 1 passager</div>
+                        <div style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-body)" }}>Tarif estimé</div>
+                        <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", fontFamily: "var(--font-body)" }}>Tarif de jour · 1 passager</div>
                       </div>
-                      <div style={{ fontSize: 20, fontWeight: 800, color: "#191e4f", fontFamily: "var(--font-heading)" }}>38 €</div>
+                      <div style={{ fontSize: 20, fontWeight: 800, color: "#34D058", fontFamily: "var(--font-heading)" }}>38 €</div>
                     </div>
                     <div style={{
-                      background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", borderRadius: 8, padding: "9px 14px",
-                      textAlign: "center", fontSize: 12, fontWeight: 700, color: "#16182e",
+                      background: "#34D058", borderRadius: 8, padding: "9px 14px",
+                      textAlign: "center", fontSize: 12, fontWeight: 700, color: "#0A0A0A",
                       fontFamily: "var(--font-heading)",
                     }}>
                       Confirmer ma réservation
@@ -461,19 +461,15 @@ export default function TaxiContent() {
               variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: 0.12 }}
             >
-              <div style={{ background: "rgba(25,30,79,0.04)", borderRadius: 20, padding: 28 }}>
-                <div
-                  style={{ background: "#FFFFFF", borderRadius: 14, overflow: "hidden", border: "1px solid rgba(25,30,79,0.08)", transition: "box-shadow 0.2s" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(25,30,79,0.10)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
-                >
-                  <div style={{ background: "#F2F2F7", padding: "10px 14px", display: "flex", gap: 6 }}>
+              <div style={{ background: "#0F0F1A", borderRadius: 20, padding: 28 }}>
+                <div style={{ borderRadius: 14, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <div style={{ background: "#1A1A2E", padding: "10px 14px", display: "flex", gap: 6 }}>
                     {["#FF5F57", "#FFBD2E", "#28CA41"].map((c) => (
                       <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />
                     ))}
                   </div>
-                  <div style={{ padding: 20 }}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: "#191e4f", fontFamily: "var(--font-heading)", marginBottom: 14 }}>
+                  <div style={{ padding: 20, background: "#0F0F1A" }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#ffffff", fontFamily: "var(--font-heading)", marginBottom: 14 }}>
                       Nos tarifs
                     </div>
                     {[
@@ -485,35 +481,35 @@ export default function TaxiContent() {
                       <div key={t.label} style={{
                         display: "flex", justifyContent: "space-between", alignItems: "center",
                         padding: "10px 12px", borderRadius: 8, marginBottom: 6,
-                        background: i === 0 ? "rgba(0,85,255,0.06)" : "#f8faff",
-                        border: i === 0 ? "1px solid rgba(0,85,255,0.2)" : "1px solid rgba(25,30,79,0.08)",
+                        background: i === 0 ? "rgba(52,208,88,0.10)" : "#1A1A2E",
+                        border: i === 0 ? "1px solid rgba(52,208,88,0.3)" : "1px solid rgba(255,255,255,0.06)",
                       }}>
                         <div>
-                          <div style={{ fontSize: 12, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>
+                          <div style={{ fontSize: 12, fontWeight: 600, color: "#ffffff", fontFamily: "var(--font-body)" }}>
                             {t.label}
                           </div>
                           {t.badge && (
                             <span style={{
-                              fontSize: 9, fontWeight: 700, color: "#0055FF",
-                              background: "#e2f7ff", borderRadius: 4, padding: "2px 6px",
+                              fontSize: 9, fontWeight: 700, color: "#34D058",
+                              background: "rgba(52,208,88,0.15)", borderRadius: 4, padding: "2px 6px",
                               fontFamily: "var(--font-body)", letterSpacing: "0.05em",
                             }}>
                               {t.badge}
                             </span>
                           )}
                         </div>
-                        <div style={{ fontSize: 12, fontWeight: 700, color: "#474667", fontFamily: "var(--font-heading)" }}>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: i === 0 ? "#34D058" : "rgba(255,255,255,0.6)", fontFamily: "var(--font-heading)" }}>
                           {t.price}
                         </div>
                       </div>
                     ))}
-                    <div style={{
-                      background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", borderRadius: 8, padding: "9px 14px",
-                      textAlign: "center", fontSize: 12, fontWeight: 700, color: "#16182e",
-                      fontFamily: "var(--font-heading)", marginTop: 10,
+                    <a href="/maquette" style={{
+                      display: "block", background: "#34D058", borderRadius: 8, padding: "9px 14px",
+                      textAlign: "center", fontSize: 12, fontWeight: 700, color: "#0A0A0A",
+                      fontFamily: "var(--font-heading)", marginTop: 10, textDecoration: "none",
                     }}>
-                      Demander un devis gratuit
-                    </div>
+                      Demander ma maquette gratuite
+                    </a>
                   </div>
                 </div>
               </div>
@@ -618,32 +614,24 @@ export default function TaxiContent() {
               Chauffeur indépendant ou flotte, votre site est conçu selon votre activité spécifique.
             </p>
           </motion.div>
-          <motion.div
-            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
-            style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center" }}
-          >
-            {metiers.map((m) => (
-              <span key={m} style={{
-                padding: "9px 18px", borderRadius: 10, fontSize: 13, fontWeight: 600,
-                background: "#f8faff", border: "1px solid rgba(25,30,79,0.08)",
-                color: "#191e4f", fontFamily: "var(--font-body)",
-                transition: "border-color 0.15s, color 0.15s, background 0.15s",
-              }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "#0055FF";
-                  (e.currentTarget as HTMLElement).style.color = "#0055FF";
-                  (e.currentTarget as HTMLElement).style.background = "rgba(0,85,255,0.06)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(25,30,79,0.08)";
-                  (e.currentTarget as HTMLElement).style.color = "#191e4f";
-                  (e.currentTarget as HTMLElement).style.background = "#f8faff";
-                }}
-              >
-                {m}
-              </span>
-            ))}
-          </motion.div>
+          <div style={{ position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to right, #ffffff 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to left, #ffffff 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ overflow: "hidden", marginBottom: 12 }}>
+              <div className="taxi-track-left">
+                {[...metiers.slice(0, 8), ...metiers.slice(0, 8)].map((m, i) => (
+                  <div key={i} style={{ padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12, background: "#ffffff", border: "1px solid rgba(25,30,79,0.10)", boxShadow: "0 2px 8px rgba(0,85,255,0.07)", fontSize: 14, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>{m}</div>
+                ))}
+              </div>
+            </div>
+            <div style={{ overflow: "hidden" }}>
+              <div className="taxi-track-right">
+                {[...metiers.slice(8), ...metiers.slice(8)].map((m, i) => (
+                  <div key={i} style={{ padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12, background: "#ffffff", border: "1px solid rgba(25,30,79,0.10)", boxShadow: "0 2px 8px rgba(0,85,255,0.07)", fontSize: 14, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>{m}</div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -800,7 +788,7 @@ export default function TaxiContent() {
                 marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.4)",
                 fontFamily: "var(--font-body)",
               }}>
-                ✓ Devis gratuit · Réponse sous 24h · Satisfait ou remboursé
+                ✓ Devis gratuit · Réponse sous 24h
               </p>
             </div>
           </motion.div>

@@ -11,7 +11,9 @@ export default function Hero() {
       className="relative overflow-hidden"
       style={{
         background: "linear-gradient(180deg, #f8faff 0%, #eef3ff 60%, #ffffff 100%)",
-        minHeight: "100svh",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
       }}
     >
       {/* Halo décoratif centré */}
@@ -30,8 +32,8 @@ export default function Hero() {
 
       {/* Contenu */}
       <div
-        className="relative z-10 mx-auto px-4 min-h-screen flex flex-col justify-center"
-        style={{ maxWidth: 1430, paddingTop: 220, paddingBottom: 80 }}
+        className="relative z-10 mx-auto px-4"
+        style={{ maxWidth: 1430, paddingTop: "80px", paddingBottom: "80px", width: "100%" }}
       >
         <div className="text-center">
 
@@ -40,23 +42,39 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="mb-8"
+            className="mb-7"
           >
-            <span
+            <a
+              href="/maquette"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                background: "#e2f7ff",
+                gap: 8,
+                background: "#ffffff",
                 color: "#0055FF",
                 borderRadius: 50,
-                padding: "4px 16px",
+                padding: "7px 18px",
                 fontSize: 13,
-                fontWeight: 500,
+                fontWeight: 600,
                 fontFamily: "var(--font-body)",
+                border: "1px solid rgba(25,30,79,0.10)",
+                textDecoration: "none",
+                boxShadow: "0 2px 8px rgba(25,30,79,0.10), 0 1px 2px rgba(25,30,79,0.06)",
+                transition: "box-shadow 0.2s, transform 0.2s",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = "0 6px 20px rgba(25,30,79,0.14), 0 1px 2px rgba(25,30,79,0.06)";
+                e.currentTarget.style.transform = "translateY(-1px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "0 2px 8px rgba(25,30,79,0.10), 0 1px 2px rgba(25,30,79,0.06)";
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              Agence web — Création de sites professionnels
-            </span>
+              ✦ Votre maquette 100% gratuite en 72h
+              <span style={{ fontSize: 15, fontWeight: 700, lineHeight: 1 }}>›</span>
+            </a>
           </motion.div>
 
           {/* H1 */}
@@ -66,14 +84,13 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(48px, 6.25vw, 90px)",
+              fontSize: "clamp(40px, 5.5vw, 78px)",
               fontWeight: 700,
-              lineHeight: 1.15,
-              marginBottom: "1.5rem",
+              lineHeight: 1.1,
+              marginBottom: "1rem",
               color: "#191e4f",
             }}
           >
-            <span className="block">Votre site internet</span>
             <span className="block" style={{ position: "relative", display: "inline-block" }}>
               <span
                 style={{
@@ -83,7 +100,7 @@ export default function Hero() {
                   backgroundClip: "text",
                 }}
               >
-                professionnel
+                Agence web
               </span>
               <span
                 style={{
@@ -98,6 +115,7 @@ export default function Hero() {
                 }}
               />
             </span>
+            <span className="block">BiDigital</span>
           </motion.h1>
 
           {/* Sous-titre */}
@@ -111,10 +129,10 @@ export default function Hero() {
               color: "#474667",
               lineHeight: 1.7,
               maxWidth: 580,
-              margin: "0 auto 2.5rem",
+              margin: "0 auto 1.5rem",
             }}
           >
-            BiDigital conçoit des sites sur-mesure pour les PME et artisans — design moderne, SEO inclus et conformité RGPD dès la mise en ligne.
+            Gagnez en visibilité, inspirez confiance et attirez plus de clients grâce à un site web professionnel optimisé pour Google.
           </motion.p>
 
           {/* CTAs */}
@@ -122,7 +140,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.38 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
           >
             <CalButton
               className="w-full sm:w-auto"
@@ -142,22 +160,32 @@ export default function Hero() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 w-full sm:w-auto focus:outline-none"
+              className="flex items-center justify-center gap-2 w-full sm:w-auto focus:outline-none"
               style={{
-                fontSize: 16,
-                fontWeight: 400,
-                padding: "14px 32px",
-                borderRadius: 50,
-                background: "transparent",
-                border: "1px solid rgba(255,255,255,0.4)",
-                borderColor: "rgba(25,30,79,0.25)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                background: "#ffffff",
                 color: "#191e4f",
+                borderRadius: 50,
+                padding: "14px 32px",
+                fontSize: 16,
+                fontWeight: 600,
                 fontFamily: "var(--font-body)",
+                border: "1px solid rgba(25,30,79,0.10)",
                 textDecoration: "none",
-                transition: "opacity 0.2s",
+                boxShadow: "0 2px 8px rgba(25,30,79,0.10), 0 1px 2px rgba(25,30,79,0.06)",
+                transition: "box-shadow 0.2s, transform 0.2s",
+                cursor: "pointer",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.7"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = "0 6px 20px rgba(25,30,79,0.14), 0 1px 2px rgba(25,30,79,0.06)";
+                e.currentTarget.style.transform = "translateY(-1px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "0 2px 8px rgba(25,30,79,0.10), 0 1px 2px rgba(25,30,79,0.06)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
                 style={{ color: "#25D366", flexShrink: 0 }} aria-hidden="true">
@@ -169,6 +197,7 @@ export default function Hero() {
 
           {/* Badge confiance */}
           <motion.div
+            style={{ marginBottom: "4rem" }}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.55 }}
@@ -179,12 +208,13 @@ export default function Hero() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 8,
-                background: "#e2f7ff",
+                background: "#ffffff",
                 borderRadius: 50,
                 padding: "6px 16px",
                 fontFamily: "var(--font-body)",
                 fontSize: 13,
                 color: "#474667",
+                boxShadow: "0 2px 12px rgba(25,30,79,0.10)",
               }}
             >
               <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Google" style={{ flexShrink: 0 }}>
@@ -195,7 +225,7 @@ export default function Hero() {
               </svg>
               <span style={{ color: "#f59e0b" }}>★★★★★</span>
               <span style={{ color: "#191e4f", fontWeight: 600 }}>5/5</span>
-              <span>· Clients satisfaits</span>
+              <span style={{ color: "#474667" }}>· Clients satisfaits</span>
             </span>
           </motion.div>
         </div>

@@ -97,7 +97,7 @@ export default function BatimentContent() {
             </div>
 
             <h1 style={{
-              fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 3.8vw, 3rem)",
+              fontFamily: "var(--font-heading)", fontSize: "clamp(1.4rem, 2.2vw, 1.8rem)",
               fontWeight: 900, color: "#191e4f", lineHeight: 1.1,
               letterSpacing: "-0.03em", marginBottom: 20,
             }}>
@@ -114,14 +114,9 @@ export default function BatimentContent() {
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <CalButton style={{
-                fontSize: 15, padding: "12px 24px", borderRadius: 50,
-                background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
-                color: "#FFFFFF", boxShadow: "0 4px 18px rgba(0,85,255,0.35)",
-                border: "none", fontWeight: 700,
-              }}>
-                Demander un devis gratuit
-              </CalButton>
+              <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 700, fontFamily: "var(--font-heading)", padding: "12px 24px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#FFFFFF", boxShadow: "0 4px 18px rgba(0,85,255,0.35)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                Demander ma maquette gratuite
+              </a>
             </div>
 
           </motion.div>
@@ -137,7 +132,7 @@ export default function BatimentContent() {
 
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/batiment-hero-new.webp"
+              src="/images/chantier.webp"
               alt="Site internet pour entreprises du bâtiment et artisans"
               style={{
                 position: "relative", zIndex: 1,
@@ -176,30 +171,43 @@ export default function BatimentContent() {
         </motion.div>
       </section>
 
-      {/* ── C. INTRODUCTION CENTRÉE ──────────────────────────────────────── */}
+      {/* ── C. INTRODUCTION 2 COLONNES ──────────────────────────────────────── */}
       <section style={{ background: "#ffffff", padding: "80px 24px" }}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6 }}
-          style={{ maxWidth: 750, margin: "0 auto", textAlign: "center" }}
-        >
-          <SectionBadge>Pourquoi un site web ?</SectionBadge>
-          <h2 style={{
-            fontFamily: "var(--font-heading)", fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
-            fontWeight: 800, color: "#191e4f", lineHeight: 1.15, letterSpacing: "-0.025em", marginBottom: 28,
-          }}>
-            Artisans du bâtiment : votre premier chantier, c&apos;est votre visibilité en ligne
-          </h2>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 17, color: "#474667", lineHeight: 1.85, marginBottom: 20 }}>
-            Aujourd&apos;hui, <strong style={{ color: "#191e4f" }}>78% des consommateurs cherchent un artisan sur Google</strong> avant
-            de décrocher leur téléphone. Sans présence web, vous êtes invisible — et ce sont vos concurrents qui récoltent
-            ces demandes de devis. Faire connaître votre activité en ligne n&apos;est plus une option, c&apos;est une nécessité.
-          </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 17, color: "#474667", lineHeight: 1.85 }}>
-            Chez BiDigital, nous concevons des sites internet sur-mesure pour les artisans du bâtiment : maçons, plombiers,
-            électriciens, peintres, menuisiers, couvreurs… Des sites <strong style={{ color: "#191e4f" }}>pensés pour votre secteur</strong>,
-            optimisés pour le référencement local et conçus pour transformer chaque visiteur en client.
-          </p>
-        </motion.div>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }} className="grid-bat-intro">
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6 }}
+          >
+            <img
+              src="/images/google.webp"
+              alt="Artisan bâtiment visible sur Google"
+              style={{ width: "100%", borderRadius: 20, objectFit: "cover", aspectRatio: "4/3", display: "block" }}
+              loading="lazy" decoding="async"
+            />
+          </motion.div>
+          {/* Texte */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <SectionBadge>Pourquoi un site web ?</SectionBadge>
+            <h2 style={{
+              fontFamily: "var(--font-heading)", fontSize: "clamp(1.6rem, 2.5vw, 2.4rem)",
+              fontWeight: 800, color: "#191e4f", lineHeight: 1.15, letterSpacing: "-0.025em", marginBottom: 24,
+            }}>
+              Artisans du bâtiment : votre premier chantier, c&apos;est votre visibilité en ligne
+            </h2>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "#474667", lineHeight: 1.8, marginBottom: 16 }}>
+              Aujourd&apos;hui, <strong style={{ color: "#191e4f" }}>78% des consommateurs cherchent un artisan sur Google</strong>{" "}avant
+              de décrocher leur téléphone. Sans présence web, vous êtes invisible — et ce sont vos concurrents qui récoltent
+              ces demandes de devis. Faire connaître votre activité en ligne n&apos;est plus une option, c&apos;est une nécessité.
+            </p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "#474667", lineHeight: 1.8 }}>
+              Chez BiDigital, nous concevons des sites internet sur-mesure pour les artisans du bâtiment : maçons, plombiers,
+              électriciens, peintres, menuisiers, couvreurs… Des sites <strong style={{ color: "#191e4f" }}>pensés pour votre secteur</strong>,
+              optimisés pour le référencement local et conçus pour transformer chaque visiteur en client.
+            </p>
+          </motion.div>
+        </div>
       </section>
 
       {/* ── J. LES MÉTIERS — grille de badges ────────────────────────────── */}
@@ -222,33 +230,44 @@ export default function BatimentContent() {
             BiDigital accompagne tous les corps de métier du bâtiment dans leur transformation digitale.
           </p>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
-            {metiers.map((m, i) => (
-              <motion.div
-                key={m}
-                initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.35, delay: i * 0.04 }}
-                style={{
-                  padding: "10px 20px", borderRadius: 999,
-                  background: "#FFFFFF", border: "1px solid rgba(25,30,79,0.08)",
-                  fontSize: 14, fontWeight: 600, color: "#191e4f",
-                  fontFamily: "var(--font-body)", cursor: "default",
-                  transition: "all 0.15s",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(0,85,255,0.08)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,85,255,0.4)";
-                  (e.currentTarget as HTMLElement).style.color = "#0055FF";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "#FFFFFF";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(25,30,79,0.08)";
-                  (e.currentTarget as HTMLElement).style.color = "#191e4f";
-                }}
-              >
-                {m}
-              </motion.div>
-            ))}
+          {/* Ticker double ligne infini */}
+          <div style={{ position: "relative", overflow: "hidden" }}>
+            {/* Flou bleu gauche */}
+            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to right, #f8faff 0%, transparent 100%)", pointerEvents: "none" }} />
+            {/* Flou bleu droite */}
+            <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to left, #f8faff 0%, transparent 100%)", pointerEvents: "none" }} />
+
+            {/* Ligne 1 — gauche */}
+            <div style={{ overflow: "hidden", marginBottom: 12 }}>
+              <div className="bat-track-left">
+                {[...metiers.slice(0, 8), ...metiers.slice(0, 8)].map((m, i) => (
+                  <div key={i} style={{
+                    padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12,
+                    background: "#ffffff",
+                    border: "1px solid rgba(25,30,79,0.10)",
+                    boxShadow: "0 2px 8px rgba(0,85,255,0.08), 0 1px 2px rgba(25,30,79,0.06)",
+                    fontSize: 14, fontWeight: 600, color: "#191e4f",
+                    fontFamily: "var(--font-body)",
+                  }}>{m}</div>
+                ))}
+              </div>
+            </div>
+
+            {/* Ligne 2 — droite */}
+            <div style={{ overflow: "hidden" }}>
+              <div className="bat-track-right">
+                {[...metiers.slice(8), ...metiers.slice(8)].map((m, i) => (
+                  <div key={i} style={{
+                    padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12,
+                    background: "#ffffff",
+                    border: "1px solid rgba(25,30,79,0.10)",
+                    boxShadow: "0 2px 8px rgba(0,85,255,0.08), 0 1px 2px rgba(25,30,79,0.06)",
+                    fontSize: 14, fontWeight: 600, color: "#191e4f",
+                    fontFamily: "var(--font-body)",
+                  }}>{m}</div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
@@ -373,10 +392,21 @@ export default function BatimentContent() {
       </section>
 
       <style>{`
+        @keyframes batiment-left {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes batiment-right {
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .bat-track-left  { display: flex; width: max-content; animation: batiment-left  30s linear infinite; }
+        .bat-track-right { display: flex; width: max-content; animation: batiment-right 30s linear infinite; }
         @media (max-width: 900px) {
           .grid-batiment-hero,
           .grid-batiment-mobile,
-          .grid-batiment-faq { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .grid-batiment-faq,
+          .grid-bat-intro { grid-template-columns: 1fr !important; gap: 40px !important; }
           .grid-batiment-offres { grid-template-columns: 1fr !important; }
           .grid-batiment-besoins { grid-template-columns: 1fr 1fr !important; }
         }

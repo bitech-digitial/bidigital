@@ -27,32 +27,32 @@ const values = [
   {
     num: "01",
     icon: Users,
-    title: "Client first",
-    desc: "Pour chaque projet, nous nous demandons d'abord si cela sert les intérêts de nos clients et répond aux attentes de leurs propres clients. Notre succès dépend du vôtre. Votre satisfaction est notre priorité, et nous travaillons jusqu'à ce que vous soyez entièrement satisfait.",
+    title: "Votre réussite, notre priorité",
+    desc: "Chaque décision que nous prenons part d'une seule question : est-ce que cela va vraiment aider notre client à attirer plus de clients ? Nous ne livrons pas des sites, nous construisons des outils qui travaillent pour vous — 24h/24.",
   },
   {
     num: "02",
     icon: Star,
-    title: "La qualité passe avant la quantité",
-    desc: "Chez BiDigital, nous ne sommes pas de simples prestataires, nous sommes des partenaires de croissance. Nous visons l'excellence et choisissons de travailler uniquement avec des clients pour lesquels nous pouvons avoir un véritable impact.",
+    title: "L'excellence, pas le volume",
+    desc: "Nous préférons accompagner peu de clients mais bien les accompagner. Chaque site BiDigital est conçu sur-mesure, optimisé au détail près, et pensé pour générer de vrais résultats — pas juste une belle vitrine.",
   },
   {
     num: "03",
     icon: Lightbulb,
-    title: "Apprendre, s'adapter et changer",
-    desc: "Nous visons la perfection, mais nous restons humains. Chaque erreur est une opportunité d'apprentissage. Chez BiDigital, nous valorisons la collaboration et le partage d'idées pour générer rapidement des solutions efficaces.",
+    title: "Transparence et clarté à chaque étape",
+    desc: "Pas de jargon, pas de surprise. Nous vous expliquons ce que nous faisons, pourquoi, et ce que ça vous apporte. Vous avez une vision claire de votre projet du brief à la mise en ligne.",
   },
   {
     num: "04",
     icon: Flame,
-    title: "Travailler avec passion et conviction",
-    desc: "Nous voulons être des partenaires qui apportent de la valeur à chaque interaction. Nous faisons ce métier avec passion, raison pour laquelle nous le faisons bien. Nous acceptons le dialogue et défendons ce que nous croyons sur la base de notre expérience.",
+    title: "Passion du digital, ancrage terrain",
+    desc: "Nous aimons ce que nous faisons — et ça se voit dans le travail. Mais nous n'oublions jamais que derrière chaque site, il y a un artisan, un commerçant ou un prestataire qui a besoin de clients concrets, pas de promesses.",
   },
   {
     num: "05",
     icon: Rocket,
-    title: "Accélérateur de projets",
-    desc: "Trop souvent, les projets échouent non par manque de bonnes idées, mais à cause de processus trop lourds. Chez BiDigital, nous agissons comme des accélérateurs pour vos projets digitaux — de manière itérative, rapide et sans stress.",
+    title: "Rapide, efficace, sans prise de tête",
+    desc: "Un projet web n'a pas à être long ou compliqué. Chez BiDigital, nous allons à l'essentiel : un brief clair, une maquette rapide, une livraison dans les délais. Vous gardez le contrôle, nous gérons la technique.",
   },
 ];
 
@@ -173,19 +173,20 @@ export default function AgenceContent() {
                 className="font-extrabold leading-tight mb-6"
                 style={{
                   fontFamily: "var(--font-heading)",
-                  fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
+                  fontSize: "clamp(1.5rem, 3.5vw, 2.6rem)",
                   letterSpacing: "-0.03em",
                   color: "#191e4f",
                 }}
               >
-                À vos côtés pour réussir
-                <br />
-                votre{" "}
-                <span style={{ position: "relative", display: "inline-block" }}>
-                  <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
-                    stratégie digitale
+                <span style={{ display: "block" }}>À vos côtés pour réussir</span>
+                <span style={{ display: "block" }}>
+                  votre{" "}
+                  <span style={{ position: "relative", display: "inline-block" }}>
+                    <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
+                      stratégie digitale
+                    </span>
+                    <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
                   </span>
-                  <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
                 </span>
               </h1>
 
@@ -285,7 +286,7 @@ export default function AgenceContent() {
                 className="font-extrabold leading-tight"
                 style={{
                   fontFamily: "var(--font-heading)",
-                  fontSize: "clamp(2rem, 4vw, 3rem)",
+                  fontSize: "clamp(1.5rem, 3vw, 2.2rem)",
                   letterSpacing: "-0.025em",
                   color: "#191e4f",
                   lineHeight: 1.15,
@@ -317,10 +318,6 @@ export default function AgenceContent() {
               className="flex flex-col gap-8"
             >
               {[
-                {
-                  label: "Notre mission",
-                  text: "En combinant créativité et stratégie de marque, nous aidons nos clients à libérer tout leur potentiel afin qu'ils puissent atteindre leurs objectifs. Quel que soit votre investissement, nous nous engageons à fond.",
-                },
                 {
                   label: "Notre vision",
                   text: "Établir une relation solide et durable avec notre clientèle, de manière à devenir leur partenaire de confiance dans la réussite de leurs projets digitaux.",
@@ -475,17 +472,6 @@ export default function AgenceContent() {
                 </span>
               </h2>
             </motion.div>
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-base leading-relaxed"
-              style={{ fontFamily: "var(--font-body)", color: "#474667" }}
-            >
-              Nous combinons un ensemble d&apos;expertises complémentaires pour vous permettre de
-              communiquer efficacement auprès de vos clients et de générer des résultats mesurables.
-            </motion.p>
           </div>
 
           <div className="grid sm:grid-cols-3 gap-5">
@@ -548,71 +534,6 @@ export default function AgenceContent() {
       </section>
 
 
-      {/* ══════════════════════════════════════════════════════════════
-          CTA 1 — dark card
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="py-12 px-4" style={{ background: "#ffffff" }}>
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.6 }}
-            className="relative overflow-hidden rounded-3xl text-center"
-            style={{
-              background: "#16182e",
-              padding: "clamp(48px, 7vw, 72px) clamp(24px, 6vw, 64px)",
-            }}
-          >
-            <div className="absolute pointer-events-none" style={{ width: 500, height: 500, top: "50%", left: "25%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(0,85,255,0.30) 0%, rgba(0,210,255,0.10) 50%, transparent 70%)" }} />
-            <div className="absolute pointer-events-none" style={{ width: 350, height: 350, bottom: "-20%", right: "5%", background: "radial-gradient(ellipse, rgba(139,92,246,0.15) 0%, transparent 65%)" }} />
-            <div className="relative z-10">
-              <h2
-                className="text-3xl sm:text-4xl font-extrabold mb-4 leading-tight"
-                style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF", letterSpacing: "-0.025em" }}
-              >
-                Vous avez un projet web ?
-              </h2>
-              <p
-                className="text-base mb-8 mx-auto"
-                style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.55)", maxWidth: 420 }}
-              >
-                Prenez rendez-vous ou envoyez-nous votre projet. Nous revenons vers vous sous 24h avec
-                une proposition adaptée à vos objectifs.
-              </p>
-              <p
-                className="text-sm font-semibold mb-6"
-                style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.35)" }}
-              >
-                +50 entreprises ont développé leur activité avec nous. Pourquoi pas vous ?
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <CalButton style={{ fontSize: 15, padding: "13px 28px", borderRadius: 50 }}>
-                  Démarrer mon projet
-                </CalButton>
-                <a
-                  href="/contact"
-                  className="inline-flex items-center gap-2 font-semibold text-sm"
-                  style={{
-                    fontFamily: "var(--font-heading)",
-                    background: "rgba(255,255,255,0.08)",
-                    color: "rgba(255,255,255,0.80)",
-                    border: "1px solid rgba(255,255,255,0.14)",
-                    padding: "13px 28px",
-                    borderRadius: 50,
-                    textDecoration: "none",
-                    transition: "background 0.2s",
-                  }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.14)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.08)"; }}
-                >
-                  Nous contacter
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════════════════════════════
           FAQ — 2 colonnes (titre gauche, accordéons droite)

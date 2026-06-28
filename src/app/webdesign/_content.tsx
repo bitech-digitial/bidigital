@@ -4,9 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Paintbrush,
-  Navigation,
-  Zap,
-  Smartphone,
   Search,
   TrendingUp,
   Star,
@@ -20,32 +17,6 @@ import { WHATSAPP_LINK } from "@/lib/constants";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
-const seoFactors = [
-  {
-    icon: Navigation,
-    title: "Navigation intuitive",
-    stat: "Taux de rebond ↓",
-    desc: "Une navigation fluide incite les visiteurs à explorer davantage — un signal positif que Google récompense directement.",
-  },
-  {
-    icon: Zap,
-    title: "Vitesse optimisée",
-    stat: "Core Web Vitals",
-    desc: "Un site rapide améliore votre score Core Web Vitals et réduit le taux d'abandon avant même le premier clic.",
-  },
-  {
-    icon: Smartphone,
-    title: "100 % responsive",
-    stat: "+60 % mobile",
-    desc: "60 % du trafic vient du mobile. Google pénalise les sites non adaptés — le responsive n'est plus une option.",
-  },
-  {
-    icon: Search,
-    title: "Structure indexable",
-    stat: "Crawl & visibilité",
-    desc: "Une architecture claire permet aux robots Google de comprendre et classer votre contenu plus efficacement.",
-  },
-];
 
 const avantages = [
   {
@@ -128,133 +99,6 @@ function SectionBadge({ children }: { children: string }) {
   );
 }
 
-// ── SeoTabsSection ────────────────────────────────────────────────────────────
-
-function SeoTabsSection() {
-  const [active, setActive] = useState(0);
-  const item = seoFactors[active];
-  const Icon = item.icon;
-
-  return (
-    <section id="seo-webdesign" className="py-16 md:py-24 px-4" style={{ background: "#FFFFFF" }}>
-      <div className="max-w-5xl mx-auto">
-
-        {/* Header compact */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-10"
-        >
-          <SectionBadge>Webdesign & SEO</SectionBadge>
-          <h2
-            className="text-3xl sm:text-4xl font-extrabold"
-            style={{ fontFamily: "var(--font-heading)", color: "#191e4f", letterSpacing: "-0.02em", lineHeight: 1.15 }}
-          >
-            Un bon design{" "}
-            <span style={{ position: "relative", display: "inline-block" }}>
-              <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
-                booste votre SEO
-              </span>
-              <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
-            </span>
-          </h2>
-        </motion.div>
-
-        {/* Tabs */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {seoFactors.map((factor, i) => {
-            const TabIcon = factor.icon;
-            const isActive = active === i;
-            return (
-              <button
-                key={factor.title}
-                onClick={() => setActive(i)}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200"
-                style={{
-                  fontFamily: "var(--font-heading)",
-                  background: isActive ? "#0055FF" : "#f8faff",
-                  color: isActive ? "#FFFFFF" : "#474667",
-                  border: isActive ? "1px solid #0055FF" : "1px solid rgba(25,30,79,0.08)",
-                  boxShadow: isActive ? "0 4px 16px rgba(0,85,255,0.25)" : "none",
-                }}
-              >
-                <TabIcon size={15} />
-                {factor.title}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Panel actif */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
-            className="flex flex-col sm:flex-row items-start gap-6 p-7 rounded-2xl"
-            style={{ background: "#f8faff", border: "1px solid rgba(0,85,255,0.15)" }}
-          >
-            <div
-              className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center"
-              style={{ background: "#e2f7ff" }}
-            >
-              <Icon size={26} style={{ color: "#0055FF" }} />
-            </div>
-            <div className="flex-1">
-              <div className="flex flex-wrap items-center gap-3 mb-2">
-                <h3
-                  className="font-extrabold text-xl"
-                  style={{ fontFamily: "var(--font-heading)", color: "#191e4f" }}
-                >
-                  {item.title}
-                </h3>
-                <span
-                  className="px-2.5 py-1 rounded-full text-xs font-bold"
-                  style={{
-                    background: "#e2f7ff",
-                    color: "#0055FF",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                  {item.stat}
-                </span>
-              </div>
-              <p
-                className="text-base leading-relaxed"
-                style={{ fontFamily: "var(--font-body)", color: "#474667" }}
-              >
-                {item.desc}
-              </p>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Dot indicators */}
-        <div className="flex gap-2 mt-5 justify-center">
-          {seoFactors.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className="transition-all duration-200 rounded-full"
-              style={{
-                width: active === i ? 20 : 6,
-                height: 6,
-                background: active === i ? "#0055FF" : "#CBD5E0",
-              }}
-              aria-label={`Voir ${seoFactors[i].title}`}
-            />
-          ))}
-        </div>
-
-      </div>
-    </section>
-  );
-}
-
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export default function WebdesignContent() {
@@ -295,7 +139,7 @@ export default function WebdesignContent() {
                 style={{ aspectRatio: "4/5", maxHeight: 560 }}
               >
                 <img
-                  src="/images/webdesign-hero.webp"
+                  src="/images/web-design-new.webp"
                   alt="Designer UX — conception webdesign sur-mesure BiDigital"
                   style={{
                     position: "absolute",
@@ -308,30 +152,6 @@ export default function WebdesignContent() {
                   fetchPriority="high" decoding="async" />
 
                 {/* Card info en bas */}
-                <div
-                  className="absolute bottom-4 left-4 right-4 rounded-2xl flex items-center gap-3"
-                  style={{
-                    background: "rgba(255,255,255,0.92)",
-                    backdropFilter: "blur(12px)",
-                    padding: "14px 18px",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
-                  }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "#e2f7ff" }}
-                  >
-                    <Paintbrush size={20} style={{ color: "#0055FF" }} />
-                  </div>
-                  <div>
-                    <p className="font-bold text-sm" style={{ fontFamily: "var(--font-heading)", color: "#191e4f" }}>
-                      Design sur-mesure & à votre image
-                    </p>
-                    <p className="text-xs" style={{ fontFamily: "var(--font-body)", color: "#474667" }}>
-                      UI · UX · Responsive · Identité de marque
-                    </p>
-                  </div>
-                </div>
               </div>
             </motion.div>
 
@@ -374,9 +194,22 @@ export default function WebdesignContent() {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="btn-glow rounded-full">
-                  <CalButton style={{ fontSize: 15, padding: "13px 24px", borderRadius: 50 }}>
-                    Demander un devis gratuit
-                  </CalButton>
+                  <a
+                    href="/maquette"
+                    style={{
+                      display: "inline-flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)",
+                      padding: "13px 24px", borderRadius: 50, textDecoration: "none",
+                      background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
+                      color: "#fff", border: "none",
+                      boxShadow: "0 4px 20px rgba(0,85,255,0.25)",
+                      transition: "opacity 0.2s",
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}
+                  >
+                    Demander ma maquette gratuite
+                  </a>
                 </div>
                 <a
                   href="#seo-webdesign"
@@ -523,7 +356,7 @@ export default function WebdesignContent() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <img
-                src="/images/webdesign-1.webp"
+                src="/images/maintenance.webp"
                 alt="Webdesign professionnel — BiDigital agence web"
                 className="rounded-2xl w-full"
                 style={{
@@ -610,11 +443,6 @@ export default function WebdesignContent() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════
-          WEBDESIGN & SEO — tabs interactifs
-      ══════════════════════════════════════════════════════════════ */}
-      <SeoTabsSection />
-
-      {/* ══════════════════════════════════════════════════════════════
           CTA CENTRAL — dark card
       ══════════════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-20 px-4" style={{ background: "#f8faff" }}>
@@ -665,11 +493,9 @@ export default function WebdesignContent() {
                 et alignées avec votre image de marque.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <CalButton
-                  style={{ fontSize: 15, padding: "13px 28px", borderRadius: 50 }}
-                >
-                  Demander un devis
-                </CalButton>
+                <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)", padding: "13px 28px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#fff", boxShadow: "0 4px 20px rgba(0,85,255,0.25)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                  Demander ma maquette gratuite
+                </a>
                 <a
                   href={WHATSAPP_LINK}
                   target="_blank"

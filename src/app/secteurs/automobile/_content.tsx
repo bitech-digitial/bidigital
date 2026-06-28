@@ -112,14 +112,9 @@ export default function AutomobileContent() {
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <CalButton style={{
-                fontSize: 15, padding: "12px 24px", borderRadius: 50,
-                background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
-                color: "#FFFFFF", boxShadow: "0 4px 18px rgba(0,85,255,0.35)",
-                border: "none", fontWeight: 700,
-              }}>
-                Demander un devis gratuit
-              </CalButton>
+              <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 700, fontFamily: "var(--font-heading)", padding: "12px 24px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#FFFFFF", boxShadow: "0 4px 18px rgba(0,85,255,0.35)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                Demander ma maquette gratuite
+              </a>
             </div>
           </motion.div>
 
@@ -141,7 +136,7 @@ export default function AutomobileContent() {
               borderRadius: 20, overflow: "hidden",
             }}>
               <img
-                src="/images/automobile-hero.webp"
+                src="/images/automobile.webp"
                 alt="Garage automobile — mécanique et service professionnel BiDigital"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
                 fetchPriority="high" decoding="async" />
@@ -560,16 +555,23 @@ export default function AutomobileContent() {
             </span>
             .
           </h2>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center" }}>
-            {metiers.map((m) => (
-              <span key={m} style={{
-                padding: "8px 18px", borderRadius: 999, fontSize: 14, fontWeight: 500,
-                background: "rgba(0,85,255,0.06)", border: "1px solid rgba(25,30,79,0.08)",
-                color: "#191e4f", fontFamily: "var(--font-body)",
-              }}>
-                {m}
-              </span>
-            ))}
+          <div style={{ position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to right, #ffffff 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to left, #ffffff 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ overflow: "hidden", marginBottom: 12 }}>
+              <div className="auto-track-left">
+                {[...metiers.slice(0, 8), ...metiers.slice(0, 8)].map((m, i) => (
+                  <div key={i} style={{ padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12, background: "#ffffff", border: "1px solid rgba(25,30,79,0.10)", boxShadow: "0 2px 8px rgba(0,85,255,0.07)", fontSize: 14, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>{m}</div>
+                ))}
+              </div>
+            </div>
+            <div style={{ overflow: "hidden" }}>
+              <div className="auto-track-right">
+                {[...metiers.slice(8), ...metiers.slice(8)].map((m, i) => (
+                  <div key={i} style={{ padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12, background: "#ffffff", border: "1px solid rgba(25,30,79,0.10)", boxShadow: "0 2px 8px rgba(0,85,255,0.07)", fontSize: 14, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>{m}</div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
@@ -700,6 +702,10 @@ export default function AutomobileContent() {
       </section>
 
       <style>{`
+        @keyframes auto-left  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes auto-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        .auto-track-left  { display: flex; width: max-content; animation: auto-left  28s linear infinite; }
+        .auto-track-right { display: flex; width: max-content; animation: auto-right 28s linear infinite; }
         @media (max-width: 768px) {
           .grid-auto-hero, .grid-auto-double, .grid-auto-seo, .grid-auto-mobile {
             grid-template-columns: 1fr !important;

@@ -27,8 +27,6 @@ export default function MentionsLegales() {
             <br />
             Agence web — Création de sites professionnels
             <br />
-            Adresse : Chaville, 92370 Hauts-de-Seine, France
-            <br />
             Téléphone :{" "}
             <a href="tel:+33749999425" className="text-[#2563eb] underline">
               07 49 99 94 25

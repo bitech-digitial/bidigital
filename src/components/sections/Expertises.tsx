@@ -51,9 +51,10 @@ export default function Expertises() {
           <span
             className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest mb-4"
             style={{
-              background: "rgba(0,122,255,0.08)",
-              border: "1px solid rgba(0,122,255,0.2)",
-              color: "#007AFF",
+              background: "#ffffff",
+              border: "1px solid rgba(25,30,79,0.10)",
+              boxShadow: "0 2px 8px rgba(25,30,79,0.10), 0 1px 2px rgba(25,30,79,0.06)",
+              color: "#0055FF",
               fontFamily: "var(--font-badge)",
             }}
           >

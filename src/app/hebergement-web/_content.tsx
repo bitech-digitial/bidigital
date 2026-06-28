@@ -185,15 +185,16 @@ export default function HebergementContent() {
                   color: "#191e4f",
                 }}
               >
-                Hébergement{" "}
-                <span style={{ position: "relative", display: "inline-block" }}>
-                  <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
-                    web
+                <span style={{ display: "block" }}>
+                  Hébergement{" "}
+                  <span style={{ position: "relative", display: "inline-block" }}>
+                    <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
+                      web
+                    </span>
+                    <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
                   </span>
-                  <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
                 </span>
-                <br />
-                performant &amp; sécurisé
+                <span style={{ display: "block" }}>performant &amp; sécurisé</span>
               </h1>
 
               <p
@@ -206,9 +207,9 @@ export default function HebergementContent() {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="btn-glow rounded-full">
-                  <CalButton style={{ fontSize: 15, padding: "13px 24px", borderRadius: 50 }}>
-                    Demander un devis gratuit
-                  </CalButton>
+                  <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)", padding: "13px 24px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#fff", boxShadow: "0 4px 20px rgba(0,85,255,0.25)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                    Demander ma maquette gratuite
+                  </a>
                 </div>
                 <a
                   href="#nos-solutions"
@@ -613,9 +614,9 @@ export default function HebergementContent() {
                 besoins, à votre trafic et à votre budget.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <CalButton style={{ fontSize: 15, padding: "13px 28px", borderRadius: 50 }}>
-                  Demander un devis
-                </CalButton>
+                <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)", padding: "13px 28px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#fff", boxShadow: "0 4px 20px rgba(0,85,255,0.25)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                  Demander ma maquette gratuite
+                </a>
                 <a
                   href={WHATSAPP_LINK}
                   target="_blank"

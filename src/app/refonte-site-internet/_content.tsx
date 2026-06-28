@@ -145,7 +145,7 @@ export default function RefonteSiteContent() {
                 style={{ aspectRatio: "4/5", maxHeight: 540 }}
               >
                 <img
-                  src="/images/refonte-hero.webp"
+                  src="/images/web-design-new.webp"
                   alt="Refonte site internet — maquettes et wireframes BiDigital"
                   style={{
                     position: "absolute",
@@ -157,31 +157,6 @@ export default function RefonteSiteContent() {
                   }}
                   fetchPriority="high" decoding="async" />
 
-                {/* Card info en bas */}
-                <div
-                  className="absolute bottom-4 left-4 right-4 rounded-2xl flex items-center gap-3"
-                  style={{
-                    background: "rgba(255,255,255,0.92)",
-                    backdropFilter: "blur(12px)",
-                    padding: "14px 18px",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
-                  }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "#e2f7ff" }}
-                  >
-                    <RefreshCw size={20} style={{ color: "#0055FF" }} />
-                  </div>
-                  <div>
-                    <p className="font-bold text-sm" style={{ fontFamily: "var(--font-heading)", color: "#191e4f" }}>
-                      Votre site — entièrement modernisé
-                    </p>
-                    <p className="text-xs" style={{ fontFamily: "var(--font-body)", color: "#474667" }}>
-                      Design · Performance · SEO · RGPD
-                    </p>
-                  </div>
-                </div>
               </div>
             </motion.div>
 
@@ -224,9 +199,9 @@ export default function RefonteSiteContent() {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="btn-glow rounded-full">
-                  <CalButton style={{ fontSize: 15, padding: "13px 24px", borderRadius: 50 }}>
-                    Demander un devis gratuit
-                  </CalButton>
+                  <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)", padding: "13px 24px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#fff", boxShadow: "0 4px 20px rgba(0,85,255,0.25)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                    Demander ma maquette gratuite
+                  </a>
                 </div>
                 <a
                   href="#processus"
@@ -295,7 +270,7 @@ export default function RefonteSiteContent() {
           >
             <p className="text-base leading-relaxed" style={{ fontFamily: "var(--font-body)", color: "#474667" }}>
               La refonte de site web est un processus qui permet de faire évoluer un site existant en améliorant différents
-              aspects. Une <strong style={{ color: "#191e4f" }}>refonte partielle</strong> cible un élément spécifique
+              aspects. Une <strong style={{ color: "#191e4f" }}>refonte partielle</strong>{" "}cible un élément spécifique
               (design, SEO, performances), tandis qu&apos;une <strong style={{ color: "#191e4f" }}>refonte totale</strong>{" "}
               implique une révision complète : architecture, design, code et contenu.
             </p>
@@ -323,7 +298,7 @@ export default function RefonteSiteContent() {
               transition={{ duration: 0.6 }}
             >
               <img
-                src="/images/refonte-audit.webp"
+                src="/images/maintenance-site.webp"
                 alt="Audit et refonte site internet — analyse BiDigital"
                 className="rounded-2xl w-full"
                 style={{
@@ -580,11 +555,9 @@ export default function RefonteSiteContent() {
                 et un plan de refonte adapté à votre budget.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <CalButton
-                  style={{ fontSize: 15, padding: "13px 28px", borderRadius: 50 }}
-                >
-                  Demander un devis
-                </CalButton>
+                <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)", padding: "13px 28px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#fff", boxShadow: "0 4px 20px rgba(0,85,255,0.25)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                  Demander ma maquette gratuite
+                </a>
                 <a
                   href={WHATSAPP_LINK}
                   target="_blank"

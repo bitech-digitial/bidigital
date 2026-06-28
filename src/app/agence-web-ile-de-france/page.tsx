@@ -51,7 +51,7 @@ export default function AgenceWebIleDeFrance() {
           accompagnons les professionnels d&apos;Île-de-France dans leur
           transformation digitale. Notre approche : écouter votre projet,
           livrer vite, et vous garantir des résultats. <strong>Devis
-          gratuit et personnalisé sous 24h.</strong> Satisfait ou remboursé.
+          gratuit et personnalisé sous 24h.</strong>
         </p>
       </div>
 

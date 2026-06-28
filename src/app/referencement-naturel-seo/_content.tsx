@@ -105,7 +105,6 @@ function SectionBadge({ children }: { children: string }) {
 
 export default function SeoContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [activeRaison, setActiveRaison] = useState(0);
 
   return (
     <>
@@ -142,7 +141,7 @@ export default function SeoContent() {
                 style={{ aspectRatio: "4/5", maxHeight: 560 }}
               >
                 <img
-                  src="/images/seo-hero.webp"
+                  src="/images/site-internet-2.webp"
                   alt="Stratégie SEO référencement naturel BiDigital"
                   style={{
                     position: "absolute",
@@ -154,31 +153,6 @@ export default function SeoContent() {
                   }}
                   fetchPriority="high" decoding="async" />
 
-                {/* Card info en bas */}
-                <div
-                  className="absolute bottom-4 left-4 right-4 rounded-2xl flex items-center gap-3"
-                  style={{
-                    background: "rgba(255,255,255,0.92)",
-                    backdropFilter: "blur(12px)",
-                    padding: "14px 18px",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
-                  }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "#e2f7ff" }}
-                  >
-                    <Search size={20} style={{ color: "#0055FF" }} />
-                  </div>
-                  <div>
-                    <p className="font-bold text-sm" style={{ fontFamily: "var(--font-heading)", color: "#191e4f" }}>
-                      Référencement naturel sur-mesure
-                    </p>
-                    <p className="text-xs" style={{ fontFamily: "var(--font-body)", color: "#474667" }}>
-                      Audit · Technique · Contenu · Netlinking
-                    </p>
-                  </div>
-                </div>
               </div>
             </motion.div>
 
@@ -297,7 +271,7 @@ export default function SeoContent() {
                     </>,
                     <>
                       Chez BiDigital, nous appliquons une méthodologie agile et transparente. Sprints priorisés, reporting mensuel clair
-                      : votre stratégie <strong style={{ color: "#191e4f" }}>SEO</strong> évolue en permanence selon vos objectifs
+                      : votre stratégie <strong style={{ color: "#191e4f" }}>SEO</strong>{" "}évolue en permanence selon vos objectifs
                       commerciaux et les évolutions de l&apos;algorithme Google.
                     </>,
                     <>
@@ -483,7 +457,7 @@ export default function SeoContent() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <img
-                src="/images/seo-agence.webp"
+                src="/images/seo.webp"
                 alt="Équipe agence SEO BiDigital — stratégie référencement naturel"
                 className="rounded-2xl w-full"
                 style={{
@@ -496,85 +470,6 @@ export default function SeoContent() {
             </motion.div>
           </div>
 
-          {/* 4 raisons — tabs */}
-          <div>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {raisons.map((r, i) => {
-                const TabIcon = r.icon;
-                const isActive = activeRaison === i;
-                return (
-                  <button
-                    key={r.kw}
-                    onClick={() => setActiveRaison(i)}
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200"
-                    style={{
-                      fontFamily: "var(--font-heading)",
-                      background: isActive ? "#0055FF" : "#FFFFFF",
-                      color: isActive ? "#FFFFFF" : "#474667",
-                      border: isActive ? "1px solid #0055FF" : "1px solid rgba(25,30,79,0.08)",
-                      boxShadow: isActive ? "0 4px 16px rgba(0,85,255,0.25)" : "none",
-                    }}
-                  >
-                    <TabIcon size={15} />
-                    {r.kw}
-                  </button>
-                );
-              })}
-            </div>
-
-            <AnimatePresence mode="wait">
-              {(() => {
-                const item = raisons[activeRaison];
-                const Icon = item.icon;
-                return (
-                  <motion.div
-                    key={activeRaison}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.25 }}
-                    className="flex flex-col sm:flex-row items-start gap-6 p-7 rounded-2xl"
-                    style={{ background: "#FFFFFF", border: "1px solid rgba(0,85,255,0.15)" }}
-                  >
-                    <div
-                      className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center"
-                      style={{ background: "#e2f7ff" }}
-                    >
-                      <Icon size={26} style={{ color: "#0055FF" }} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-3 mb-2">
-                        <h3 className="font-extrabold text-xl" style={{ fontFamily: "var(--font-heading)", color: "#191e4f" }}>
-                          {item.kw}
-                        </h3>
-                        <span
-                          className="px-2.5 py-1 rounded-full text-xs font-bold"
-                          style={{ background: "#e2f7ff", color: "#0055FF", fontFamily: "var(--font-body)" }}
-                        >
-                          {item.stat}
-                        </span>
-                      </div>
-                      <p className="text-base leading-relaxed" style={{ fontFamily: "var(--font-body)", color: "#474667" }}>
-                        {item.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })()}
-            </AnimatePresence>
-
-            <div className="flex gap-2 mt-4 justify-center">
-              {raisons.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveRaison(i)}
-                  className="rounded-full transition-all duration-200"
-                  style={{ width: activeRaison === i ? 20 : 6, height: 6, background: activeRaison === i ? "#0055FF" : "#CBD5E0" }}
-                  aria-label={`Voir ${raisons[i].kw}`}
-                />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

@@ -15,7 +15,6 @@ import {
   Database,
   Headphones,
   UserCheck,
-  Lightbulb,
   MessageSquare,
   CheckCircle2,
   Plus,
@@ -63,7 +62,6 @@ const inclus = [
   { icon: Gauge,        title: "Tests de performances mensuels",                     desc: "Évaluation mensuelle des performances (GTMetrix, Core Web Vitals) et optimisations." },
   { icon: Database,     title: "Sauvegarde de la base de données",                  desc: "Sauvegarde régulière de la base de données pour éviter toute perte de données." },
   { icon: Headphones,   title: "Assistance prioritaire",                             desc: "Support prioritaire avec une réponse rapide et des solutions efficaces." },
-  { icon: Lightbulb,    title: "Conseils et recommandations personnalisés",          desc: "Conseils sur mesure pour optimiser votre site et atteindre vos objectifs commerciaux." },
 ];
 
 const faqs = [
@@ -72,7 +70,7 @@ const faqs = [
     a: "Chez BiDigital, nous adoptons une approche sur mesure facturée via un forfait mensuel. Le coût dépend de la complexité de votre site, du niveau de support technique requis et des services additionnels souhaités. Cette flexibilité tarifaire nous permet d'offrir des solutions adaptées, assurant que chaque client bénéficie d'un service de maintenance qui correspond précisément à ses besoins. Contactez-nous pour un devis personnalisé et sans engagement.",
   },
   {
-    q: "Une agence peut-elle reprendre la maintenance d'un site existant ?",
+    q: "BiDigital peut-il reprendre la maintenance d'un site existant ?",
     a: "Oui, reprendre la maintenance d'un site web déjà existant fait partie de nos compétences. Nous débutons par une évaluation initiale approfondie pour saisir toutes les spécificités techniques et fonctionnelles de votre site. Cette analyse nous permet d'identifier les particularités de votre plateforme et les points d'amélioration. Suite à cette évaluation, nous élaborons un plan de maintenance sur mesure pour garantir le bon fonctionnement continu, la sécurité et l'optimisation régulière de votre site.",
   },
   {
@@ -141,7 +139,7 @@ export default function MaintenanceContent() {
                 style={{ aspectRatio: "4/5", maxHeight: 560 }}
               >
                 <img
-                  src="/images/maintenance-hero.webp"
+                  src="/images/maintenance-site.webp"
                   alt="Maintenance site internet — développeur au travail BiDigital"
                   style={{
                     position: "absolute",
@@ -175,31 +173,6 @@ export default function MaintenanceContent() {
                   </span>
                 </div>
 
-                {/* Card info en bas */}
-                <div
-                  className="absolute bottom-4 left-4 right-4 rounded-2xl flex items-center gap-3"
-                  style={{
-                    background: "rgba(255,255,255,0.92)",
-                    backdropFilter: "blur(12px)",
-                    padding: "14px 18px",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
-                  }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "#e2f7ff" }}
-                  >
-                    <Wrench size={20} style={{ color: "#0055FF" }} />
-                  </div>
-                  <div>
-                    <p className="font-bold text-sm" style={{ fontFamily: "var(--font-heading)", color: "#191e4f" }}>
-                      Maintenance continue & proactive
-                    </p>
-                    <p className="text-xs" style={{ fontFamily: "var(--font-body)", color: "#474667" }}>
-                      Sécurité · Performances · Sauvegardes · Support
-                    </p>
-                  </div>
-                </div>
               </div>
             </motion.div>
 
@@ -241,9 +214,9 @@ export default function MaintenanceContent() {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="btn-glow rounded-xl">
-                  <CalButton style={{ fontSize: 15, padding: "13px 24px", borderRadius: 50 }}>
-                    Demander un devis gratuit
-                  </CalButton>
+                  <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)", padding: "13px 24px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#fff", boxShadow: "0 4px 20px rgba(0,85,255,0.25)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                    Demander ma maquette gratuite
+                  </a>
                 </div>
                 <a
                   href="#forfait-inclus"
@@ -308,10 +281,10 @@ export default function MaintenanceContent() {
                 text: (
                   <>
                     La maintenance de site internet est cruciale. Elle assure le bon fonctionnement, la{" "}
-                    <strong style={{ color: "#191e4f" }}>sécurité</strong> et l&apos;actualisation de votre site. Cela
+                    <strong style={{ color: "#191e4f" }}>sécurité</strong>{" "}et l&apos;actualisation de votre site. Cela
                     implique des tâches régulières et variées : mise à jour du contenu et de l&apos;interface, révision et
                     optimisation des fonctionnalités, et optimisation{" "}
-                    <strong style={{ color: "#191e4f" }}>SEO</strong> pour améliorer la visibilité sur le web.
+                    <strong style={{ color: "#191e4f" }}>SEO</strong>{" "}pour améliorer la visibilité sur le web.
                   </>
                 ),
               },
@@ -320,7 +293,7 @@ export default function MaintenanceContent() {
                   <>
                     La maintenance englobe également la résolution de problèmes techniques — bugs ou erreurs de
                     serveur — nécessitant une intervention rapide. La{" "}
-                    <strong style={{ color: "#191e4f" }}>protection contre les menaces en ligne</strong> est aussi un volet
+                    <strong style={{ color: "#191e4f" }}>protection contre les menaces en ligne</strong>{" "}est aussi un volet
                     essentiel, préservant l&apos;intégrité de votre site et des données de vos utilisateurs.
                   </>
                 ),
@@ -406,7 +379,7 @@ export default function MaintenanceContent() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <img
-                src="/images/maintenance-2.webp"
+                src="/images/maintenance-site-2.webp"
                 alt="Maintenance site internet — sécurité et performance BiDigital"
                 className="rounded-2xl w-full"
                 style={{
@@ -652,9 +625,9 @@ export default function MaintenanceContent() {
                 création. Devis personnalisé et audit initial gratuit.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <CalButton style={{ fontSize: 15, padding: "13px 28px", borderRadius: 50 }}>
-                  Demander un devis
-                </CalButton>
+                <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 600, fontFamily: "var(--font-heading)", padding: "13px 28px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#fff", boxShadow: "0 4px 20px rgba(0,85,255,0.25)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                  Demander ma maquette gratuite
+                </a>
                 <a
                   href={WHATSAPP_LINK}
                   target="_blank"

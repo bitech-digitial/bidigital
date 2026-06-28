@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Home, ChevronDown,
-  Calendar, Users, Globe, MapPin, ImageIcon, Wifi,
+  Calendar, Users, Globe, MapPin, ImageIcon, Wifi, Lock,
 } from "lucide-react";
 import CalButton from "@/components/ui/CalButton";
 import { WHATSAPP_LINK } from "@/lib/constants";
@@ -40,10 +40,6 @@ const besoinItems = [
 
 const faqItems = [
   {
-    q: "Quelle est la durée de création d'un site d'hébergement ?",
-    a: "Nous réalisons votre site vitrine clé-en-main en 14 jours à compter de la réception de vos éléments (photos, textes, tarifs). Après la mise en ligne, nous configurons ensemble votre module de réservation selon vos disponibilités et vos offres spéciales.",
-  },
-  {
     q: "Puis-je intégrer un système de réservation en ligne ?",
     a: "Absolument. Nous intégrons un moteur de réservation directement sur votre site : vos visiteurs consultent les disponibilités, sélectionnent leurs dates et paient en ligne en toute sécurité. Vous recevez une confirmation automatique et gérez votre planning depuis votre espace d'administration.",
   },
@@ -72,8 +68,26 @@ export default function HebergementContent() {
           style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}
           className="grid-heb-hero"
         >
-          {/* Gauche — texte */}
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}>
+          {/* Gauche — visuel */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-end", minHeight: 500, overflow: "hidden" }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/hotel-1.webp"
+              alt="Site internet pour hôtels et établissements d'hébergement"
+              style={{
+                width: "100%", height: 480,
+                borderRadius: 20, display: "block",
+                objectFit: "cover",
+              }}
+              fetchPriority="high" decoding="async" />
+          </motion.div>
+
+          {/* Droite — texte */}
+          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}>
             <div style={{ display: "flex", gap: 8, marginBottom: 24, flexWrap: "wrap" }}>
               {["Tourisme", "Réservation en ligne"].map((t) => (
                 <span key={t} style={{
@@ -87,16 +101,18 @@ export default function HebergementContent() {
             </div>
 
             <h1 style={{
-              fontFamily: "var(--font-heading)", fontSize: "clamp(2rem, 3.8vw, 3rem)",
+              fontFamily: "var(--font-heading)", fontSize: "clamp(1.1rem, 3vw, 2rem)",
               fontWeight: 900, color: "#191e4f", lineHeight: 1.1,
               letterSpacing: "-0.03em", marginBottom: 20,
             }}>
-              Augmentez vos réservations directes et{" "}
-              <span style={{ position: "relative", display: "inline-block" }}>
-                <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
-                  réduisez vos commissions
+              <span style={{ display: "block", whiteSpace: "nowrap" }}>Augmentez vos réservations directes</span>
+              <span style={{ display: "block", whiteSpace: "nowrap" }}>
+                et{" "}<span style={{ position: "relative", display: "inline-block" }}>
+                  <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
+                    réduisez vos commissions
+                  </span>
+                  <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
                 </span>
-                <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
               </span>
             </h1>
 
@@ -107,14 +123,9 @@ export default function HebergementContent() {
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <CalButton style={{
-                fontSize: 15, padding: "12px 24px", borderRadius: 50,
-                background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
-                color: "#FFFFFF", boxShadow: "0 4px 18px rgba(0,85,255,0.35)",
-                border: "none", fontWeight: 700,
-              }}>
-                Demander un devis gratuit
-              </CalButton>
+              <a href="/maquette" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 700, fontFamily: "var(--font-heading)", padding: "12px 24px", borderRadius: 50, textDecoration: "none", background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", color: "#FFFFFF", boxShadow: "0 4px 18px rgba(0,85,255,0.35)", transition: "opacity 0.2s" }} onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.9"; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; }}>
+                Demander ma maquette gratuite
+              </a>
               <a href="#moteur-reservation" style={{
                 display: "inline-flex", alignItems: "center", gap: 6,
                 fontSize: 15, fontWeight: 600, color: "#474667",
@@ -128,30 +139,6 @@ export default function HebergementContent() {
                 Voir le moteur de réservation →
               </a>
             </div>
-          </motion.div>
-
-          {/* Droite — visuel */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-end", minHeight: 500 }}
-          >
-            <div style={{
-              position: "absolute", top: 28, left: 0, bottom: 0,
-              width: "68%", height: "88%",
-              background: "rgba(0,85,255,0.08)", borderRadius: 20, zIndex: 0,
-            }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/hebergement-secteur-1.webp"
-              alt="Site internet pour hôtels et établissements d'hébergement"
-              style={{
-                position: "relative", zIndex: 1,
-                width: "80%", height: 460,
-                borderRadius: 20, display: "block",
-                objectFit: "cover",
-              }}
-              fetchPriority="high" decoding="async" />
           </motion.div>
         </div>
 
@@ -182,135 +169,6 @@ export default function HebergementContent() {
         </motion.div>
       </section>
 
-      {/* ── INTRO ─────────────────────────────────────────────────────────── */}
-      <section style={{ background: "#ffffff", padding: "80px 24px" }}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6 }}
-          style={{ maxWidth: 750, margin: "0 auto", textAlign: "center" }}
-        >
-          <SectionBadge>Votre secteur</SectionBadge>
-          <h2 style={{
-            fontFamily: "var(--font-heading)", fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
-            fontWeight: 800, color: "#191e4f", lineHeight: 1.15, letterSpacing: "-0.025em", marginBottom: 28,
-          }}>
-            Un acteur majeur de la{" "}
-            <span style={{ position: "relative", display: "inline-block" }}>
-              <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
-                réservation
-              </span>
-              <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
-            </span>
-            {" "}touristique en ligne
-          </h2>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 17, color: "#474667", lineHeight: 1.85, marginBottom: 20 }}>
-            Dans le secteur de l&apos;hébergement touristique, <strong style={{ color: "#191e4f" }}>renforcer votre présence en ligne
-            est devenu incontournable</strong> pour accroître votre visibilité, toucher une nouvelle clientèle
-            et — surtout — augmenter la part de vos réservations directes, sans payer les commissions
-            des plateformes OTA.
-          </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 17, color: "#474667", lineHeight: 1.85, marginBottom: 20 }}>
-            Booking.com, Airbnb ou Expedia vous apportent de la visibilité, mais prélèvent entre
-            <strong style={{ color: "#191e4f" }}> 15 et 25% de commission</strong> sur chaque réservation.
-            Un site web professionnel avec un moteur de réservation intégré vous permet de récupérer
-            cette marge en incitant vos clients à réserver directement chez vous.
-          </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 17, color: "#474667", lineHeight: 1.85 }}>
-            BiDigital conçoit des sites internet <strong style={{ color: "#191e4f" }}>parfaitement adaptés à votre type
-            d&apos;hébergement</strong> — hôtel, gîte, chambre d&apos;hôtes, camping ou hébergement insolite.
-            Un site qui vous ressemble, qui inspire confiance et qui convertit les visiteurs en clients.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* ── DOUBLE MAQUETTES ──────────────────────────────────────────────── */}
-      <section style={{ background: "#f8faff", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6 }}
-            style={{ textAlign: "center", marginBottom: 48 }}
-          >
-            <SectionBadge>Pages intérieures</SectionBadge>
-            <h2 style={{
-              fontFamily: "var(--font-heading)", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)",
-              fontWeight: 800, color: "#191e4f", lineHeight: 1.2, letterSpacing: "-0.025em",
-            }}>
-              Chaque page conçue pour{" "}
-              <span style={{ position: "relative", display: "inline-block" }}>
-                <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
-                  convertir
-                </span>
-                <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
-              </span>
-            </h2>
-          </motion.div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }} className="grid-heb-mockups">
-            {/* Maquette 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.55 }}
-              style={{ background: "rgba(0,85,255,0.07)", borderRadius: 20, padding: "28px 24px", display: "flex", alignItems: "center", justifyContent: "center" }}
-            >
-              <div
-                style={{ width: "100%", borderRadius: 14, overflow: "hidden", border: "1px solid rgba(25,30,79,0.08)", transition: "box-shadow 0.2s" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(25,30,79,0.10)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
-              >
-                <div style={{ background: "#030E13", padding: "7px 12px", display: "flex", gap: 5 }}>
-                  {["#ff5f57","#febc2e","#28c840"].map((c) => <div key={c} style={{ width: 7, height: 7, borderRadius: "50%", background: c }} />)}
-                </div>
-                <div style={{ background: "#FFFFFF", padding: "20px 20px 22px" }}>
-                  <div style={{ width: "40%", height: 8, background: "rgba(0,85,255,0.3)", borderRadius: 4, marginBottom: 14 }} />
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 }}>
-                    {[1,2,3,4].map((i) => (
-                      <div key={i} style={{ height: 64, borderRadius: 8, background: i % 2 === 0 ? "rgba(0,85,255,0.08)" : "rgba(25,30,79,0.04)", border: "1px solid rgba(25,30,79,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <ImageIcon size={16} color="rgba(0,85,255,0.25)" />
-                      </div>
-                    ))}
-                  </div>
-                  <div style={{ width: "55%", height: 8, background: "#191e4f", borderRadius: 4, marginBottom: 6, opacity: 0.4 }} />
-                  <div style={{ width: "40%", height: 7, background: "#474667", borderRadius: 4, opacity: 0.3 }} />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Maquette 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.55, delay: 0.1 }}
-              style={{ background: "rgba(25,30,79,0.04)", borderRadius: 20, padding: "28px 24px", display: "flex", alignItems: "center", justifyContent: "center" }}
-            >
-              <div
-                style={{ width: "100%", borderRadius: 14, overflow: "hidden", border: "1px solid rgba(25,30,79,0.08)", transition: "box-shadow 0.2s" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(25,30,79,0.10)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
-              >
-                <div style={{ background: "#030E13", padding: "7px 12px", display: "flex", gap: 5 }}>
-                  {["#ff5f57","#febc2e","#28c840"].map((c) => <div key={c} style={{ width: 7, height: 7, borderRadius: "50%", background: c }} />)}
-                </div>
-                <div style={{ background: "#FFFFFF", padding: "20px 20px 22px" }}>
-                  <div style={{ width: "50%", height: 8, background: "rgba(0,85,255,0.3)", borderRadius: 4, marginBottom: 14 }} />
-                  {[1,2,3].map((i) => (
-                    <div key={i} style={{ display: "flex", gap: 10, marginBottom: 10, padding: "10px 12px", borderRadius: 8, background: "rgba(0,85,255,0.04)", border: "1px solid rgba(25,30,79,0.08)" }}>
-                      <div style={{ width: 48, height: 44, borderRadius: 6, background: "#e2f7ff", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <Home size={14} color="#0055FF" />
-                      </div>
-                      <div style={{ flex: 1 }}>
-                        <div style={{ width: "70%", height: 7, background: "#191e4f", borderRadius: 3, marginBottom: 5, opacity: 0.5 }} />
-                        <div style={{ width: "45%", height: 7, background: "#0055FF", borderRadius: 3, opacity: 0.6 }} />
-                      </div>
-                      <div style={{ width: 50, height: 26, background: "#0055FF", borderRadius: 6, flexShrink: 0 }} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginTop: 14 }} className="grid-heb-mockups">
-            <p style={{ textAlign: "center", fontSize: 11, color: "#474667", fontFamily: "var(--font-body)" }}>Page galerie — photos de votre établissement</p>
-            <p style={{ textAlign: "center", fontSize: 11, color: "#474667", fontFamily: "var(--font-body)" }}>Page chambres — tarifs et disponibilités</p>
-          </div>
-        </div>
-      </section>
 
       {/* ── IMAGE DE MARQUE ───────────────────────────────────────────────── */}
       <section style={{ background: "#ffffff", padding: "80px 24px" }}>
@@ -379,7 +237,8 @@ export default function HebergementContent() {
             <div style={{ background: "#030E13", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
               {["#ff5f57", "#febc2e", "#28c840"].map((c) => <div key={c} style={{ width: 8, height: 8, borderRadius: "50%", background: c }} />)}
               <div style={{ marginLeft: 10, flex: 1, maxWidth: 320, background: "rgba(0,85,255,0.06)", borderRadius: 5, height: 22, padding: "0 10px", display: "flex", alignItems: "center", border: "1px solid rgba(0,85,255,0.1)" }}>
-                <span style={{ fontSize: 10, color: "rgba(0,85,255,0.35)", fontFamily: "monospace" }}>🔒 votre-hotel.fr/reservation</span>
+                <Lock size={10} style={{ color: "rgba(0,85,255,0.35)", marginRight: 4 }} />
+                <span style={{ fontSize: 10, color: "rgba(0,85,255,0.35)", fontFamily: "monospace" }}>votre-hotel.fr/reservation</span>
               </div>
             </div>
 
@@ -391,20 +250,16 @@ export default function HebergementContent() {
                   <div style={{ position: "relative", borderRadius: 14, overflow: "hidden", height: 260, marginBottom: 14 }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/images/hebergement-web-1.webp"
+                      src="/images/hotel.webp"
                       alt="Chambre d'hébergement — moteur de réservation"
                       style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                       loading="lazy" decoding="async" />
-                    <div style={{ position: "absolute", bottom: 12, left: 12, background: "rgba(255,255,255,0.92)", borderRadius: 8, padding: "8px 12px" }}>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: "#191e4f", fontFamily: "var(--font-heading)" }}>Suite Panoramique</div>
-                      <div style={{ fontSize: 11, color: "#474667", fontFamily: "var(--font-body)" }}>Vue montagne · 35 m²</div>
-                    </div>
                   </div>
                 </div>
 
                 {/* Formulaire */}
                 <div>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: "#0055FF", letterSpacing: "0.08em", fontFamily: "var(--font-body)", marginBottom: 10 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#ffffff", letterSpacing: "0.08em", fontFamily: "var(--font-body)", marginBottom: 10, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", display: "inline-block", padding: "3px 10px", borderRadius: 4 }}>
                     VÉRIFIER LES DISPONIBILITÉS
                   </div>
                   <div style={{ fontFamily: "var(--font-heading)", fontSize: 20, fontWeight: 800, color: "#191e4f", marginBottom: 20 }}>
@@ -458,12 +313,12 @@ export default function HebergementContent() {
                   </div>
 
                   <div style={{ width: "100%", height: 44, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                    <Calendar size={16} color="#16182e" />
-                    <span style={{ fontSize: 14, fontWeight: 800, color: "#16182e", fontFamily: "var(--font-heading)" }}>Vérifier les disponibilités</span>
+                    <Calendar size={16} color="#ffffff" />
+                    <span style={{ fontSize: 14, fontWeight: 800, color: "#ffffff", fontFamily: "var(--font-heading)" }}>Vérifier les disponibilités</span>
                   </div>
 
                   <p style={{ fontSize: 11, color: "#474667", fontFamily: "var(--font-body)", textAlign: "center", marginTop: 10 }}>
-                    🔒 Paiement 100% sécurisé · Annulation gratuite sous 48h
+                    Paiement 100% sécurisé · Annulation gratuite sous 48h
                   </p>
                 </div>
               </div>
@@ -485,41 +340,53 @@ export default function HebergementContent() {
           transform: "translateY(-50%)", pointerEvents: "none", zIndex: 0,
         }} />
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6 }}
-          style={{ maxWidth: 750, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}
-        >
-          <SectionBadge>Référencement local</SectionBadge>
-          <h2 style={{
-            fontFamily: "var(--font-heading)", fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
-            fontWeight: 800, color: "#191e4f", lineHeight: 1.15, letterSpacing: "-0.025em", marginBottom: 28,
-          }}>
-            Être trouvé sur{" "}
-            <span style={{ position: "relative", display: "inline-block" }}>
-              <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
-                Google
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center", position: "relative", zIndex: 1 }} className="grid-heb-seo">
+          {/* Texte */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6 }}
+          >
+            <SectionBadge>Référencement local</SectionBadge>
+            <h2 style={{
+              fontFamily: "var(--font-heading)", fontSize: "clamp(1.6rem, 2.5vw, 2.4rem)",
+              fontWeight: 800, color: "#191e4f", lineHeight: 1.15, letterSpacing: "-0.025em", marginBottom: 24,
+            }}>
+              Être trouvé sur{" "}
+              <span style={{ position: "relative", display: "inline-block" }}>
+                <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
+                  Google
+                </span>
+                <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
               </span>
-              <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
-            </span>
-            {" "}avant Booking.com — c&apos;est possible
-          </h2>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 17, color: "#474667", lineHeight: 1.85, marginBottom: 20 }}>
-            Les plateformes OTA dépensent des millions en SEO pour apparaître en premier sur Google.
-            Mais <strong style={{ color: "#191e4f" }}>un site bien optimisé peut s&apos;intercaler avant elles</strong> sur les
-            recherches locales et de niche : "gîte [région]", "chambre d&apos;hôtes [commune]",
-            "camping éco [département]". Ces requêtes ciblées amènent des visiteurs déjà décidés.
-          </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 17, color: "#474667", lineHeight: 1.85, marginBottom: 20 }}>
-            Nous optimisons votre site de A à Z : <strong style={{ color: "#191e4f" }}>fiche Google My Business</strong> complète,
-            balises locales, contenus ciblés sur vos mots-clés touristiques, vitesse de chargement
-            optimale. Votre établissement remonte naturellement dans les résultats de recherche.
-          </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 17, color: "#474667", lineHeight: 1.85 }}>
-            Résultat : vous captez des voyageurs avant qu&apos;ils n&apos;arrivent sur les plateformes — et
-            vous transformez chaque visite en <strong style={{ color: "#191e4f" }}>réservation directe sans commission</strong>.
-            Un cercle vertueux qui augmente votre rentabilité saison après saison.
-          </p>
-        </motion.div>
+              {" "}avant Booking.com — c&apos;est possible
+            </h2>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "#474667", lineHeight: 1.8, marginBottom: 16 }}>
+              Les plateformes OTA dépensent des millions en SEO pour apparaître en premier sur Google.
+              Mais <strong style={{ color: "#191e4f" }}>un site bien optimisé peut s&apos;intercaler avant elles</strong>{" "}sur les
+              recherches locales et de niche : "gîte [région]", "chambre d&apos;hôtes [commune]",
+              "camping éco [département]". Ces requêtes ciblées amènent des visiteurs déjà décidés.
+            </p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "#474667", lineHeight: 1.8, marginBottom: 16 }}>
+              Nous optimisons votre site de A à Z : <strong style={{ color: "#191e4f" }}>fiche Google My Business</strong> complète,
+              balises locales, contenus ciblés sur vos mots-clés touristiques, vitesse de chargement
+              optimale. Votre établissement remonte naturellement dans les résultats de recherche.
+            </p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "#474667", lineHeight: 1.8 }}>
+              Résultat : vous captez des voyageurs avant qu&apos;ils n&apos;arrivent sur les plateformes — et
+              vous transformez chaque visite en <strong style={{ color: "#191e4f" }}>réservation directe sans commission</strong>.
+            </p>
+          </motion.div>
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <img
+              src="/images/google.webp"
+              alt="Référencement local hébergement sur Google"
+              style={{ width: "100%", borderRadius: 20, objectFit: "cover", aspectRatio: "4/3", display: "block" }}
+              loading="lazy" decoding="async"
+            />
+          </motion.div>
+        </div>
       </section>
 
       {/* ── MÉTIERS ───────────────────────────────────────────────────────── */}
@@ -549,33 +416,23 @@ export default function HebergementContent() {
             de l&apos;hébergement touristique dans leur transformation digitale.
           </p>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
-            {metiers.map((m, i) => (
-              <motion.div
-                key={m}
-                initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.35, delay: i * 0.04 }}
-                style={{
-                  padding: "10px 20px", borderRadius: 999,
-                  background: "#FFFFFF", border: "1px solid rgba(25,30,79,0.08)",
-                  fontSize: 14, fontWeight: 600, color: "#191e4f",
-                  fontFamily: "var(--font-body)", cursor: "default",
-                  transition: "all 0.15s",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(0,85,255,0.08)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,85,255,0.4)";
-                  (e.currentTarget as HTMLElement).style.color = "#0055FF";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "#FFFFFF";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(25,30,79,0.08)";
-                  (e.currentTarget as HTMLElement).style.color = "#191e4f";
-                }}
-              >
-                {m}
-              </motion.div>
-            ))}
+          <div style={{ position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to right, #f8faff 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to left, #f8faff 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ overflow: "hidden", marginBottom: 12 }}>
+              <div className="heb-track-left">
+                {[...metiers.slice(0, 7), ...metiers.slice(0, 7)].map((m, i) => (
+                  <div key={i} style={{ padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12, background: "#ffffff", border: "1px solid rgba(25,30,79,0.10)", boxShadow: "0 2px 8px rgba(0,85,255,0.07)", fontSize: 14, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>{m}</div>
+                ))}
+              </div>
+            </div>
+            <div style={{ overflow: "hidden" }}>
+              <div className="heb-track-right">
+                {[...metiers.slice(7), ...metiers.slice(7)].map((m, i) => (
+                  <div key={i} style={{ padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12, background: "#ffffff", border: "1px solid rgba(25,30,79,0.10)", boxShadow: "0 2px 8px rgba(0,85,255,0.07)", fontSize: 14, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>{m}</div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
@@ -661,8 +518,8 @@ export default function HebergementContent() {
                 </span>
               </h2>
               <p style={{ fontFamily: "var(--font-body)", fontSize: 17, color: "rgba(255,255,255,0.60)", lineHeight: 1.7, marginBottom: 40 }}>
-                Site livré en 14 jours. Moteur de réservation, channel manager, SEO touristique —
-                BiDigital prend en charge tout votre projet digital. Devis gratuit sous 24h.
+                Moteur de réservation, channel manager, SEO touristique —
+                BiDigital prend en charge tout votre projet digital.
               </p>
               <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
                 <a
@@ -701,11 +558,16 @@ export default function HebergementContent() {
       </section>
 
       <style>{`
+        @keyframes heb-left  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes heb-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        .heb-track-left  { display: flex; width: max-content; animation: heb-left  28s linear infinite; }
+        .heb-track-right { display: flex; width: max-content; animation: heb-right 28s linear infinite; }
         @media (max-width: 900px) {
           .grid-heb-hero,
           .grid-heb-mockups,
           .grid-heb-faq,
-          .grid-heb-focus { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .grid-heb-focus,
+          .grid-heb-seo { grid-template-columns: 1fr !important; gap: 40px !important; }
           .grid-heb-besoins { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 560px) {

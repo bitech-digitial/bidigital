@@ -150,8 +150,6 @@ export default function PolitiqueConfidentialite() {
           <p>
             <strong>BiDigital — Responsable de traitement</strong>
             <br />
-            Adresse : Chaville, 92370 Hauts-de-Seine, France
-            <br />
             E-mail :{" "}
             <a href="mailto:contact@bidigital.fr" className="text-[#2563eb] underline">
               contact@bidigital.fr

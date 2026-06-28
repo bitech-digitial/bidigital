@@ -108,7 +108,7 @@ export default function RestaurationContent() {
             </div>
 
             <h1 style={{
-              fontFamily: "var(--font-heading)", fontSize: "clamp(2.2rem, 4vw, 3.2rem)",
+              fontFamily: "var(--font-heading)", fontSize: "clamp(1.6rem, 2.8vw, 2.2rem)",
               fontWeight: 900, color: "#191e4f", lineHeight: 1.1,
               letterSpacing: "-0.03em", marginBottom: 20,
             }}>
@@ -162,7 +162,7 @@ export default function RestaurationContent() {
 
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/restauration-1.webp"
+              src="/images/restaurent-1.webp"
               alt="Création site internet pour restaurants et food"
               style={{
                 position: "relative", zIndex: 1,
@@ -215,47 +215,14 @@ export default function RestaurationContent() {
           style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}
           className="grid-cols-restauration-split"
         >
-          {/* Mockup navigateur sombre */}
+          {/* Photo restaurant */}
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.65 }}>
-            <div style={{
-              borderRadius: 20, overflow: "hidden", height: 420,
-              background: "linear-gradient(135deg, #16182e 0%, #191e4f 60%, #474667 100%)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              position: "relative", boxShadow: "0 20px 60px rgba(25,30,79,0.25)",
-            }}>
-              <div style={{ width: "85%", position: "relative" }}>
-                <div style={{ background: "#16182e", borderRadius: "12px 12px 0 0", padding: "10px 16px", display: "flex", alignItems: "center", gap: 6 }}>
-                  {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
-                    <div key={c} style={{ width: 10, height: 10, borderRadius: "50%", background: c }} />
-                  ))}
-                  <div style={{
-                    marginLeft: 8, flex: 1, background: "rgba(0,85,255,0.08)",
-                    borderRadius: 6, height: 22, padding: "0 10px", display: "flex", alignItems: "center",
-                    border: "1px solid rgba(25,30,79,0.08)",
-                  }}>
-                    <span style={{ fontSize: 10, color: "rgba(0,85,255,0.5)", fontFamily: "monospace" }}>www.votre-restaurant.fr</span>
-                  </div>
-                </div>
-                <div style={{ background: "#03121A", borderRadius: "0 0 12px 12px", padding: 20, height: 280 }}>
-                  <div style={{ height: 100, borderRadius: 8, marginBottom: 16, overflow: "hidden" }}>
-                    <img
-                      src="/images/restauration-hero.webp"
-                      alt="Intérieur de restaurant — ambiance chaleureuse"
-                      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
-                      loading="lazy" decoding="async" />
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
-                    {["rgba(0,85,255,0.08)", "rgba(0,210,255,0.10)", "rgba(71,70,103,0.12)"].map((bg, i) => (
-                      <div key={i} style={{ height: 60, background: bg, borderRadius: 6, border: "1px solid rgba(25,30,79,0.08)" }} />
-                    ))}
-                  </div>
-                  <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-                    <div style={{ flex: 1, height: 28, background: "#0055FF", borderRadius: 6 }} />
-                    <div style={{ flex: 1, height: 28, background: "rgba(0,85,255,0.08)", borderRadius: 6 }} />
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/restaurent.webp"
+              alt="Restaurant — ambiance et tradition"
+              style={{ width: "100%", height: 420, objectFit: "cover", borderRadius: 20, display: "block", boxShadow: "0 20px 60px rgba(25,30,79,0.15)" }}
+              loading="lazy" decoding="async" />
           </motion.div>
 
           {/* Texte */}

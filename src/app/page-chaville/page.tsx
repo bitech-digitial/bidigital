@@ -49,7 +49,7 @@ export default function PageChaville() {
           Que vous soyez à <strong>Chaville</strong>, Versailles, Meudon,
           Sèvres ou dans toute l&apos;Île-de-France, BiDigital est votre
           partenaire digital de confiance pour développer votre activité en
-          ligne. <strong>Devis gratuit sous 24h.</strong> Satisfait ou remboursé.
+          ligne. <strong>Devis gratuit sous 24h.</strong>
         </p>
       </div>
 

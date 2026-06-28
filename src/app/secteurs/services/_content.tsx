@@ -91,8 +91,14 @@ export default function ServicesContent() {
           grid-template-columns: 1fr 1fr;
           gap: 24px;
         }
+        @keyframes svc-left  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes svc-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        .svc-track-left  { display: flex; width: max-content; animation: svc-left  28s linear infinite; }
+        .svc-track-right { display: flex; width: max-content; animation: svc-right 28s linear infinite; }
         @media (max-width: 900px) {
-          .grid-svc-hero    { grid-template-columns: 1fr; gap: 40px; }
+          .grid-svc-hero,
+          .grid-svc-intro,
+          .grid-svc-confiance { grid-template-columns: 1fr !important; gap: 40px !important; }
           .grid-svc-besoins { grid-template-columns: 1fr 1fr; }
           .grid-svc-mockups { grid-template-columns: 1fr; }
           .grid-svc-offres  { grid-template-columns: 1fr; }
@@ -184,12 +190,13 @@ export default function ServicesContent() {
                 background: "rgba(0,85,255,0.08)", zIndex: 0, pointerEvents: "none",
               }} />
               <img
-                src="/images/service-1.webp"
-                alt="Exemple de site vitrine pour entreprise de services"
+                src="/images/consultant.webp"
+                alt="Consultant — site vitrine professionnel pour entreprise de services"
                 style={{
                   position: "relative", zIndex: 1, borderRadius: 20, width: "100%",
-                  height: "auto", display: "block",
+                  aspectRatio: "1 / 1", objectFit: "cover", display: "block",
                   border: "1px solid rgba(25,30,79,0.08)",
+                  boxShadow: "0 20px 60px rgba(25,30,79,0.12)",
                 }}
                 fetchPriority="high" decoding="async" />
             </motion.div>
@@ -199,43 +206,54 @@ export default function ServicesContent() {
 
       {/* ── INTRO ────────────────────────────────────────────────────────── */}
       <section style={{ padding: "80px 24px", background: "#f8faff" }}>
-        <motion.div
-          variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
-          style={{ maxWidth: 750, margin: "0 auto", textAlign: "center" }}
-        >
-          <SectionBadge>Votre présence en ligne</SectionBadge>
-          <h2 style={{
-            fontFamily: "var(--font-heading)", fontSize: "clamp(1.5rem, 3vw, 2.1rem)",
-            fontWeight: 800, color: "#191e4f", marginBottom: 24, lineHeight: 1.3,
-          }}>
-            Vos clients vous cherchent sur{" "}
-            <span style={{ position: "relative", display: "inline-block" }}>
-              <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
-                Google
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }} className="grid-svc-intro">
+          {/* Image */}
+          <motion.div
+            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
+          >
+            <img
+              src="/images/google-1.webp"
+              alt="Présence en ligne sur Google — secteur services"
+              style={{ width: "100%", borderRadius: 20, objectFit: "cover", aspectRatio: "4/3", display: "block" }}
+              loading="lazy" decoding="async"
+            />
+          </motion.div>
+          {/* Texte */}
+          <motion.div
+            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
+          >
+            <SectionBadge>Votre présence en ligne</SectionBadge>
+            <h2 style={{
+              fontFamily: "var(--font-heading)", fontSize: "clamp(1.2rem, 1.8vw, 1.5rem)",
+              fontWeight: 800, color: "#191e4f", marginBottom: 24, lineHeight: 1.3,
+            }}>
+              Vos clients vous cherchent sur{" "}
+              <span style={{ position: "relative", display: "inline-block" }}>
+                <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
+                  Google
+                </span>
+                <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
               </span>
-              <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
-            </span>
-            .<br />Êtes-vous là quand ils arrivent ?
-          </h2>
-          <p style={{
-            fontSize: "clamp(0.95rem, 1.6vw, 1.1rem)", color: "#474667",
-            lineHeight: 1.8, marginBottom: 20, fontFamily: "var(--font-body)",
-          }}>
-            Qu&apos;il cherche un plombier, un électricien ou un consultant, votre futur client tape
-            son besoin sur Google et compare les trois premiers résultats. Sans site professionnel,
-            vous êtes invisible — et ce sont vos concurrents qui récupèrent ses appels et ses devis.
-            Un site bien conçu, c&apos;est votre commercial qui travaille 24h/24 pendant que vous êtes sur le terrain.
-          </p>
-          <p style={{
-            fontSize: "clamp(0.95rem, 1.6vw, 1.1rem)", color: "#474667",
-            lineHeight: 1.8, fontFamily: "var(--font-body)",
-          }}>
-            BiDigital crée des sites vitrine sur-mesure adaptés à votre activité de services :
-            présentation claire de vos prestations, galerie de réalisations, formulaire de devis
-            simple et numéro cliquable sur mobile. Votre expertise mérite une vitrine digitale
-            à la hauteur de votre travail.
-          </p>
-        </motion.div>
+              .<br />Êtes-vous là quand ils arrivent ?
+            </h2>
+            <p style={{
+              fontSize: 16, color: "#474667",
+              lineHeight: 1.8, marginBottom: 16, fontFamily: "var(--font-body)",
+            }}>
+              Qu&apos;il cherche un plombier, un électricien ou un consultant, votre futur client tape
+              son besoin sur Google et compare les trois premiers résultats. Sans site professionnel,
+              vous êtes invisible — et ce sont vos concurrents qui récupèrent ses appels et ses devis.
+            </p>
+            <p style={{
+              fontSize: 16, color: "#474667",
+              lineHeight: 1.8, fontFamily: "var(--font-body)",
+            }}>
+              BiDigital crée des sites vitrine sur-mesure adaptés à votre activité de services :
+              présentation claire de vos prestations, galerie de réalisations, formulaire de devis
+              simple et numéro cliquable sur mobile.
+            </p>
+          </motion.div>
+        </div>
       </section>
 
       {/* ── BESOINS ──────────────────────────────────────────────────────── */}
@@ -365,59 +383,61 @@ export default function ServicesContent() {
           borderRadius: "50%", background: "radial-gradient(ellipse, rgba(0,85,255,0.10) 0%, transparent 65%)",
           transform: "translateY(-50%)", pointerEvents: "none", zIndex: 0,
         }} />
-        <motion.div
-          variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
-          style={{ maxWidth: 720, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}
-        >
-          <SectionBadge>Confiance & crédibilité</SectionBadge>
-          <h2 style={{
-            fontFamily: "var(--font-heading)", fontSize: "clamp(1.5rem, 3vw, 2.1rem)",
-            fontWeight: 800, color: "#191e4f", marginBottom: 24, lineHeight: 1.3,
-          }}>
-            Un design moderne qui inspire{" "}
-            <span style={{ position: "relative", display: "inline-block" }}>
-              <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
-                confiance
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center", position: "relative", zIndex: 1 }} className="grid-svc-confiance">
+          {/* Texte */}
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+            <SectionBadge>Confiance & crédibilité</SectionBadge>
+            <h2 style={{
+              fontFamily: "var(--font-heading)", fontSize: "clamp(1.3rem, 2vw, 1.7rem)",
+              fontWeight: 800, color: "#191e4f", marginBottom: 20, lineHeight: 1.3,
+            }}>
+              Un design moderne qui inspire{" "}
+              <span style={{ position: "relative", display: "inline-block" }}>
+                <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }}>
+                  confiance
+                </span>
+                <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
               </span>
-              <span style={{ position: "absolute", bottom: -3, left: 0, right: 0, height: 3, borderRadius: 2, background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)" }} />
-            </span>
-            {" "}dès la première visite
-          </h2>
-          <p style={{
-            fontSize: "1rem", color: "#474667", lineHeight: 1.8,
-            marginBottom: 20, fontFamily: "var(--font-body)",
-          }}>
-            Dans le secteur des services, la confiance se construit avant même le premier
-            échange. Un site professionnel avec un design soigné, des photos de qualité et vos
-            certifications affichées envoie un signal fort : vous êtes sérieux, vous maîtrisez
-            votre métier, et vos clients peuvent vous faire confiance pour entrer chez eux.
-          </p>
-          <p style={{
-            fontSize: "1rem", color: "#474667", lineHeight: 1.8,
-            marginBottom: 40, fontFamily: "var(--font-body)",
-          }}>
-            BiDigital intègre systématiquement vos avis Google, vos labels (RGE, Qualibat,
-            assurance décennale) et vos témoignages clients pour renforcer cette crédibilité.
-            Le résultat : des prospects qui vous contactent déjà convaincus, et des cycles de
-            décision deux fois plus courts.
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center" }}>
-            {[
-              "Avis Google intégrés",
-              "Labels et certifications",
-              "Photos professionnelles",
-              "Témoignages clients",
-              "Assurance affichée",
-              "Zone d'intervention claire",
-            ].map((chip) => (
-              <span key={chip} style={{
-                padding: "8px 16px", borderRadius: 8, fontSize: 13, fontWeight: 600,
-                background: "rgba(0,85,255,0.07)", border: "1px solid rgba(25,30,79,0.08)",
-                color: "#474667", fontFamily: "var(--font-body)",
-              }}>{chip}</span>
-            ))}
-          </div>
-        </motion.div>
+              {" "}dès la première visite
+            </h2>
+            <p style={{ fontSize: 15, color: "#474667", lineHeight: 1.8, marginBottom: 16, fontFamily: "var(--font-body)" }}>
+              Dans le secteur des services, la confiance se construit avant même le premier
+              échange. Un site professionnel avec un design soigné, des photos de qualité et vos
+              certifications affichées envoie un signal fort : vous êtes sérieux, vous maîtrisez
+              votre métier, et vos clients peuvent vous faire confiance pour entrer chez eux.
+            </p>
+            <p style={{ fontSize: 15, color: "#474667", lineHeight: 1.8, marginBottom: 28, fontFamily: "var(--font-body)" }}>
+              BiDigital intègre systématiquement vos avis Google, vos labels (RGE, Qualibat,
+              assurance décennale) et vos témoignages clients pour renforcer cette crédibilité.
+              Le résultat : des prospects qui vous contactent déjà convaincus.
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {[
+                "Avis Google intégrés",
+                "Labels et certifications",
+                "Photos professionnelles",
+                "Témoignages clients",
+                "Assurance affichée",
+                "Zone d'intervention claire",
+              ].map((chip) => (
+                <span key={chip} style={{
+                  padding: "7px 14px", borderRadius: 8, fontSize: 12, fontWeight: 600,
+                  background: "rgba(0,85,255,0.07)", border: "1px solid rgba(25,30,79,0.08)",
+                  color: "#474667", fontFamily: "var(--font-body)",
+                }}>{chip}</span>
+              ))}
+            </div>
+          </motion.div>
+          {/* Image */}
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+            <img
+              src="/images/confiance.webp"
+              alt="Confiance et crédibilité — site professionnel services BiDigital"
+              style={{ width: "100%", borderRadius: 20, objectFit: "cover", aspectRatio: "4/3", display: "block" }}
+              loading="lazy" decoding="async"
+            />
+          </motion.div>
+        </div>
       </section>
 
       {/* ── MÉTIERS ──────────────────────────────────────────────────────── */}
@@ -448,32 +468,24 @@ export default function ServicesContent() {
               Artisan ou profession libérale, votre site est conçu selon les spécificités de votre métier.
             </p>
           </motion.div>
-          <motion.div
-            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
-            style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center" }}
-          >
-            {metiers.map((m) => (
-              <span key={m} style={{
-                padding: "9px 18px", borderRadius: 10, fontSize: 13, fontWeight: 600,
-                background: "#ffffff", border: "1px solid rgba(25,30,79,0.08)",
-                color: "#191e4f", fontFamily: "var(--font-body)",
-                transition: "border-color 0.15s, color 0.15s, background 0.15s",
-              }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "#0055FF";
-                  (e.currentTarget as HTMLElement).style.color = "#0055FF";
-                  (e.currentTarget as HTMLElement).style.background = "rgba(0,85,255,0.06)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(25,30,79,0.08)";
-                  (e.currentTarget as HTMLElement).style.color = "#191e4f";
-                  (e.currentTarget as HTMLElement).style.background = "#ffffff";
-                }}
-              >
-                {m}
-              </span>
-            ))}
-          </motion.div>
+          <div style={{ position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to right, #f8faff 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(to left, #f8faff 0%, transparent 100%)", pointerEvents: "none" }} />
+            <div style={{ overflow: "hidden", marginBottom: 12 }}>
+              <div className="svc-track-left">
+                {[...metiers.slice(0, 8), ...metiers.slice(0, 8)].map((m, i) => (
+                  <div key={i} style={{ padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12, background: "#ffffff", border: "1px solid rgba(25,30,79,0.10)", boxShadow: "0 2px 8px rgba(0,85,255,0.07)", fontSize: 14, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>{m}</div>
+                ))}
+              </div>
+            </div>
+            <div style={{ overflow: "hidden" }}>
+              <div className="svc-track-right">
+                {[...metiers.slice(8), ...metiers.slice(8)].map((m, i) => (
+                  <div key={i} style={{ padding: "10px 22px", borderRadius: 999, flexShrink: 0, marginRight: 12, background: "#ffffff", border: "1px solid rgba(25,30,79,0.10)", boxShadow: "0 2px 8px rgba(0,85,255,0.07)", fontSize: 14, fontWeight: 600, color: "#191e4f", fontFamily: "var(--font-body)" }}>{m}</div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -625,7 +637,7 @@ export default function ServicesContent() {
                 </a>
               </div>
               <p style={{ marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-body)" }}>
-                ✓ Devis gratuit · Réponse sous 24h · Satisfait ou remboursé
+                ✓ Devis gratuit · Réponse sous 24h
               </p>
             </div>
           </motion.div>

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -83,7 +83,7 @@ function ExpertisesPanel() {
           >
             <div style={{
               flexShrink: 0, width: 38, height: 38, borderRadius: 10,
-              background: "rgba(0,122,255,0.08)", border: "1px solid rgba(0,122,255,0.18)",
+              background: "#e2f7ff",
               display: "flex", alignItems: "center", justifyContent: "center",
               marginTop: 2,
             }}>
@@ -130,17 +130,17 @@ function SecteurPanel() {
               transition: "all 0.15s",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = "#007AFF";
+              e.currentTarget.style.color = "#0055FF";
               e.currentTarget.style.background = "rgba(0,85,255,0.06)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.color = "#1D2939";
+              e.currentTarget.style.color = "#191e4f";
               e.currentTarget.style.background = "transparent";
             }}
           >
             <div style={{
               flexShrink: 0, width: 32, height: 32, borderRadius: 8,
-              background: "rgba(0,122,255,0.08)", border: "1px solid rgba(0,122,255,0.15)",
+              background: "#e2f7ff",
               display: "flex", alignItems: "center", justifyContent: "center",
             }}>
               <Icon size={15} style={{ color: "#0055FF" }} />
@@ -156,7 +156,7 @@ function SecteurPanel() {
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function Navbar() {
-  const [scrollState, setScrollState] = useState<"top" | "hidden" | "sticky">("top");
+  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
@@ -165,20 +165,9 @@ export default function Navbar() {
   const secteurRef    = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let lastScroll = 0;
-    const handler = () => {
-      const current = window.scrollY;
-      if (current <= 0) {
-        setScrollState("top");
-      } else if (current > lastScroll && current > 200) {
-        setScrollState("hidden");
-      } else if (current < lastScroll) {
-        setScrollState("sticky");
-      }
-      lastScroll = current;
-    };
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    const onScroll = () => setScrolled(window.scrollY >= 50);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -205,7 +194,6 @@ export default function Navbar() {
     };
   }, []);
 
-  // Positions calculées une fois à l'ouverture et au resize — pas à chaque render
   const ddPositions = useRef<Record<string, React.CSSProperties>>({});
   const arrowPositions = useRef<Record<string, number>>({});
 
@@ -253,27 +241,29 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.div
+      <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="fixed top-0 left-0 right-0 z-50 pointer-events-none"
-        style={{
-          transform: scrollState === "hidden" ? "translateY(-110px)" : "translateY(0)",
-          transition: "transform 0.4s ease",
-        }}
+        className="fixed top-0 left-0 right-0 z-50 px-4"
       >
-        <header
-          className="pointer-events-auto"
+        <div
+          className="mx-auto mt-2 px-6"
           style={{
-            background: scrollState === "sticky" || menuOpen ? "#ffffff" : "transparent",
-            boxShadow: scrollState === "sticky"
-              ? "0 2px 20px rgba(25,30,79,0.08)"
+            maxWidth: scrolled || menuOpen ? "56rem" : "72rem",
+            borderRadius: scrolled || menuOpen ? "1rem" : 0,
+            background: scrolled || menuOpen
+              ? "rgba(255,255,255,0.88)"
+              : "rgba(255,255,255,0.90)",
+            boxShadow: scrolled || menuOpen
+              ? "0 8px 32px rgba(25,30,79,0.08)"
               : "none",
-            transition: "background 0.3s ease, box-shadow 0.3s ease",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
+            transition: "max-width 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease",
           }}
         >
-          <nav className="mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between" style={{ maxWidth: 1430, height: 80 }}>
+          <nav className="flex items-center justify-between" style={{ height: 68 }}>
             {/* Logo */}
             <a
               href="/"
@@ -440,7 +430,7 @@ export default function Navbar() {
                     key={i}
                     style={{
                       display: "block", width: 20, height: 2,
-                      borderRadius: 2, background: "#1D2939",
+                      borderRadius: 2, background: "#191e4f",
                       transformOrigin: "center", transition: "all 0.3s ease",
                       ...style,
                     }}
@@ -449,8 +439,8 @@ export default function Navbar() {
               </button>
             </div>
           </nav>
-        </header>
-      </motion.div>
+        </div>
+      </motion.header>
 
       {/* Mobile fullscreen menu */}
       <AnimatePresence>
@@ -514,7 +504,7 @@ export default function Navbar() {
                           >
                             <div style={{
                               flexShrink: 0, width: 30, height: 30, borderRadius: 8,
-                              background: "rgba(0,122,255,0.08)", border: "1px solid rgba(0,122,255,0.18)",
+                              background: "#e2f7ff",
                               display: "flex", alignItems: "center", justifyContent: "center",
                               marginTop: 2,
                             }}>
@@ -586,13 +576,12 @@ export default function Navbar() {
                                 padding: "9px 14px", borderRadius: 10, fontSize: 15,
                                 fontWeight: 500, color: "#191e4f", textDecoration: "none",
                                 fontFamily: "var(--font-body)",
-                                background: "rgba(0,122,255,0.04)",
-                                border: "1px solid rgba(0,122,255,0.12)",
+                                background: "#e2f7ff",
                               }}
                             >
                               <div style={{
                                 flexShrink: 0, width: 26, height: 26, borderRadius: 6,
-                                background: "rgba(0,122,255,0.08)",
+                                background: "rgba(0,85,255,0.12)",
                                 display: "flex", alignItems: "center", justifyContent: "center",
                               }}>
                                 <Icon size={13} style={{ color: "#0055FF" }} />
@@ -619,7 +608,7 @@ export default function Navbar() {
                 }}
               >
                 Agence
-                <ArrowRight size={15} color="#475467" />
+                <ArrowRight size={15} color="#474667" />
               </a>
             </div>
 
@@ -641,14 +630,10 @@ export default function Navbar() {
                   background: "linear-gradient(90deg, #0055FF 0%, #00D2FF 100%)",
                   color: "#FFFFFF", fontSize: 15, fontWeight: 700,
                   textDecoration: "none", fontFamily: "var(--font-heading)",
-                  boxShadow: "0 4px 15px rgba(0,122,255,0.3)",
                 }}
               >
                 Nous contacter
               </a>
-              <p style={{ fontSize: 12, color: "#474667", textAlign: "center", marginTop: 16 }}>
-                ✓ Satisfait ou remboursé · Réponse sous 24h
-              </p>
             </div>
           </motion.div>
         )}
