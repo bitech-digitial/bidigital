@@ -25,8 +25,6 @@ const AUTO_DELAY = 6000;
 function ReviewCard({ name, text }: { name: string; company: string; text: string }) {
   return (
     <div style={{
-      flex: "1 1 0",
-      minWidth: 0,
       background: "#ffffff",
       border: "1px solid rgba(25,30,79,0.08)",
       borderRadius: 16,
@@ -126,10 +124,12 @@ export default function Reviews() {
                 className="flex flex-col sm:flex-row gap-4"
               >
                 {pair.map((r, i) => (
-                  <ReviewCard key={i} {...r} />
+                  <div key={i} className={i === 1 ? "hidden sm:block flex-1 min-w-0" : "flex-1 min-w-0"}>
+                    <ReviewCard {...r} />
+                  </div>
                 ))}
                 {/* Placeholder si nombre impair */}
-                {pair.length === 1 && <div style={{ flex: "1 1 0" }} />}
+                {pair.length === 1 && <div className="hidden sm:block flex-1 min-w-0" />}
               </motion.div>
             </AnimatePresence>
           </div>
