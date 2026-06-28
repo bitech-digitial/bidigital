@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Camera, Gift, Rocket } from "lucide-react";
 
@@ -192,6 +192,21 @@ function Toggle({ value, onChange }: { value: PlanType; onChange: (v: PlanType) 
 export default function Pricing() {
   const [type, setType] = useState<PlanType>("vitrine");
   const plans = plansData[type];
+  const textRef = useRef<HTMLDivElement>(null);
+  const [photoHeight, setPhotoHeight] = useState<number | undefined>(undefined);
+
+  useEffect(() => {
+    const update = () => {
+      if (window.innerWidth < 640 && textRef.current) {
+        setPhotoHeight(textRef.current.offsetHeight);
+      } else {
+        setPhotoHeight(undefined);
+      }
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   return (
     <section className="relative py-12 md:py-24 px-4 overflow-hidden" style={{ background: "#f8faff" }}>
@@ -405,7 +420,7 @@ export default function Pricing() {
           className="shooting-banner"
         >
           {/* Texte */}
-          <div className="shooting-text" style={{ flex: 1, padding: "28px 36px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div ref={textRef} className="shooting-text" style={{ flex: 1, padding: "28px 36px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
             <div style={{ marginBottom: 14 }}>
               <span style={{
                 display: "inline-flex", alignItems: "center", gap: 6,
@@ -437,7 +452,7 @@ export default function Pricing() {
             </p>
           </div>
           {/* Photo */}
-          <div className="shooting-photo" style={{ flexShrink: 0, width: 220 }}>
+          <div className="shooting-photo" style={{ flexShrink: 0, width: 220, ...(photoHeight ? { height: photoHeight } : {}) }}>
             <img
               src="/images/photo.webp"
               alt="Shooting photo professionnel BiDigital"
