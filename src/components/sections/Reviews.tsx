@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -47,6 +47,8 @@ function ReviewCard({ name, text }: { name: string; company: string; text: strin
 export default function Reviews() {
   const [page, setPage] = useState(0);
   const [dir, setDir] = useState(1);
+  const [minHeight, setMinHeight] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const go = useCallback((next: number) => {
     const clamped = (next + PAGES) % PAGES;
@@ -58,6 +60,13 @@ export default function Reviews() {
     const id = setInterval(() => go(page + 1), AUTO_DELAY);
     return () => clearInterval(id);
   }, [go, page]);
+
+  useEffect(() => {
+    if (cardRef.current) {
+      const h = cardRef.current.offsetHeight;
+      setMinHeight(prev => Math.max(prev, h));
+    }
+  }, [page]);
 
   const pair = [reviews[page * 2], reviews[page * 2 + 1]].filter(Boolean);
 
@@ -111,10 +120,11 @@ export default function Reviews() {
           </button>
 
           {/* Cards */}
-          <div style={{ flex: 1, overflow: "hidden", position: "relative" }}>
+          <div style={{ flex: 1, overflow: "hidden", position: "relative", minHeight: minHeight || undefined }}>
             <AnimatePresence mode="popLayout" custom={dir}>
               <motion.div
                 key={page}
+                ref={cardRef}
                 custom={dir}
                 variants={variants}
                 initial="enter"
