@@ -2,25 +2,12 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const heading = Poppins({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-heading",
-  weight: ["600", "700"],
+  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-});
-
-const badge = Poppins({
-  subsets: ["latin"],
-  variable: "--font-badge",
-  weight: ["500", "600"],
-  display: "swap",
-});
-
-const body = Poppins({
-  subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["400", "500"],
-  display: "swap",
+  preload: true,
 });
 
 export const viewport: Viewport = {
@@ -237,7 +224,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${heading.variable} ${body.variable} ${badge.variable}`}>
+    <html lang="fr" className={poppins.variable}>
       <head>
         <link rel="preconnect" href="https://app.cal.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://challenges.cloudflare.com" crossOrigin="anonymous" />

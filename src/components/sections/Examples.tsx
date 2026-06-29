@@ -85,33 +85,46 @@ function BrowserCard({ realisation, lazy = false }: { realisation: (typeof reali
 function ScrollMarquee() {
   const row1Ref = useRef<HTMLDivElement>(null);
   const row2Ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let x1 = 0;
     let x2 = -2 * TRACK2;
     let rafId: number;
+    let running = false;
 
     const tick = () => {
       const y = window.scrollY;
-
       x1 += (-y * SPEED - x1) * LERP;
       x2 += (-2 * TRACK2 + y * SPEED - x2) * LERP;
-
       if (row1Ref.current) row1Ref.current.style.transform = `translateX(${x1 % TRACK1}px)`;
       if (row2Ref.current) row2Ref.current.style.transform = `translateX(${x2 % TRACK2}px)`;
-
-      rafId = requestAnimationFrame(tick);
+      if (running) rafId = requestAnimationFrame(tick);
     };
 
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        running = entry.isIntersecting;
+        if (running) rafId = requestAnimationFrame(tick);
+        else cancelAnimationFrame(rafId);
+      },
+      { threshold: 0, rootMargin: "100px" }
+    );
+
+    if (containerRef.current) observer.observe(containerRef.current);
+
+    return () => {
+      running = false;
+      cancelAnimationFrame(rafId);
+      observer.disconnect();
+    };
   }, []);
 
   const set1 = [...realisations1, ...realisations1, ...realisations1];
   const set2 = [...realisations2, ...realisations2, ...realisations2];
 
   return (
-    <div className="space-y-5">
+    <div ref={containerRef} className="space-y-5">
       {/* Rangée 1 — glisse à gauche */}
       <div style={{ overflow: "hidden" }}>
         <div

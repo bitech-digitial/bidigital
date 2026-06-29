@@ -133,6 +133,7 @@ export default function FloatingShapesLayer({
   return (
     <div
       ref={ref}
+      data-floating-layer
       className="absolute inset-0 pointer-events-none overflow-hidden"
       aria-hidden
     >

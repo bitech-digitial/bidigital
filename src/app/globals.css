@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* ── Polices — alias unique Poppins ── */
+:root {
+  --font-heading: var(--font-poppins);
+  --font-badge:   var(--font-poppins);
+  --font-body:    var(--font-poppins);
+}
+
+/* ── Overflow horizontal global ── */
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+}
+
 :root {
   /* Colors — design system Beyonds */
   --color-navy:        #191e4f;
@@ -230,6 +246,18 @@ section {
 }
 
 /* padding-bottom mobile supprimé — MobileStickyCTA retirée */
+
+/* ── FloatingShapesLayer — masqué sur mobile (économise CPU) ── */
+@media (max-width: 767px) {
+  [data-floating-layer] {
+    display: none !important;
+  }
+}
+
+/* ── Perf — isolation des sections pour éviter repaint global ── */
+section {
+  contain: paint;
+}
 
 /* ── FAQ underline — masqué sur mobile (gradient suffit) ── */
 @media (max-width: 639px) {
