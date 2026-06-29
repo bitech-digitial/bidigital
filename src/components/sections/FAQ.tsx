@@ -61,8 +61,9 @@ export default function FAQ() {
               lineHeight: 1.25,
             }}
           >
-            Les questions{" "}
-            <span style={{ position: "relative", display: "inline-block" }}>
+            Les questions
+            <br className="sm:hidden" />
+            {" "}<span style={{ position: "relative", display: "inline-block" }}>
               <span style={{
                 background: "linear-gradient(90deg, #0055FF, #00D2FF)",
                 WebkitBackgroundClip: "text",
