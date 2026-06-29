@@ -41,6 +41,7 @@ export default function Hero() {
           <div className="mb-7">
             <a
               href="/maquette"
+              className="badge-maquette"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -54,6 +55,7 @@ export default function Hero() {
                 fontFamily: "var(--font-body)",
                 border: "1px solid rgba(25,30,79,0.10)",
                 textDecoration: "none",
+                position: "relative",
                 boxShadow: "0 2px 8px rgba(25,30,79,0.10), 0 1px 2px rgba(25,30,79,0.06)",
                 transition: "box-shadow 0.2s, transform 0.2s",
                 cursor: "pointer",

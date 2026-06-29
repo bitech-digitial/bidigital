@@ -340,6 +340,26 @@ section {
   to   { transform: rotate(360deg); }
 }
 
+/* ── Badge maquette — flash ombre toutes les 2s ── */
+@keyframes badgeMaquettePulse {
+  0%, 18%, 100% { opacity: 0; }
+  9%            { opacity: 1; }
+}
+.badge-maquette::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50px;
+  box-shadow: 0 0 0 4px rgba(0,85,255,0.18), 0 6px 32px rgba(0,85,255,0.35);
+  opacity: 0;
+  animation: badgeMaquettePulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+.badge-maquette:hover::after {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
 /* ── CalButton shimmer ── */
 @keyframes calShimmer {
   from { background-position: 200% 0; }
