@@ -241,10 +241,7 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+      <header
         className="fixed top-0 left-0 right-0 z-50"
         style={{ padding: scrolled || menuOpen ? "0 1rem" : "0" }}
       >
@@ -444,7 +441,7 @@ export default function Navbar() {
             </div>
           </nav>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile fullscreen menu */}
       <AnimatePresence>

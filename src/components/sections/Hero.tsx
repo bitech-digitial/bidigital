@@ -38,12 +38,7 @@ export default function Hero() {
         <div className="text-center">
 
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-            className="mb-7"
-          >
+          <div className="mb-7">
             <a
               href="/maquette"
               style={{
@@ -75,13 +70,10 @@ export default function Hero() {
               ✦ Votre maquette 100% gratuite en 72h
               <span style={{ fontSize: 15, fontWeight: 700, lineHeight: 1 }}>›</span>
             </a>
-          </motion.div>
+          </div>
 
           {/* H1 */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+          <h1
             style={{
               fontFamily: "var(--font-heading)",
               fontSize: "clamp(40px, 5.5vw, 78px)",
@@ -116,13 +108,10 @@ export default function Hero() {
               />
             </span>
             <span className="block">BiDigital</span>
-          </motion.h1>
+          </h1>
 
           {/* Sous-titre */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
+          <p
             style={{
               fontFamily: "var(--font-body)",
               fontSize: "clamp(16px, 1.8vw, 18px)",
@@ -133,15 +122,10 @@ export default function Hero() {
             }}
           >
             Gagnez en visibilité, inspirez confiance et attirez plus de clients grâce à un site web professionnel optimisé pour Google.
-          </motion.p>
+          </p>
 
           {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.38 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
-          >
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <CalButton
               className="w-full sm:w-auto"
               style={{
@@ -193,14 +177,11 @@ export default function Hero() {
               </svg>
               Nous écrire
             </a>
-          </motion.div>
+          </div>
 
           {/* Badge confiance */}
-          <motion.div
+          <div
             style={{ marginBottom: "4rem" }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.55 }}
             className="flex flex-wrap items-center justify-center gap-3"
           >
             <span
@@ -226,24 +207,19 @@ export default function Hero() {
               <span style={{ color: "#191e4f", fontWeight: 600 }}>5/5</span>
               <span style={{ color: "#474667" }}>· Clients satisfaits</span>
             </span>
-          </motion.div>
+          </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
-      >
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
           <ArrowDown className="w-5 h-5" style={{ color: "rgba(0,85,255,0.35)" }} />
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
