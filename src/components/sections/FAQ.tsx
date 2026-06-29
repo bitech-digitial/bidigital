@@ -71,7 +71,7 @@ export default function FAQ() {
               }}>
                 qu&apos;on nous pose souvent.
               </span>
-              <span style={{
+              <span className="faq-underline" style={{
                 display: "block", height: 3,
                 background: "linear-gradient(90deg, #0055FF, #00D2FF)",
                 borderRadius: 2,

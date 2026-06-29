@@ -229,10 +229,13 @@ section {
   overflow-x: clip;
 }
 
-/* ── Mobile bottom padding — espace pour la barre de CTA flottante ── */
-@media (max-width: 767px) {
-  main {
-    padding-bottom: 82px;
+/* padding-bottom mobile supprimé — MobileStickyCTA retirée */
+
+/* ── FAQ underline — limité sur mobile ── */
+@media (max-width: 639px) {
+  .faq-underline {
+    right: auto !important;
+    width: 60% !important;
   }
 }
 

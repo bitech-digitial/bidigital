@@ -448,12 +448,13 @@ export default function Pricing() {
               border: "1px solid rgba(25,30,79,0.10)",
               boxShadow: "0 4px 24px rgba(0,85,255,0.08)",
               minHeight: 260,
+              position: "relative",
             }}
           >
             <img
               src="/images/shooting.webp"
               alt="Shooting photo professionnel BiDigital"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
               loading="lazy" decoding="async"
             />
           </motion.div>
