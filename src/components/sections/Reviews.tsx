@@ -111,8 +111,8 @@ export default function Reviews() {
           </button>
 
           {/* Cards */}
-          <div style={{ flex: 1, overflow: "hidden" }}>
-            <AnimatePresence mode="wait" custom={dir}>
+          <div style={{ flex: 1, overflow: "hidden", position: "relative" }}>
+            <AnimatePresence mode="popLayout" custom={dir}>
               <motion.div
                 key={page}
                 custom={dir}
