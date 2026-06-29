@@ -238,20 +238,8 @@ section {
 
 /* ── Shooting banner — mobile stack ── */
 @media (max-width: 639px) {
-  .shooting-banner {
+  .shooting-banner-wrap {
     flex-direction: column !important;
-  }
-  .shooting-text {
-    padding: 20px 20px !important;
-  }
-  .shooting-photo {
-    width: 100% !important;
-    flex-shrink: 0;
-    background: #f0f4ff;
-  }
-  .shooting-photo img {
-    object-fit: contain !important;
-    object-position: center center !important;
   }
 }
 

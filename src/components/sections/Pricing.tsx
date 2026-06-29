@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Camera, Gift, Rocket } from "lucide-react";
 
@@ -192,21 +192,6 @@ function Toggle({ value, onChange }: { value: PlanType; onChange: (v: PlanType) 
 export default function Pricing() {
   const [type, setType] = useState<PlanType>("vitrine");
   const plans = plansData[type];
-  const textRef = useRef<HTMLDivElement>(null);
-  const [photoHeight, setPhotoHeight] = useState<number | undefined>(undefined);
-
-  useEffect(() => {
-    const update = () => {
-      if (window.innerWidth < 640 && textRef.current) {
-        setPhotoHeight(textRef.current.offsetHeight);
-      } else {
-        setPhotoHeight(undefined);
-      }
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
 
   return (
     <section className="relative py-12 md:py-24 px-4 overflow-hidden" style={{ background: "#f8faff" }}>
@@ -401,26 +386,27 @@ export default function Pricing() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Bandeau shooting photo */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
-          style={{
-            marginTop: 32,
-            borderRadius: 20,
-            background: "#ffffff",
-            border: "1px solid rgba(25,30,79,0.10)",
-            boxShadow: "0 4px 24px rgba(0,85,255,0.08)",
-            overflow: "hidden",
-            display: "flex",
-            alignItems: "stretch",
-          }}
-          className="shooting-banner"
-        >
-          {/* Texte */}
-          <div ref={textRef} className="shooting-text" style={{ flex: 1, padding: "28px 36px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        {/* Shooting photo — 2 blocs côte à côte */}
+        <div className="shooting-banner-wrap" style={{ marginTop: 32, display: "flex", gap: 16, alignItems: "stretch" }}>
+
+          {/* Bloc texte */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            style={{
+              flex: 1,
+              borderRadius: 20,
+              background: "#ffffff",
+              border: "1px solid rgba(25,30,79,0.10)",
+              boxShadow: "0 4px 24px rgba(0,85,255,0.08)",
+              padding: "32px 36px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <div style={{ marginBottom: 14 }}>
               <span style={{
                 display: "inline-flex", alignItems: "center", gap: 6,
@@ -435,9 +421,8 @@ export default function Pricing() {
               </span>
             </div>
             <div style={{
-              fontFamily: "var(--font-heading)", fontSize: "clamp(18px, 3vw, 24px)", fontWeight: 800,
-              color: "#191e4f", marginBottom: 10, lineHeight: 1.2,
-              letterSpacing: "-0.02em",
+              fontFamily: "var(--font-heading)", fontSize: "clamp(20px, 2.5vw, 28px)", fontWeight: 800,
+              color: "#191e4f", marginBottom: 12, lineHeight: 1.2, letterSpacing: "-0.02em",
             }}>
               Inclus{" "}
               <span style={{ background: "linear-gradient(90deg, #0055FF, #00D2FF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
@@ -445,22 +430,35 @@ export default function Pricing() {
               </span>
               {" "}avec votre site
             </div>
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: 15, color: "#474667", lineHeight: 1.7, margin: 0,
-            }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: "#474667", lineHeight: 1.7, margin: 0 }}>
               Les photos font toute la différence. Un site avec de belles images professionnelles inspire confiance, valorise votre activité et convainc vos visiteurs bien mieux qu&apos;un texte seul. C&apos;est pourquoi nous vous offrons un shooting photo dédié pour que votre site soit aussi beau que votre travail.
             </p>
-          </div>
-          {/* Photo */}
-          <div className="shooting-photo" style={{ flexShrink: 0, width: 220, ...(photoHeight ? { height: photoHeight } : {}) }}>
+          </motion.div>
+
+          {/* Bloc photo */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            style={{
+              flex: 1,
+              borderRadius: 20,
+              overflow: "hidden",
+              border: "1px solid rgba(25,30,79,0.10)",
+              boxShadow: "0 4px 24px rgba(0,85,255,0.08)",
+              minHeight: 260,
+            }}
+          >
             <img
-              src="/images/photo.webp"
+              src="/images/shooting.webp"
               alt="Shooting photo professionnel BiDigital"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
               loading="lazy" decoding="async"
             />
-          </div>
-        </motion.div>
+          </motion.div>
+
+        </div>
 
       </div>
     </section>
