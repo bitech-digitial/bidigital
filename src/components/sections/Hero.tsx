@@ -214,7 +214,6 @@ export default function Hero() {
                 fontFamily: "var(--font-body)",
                 fontSize: 13,
                 color: "#474667",
-                boxShadow: "0 2px 12px rgba(25,30,79,0.10)",
               }}
             >
               <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Google" style={{ flexShrink: 0 }}>
