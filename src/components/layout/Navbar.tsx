@@ -245,12 +245,16 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="fixed top-0 left-0 right-0 z-50 px-4"
+        className="fixed top-0 left-0 right-0 z-50"
+        style={{ padding: scrolled || menuOpen ? "0 1rem" : "0" }}
       >
         <div
-          className="mx-auto mt-2 px-6"
+          className="mx-auto"
           style={{
-            maxWidth: scrolled || menuOpen ? "56rem" : "72rem",
+            marginTop: scrolled || menuOpen ? 8 : 0,
+            paddingLeft: scrolled || menuOpen ? 24 : 24,
+            paddingRight: scrolled || menuOpen ? 24 : 24,
+            maxWidth: scrolled || menuOpen ? "56rem" : "100%",
             borderRadius: scrolled || menuOpen ? "1rem" : 0,
             background: scrolled || menuOpen
               ? "rgba(255,255,255,0.88)"
@@ -260,7 +264,7 @@ export default function Navbar() {
               : "none",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
-            transition: "max-width 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease",
+            transition: "max-width 0.3s ease, margin-top 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease",
           }}
         >
           <nav className="flex items-center justify-between" style={{ height: 68 }}>
